@@ -858,5 +858,26 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
 });
 </script>
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileOverlay = document.getElementById("mobileOverlay");
+const closeBtn = document.getElementById("closeMobileMenu");
+
+menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("open");
+    mobileOverlay.classList.add("show");
+});
+
+closeBtn.addEventListener("click", closeMenu);
+mobileOverlay.addEventListener("click", closeMenu);
+
+function closeMenu() {
+    mobileMenu.classList.remove("open");
+    mobileOverlay.classList.remove("show");
+}
+
+</script>
 </body>
 </html>
