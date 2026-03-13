@@ -2177,3 +2177,52 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     }
 }
 
+/* ============================= */
+/* MEDIA PAGE - MOBILE VIDEO FIX */
+/* ============================= */
+
+.video-card {
+    overflow: hidden;
+}
+
+.phone-frame {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+}
+
+.phone-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 1;
+}
+
+.video-card .text-center,
+.video-card h3,
+.video-card p,
+.section-title,
+.accent-line {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 767px) {
+    .video-card {
+        padding: 1.25rem;
+    }
+
+    .phone-frame {
+        max-width: 240px;
+        margin-bottom: 1.25rem;
+    }
+
+    .video-tag {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.7rem;
+    }
+}
