@@ -423,13 +423,21 @@
             </div>
         </section>
 
-        <section class="py-16 bg-blue-950 text-white">
-            <div class="container-clean text-center">
-                <h2 class="text-3xl md:text-4xl font-black mb-4">רוצים לעבור מסימולציה לבדיקה אמיתית?</h2>
-                <p class="text-slate-300 font-bold mb-8">שלחו את התוצאה שקיבלתם ונתקדם לבדיקה מקצועית, מסודרת ואישית.</p>
+		<!-- ===================== -->
+<!-- BOTTOM CTA SECTION -->
+<!-- ===================== -->
+
+		
+		<section class="py-16 about-bottom-cta text-center">
+    <div class="container-clean">
+	<h2 class="text-3xl md:text-4xl font-black mb-4">רוצים לעבור מסימולציה לבדיקה אמיתית?</h2>
+                <p class="text-slate-300 font-bold mb-8">
+   שלחו את התוצאה שקיבלתם ונתקדם לבדיקה מקצועית, מסודרת ואישית.
+</p>
                 <button id="openContactBottom" class="btn-primary">לתיאום בדיקה אישית</button>
             </div>
         </section>
+	
     </main>
 
     <footer class="bg-[var(--navy-deep)] text-white py-8 border-t border-white/5">
@@ -512,11 +520,6 @@
         </div>
     </div>
 
-      <button id="backToTop" class="fixed bottom-24 right-6 bg-slate-800 text-white p-3 rounded-full shadow-xl z-40 hover:bg-slate-700 transition-all hidden">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"></path>
-        </svg>
-    </button>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -538,7 +541,6 @@
             const contactModal = document.getElementById('contactModal');
             const exitPopup = document.getElementById('exitPopup');
             const form = document.getElementById('modal-contact-form');
-            const backToTop = document.getElementById('backToTop');
             const calculatorForm = document.getElementById('calculatorForm');
             const resultSection = document.getElementById('resultSection');
             const resetCalculator = document.getElementById('resetCalculator');
@@ -835,14 +837,7 @@
                 });
             }
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) backToTop?.classList.remove('hidden');
-                else backToTop?.classList.add('hidden');
-            });
-
-            backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-            document.addEventListener('keydown', (e) => {
+              document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal(contactModal);
                     closeModal(exitPopup);

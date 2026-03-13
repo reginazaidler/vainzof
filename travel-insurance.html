@@ -99,47 +99,47 @@
 
     <main id="main">
 	
-	<section class="hero-gradient text-white pt-10 pb-12 md:pt-14 md:pb-16 text-right">
-            <div class="container-clean max-w-5xl">
+	<!-- ===================== -->
+<!-- HERO SECTION -->
+<!-- ===================== -->
+<section id="top" class="home-hero">
+    <div class="container-clean home-hero__inner">
+        <div class="home-hero__content">
+            <p class="home-hero__badge">
+                <span class="home-hero__dot"></span>
+                התאמה אישית • כיסוי מדויק • שקט לפני הנסיעה
+            </p>
 
-                <div class="mb-6">
-                    <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-semibold">
-                        <span class="w-2 h-2 bg-[var(--gold-brand)] rounded-full"></span>
-                        התאמה אישית • כיסוי מדויק • שקט לפני הנסיעה
-                    </span>
-                </div>
+            <h1 class="home-hero__title">
+                ביטוח נסיעות לחו"ל
+            </h1>
 
-                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6 max-w-4xl">
-                    ביטוח נסיעות לחו"ל
-                </h1>
-
-                <div class="text-2xl md:text-4xl font-black text-[var(--gold-brand)] mb-6">
+            <p class="home-hero__subtitle">
                     לא בוחרים רק לפי מחיר
-                </div>
-
-                <p class="text-lg text-slate-300 max-w-3xl leading-relaxed mb-10">
+            </p>
+			<p class="text-lg text-slate-300 max-w-3xl leading-relaxed mb-10">
                     ביטוח נסיעות לחו"ל צריך להתאים ליעד, למשך הנסיעה, למצב הבריאותי,
                     להרכב המשפחתי ולאופי הנסיעה. התאמה נכונה מראש יכולה לעשות את ההבדל
                     ברגע האמת.
                 </p>
 
-                <div class="flex flex-wrap gap-4 text-sm font-semibold text-slate-200">
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        כיסוי רפואי בחו"ל
-                    </div>
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        הרחבות למצב רפואי קיים
-                    </div>
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        כבודה, ציוד וביטול נסיעה
-                    </div>
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        התאמה אישית לפני טיסה
-                    </div>
-                </div>
+            <ul class="hero-checklist">
+                <li><span class="hero-checklist__icon">✓</span><span> כיסוי רפואי בחו"ל</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>הרחבות למצב רפואי קיים</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>כבודה, ציוד וביטול נסיעה</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>התאמה אישית לפני טיסה</span></li>
+            </ul>
 
+            <div class="hero-actions">
+                <button id="openContactHero" class="site-cta">לתיאום בדיקה אישית</button>
+                <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">שליחת פרטים ב-WhatsApp</a>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+	
+
 
         <section class="py-20 md:py-24 bg-white reveal text-right">
             <div class="container-clean">
@@ -311,11 +311,12 @@
 
                 <div class="grid lg:grid-cols-3 gap-6">
 
-                    <div class="bg-blue-950 text-white rounded-3xl p-8 shadow-xl">
+					
+					<div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
                         <div class="text-sm font-bold text-[var(--gold-brand)] mb-3">למה זה חשוב</div>
-                        <h3 class="text-2xl font-black mb-4">התאמה נכונה מראש</h3>
-                        <p class="text-slate-200 leading-relaxed">
-                            ביטוח נסיעות לחו"ל נועד לתת מענה כשיש אירוע בלתי צפוי.
+                        <h3 class="text-2xl font-black text-blue-950 mb-4">התאמה נכונה מראש</h3>
+                        <p class="text-slate-700 leading-relaxed">
+                             ביטוח נסיעות לחו"ל נועד לתת מענה כשיש אירוע בלתי צפוי.
                             לכן חשוב לבחור פוליסה לפי הצרכים בפועל ולא רק לפי המחיר.
                         </p>
                     </div>
@@ -344,15 +345,24 @@
             </div>
         </section>
 
-        <section class="py-16 bg-blue-950 text-white text-center">
-            <div class="container-clean">
-                <h2 class="text-3xl md:text-4xl font-black mb-4">רוצים לבחור ביטוח נסיעות לחו"ל בצורה מדויקת יותר?</h2>
+
+<!-- ===================== -->
+<!-- BOTTOM CTA SECTION -->
+<!-- ===================== -->
+
+		
+		<section class="py-16 about-bottom-cta text-center">
+    <div class="container-clean">
+	<h2 class="text-3xl md:text-4xl font-black mb-4">רוצים לבחור ביטוח נסיעות לחו"ל בצורה מדויקת יותר?</h2>
                 <p class="text-slate-300 font-bold mb-8">
                     לפני שבוחרים פוליסה, כדאי להבין מה באמת צריך לכלול ואילו הרחבות עשויות להיות רלוונטיות עבורכם.
-                </p>
+</p>
                 <button id="openContactBottom" class="btn-primary">לתיאום בדיקה אישית</button>
             </div>
         </section>
+	
+</main>
+
 
     </main>
 

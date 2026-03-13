@@ -86,7 +86,7 @@
         <a href="index.html" class="block font-bold text-blue-900 border-b pb-2">דף הבית</a>
         <a href="about.html" class="block font-bold text-slate-600 border-b pb-2">קצת עלי</a>
         <a href="services.html" class="block font-bold text-slate-600 border-b pb-2">דרך העבודה</a>
-		<a href="insurance-types.html" class="hover:text-blue-600 transition">סוגי ביטוחים</a>
+		<a href="insurance-types.html" class="block font-bold text-slate-600 border-b pb-2">סוגי ביטוחים</a>
         <a href="reviews.html" class="block font-bold text-slate-600 border-b pb-2">לקוחות ממליצים</a>
         <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
 <button id="openContactMobile" class="w-full bg-blue-900 text-white py-3 rounded-sm font-bold">לתיאום בדיקה אישית</button>
@@ -95,46 +95,41 @@
 
 
     <main id="main">
-<section class="hero-gradient text-white pt-10 pb-12 md:pt-14 md:pb-16 text-right">
-    <div class="container-clean max-w-5xl">
 
-        <div class="mb-6">
-            <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-semibold">
-                <span class="w-2 h-2 bg-[var(--gold-brand)] rounded-full"></span>
-                ידע מעמיק • ניסיון מהמערכת • יושרה מקצועית
-            </span>
-        </div>
-<h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6 max-w-4xl">
-    מסלול מקצועי רחב
-</h1>
 
-<div class="text-2xl md:text-4xl font-black text-[var(--gold-brand)] mb-6">
-    משוק ההון ועד ביטוח פנסיוני
-</div>
+<section id="top" class="home-hero">
+    <div class="container-clean home-hero__inner">
+        <div class="home-hero__content">
+            <p class="home-hero__badge">
+                <span class="home-hero__dot"></span>
+                ליווי אישי ללא מוקדים וללא סיבובים
+            </p>
 
-<p class="text-lg text-slate-300 max-w-3xl leading-relaxed mb-8">
-    הניסיון שצברתי בשוק ההון, בביטוח, בפיתוח עסקי ובניהול לקוחות מוסדיים
-    מאפשר לי להסתכל על התמונה הרחבה וללוות אתכם בצורה מדויקת יותר.
-</p>
-        
-        <div class="flex flex-wrap gap-4 text-sm font-semibold text-slate-200">
-            <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                מעל 18 שנות ניסיון
-            </div>
-            <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                רישיון סוכן ביטוח פנסיוני
-            </div>
-            <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                רישיון לניהול תיקי השקעות
-            </div>
-            <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                MBA עם התמחות בשיווק
+            <h1 class="home-hero__title">
+                הניסיון שלי הוא
+השקט הכלכלי שלכם.
+            </h1>
+
+            <p class="home-hero__subtitle">
+                מעל 18 שנים בקבוצת הראל ביטוח ופיננסים לימדו אותי בדיוק איך המערכת עובדת מבפנים. היום, אני רותם את הידע הזה כדי להגן על האינטרסים שלכם.
+
+
+            </p>
+
+            <ul class="hero-checklist">
+                <li><span class="hero-checklist__icon">✓</span><span>מיפוי מלא של התיק הפיננסי והפנסיוני</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>זיהוי כפילויות, חוסרים ועלויות מיותרות</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>ליווי אישי מול הגופים עד לקבלת החלטה נכונה</span></li>
+            </ul>
+
+            <div class="hero-actions">
+                <button id="openContactHero" class="site-cta">לתיאום בדיקה אישית</button>
+                <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">שליחת פרטים ב-WhatsApp</a>
             </div>
         </div>
 
-    </div>
+            </div>
 </section>
-
 
 <section class="py-12 md:py-16 bg-white reveal text-right">
     <div class="container-clean">
@@ -234,7 +229,7 @@
 
         <div class="grid lg:grid-cols-3 gap-6 mt-10">
 
-            <div class="bg-blue-950 text-white rounded-3xl p-8 shadow-xl">
+			<div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
                 <div class="text-sm font-bold text-[var(--gold-brand)] mb-3">
                     רישוי מקצועי
                 </div>
@@ -243,7 +238,7 @@
                     מעטפת מקצועית רחבה
                 </h3>
 
-                <p class="text-slate-200 leading-relaxed">
+                <p class="text-slate-700 leading-relaxed">
     רישיון סוכן ביטוח פנסיוני ורישיון לניהול תיקי השקעות -
     שילוב המאפשר הסתכלות רחבה יותר על התמונה הפיננסית המלאה.
 </p>
@@ -262,6 +257,7 @@
                 <p class="text-slate-700 leading-relaxed">
     תואר שני במנהל עסקים עם התמחות בשיווק
     מהקריה האקדמית אונו.
+	ותואר ראשון בכלכלה מאוניברסיטת בן גוריון
 </p>
             </div>
 
@@ -454,7 +450,7 @@
 </div>
 </section>
 
-        <section class="py-16 bg-blue-950 text-white text-center">
+        <section class="py-16 about-bottom-cta text-center">
             <div class="container-clean">
                 <h2 class="text-3xl md:text-4xl font-black mb-4">רוצים להבין באמת מה יש בתיק שלכם?</h2>
                 <p class="text-slate-300 font-bold mb-8">

@@ -74,49 +74,47 @@
     </header>
 
     <main id="main">
+	
+<!-- ===================== -->
+<!-- HERO SECTION -->
+<!-- ===================== -->
+<section id="top" class="home-hero">
+    <div class="container-clean home-hero__inner">
+        <div class="home-hero__content">
+            <p class="home-hero__badge">
+                <span class="home-hero__dot"></span>
+                                        ביטוח חיים למשכנתא • ביטוח מבנה • התאמה מדויקת
+            </p>
 
-        <section class="hero-gradient text-white pt-12 pb-14 md:pt-16 md:pb-16 text-right">
-            <div class="container-clean max-w-5xl">
+            <h1 class="home-hero__title">
+                                    ביטוח משכנתא
+            </h1>
 
-                <div class="mb-6">
-                    <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs font-semibold">
-                        <span class="w-2 h-2 bg-[var(--gold-brand)] rounded-full"></span>
-                        ביטוח חיים למשכנתא • ביטוח מבנה • התאמה מדויקת
-                    </span>
-                </div>
-
-                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6 max-w-4xl">
-                    ביטוח משכנתא
-                </h1>
-
-                <div class="text-2xl md:text-4xl font-black text-[var(--gold-brand)] mb-6">
+            <p class="home-hero__subtitle">
                     לא בוחרים רק כי הבנק הציע
-                </div>
-
-                <p class="text-lg text-slate-300 max-w-3xl leading-relaxed mb-10">
+            </p>
+			<p class="text-lg text-slate-300 max-w-3xl leading-relaxed mb-10">
                     ביטוח משכנתא כולל בדרך כלל ביטוח חיים למשכנתא וביטוח מבנה.
                     לפני שמחליטים, חשוב לבדוק מה באמת נדרש, מה התנאים בפוליסה
                     והאם הפתרון שמוצע מתאים לצרכים שלכם גם מבחינת עלות וגם מבחינת כיסוי.
                 </p>
 
-                <div class="flex flex-wrap gap-4 text-sm font-semibold text-slate-200">
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        ביטוח חיים למשכנתא
-                    </div>
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        ביטוח מבנה
-                    </div>
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        בדיקת תנאים ועלויות
-                    </div>
-                    <div class="bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
-                        התאמה לצרכי המשפחה
-                    </div>
-                </div>
+            <ul class="hero-checklist">
+                <li><span class="hero-checklist__icon">✓</span><span> ביטוח חיים למשכנתא</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>ביטוח מבנה</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>בדיקת תנאים ועלויות</span></li>
+                <li><span class="hero-checklist__icon">✓</span><span>התאמה לצרכי המשפחה</span></li>
+            </ul>
 
+            <div class="hero-actions">
+                <button id="openContactHero" class="site-cta">לתיאום בדיקה אישית</button>
+                <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">שליחת פרטים ב-WhatsApp</a>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
+      
         <section class="py-16 md:py-20 bg-white reveal text-right">
             <div class="container-clean">
 
@@ -271,11 +269,13 @@
 
                 <div class="grid lg:grid-cols-3 gap-6">
 
-                    <div class="bg-blue-950 text-white rounded-3xl p-8 shadow-xl">
+                
+					
+					<div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
                         <div class="text-sm font-bold text-[var(--gold-brand)] mb-3">למה זה חשוב</div>
-                        <h3 class="text-2xl font-black mb-4">החלטה עם משמעות ארוכת טווח</h3>
-                        <p class="text-slate-200 leading-relaxed">
-                            ביטוח משכנתא הוא חלק מההתחייבות הפיננסית הכוללת של המשפחה,
+                        <h3 class="text-2xl font-black text-blue-950 mb-4">החלטה עם משמעות ארוכת טווח</h3>
+                        <p class="text-slate-700 leading-relaxed">
+                              ביטוח משכנתא הוא חלק מההתחייבות הפיננסית הכוללת של המשפחה,
                             ולכן חשוב לבחור אותו מתוך בדיקה ולא מתוך הרגל.
                         </p>
                     </div>
@@ -303,13 +303,19 @@
             </div>
         </section>
 
-        <section class="py-20 bg-[var(--navy-deep)] text-white text-center">
-            <div class="container-clean">
-                <h2 class="text-3xl font-bold mb-6">רוצים לבדוק האם ביטוח המשכנתא שלכם באמת מתאים לכם?</h2>
-                <p class="text-slate-400 mb-10 max-w-xl mx-auto">
-                    לפני שמחליטים, כדאי להבין את התנאים, העלויות והאפשרויות הקיימות.
-                </p>
-                <button id="openContactCTA" class="btn-primary">תיאום שיחת ייעוץ ראשונית</button>
+		
+		<!-- ===================== -->
+<!-- BOTTOM CTA SECTION -->
+<!-- ===================== -->
+
+		
+		<section class="py-16 about-bottom-cta text-center">
+    <div class="container-clean">
+	<h2 class="text-3xl md:text-4xl font-black mb-4">רוצים לבדוק האם ביטוח המשכנתא שלכם באמת מתאים לכם?</h2>
+                <p class="text-slate-300 font-bold mb-8">
+                       לפני שמחליטים, כדאי להבין את התנאים, העלויות והאפשרויות הקיימות.
+</p>
+                <button id="openContactBottom" class="btn-primary">לתיאום בדיקה אישית</button>
             </div>
         </section>
 
@@ -419,7 +425,6 @@
 
         const contactModal = document.getElementById('contactModal');
         const form = document.getElementById('modal-contact-form');
-        const backToTop = document.getElementById('backToTop');
 
         function openModal(modal) {
             if (!modal) return;

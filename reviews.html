@@ -112,16 +112,36 @@
 </header>
 
     <main id="main">
-        <section class="hero-gradient text-white pt-24 pb-24 text-center">
-            <div class="container-clean">
-                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 italic">
+	
+	<section id="top" class="home-hero">
+    <div class="container-clean home-hero__inner">
+        <div class="home-hero__content">
+            <p class="home-hero__badge">
+                <span class="home-hero__dot"></span>
+                ליווי אישי ללא מוקדים וללא סיבובים
+            </p>
+
+            <h1 class="home-hero__title">
                     ההצלחה שלי היא השקט שלכם
-                </h1>
-                <p class="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light">
+            </h1>
+
+            <p class="home-hero__subtitle">
                     אין הוכחה טובה יותר למקצועיות מאשר מאות לקוחות שכבר עשו סדר בתיק הפנסיוני והביטוחי שלהם.
-                </p>
+
+
+            </p>
+
+
+            <div class="hero-actions">
+                <button id="openContactHero" class="site-cta">לתיאום בדיקה אישית</button>
+                <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">שליחת פרטים ב-WhatsApp</a>
             </div>
-        </section>
+        </div>
+
+            </div>
+</section>
+
+      
 
         <section class="py-24 bg-white reveal text-right">
             <div class="container-clean">
@@ -380,7 +400,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactModal = document.getElementById('contactModal');
 const exitPopup = document.getElementById('exitPopup');
 const form = document.getElementById('modal-contact-form');
-const backToTop = document.getElementById('backToTop');
     
     let isEligibleForPopup = false;
     setTimeout(() => { isEligibleForPopup = true; }, 10000);
@@ -534,13 +553,7 @@ document.getElementById('user_phone')?.addEventListener('input', (e) => {
         });
     }
 
-        // כפתור חזרה למעלה
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) backToTop?.classList.remove('hidden');
-        else backToTop?.classList.add('hidden');
-    });
-    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal(contactModal);
@@ -554,14 +567,6 @@ document.getElementById('user_phone')?.addEventListener('input', (e) => {
 
 
 </script>
-
-
-<button id="backToTop" class="fixed bottom-24 right-6 bg-slate-800 text-white p-3 rounded-full shadow-xl z-40 hover:bg-slate-700 transition-all hidden">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"></path>
-    </svg>
-</button>
-
 
 </body>
 </html>
