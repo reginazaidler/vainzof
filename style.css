@@ -2176,3 +2176,31 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
         font-size: 0.95rem;
     }
 }
+.mobile-drawer{
+    position: fixed;
+    top:0;
+    right:-320px;
+    width:320px;
+    height:100%;
+    background:white;
+    z-index:2000;
+    transition: right 0.3s ease;
+}
+
+.mobile-drawer.open{
+    right:0;
+}
+
+.mobile-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s;
+}
+
+.mobile-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
