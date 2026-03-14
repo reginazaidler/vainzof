@@ -1579,7 +1579,41 @@ main section.bg-slate-50 h3 {
 
 @media (max-width: 767px) {
     body {
-        padding-bottom: 82px;
+        padding-bottom: 68px;
+    }
+
+    /* צמצום ריווח אנכי במובייל כדי למנוע תחושת "מקטעים ריקים" בדף הבית */
+    #main > section.py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    #main > section.py-16 {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    #main > section.py-12 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .companies-section-card {
+        border-radius: 1.5rem;
+        padding: 1.4rem;
+    }
+
+    .companies-section-card > p {
+        margin-bottom: 1.5rem;
+    }
+
+    .companies-logos-grid {
+        gap: 1rem;
+    }
+
+    .about-bottom-cta {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
     }
 
     .why-choose-me-section {
@@ -1833,7 +1867,7 @@ main section.bg-slate-50 h3 {
     }
 
     section[class*="py-"] {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.35rem;
     }
 
     .home-hero__badge,
