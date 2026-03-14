@@ -1456,6 +1456,7 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     background: var(--whatsapp-hover);
 }
 
+
 /* פוטר אחיד */
 .site-footer {
     background: var(--navy-deep);
@@ -1612,10 +1613,6 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     flex-direction: column;
     gap: 12px;
     align-items: stretch;
-}
-
-.mobile-quick-path {
-    display: none;
 }
 
 .section-summary {
@@ -1891,37 +1888,8 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
         margin-bottom: 1.25rem;
     }
 
-    .mobile-quick-path {
-        display: none;
-    }
-
     .hero-actions .btn-outline-light {
         display: none;
-    }
-
-    .mobile-quick-path__title {
-        margin: 0 0 0.65rem;
-        font-size: 0.95rem;
-        color: #fff;
-        font-weight: 800;
-    }
-
-    .mobile-quick-path__actions {
-        display: grid;
-        gap: 0.55rem;
-    }
-
-    .mobile-quick-path__btn {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .mobile-quick-path__trust {
-        margin: 0.65rem 0 0;
-        color: #cbd5e1;
-        font-size: 0.77rem;
-        line-height: 1.5;
-        font-weight: 700;
     }
 
     .mobile-optional-field {
