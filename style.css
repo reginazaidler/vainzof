@@ -629,6 +629,10 @@ a {
     padding: 0 8px 2px;
 }
 
+.mobile-subnav[hidden] {
+    display: none;
+}
+
 .mobile-subnav-link {
     display: block;
     text-decoration: none;
