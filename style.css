@@ -1108,6 +1108,41 @@ main section.bg-slate-50 h3 {
     color: var(--text-strong);
 }
 
+/* עמוד מאמרים: שמירה על פלטת המותג בעמוד הכרטיסיות */
+.articles-page .articles-section {
+    background: linear-gradient(180deg, #f8fafc 0%, #f3f6fb 100%);
+}
+
+.articles-page .article-card {
+    border: 1px solid rgba(11, 27, 59, 0.12);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--ease-default), box-shadow var(--ease-default), border-color var(--ease-default);
+}
+
+.articles-page .article-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139, 106, 47, 0.45);
+    box-shadow: var(--shadow-md);
+}
+
+.articles-page .article-card h2 {
+    color: var(--navy-main);
+}
+
+.articles-page .article-card p {
+    color: var(--text-body);
+}
+
+.articles-page .article-card__link {
+    color: var(--navy-main);
+    text-decoration: none;
+    transition: color var(--ease-default);
+}
+
+.articles-page .article-card__link:hover {
+    color: var(--gold-brand);
+}
+
 
 .companies-logos-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
