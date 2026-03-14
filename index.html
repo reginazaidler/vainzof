@@ -2,13 +2,18 @@
 <html lang="he" dir="rtl">
 
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EM8SYH542C"></script>
+<!-- Google Analytics (טעינה מושהית לשיפור ביצועים במובייל) -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-EM8SYH542C');
+window.addEventListener('load', function () {
+    const gaScript = document.createElement('script');
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-EM8SYH542C';
+    gaScript.async = true;
+    document.head.appendChild(gaScript);
+    gtag('js', new Date());
+    gtag('config', 'G-EM8SYH542C');
+});
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,7 +76,7 @@ gtag('config', 'G-EM8SYH542C');
     <header class="site-header">
         <div class="container-clean site-header__inner">
             <a href="index.html" class="site-brand" aria-label="חזרה לדף הבית">
-                <img src="assets/logo.png" alt="יובל ויינזוף - לוגו" class="site-logo">
+                <img src="assets/logo.png" alt="יובל ויינזוף - לוגו" class="site-logo" loading="eager" fetchpriority="high" width="520" height="160">
             </a>
 
             <nav class="site-nav" aria-label="ניווט ראשי">
@@ -154,6 +159,15 @@ gtag('config', 'G-EM8SYH542C');
                 <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">שליחת פרטים ב-WhatsApp</a>
             </div>
 
+            <div class="mobile-quick-path" aria-label="מסלול מהיר במובייל">
+                <p class="mobile-quick-path__title">מסלול מהיר לנייד</p>
+                <div class="mobile-quick-path__actions">
+                    <button id="openContactQuickMobile" class="site-cta mobile-quick-path__btn">לקביעת שיחת ייעוץ</button>
+                    <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light mobile-quick-path__btn">שליחת הודעת WhatsApp</a>
+                </div>
+                <p class="mobile-quick-path__trust">18+ שנות ניסיון | רישיון פנסיוני | מאות לקוחות מרוצים</p>
+            </div>
+
             <p class="text-sm md:text-base text-slate-200 mt-6">
                 רוצים להבין איך לבחור נכון <a href="mortgage-insurance.html" class="underline decoration-[var(--gold-brand)] decoration-2 underline-offset-4">ביטוח משכנתא</a>?
                 בעמוד השירות תמצאו מדריך מעשי להשוואת כיסויים, עלויות ותנאי פוליסה לפני החלטה.
@@ -161,7 +175,7 @@ gtag('config', 'G-EM8SYH542C');
         </div>
 
         <div class="home-hero__media">
-            <img src="assets/yuval.webp" alt="יובל ויינזוף - מומחה פנסיוני ופיננסי עם 18 שנות ניסיון" class="hero-photo">
+            <img src="assets/yuval.webp" alt="יובל ויינזוף - מומחה פנסיוני ופיננסי עם 18 שנות ניסיון" class="hero-photo" loading="eager" fetchpriority="high" width="900" height="1200">
         </div>
     </div>
 </section>
@@ -207,7 +221,8 @@ gtag('config', 'G-EM8SYH542C');
 <section id="services" class="py-20 bg-slate-50 reveal">
 		<div class="container-clean text-center mb-10">
 		<h2>תחומי הליווי והשירות</h2>
-			<h2 class="section-title">איך התהליך עובד</h2>
+			<h3 class="section-title">איך התהליך עובד</h3>
+			<p class="section-summary">בשלושה צעדים ברורים תקבלו תמונת מצב מלאה, המלצות פרקטיות וליווי אישי עד ליישום.</p>
 			<div class="accent-line mb-12"></div>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 			
@@ -247,7 +262,7 @@ gtag('config', 'G-EM8SYH542C');
 		
 		<div class="text-center mt-12">
 		<a href="insurance-types.html" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-8 py-3 rounded-full text-blue-900 font-extrabold hover:border-[var(--gold-brand)] hover:text-[var(--gold-brand)] transition-all duration-300 shadow-sm">
-    לצפייה בתחומי הליווי והשירות
+    לצפייה בכל תחומי הליווי והשירות
         <svg class="w-5 h-5 transform group-hover:translate-x-[-4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l7-7-7-7"></path>
         </svg>
@@ -265,6 +280,7 @@ gtag('config', 'G-EM8SYH542C');
 <div class="container-clean relative">
     <div class="text-center mb-20">
         <h2 class="text-4xl font-light mb-4">הדרך לביטחון הכלכלי שלך</h2>
+        <p class="section-summary">המודל ממוקד בתוצאה: אבחון, אופטימיזציה וליווי קבוע כדי לשמור על התאמה גם בהמשך הדרך.</p>
         <div class="w-12 h-px bg-[var(--gold-brand)] mx-auto"></div>
     </div>
 
@@ -304,6 +320,10 @@ gtag('config', 'G-EM8SYH542C');
             </div>
 
         </div>
+
+        <div class="text-center mt-12">
+            <button id="openContactProcess" class="btn-primary">לקביעת שיחת ייעוץ על התהליך</button>
+        </div>
     </div>
 </div>
 </section>
@@ -316,6 +336,7 @@ gtag('config', 'G-EM8SYH542C');
     <div class="container-clean">
         <div class="text-center mb-12">
 			<h2 class="section-title">למה לקוחות בוחרים לעבוד איתי</h2>
+            <p class="section-summary">שקיפות מלאה, ניסיון מתוך המערכת וליווי אישי שמפשט החלטות מורכבות.</p>
             <div class="accent-line"></div>
         </div>
 
@@ -371,7 +392,7 @@ gtag('config', 'G-EM8SYH542C');
             
             <div class="relative w-full md:w-1/2 flex justify-center reveal">
     <div class="p-3 bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-transform hover:scale-[1.02] duration-500">
-        <img src="assets/YuvalPodcast.jpg" alt="יובל ויינזוף - פודקאסט" class="w-full max-w-md h-[500px] object-cover rounded-[2rem]">
+        <img src="assets/YuvalPodcast.jpg" alt="יובל ויינזוף - פודקאסט" class="w-full max-w-md h-[500px] object-cover rounded-[2rem]" loading="lazy" width="960" height="1200">
     </div>
     
     <div class="absolute -bottom-6 -left-6 bg-blue-900/90 backdrop-blur-md text-white p-6 rounded-2xl shadow-xl z-20 hidden md:block animate-pulse-slow border border-white/10">
@@ -558,40 +579,6 @@ gtag('config', 'G-EM8SYH542C');
     </div>
 </section>
 
-<section class="py-20 bg-white reveal">
-    <div class="container-clean">
-        <div class="text-center mb-12">
-            <h2 class="section-title">מאמרים מקצועיים שיעזרו לכם לקבל החלטות נכונות</h2>
-            <div class="accent-line mb-4"></div>
-            <p class="text-slate-600 font-bold">תוכן עדכני בגובה העיניים על פנסיה, ביטוחים וניהול כסף משפחתי.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <article class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-right">
-                <h3 class="text-xl font-black text-blue-950 mb-3">איך לבדוק אם דמי הניהול שלכם גבוהים מדי</h3>
-                <p class="text-slate-700 mb-5">מדריך פרקטי להשוואת דמי ניהול בקרן פנסיה, גמל והשתלמות, ומה אפשר לעשות כדי לשפר את התנאים.</p>
-                <a href="pension-fees-guide.html" class="font-extrabold text-[var(--navy-main)] hover:text-[var(--gold-brand)]">לקריאת המאמר ←</a>
-            </article>
-
-            <article class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-right">
-                <h3 class="text-xl font-black text-blue-950 mb-3">כפל ביטוחים: איך לזהות תשלום מיותר בכל חודש</h3>
-                <p class="text-slate-700 mb-5">סימנים ברורים לכך שאתם משלמים פעמיים על אותו כיסוי, ואיך לבצע בדיקה מסודרת בלי לפגוע בהגנה המשפחתית.</p>
-                <a href="insurance-double-coverage.html" class="font-extrabold text-[var(--navy-main)] hover:text-[var(--gold-brand)]">לקריאת המאמר ←</a>
-            </article>
-
-            <article class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-right">
-                <h3 class="text-xl font-black text-blue-950 mb-3">צ׳קליסט פיננסי למשפחה: מה לבדוק פעם בשנה</h3>
-                <p class="text-slate-700 mb-5">רשימת בדיקות שנתית שמסייעת לשמור על תיק ביטוחי ופנסיוני מסודר, מעודכן וחסכוני לאורך זמן.</p>
-                <a href="financial-checklist-family.html" class="font-extrabold text-[var(--navy-main)] hover:text-[var(--gold-brand)]">לקריאת המאמר ←</a>
-            </article>
-        </div>
-
-        <div class="text-center mt-10">
-            <a href="articles.html" class="btn-primary">לכל המאמרים המקצועיים</a>
-        </div>
-    </div>
-</section>
-
 <!-- ===================== -->
 <!-- BOTTOM CTA SECTION -->
 <!-- ===================== -->
@@ -688,10 +675,12 @@ gtag('config', 'G-EM8SYH542C');
             </div>
 
             <input type="email" id="user_email" name="user_email" placeholder="אימייל (לא חובה)" 
-                class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
+                class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
 
             <textarea name="message" rows="2" placeholder="מה תרצו לבדוק?" 
-                class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm resize-none"></textarea>
+                class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm resize-none"></textarea>
+
+            <p class="mobile-form-note">במובייל מספיק להשאיר שם וטלפון - שאר הפרטים יושלמו איתכם בשיחה.</p>
 
             <div class="flex items-center gap-2 py-1">
                 <input type="checkbox" id="modal_marketing" name="marketing" checked class="w-4 h-4 rounded border-slate-300 text-blue-600 cursor-pointer">
@@ -715,7 +704,7 @@ gtag('config', 'G-EM8SYH542C');
   
 <div id="exitPopup" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" style="display: none;">
         <div class="bg-white rounded-[2rem] p-8 md:p-12 max-w-lg w-[90%] relative shadow-2xl text-center border-4 border-green-500">
-            <button id="closeExitPopup" class="absolute top-4 right-4 text-slate-300 hover:text-slate-600">
+            <button id="closeExitPopup" class="absolute top-4 right-4 text-slate-300 hover:text-slate-600" aria-label="סגירת חלון ההצעה">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
