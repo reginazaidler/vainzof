@@ -776,6 +776,73 @@ a {
     transform: translateY(-2px);
 }
 
+/* פוטרים ישנים - מראה אחיד בכל העמודים */
+footer:not(.site-footer) {
+    background: linear-gradient(135deg, #081124 0%, #0f254d 100%);
+    color: #ffffff;
+    padding: 36px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer:not(.site-footer) > .container-clean {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+}
+
+footer:not(.site-footer) .text-\[11px\] {
+    font-size: 12px !important;
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+}
+
+footer:not(.site-footer) .text-\[11px\] p {
+    margin: 0;
+}
+
+footer:not(.site-footer) nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 14px;
+}
+
+footer:not(.site-footer) nav a,
+footer:not(.site-footer) nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    color: #94a3b8 !important;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+footer:not(.site-footer) nav a:hover,
+footer:not(.site-footer) nav button:hover,
+footer:not(.site-footer) nav .text-\[var\(--gold-brand\)\] {
+    color: var(--gold-brand) !important;
+    border-color: rgba(198, 161, 91, 0.5);
+    background: rgba(198, 161, 91, 0.1);
+}
+
+footer:not(.site-footer) .flex.justify-center.gap-4 a {
+    color: #94a3b8 !important;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
 /* הירו לדף הבית */
 .home-hero {
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
