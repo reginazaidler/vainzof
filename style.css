@@ -2185,6 +2185,23 @@ main section.bg-slate-50 h3 {
     z-index: 2;
 }
 
+#services .accent-line {
+    width: 72px;
+    height: 3px;
+    margin-inline: auto;
+    background: linear-gradient(90deg, var(--gold-brand) 0%, #facc15 100%);
+    border-radius: 9999px;
+}
+
+#services .services-process-card {
+    min-height: 100%;
+}
+
+#services .services-process-card p {
+    max-width: 33ch;
+    margin-inline: auto;
+}
+
 @media (max-width: 767px) {
     .video-card {
         padding: 1.25rem;
@@ -2200,6 +2217,18 @@ main section.bg-slate-50 h3 {
         top: 0.75rem;
         right: 0.75rem;
         font-size: 0.7rem;
+    }
+
+    #services .container-clean {
+        padding-inline: 0.75rem;
+    }
+
+    #services .services-process-card {
+        text-align: center;
+    }
+
+    #services .services-process-card p {
+        max-width: 100%;
     }
 }
 
