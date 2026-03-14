@@ -1577,6 +1577,22 @@ main section.bg-slate-50 h3 {
     object-position: center 12%;
 }
 
+
+.section-inline-cta-wrap {
+    margin-inline: auto;
+    max-width: 700px;
+}
+
+.section-inline-cta-wrap .services-more-link,
+.section-inline-cta-wrap .why-choose-me-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.45;
+    max-width: 100%;
+}
+
 .about-teaser-photo {
     width: min(100%, 420px);
     aspect-ratio: 4 / 5;
@@ -2885,7 +2901,7 @@ main section.bg-slate-50 h3 {
 
 #services .services-more-wrap {
     margin-inline: auto;
-    max-width: 360px;
+    max-width: 700px;
 }
 
 @media (max-width: 767px) {
@@ -2952,7 +2968,7 @@ main section.bg-slate-50 h3 {
         max-width: 100%;
     }
 
-    #services .services-more-wrap {
+    .section-inline-cta-wrap {
         margin-top: 1rem;
         padding: 0.85rem;
         border: 1px solid #e2e8f0;
@@ -2960,8 +2976,10 @@ main section.bg-slate-50 h3 {
         background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     }
 
-    #services .services-more-link {
+    .section-inline-cta-wrap .services-more-link,
+    .section-inline-cta-wrap .why-choose-me-cta {
         border-radius: 0.9rem;
+        padding-inline: 1rem;
     }
 }
 
