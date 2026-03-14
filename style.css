@@ -98,6 +98,39 @@ a {
     color: inherit;
 }
 
+/* קישורי הפניה בתוך טקסט של מאמרים */
+.article-inline-link {
+    color: var(--navy-main);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
+    transition: color var(--ease-default), background-color var(--ease-default), border-color var(--ease-default);
+}
+
+.article-inline-link:hover {
+    color: var(--gold-brand);
+}
+
+@media (max-width: 768px) {
+    .article-inline-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.35rem;
+        padding: 0.15rem 0.6rem;
+        border: 1px solid rgba(11, 27, 59, 0.15);
+        border-radius: var(--radius-pill);
+        background: rgba(11, 27, 59, 0.04);
+        text-decoration: none;
+        white-space: normal;
+    }
+
+    .article-inline-link::after {
+        content: "←";
+        font-size: 0.85em;
+        line-height: 1;
+    }
+}
+
 /* קישור "דלג לתוכן המרכזי" - נגיש, נסתר כברירת מחדל ומופיע בפוקוס */
 .sr-focusable {
     position: fixed;
