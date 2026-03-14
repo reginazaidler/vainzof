@@ -2772,6 +2772,11 @@ main section.bg-slate-50 h3 {
     margin-inline: auto;
 }
 
+#services .services-more-wrap {
+    margin-inline: auto;
+    max-width: 360px;
+}
+
 @media (max-width: 767px) {
     .video-card {
         padding: 1.25rem;
@@ -2806,16 +2811,46 @@ main section.bg-slate-50 h3 {
         text-align: center;
     }
 
+    #services {
+        padding-top: 2.75rem;
+        padding-bottom: 2.75rem;
+    }
+
     #services .container-clean {
         padding-inline: 0.75rem;
+        margin-bottom: 0;
+    }
+
+    #services .text-center.max-w-3xl {
+        text-align: center;
+        padding-inline: 0.25rem;
+    }
+
+    #services .services-process-grid {
+        gap: 0.85rem;
     }
 
     #services .services-process-card {
         text-align: center;
+        border-radius: 1.1rem;
+        border-color: #dbe5f2;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
     }
 
     #services .services-process-card p {
         max-width: 100%;
+    }
+
+    #services .services-more-wrap {
+        margin-top: 1rem;
+        padding: 0.85rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 1.1rem;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    #services .services-more-link {
+        border-radius: 0.9rem;
     }
 }
 
