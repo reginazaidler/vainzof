@@ -2278,3 +2278,30 @@ main section.bg-slate-50 h3 {
         padding: 1rem;
     }
 }
+
+/* FAQ guide link responsiveness on homepage */
+.faq-guide-link-wrap {
+    padding-inline: 1rem;
+}
+
+.faq-guide-link {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    .faq-guide-link {
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        border-radius: 1rem;
+        font-size: 0.98rem;
+    }
+
+    .faq-guide-link svg {
+        flex-shrink: 0;
+    }
+}
