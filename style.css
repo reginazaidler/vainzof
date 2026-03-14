@@ -1330,6 +1330,62 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     padding-bottom: 6px;
 }
 
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 0;
+    background: transparent;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-dropdown__trigger:hover,
+.nav-dropdown:focus-within .nav-dropdown__trigger {
+    color: var(--gold-brand);
+}
+
+.nav-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: none;
+    min-width: 210px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.14);
+    padding: 8px;
+    z-index: 30;
+}
+
+.nav-dropdown:hover .nav-dropdown__menu,
+.nav-dropdown:focus-within .nav-dropdown__menu {
+    display: block;
+}
+
+.nav-dropdown__item {
+    display: block;
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: 700;
+    border-radius: 9px;
+    padding: 10px 12px;
+}
+
+.nav-dropdown__item:hover,
+.nav-dropdown__item:focus-visible {
+    color: var(--gold-brand);
+    background: #f8fafc;
+}
+
 .header-phone {
     display: none;
     align-items: center;
@@ -1455,6 +1511,45 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
 .mobile-cta {
     margin-top: 14px;
     width: 100%;
+}
+
+.mobile-nav-accordion-toggle {
+    width: 100%;
+    text-align: right;
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.mobile-nav-accordion-toggle__icon {
+    transition: transform 0.2s ease;
+}
+
+.mobile-nav-accordion-toggle[aria-expanded="true"] .mobile-nav-accordion-toggle__icon {
+    transform: rotate(180deg);
+}
+
+.mobile-subnav {
+    margin: -2px 0 6px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.mobile-subnav-link {
+    display: block;
+    color: #334155;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 16px;
+}
+
+.mobile-subnav-link:hover,
+.mobile-subnav-link:focus-visible {
+    color: var(--gold-brand);
 }
 
 .mobile-sticky-cta {
