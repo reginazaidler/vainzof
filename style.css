@@ -66,6 +66,10 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    --container-inline-padding: clamp(14px, 4vw, 32px);
+}
+
 body {
     margin: 0;
     font-family: 'Assistant', sans-serif;
@@ -74,6 +78,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
 }
 
 
@@ -171,8 +176,62 @@ a {
    ========================================================= */
 
 .container-clean {
-    width: min(1120px, calc(100% - 32px));
+    width: min(1120px, calc(100% - (var(--container-inline-padding) * 2)));
     margin-inline: auto;
+}
+
+/* =========================================================
+   2.2 GLOBAL MOBILE SAFETY NET
+   ---------------------------------------------------------
+   שכבה רוחבית כדי לשפר מובייל בלי לעבור עמוד-עמוד:
+   - מונעת גלילה אופקית בגלל תוכן רחב
+   - גורמת למדיה/טבלאות להישאר בתוך המסך
+   - שומרת על שבירת מילים ארוכות בטקסט
+   ========================================================= */
+
+main,
+section,
+article,
+aside,
+header,
+footer {
+    min-width: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+p,
+li,
+a,
+span {
+    overflow-wrap: anywhere;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --container-inline-padding: 12px;
+    }
+
+    html {
+        font-size: 15px;
+    }
+
+    .container-clean {
+        width: min(1120px, calc(100% - (var(--container-inline-padding) * 2)));
+    }
 }
 
 .flex { display: flex; }
