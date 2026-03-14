@@ -1179,14 +1179,14 @@ main section.bg-slate-50 h3 {
    CALCULATOR PAGE - Savings simulation UI
    ========================================================= */
 .calc-shell {
-    background: linear-gradient(180deg, #ffffff 0%, #fdfaf4 100%);
-    border: 1px solid rgba(139, 106, 47, 0.24);
-    box-shadow: 0 20px 45px rgba(11, 27, 59, 0.1);
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
 }
 
 .calc-chip {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(139, 106, 47, 0.38);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
     padding: 0.55rem 0.95rem;
     color: #f8fafc;
@@ -1198,7 +1198,7 @@ main section.bg-slate-50 h3 {
 .calc-label {
     display: block;
     margin-bottom: 0.48rem;
-    color: #1e293b;
+    color: var(--text-strong);
     font-size: 0.92rem;
     font-weight: 700;
     line-height: 1.45;
@@ -1208,10 +1208,10 @@ main section.bg-slate-50 h3 {
 .calc-select {
     width: 100%;
     min-height: 52px;
-    border: 1px solid #d8dee9;
+    border: 1px solid var(--border-light);
     border-radius: 14px;
     background: #ffffff;
-    color: #0f172a;
+    color: var(--text-strong);
     font-size: 1rem;
     font-weight: 700;
     padding: 0.75rem 0.9rem;
@@ -1228,21 +1228,21 @@ main section.bg-slate-50 h3 {
 }
 
 .calc-input::placeholder {
-    color: #94a3b8;
+    color: var(--text-soft);
     font-weight: 600;
 }
 
 .calc-input:focus,
 .calc-select:focus {
-    border-color: #8b6a2f;
-    box-shadow: 0 0 0 3px rgba(139, 106, 47, 0.2);
+    border-color: var(--gold-brand);
+    box-shadow: 0 0 0 3px rgba(139, 106, 47, 0.16);
     outline: none;
 }
 
 .metric-card {
-    border: 1px solid rgba(139, 106, 47, 0.18);
+    border: 1px solid var(--border-light);
     border-radius: 1rem;
-    background: linear-gradient(180deg, #ffffff 0%, #fffcf7 100%);
+    background: var(--surface);
     padding: 1rem 0.85rem;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
