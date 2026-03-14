@@ -733,6 +733,12 @@ table {
     transform: rotate(180deg);
 }
 
+.mobile-nav-accordion-toggle[aria-expanded="true"] {
+    color: var(--gold-brand);
+    border-color: rgba(198, 161, 91, 0.38);
+    background: #fffaf0;
+}
+
 .mobile-subnav {
     display: grid;
     gap: 8px;
