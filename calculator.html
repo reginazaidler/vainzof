@@ -773,6 +773,12 @@ gtag('config', 'G-EM8SYH542C');
                 document.getElementById('mobileMenu')?.classList.toggle('hidden');
             });
 
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobileMenu')?.classList.add('hidden');
+                });
+            });
+
             document.querySelector('a[href="#top-anchor"]')?.addEventListener('click', function(e) {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
