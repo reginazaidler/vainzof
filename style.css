@@ -1767,13 +1767,22 @@ a {
 
 .video-card {
     overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.5rem;
+    background: #ffffff;
+    box-shadow: var(--shadow-md);
 }
 
 .phone-frame {
     position: relative;
+    width: min(100%, 300px);
+    aspect-ratio: 9 / 16;
+    min-height: 420px;
+    border-radius: 1.5rem;
     overflow: hidden;
     isolation: isolate;
     z-index: 1;
+    background: #0f172a;
 }
 
 .phone-frame iframe {
@@ -1783,6 +1792,20 @@ a {
     height: 100%;
     border: 0;
     z-index: 1;
+}
+
+.video-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.82);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 800;
 }
 
 .video-card .text-center,
@@ -1800,7 +1823,8 @@ a {
     }
 
     .phone-frame {
-        max-width: 240px;
+        width: min(100%, 240px);
+        min-height: 350px;
         margin-bottom: 1.25rem;
     }
 
