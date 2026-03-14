@@ -2496,6 +2496,71 @@ main section.bg-slate-50 h3 {
         border-radius: 18px;
     }
 }
+
+.media-page .media-top-strip {
+    background: linear-gradient(90deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
+}
+
+.media-page .media-hero {
+    background: linear-gradient(150deg, #0b1f4d 0%, #163c88 50%, #0b1f4d 100%);
+}
+
+.media-page .video-card {
+    border-color: #dbe4f3;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 767px) {
+    .media-page .media-top-strip {
+        padding-block: 0.45rem;
+    }
+
+    .media-page .media-top-strip .container-clean {
+        gap: 0.3rem;
+        font-size: 0.65rem;
+        line-height: 1.35;
+    }
+
+    .media-page .media-top-strip .container-clean span {
+        width: 100%;
+    }
+
+    .media-page .media-hero {
+        padding-top: 2rem;
+        padding-bottom: 2.25rem;
+        border-bottom-left-radius: 1.25rem;
+        border-bottom-right-radius: 1.25rem;
+    }
+
+    .media-page .media-hero h1 {
+        font-size: 1.85rem;
+        line-height: 1.25;
+    }
+
+    .media-page .media-hero p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .media-page #videos {
+        padding-top: 3rem;
+    }
+
+    .media-page .video-card {
+        border-radius: 1.25rem;
+        padding: 1rem;
+        background: #fff;
+    }
+
+    .media-page .video-card h3 {
+        font-size: 1.06rem;
+    }
+
+    .media-page .video-card p {
+        font-size: 0.9rem;
+    }
+}
+
 /* ============================= */
 /* MEDIA PAGE - MOBILE VIDEO FIX */
 /* ============================= */
