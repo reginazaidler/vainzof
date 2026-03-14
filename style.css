@@ -194,6 +194,7 @@ a {
 
 .bg-white { background-color: #fff; }
 .bg-slate-50 { background-color: #f8fafc; }
+.bg-\[var\(--navy-deep\)\] { background-color: var(--navy-deep); }
 .text-white { color: #fff; }
 .text-slate-300 { color: #cbd5e1; }
 .text-slate-400 { color: #94a3b8; }
