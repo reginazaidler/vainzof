@@ -116,20 +116,40 @@ gtag('config', 'G-EM8SYH542C');
 </button>
 	</nav>
 
-            <button id="menuBtn" class="lg:hidden p-2 text-blue-900">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            <button id="menuBtn" class="mobile-menu-toggle" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="mobileMenu">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
             </button>
         </div>
-    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50">
-        <a href="index.html" class="block font-bold text-blue-900 border-b pb-2">דף הבית</a>
-        <a href="about.html" class="block font-bold text-slate-600 border-b pb-2">קצת עלי</a>
-        <a href="services.html" class="block font-bold text-slate-600 border-b pb-2">דרך העבודה</a>
-        <a href="insurance-types.html" class="block font-bold text-slate-600 border-b pb-2">סוגי ביטוחים</a>
-        <a href="reviews.html" class="block font-bold text-slate-600 border-b pb-2">לקוחות ממליצים</a>
-        <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
-        <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
-    </div>
     </header>
+
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+
+    <nav id="mobileMenu" class="mobile-drawer" aria-label="תפריט מובייל">
+        <div class="mobile-drawer__header">
+            <div class="mobile-drawer__title">תפריט</div>
+            <button id="closeMobileMenu" class="mobile-close" aria-label="סגירת תפריט">×</button>
+        </div>
+
+        <div class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">דף הבית</a>
+            <a href="about.html" class="mobile-nav-link">קצת עלי</a>
+            <a href="services.html" class="mobile-nav-link mobile-nav-link-active">דרך העבודה</a>
+            <a href="insurance-types.html" class="mobile-nav-link">סוגי ביטוחים</a>
+            <a href="reviews.html" class="mobile-nav-link">לקוחות ממליצים</a>
+            <button id="mobileKnowledgeToggle" class="mobile-nav-link mobile-nav-accordion-toggle" type="button" aria-expanded="false" aria-controls="mobileKnowledgeMenu">
+                מרכז ידע
+                <span class="mobile-nav-accordion-toggle__icon" aria-hidden="true">▾</span>
+            </button>
+            <div id="mobileKnowledgeMenu" class="mobile-subnav" hidden>
+                <a href="articles.html" class="mobile-subnav-link">מאמרים מקצועיים</a>
+                <a href="faq.html" class="mobile-subnav-link">שאלות ותשובות</a>
+                <a href="calculator.html" class="mobile-subnav-link">מחשבון חיסכון</a>
+                <a href="media.html" class="mobile-subnav-link">וידאו ומדיה</a>
+            </div>
+            <a href="tel:0524520222" class="mobile-nav-link">התקשר עכשיו</a>
+            <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
+        </div>
+    </nav>
 
     <main id="main">
 		
@@ -451,14 +471,45 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // תפריט מובייל
-    document.getElementById('menuBtn')?.addEventListener('click', () => {
-        document.getElementById('mobileMenu')?.classList.toggle('hidden');
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileKnowledgeToggle = document.getElementById('mobileKnowledgeToggle');
+    const mobileKnowledgeMenu = document.getElementById('mobileKnowledgeMenu');
+
+    const openMobileMenu = () => {
+        if (!mobileMenu || !mobileOverlay || !menuBtn) return;
+        mobileMenu.classList.add('is-open');
+        mobileOverlay.classList.add('is-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('mobile-menu-open');
+    };
+
+    const closeMobileMenu = () => {
+        if (!mobileMenu || !mobileOverlay || !menuBtn) return;
+        mobileMenu.classList.remove('is-open');
+        mobileOverlay.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('mobile-menu-open');
+    };
+
+    menuBtn?.addEventListener('click', openMobileMenu);
+    closeMobileMenuBtn?.addEventListener('click', closeMobileMenu);
+    mobileOverlay?.addEventListener('click', closeMobileMenu);
+
+    document.querySelectorAll('#mobileMenu a, #mobileMenu button.mobile-contact-cta').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
     });
 
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('mobileMenu')?.classList.add('hidden');
-        });
+    mobileKnowledgeToggle?.addEventListener('click', () => {
+        const isExpanded = mobileKnowledgeToggle.getAttribute('aria-expanded') === 'true';
+        mobileKnowledgeToggle.setAttribute('aria-expanded', String(!isExpanded));
+        if (mobileKnowledgeMenu) {
+            mobileKnowledgeMenu.hidden = isExpanded;
+        }
     });
 
     // Scroll Reveal
