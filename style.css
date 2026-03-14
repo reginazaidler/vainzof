@@ -1783,6 +1783,12 @@ main section.bg-slate-50 h3 {
 
     .why-choose-me-section {
         margin-top: 0;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .why-choose-me-section .text-center {
+        margin-bottom: 1.5rem;
     }
 
     .why-choose-me-section .grid {
@@ -1807,12 +1813,21 @@ main section.bg-slate-50 h3 {
 
     .why-choose-me-cta {
         width: 100%;
+        max-width: 26rem;
         justify-content: center;
         text-align: center;
         line-height: 1.45;
         white-space: normal;
         padding-inline: 1.25rem;
         border-radius: 1rem;
+        margin-inline: auto;
+        gap: 0.55rem;
+        font-size: 0.95rem;
+    }
+
+    .why-choose-me-cta svg {
+        width: 1.1rem;
+        height: 1.1rem;
     }
 
     .about-teaser-layout {
@@ -2005,6 +2020,10 @@ main section.bg-slate-50 h3 {
     }
 
     .financial-path-step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 0.85rem;
+        align-items: start;
         text-align: right;
         background: #ffffff;
         border: 1px solid #e2e8f0;
@@ -2014,13 +2033,17 @@ main section.bg-slate-50 h3 {
     }
 
     .financial-path-step > div {
+        grid-row: 1 / span 2;
         margin-inline: 0;
-        margin-bottom: 0.7rem;
+        margin-bottom: 0;
+        width: 2.15rem;
+        height: 2.15rem;
+        font-size: 0.92rem;
     }
 
     .financial-path-step h3 {
         font-size: 1.05rem;
-        margin-bottom: 0.45rem;
+        margin-bottom: 0.2rem;
         line-height: 1.45;
     }
 
