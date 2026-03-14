@@ -394,6 +394,52 @@ p {
 /* =========================================================
    8. FAQ - אקורדיון שאלות ותשובות
    ========================================================= */
+.faq-layout {
+    scroll-margin-top: 90px;
+}
+
+.faq-quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+    padding: 0.9rem;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.faq-quick-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid #d5dde9;
+    background: #f8fafc;
+    color: var(--navy-main);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.faq-quick-nav a:hover {
+    border-color: var(--gold-brand);
+    background: rgba(198, 161, 91, 0.12);
+}
+
+.faq-section-block {
+    scroll-margin-top: 110px;
+}
+
+.faq-list {
+    display: grid;
+    gap: 0.8rem;
+}
+
 details.faq-item,
 .faq-card {
     background: #fff;
@@ -436,6 +482,57 @@ details.faq-item summary,
     padding: 0 1.5rem 1.5rem;
     line-height: 1.8;
     color: #4B5563;
+}
+
+
+@media (max-width: 767px) {
+    .faq-quick-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0.75rem;
+        margin-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .faq-quick-nav a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        min-height: 36px;
+        font-size: 0.82rem;
+    }
+
+    .faq-card summary {
+        padding: 1.1rem 1rem;
+        font-size: 0.96rem;
+        line-height: 1.45;
+    }
+
+    .faq-content {
+        padding: 0 1rem 1.1rem;
+        line-height: 1.75;
+        font-size: 0.95rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .faq-layout .container-clean {
+        max-width: 1180px;
+    }
+
+    .faq-section-block {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        align-items: start;
+        column-gap: 2rem;
+    }
+
+    .faq-section-block h2 {
+        position: sticky;
+        top: 110px;
+        margin-bottom: 0;
+        padding-top: 0.35rem;
+    }
 }
 
 
