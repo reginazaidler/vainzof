@@ -755,6 +755,20 @@ a {
     font-weight: 700;
 }
 
+/* קריאות בעמוד הבית: בלוקים בהירים חייבים טקסט כהה,
+   גם אם יש ירושה מ־section כהה כמו סטטיסטיקות/הירו. */
+main section.bg-white,
+main section.bg-slate-50 {
+    color: var(--text-body);
+}
+
+main section.bg-white h2,
+main section.bg-white h3,
+main section.bg-slate-50 h2,
+main section.bg-slate-50 h3 {
+    color: var(--text-strong);
+}
+
 
 .companies-logos-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
