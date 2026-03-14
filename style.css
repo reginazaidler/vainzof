@@ -2591,6 +2591,103 @@ main section.bg-slate-50 h3 {
     background: #0f172a;
 }
 
+.video-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+}
+
+.video-filter__btn {
+    border: 1px solid #cbd5e1;
+    border-radius: 9999px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 0.45rem 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.video-filter__btn:hover {
+    border-color: #1d4ed8;
+    color: #1d4ed8;
+}
+
+.video-filter__btn.active {
+    border-color: #1d4ed8;
+    background: #1d4ed8;
+    color: #ffffff;
+}
+
+.video-card.is-hidden {
+    display: none;
+}
+
+.video-launch {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    z-index: 2;
+    background: linear-gradient(160deg, rgba(11, 31, 77, 0.92) 0%, rgba(30, 64, 175, 0.88) 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.video-launch__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding-right: 2px;
+}
+
+.video-launch__text {
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.video-meta-list {
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.75rem;
+    color: #475569;
+    text-align: right;
+    width: 100%;
+}
+
+.video-meta-list li + li {
+    margin-top: 0.25rem;
+}
+
+.video-inline-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9rem;
+    border: 1px solid #dbe4f3;
+    border-radius: 1.2rem;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(90deg, #eff6ff 0%, #ffffff 100%);
+}
+
+.video-inline-cta .btn-primary {
+    white-space: nowrap;
+}
+
 .phone-frame iframe {
     position: absolute;
     inset: 0;
@@ -2655,6 +2752,23 @@ main section.bg-slate-50 h3 {
         top: 0.75rem;
         right: 0.75rem;
         font-size: 0.7rem;
+    }
+
+    .video-filter {
+        margin-bottom: 1.4rem;
+    }
+
+    .video-filter__btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .video-meta-list {
+        font-size: 0.72rem;
+    }
+
+    .video-inline-cta {
+        text-align: center;
     }
 
     #services .container-clean {

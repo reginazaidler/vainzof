@@ -44,18 +44,67 @@ gtag('config', 'G-EM8SYH542C');
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "VideoGallery",
-      "name": "ידע בווידאו - יובל ויינזוף",
-      "description": "ספריית סרטונים קצרים על פנסיה, ביטוח, חיסכון וסדר בתיק הפיננסי.",
-      "url": "https://vainzof.co.il/media.html",
-      "image": "https://vainzof.co.il/assets/yuval.webp",
-      "logo": "https://vainzof.co.il/assets/logo.png",
-      "publisher": {
-        "@type": "InsuranceAgency",
-        "name": "יובל ויינזוף - סוכן ביטוח ופיננסים",
-        "url": "https://vainzof.co.il/",
-        "telephone": "0524520222"
-      }
+      "@graph": [
+        {
+          "@type": "VideoGallery",
+          "name": "ידע בווידאו - יובל ויינזוף",
+          "description": "ספריית סרטונים קצרים על פנסיה, ביטוח, חיסכון וסדר בתיק הפיננסי.",
+          "url": "https://vainzof.co.il/media.html",
+          "image": "https://vainzof.co.il/assets/yuval.webp",
+          "publisher": {
+            "@type": "InsuranceAgency",
+            "name": "יובל ויינזוף - סוכן ביטוח ופיננסים",
+            "url": "https://vainzof.co.il/",
+            "telephone": "0524520222"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "name": "סרטונים נבחרים",
+          "itemListElement": [
+            {
+              "@type": "VideoObject",
+              "position": 1,
+              "name": "גמל להשקעה",
+              "description": "למי זה מתאים, למה אנשים בוחרים בזה, ומה חשוב לבדוק לפני שמקבלים החלטה.",
+              "embedUrl": "https://www.tiktok.com/embed/v2/7601946241039191313",
+              "thumbnailUrl": "https://vainzof.co.il/assets/yuval.webp",
+              "uploadDate": "2024-01-01",
+              "duration": "PT52S"
+            },
+            {
+              "@type": "VideoObject",
+              "position": 2,
+              "name": "סדר בתיק הביטוחי",
+              "description": "כפילויות, כיסויים לא רלוונטיים וחוסר התאמות הם הרבה יותר נפוצים ממה שחושבים.",
+              "embedUrl": "https://www.tiktok.com/embed/v2/7588956938734472456",
+              "thumbnailUrl": "https://vainzof.co.il/assets/yuval.webp",
+              "uploadDate": "2024-01-01",
+              "duration": "PT48S"
+            },
+            {
+              "@type": "VideoObject",
+              "position": 3,
+              "name": "כסף בבנק נשחק עם הזמן",
+              "description": "האינפלציה שוחקת את הכסף גם כשהוא יושב בטוח ומה כדאי לבדוק כדי לשמור על הערך שלו.",
+              "embedUrl": "https://www.tiktok.com/embed/v2/7604930490667224337",
+              "thumbnailUrl": "https://vainzof.co.il/assets/yuval.webp",
+              "uploadDate": "2024-01-01",
+              "duration": "PT44S"
+            },
+            {
+              "@type": "VideoObject",
+              "position": 4,
+              "name": "כמה ביטוחים באמת יש לכם?",
+              "description": "איך לזהות כפילויות וכיסויים חסרים ולעשות סדר בתיק הביטוחי בצורה חכמה.",
+              "embedUrl": "https://www.tiktok.com/embed/v2/7583388728714874120",
+              "thumbnailUrl": "https://vainzof.co.il/assets/yuval.webp",
+              "uploadDate": "2024-01-01",
+              "duration": "PT50S"
+            }
+          ]
+        }
+      ]
     }
     </script>
 
@@ -200,70 +249,97 @@ gtag('config', 'G-EM8SYH542C');
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                    <article class="video-card p-6 flex flex-col items-center relative">
+                <div class="video-filter" role="tablist" aria-label="סינון סרטונים לפי נושא">
+                    <button class="video-filter__btn active" type="button" data-filter="all" role="tab" aria-selected="true">הכל</button>
+                    <button class="video-filter__btn" type="button" data-filter="pension" role="tab" aria-selected="false">פנסיה וחיסכון</button>
+                    <button class="video-filter__btn" type="button" data-filter="insurance" role="tab" aria-selected="false">תיק ביטוחי</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto" id="videoGrid">
+                    <article class="video-card p-6 flex flex-col items-center relative" data-category="pension">
                         <span class="video-tag">פנסיה וחיסכון</span>
-                        <div class="phone-frame mb-6">
-                            <iframe src="https://www.tiktok.com/embed/v2/7601946241039191313" style="width:100%;height:100%;border:none;" allowfullscreen loading="lazy" title="סרטון גמל להשקעה"></iframe>
+                        <div class="phone-frame mb-6 video-embed" data-video-title="גמל להשקעה" data-video-src="https://www.tiktok.com/embed/v2/7601946241039191313">
+                            <button class="video-launch" type="button" aria-label="נגן סרטון: גמל להשקעה">
+                                <span class="video-launch__icon">▶</span>
+                                <span class="video-launch__text">לחצו להפעלת הסרטון</span>
+                            </button>
                         </div>
                         <div class="text-center">
                             <h3 class="text-xl font-black text-blue-950 mb-2">גמל להשקעה</h3>
                             <p class="text-slate-600 font-bold text-sm mb-4">פתרון חיסכון גמיש שיכול להיות אלטרנטיבה חכמה למי שמחפש יותר מבנק.</p>
                             <p class="text-slate-500 text-sm leading-relaxed">למי זה מתאים, למה אנשים בוחרים בזה, ומה חשוב לבדוק לפני שמקבלים החלטה.</p>
+                            <ul class="video-meta-list" aria-label="מידע מהיר על הסרטון">
+                                <li>משך צפייה: 00:52</li>
+                                <li>מתאים ל: משפחות שחוסכות לטווח בינוני</li>
+                                <li>תכל'ס: איך לבדוק אם המסלול מתאים לכם</li>
+                            </ul>
                         </div>
                     </article>
 
-                    <article class="video-card p-6 flex flex-col items-center relative">
+                    <article class="video-card p-6 flex flex-col items-center relative" data-category="insurance">
                         <span class="video-tag">תיק ביטוחי</span>
-                        <div class="phone-frame mb-6">
-                            <iframe src="https://www.tiktok.com/embed/v2/7588956938734472456" style="width:100%;height:100%;border:none;" allowfullscreen loading="lazy" title="סרטון סדר בתיק הביטוחי"></iframe>
+                        <div class="phone-frame mb-6 video-embed" data-video-title="סדר בתיק הביטוחי" data-video-src="https://www.tiktok.com/embed/v2/7588956938734472456">
+                            <button class="video-launch" type="button" aria-label="נגן סרטון: סדר בתיק הביטוחי">
+                                <span class="video-launch__icon">▶</span>
+                                <span class="video-launch__text">לחצו להפעלת הסרטון</span>
+                            </button>
                         </div>
                         <div class="text-center">
                             <h3 class="text-xl font-black text-blue-950 mb-2">סדר בתיק הביטוחי</h3>
                             <p class="text-slate-600 font-bold text-sm mb-4">מה באמת מסתתר בתוך הפוליסות שלכם, ומה אנשים מגלים רק אחרי שמתחילים לבדוק.</p>
                             <p class="text-slate-500 text-sm leading-relaxed">כפילויות, כיסויים לא רלוונטיים וחוסר התאמות הם הרבה יותר נפוצים ממה שחושבים.</p>
+                            <ul class="video-meta-list" aria-label="מידע מהיר על הסרטון">
+                                <li>משך צפייה: 00:48</li>
+                                <li>מתאים ל: בעלי 2 פוליסות ומעלה</li>
+                                <li>תכל'ס: איך לזהות כפל ביטוחים</li>
+                            </ul>
                         </div>
                     </article>
 
-                    <article class="video-card p-6 flex flex-col items-center relative">
-    <span class="video-tag">💰 חיסכון</span>
-    <div class="phone-frame mb-6">
-        <iframe src="https://www.tiktok.com/embed/v2/7604930490667224337" style="width:100%;height:100%;border:none;" allowfullscreen loading="lazy" title="סרטון על אינפלציה ושחיקת כסף בבנק"></iframe>
-    </div>
-    <div class="text-center">
-        <h3 class="text-xl font-black text-blue-950 mb-2">כסף בבנק נשחק עם הזמן</h3>
-        <p class="text-slate-600 font-bold text-sm mb-4">האינפלציה שוחקת את הכסף גם כשהוא “יושב בטוח”. בסרטון אני מסביר למה זה קורה ומה כדאי לבדוק.</p>
-    </div>
-</article>
-<article class="video-card p-6 flex flex-col items-center relative overflow-hidden">
+                    <article class="video-card p-6 flex flex-col items-center relative" data-category="pension">
+                        <span class="video-tag">חיסכון</span>
+                        <div class="phone-frame mb-6 video-embed" data-video-title="כסף בבנק נשחק עם הזמן" data-video-src="https://www.tiktok.com/embed/v2/7604930490667224337">
+                            <button class="video-launch" type="button" aria-label="נגן סרטון: כסף בבנק נשחק עם הזמן">
+                                <span class="video-launch__icon">▶</span>
+                                <span class="video-launch__text">לחצו להפעלת הסרטון</span>
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-black text-blue-950 mb-2">כסף בבנק נשחק עם הזמן</h3>
+                            <p class="text-slate-600 font-bold text-sm mb-4">האינפלציה שוחקת את הכסף גם כשהוא "יושב בטוח". בסרטון אני מסביר למה זה קורה ומה כדאי לבדוק.</p>
+                            <p class="text-slate-500 text-sm leading-relaxed">דוגמאות פשוטות להבנה איך ירידת ערך משפיעה על כסף נזיל לאורך זמן.</p>
+                            <ul class="video-meta-list" aria-label="מידע מהיר על הסרטון">
+                                <li>משך צפייה: 00:44</li>
+                                <li>מתאים ל: מי שמחזיק חסכונות בעו"ש</li>
+                                <li>תכל'ס: מה לבדוק לפני שנשארים במסלול סולידי מדי</li>
+                            </ul>
+                        </div>
+                    </article>
 
-<span class="video-tag">🛡 תיק ביטוחי</span>
+                    <article class="video-card p-6 flex flex-col items-center relative" data-category="insurance">
+                        <span class="video-tag">תיק ביטוחי</span>
+                        <div class="phone-frame mb-6 video-embed" data-video-title="כמה ביטוחים באמת יש לכם" data-video-src="https://www.tiktok.com/embed/v2/7583388728714874120">
+                            <button class="video-launch" type="button" aria-label="נגן סרטון: כמה ביטוחים באמת יש לכם">
+                                <span class="video-launch__icon">▶</span>
+                                <span class="video-launch__text">לחצו להפעלת הסרטון</span>
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-black text-blue-900 mb-2">כמה ביטוחים באמת יש לכם?</h3>
+                            <p class="text-slate-600 font-bold text-sm mb-3">רוב האנשים לא יודעים מה יש בתוך התיק הביטוחי שלהם.</p>
+                            <p class="text-slate-500 text-sm leading-relaxed">הרבה אנשים משלמים על כמה פוליסות שונות בלי להבין איזה כיסויים יש להם, מה כפול ומה בכלל חסר.</p>
+                            <ul class="video-meta-list" aria-label="מידע מהיר על הסרטון">
+                                <li>משך צפייה: 00:50</li>
+                                <li>מתאים ל: משפחות עם ביטוחי בריאות/חיים פעילים</li>
+                                <li>תכל'ס: נקודת פתיחה לסדר בביטוחים</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
 
-<div class="phone-frame mb-6 shadow-2xl">
-<iframe src="https://www.tiktok.com/embed/v2/7583388728714874120"
-style="width:100%;height:100%;border:none;"
-allowfullscreen></iframe>
-</div>
-
-<div class="text-center">
-<h3 class="text-xl font-black text-blue-900 mb-2">
-כמה ביטוחים באמת יש לכם?
-</h3>
-
-<p class="text-slate-600 font-bold text-sm mb-3">
-רוב האנשים לא יודעים מה יש בתוך התיק הביטוחי שלהם
-</p>
-
-<p class="text-slate-500 text-sm leading-relaxed">
-הרבה אנשים משלמים על כמה פוליסות שונות בלי להבין בדיוק
-איזה כיסויים יש להם, מה כפול ומה בכלל חסר.
-בסרטון הזה אני מסביר למה חשוב לעשות סדר בתיק הביטוחי
-ולבדוק את כל הפוליסות בצורה מסודרת.
-</p>
-</div>
-
-</article>
-                    
+                <div class="video-inline-cta mt-12">
+                    <p class="text-slate-700 font-bold">יש סרטון שמדבר בדיוק על המצב שלכם?</p>
+                    <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-primary">שלחו לי הודעת WhatsApp לבדיקה מהירה</a>
                 </div>
             </div>
         </section>
@@ -477,6 +553,9 @@ allowfullscreen></iframe>
             const revealElements = document.querySelectorAll('.reveal');
             const contactModal = document.getElementById('contactModal');
             const form = document.getElementById('modal-contact-form');
+            const filterButtons = document.querySelectorAll('.video-filter__btn');
+            const videoCards = document.querySelectorAll('#videoGrid .video-card');
+            const videoEmbeds = document.querySelectorAll('.video-embed');
 
             function revealOnScroll() {
                 revealElements.forEach(el => {
@@ -490,6 +569,48 @@ allowfullscreen></iframe>
 
             window.addEventListener('scroll', revealOnScroll);
             setTimeout(revealOnScroll, 100);
+
+            function setActiveFilter(filter) {
+                filterButtons.forEach(btn => {
+                    const isActive = btn.dataset.filter === filter;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                videoCards.forEach(card => {
+                    const matches = filter === 'all' || card.dataset.category === filter;
+                    card.classList.toggle('is-hidden', !matches);
+                });
+            }
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setActiveFilter(btn.dataset.filter || 'all');
+                });
+            });
+
+            videoEmbeds.forEach(embed => {
+                const launchButton = embed.querySelector('.video-launch');
+                if (!launchButton) return;
+
+                launchButton.addEventListener('click', () => {
+                    const src = embed.dataset.videoSrc;
+                    const title = embed.dataset.videoTitle || 'סרטון';
+                    if (!src) return;
+
+                    const iframe = document.createElement('iframe');
+                    iframe.src = src;
+                    iframe.loading = 'lazy';
+                    iframe.title = `סרטון: ${title}`;
+                    iframe.allowFullscreen = true;
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.border = 'none';
+
+                    launchButton.remove();
+                    embed.appendChild(iframe);
+                }, { once: true });
+            });
 
             function openModal(modal) {
                 if (!modal) return;
