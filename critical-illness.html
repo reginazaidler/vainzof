@@ -350,8 +350,6 @@ gtag('config', 'G-EM8SYH542C');
 </main>
 
 
-    </main>
-
     <footer class="bg-[var(--navy-deep)] text-white py-8 border-t border-white/5">
         <div class="container-clean flex flex-col md:flex-row justify-between items-center gap-6">
 
@@ -453,6 +451,16 @@ gtag('config', 'G-EM8SYH542C');
                 }
             });
         };
+		
+		document.getElementById('menuBtn')?.addEventListener('click', () => {
+  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+});
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileMenu')?.classList.add('hidden');
+  });
+});
 
         const contactModal = document.getElementById('contactModal');
         const form = document.getElementById('modal-contact-form');

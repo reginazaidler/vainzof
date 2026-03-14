@@ -462,6 +462,16 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = ''; 
         clearErrors();
     };
+	
+	document.getElementById('menuBtn')?.addEventListener('click', () => {
+  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+});
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileMenu')?.classList.add('hidden');
+  });
+});
 
     // פתיחה מכל הכפתורים
     document.querySelectorAll('[id^="openContact"], #openContactBio').forEach(btn => {
