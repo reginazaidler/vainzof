@@ -1990,3 +1990,52 @@ main section.bg-slate-50 h3 {
     background: #eff6ff;
     color: #1e3a8a;
 }
+
+/* Health insurance pages - improved second half readability */
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) {
+    position: relative;
+}
+
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) .container-clean {
+    max-width: 1120px;
+}
+
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) h2 {
+    letter-spacing: -0.01em;
+}
+
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) h3 {
+    line-height: 1.4;
+}
+
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) p {
+    font-size: 1.03rem;
+    line-height: 1.9;
+    color: #1f2937;
+}
+
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) .bg-white.rounded-3xl {
+    border: 1px solid #d7e0ec;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+}
+
+.health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) .space-y-8 > div {
+    background: #fff;
+    border: 1px solid #dbe4f0;
+    border-right: 4px solid var(--gold-brand);
+    border-radius: 1rem;
+    padding: 1.15rem 1.25rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+@media (max-width: 767px) {
+    .health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) p {
+        font-size: 0.98rem;
+        line-height: 1.85;
+    }
+
+    .health-pages main > section:nth-of-type(n+4):not(.about-bottom-cta) .space-y-8 > div {
+        padding: 1rem;
+    }
+}
