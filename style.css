@@ -1466,7 +1466,9 @@ main section.bg-slate-50 h3 {
     }
 
     .whatsapp-float {
-        display: none;
+        display: inline-flex;
+        bottom: 16px;
+        right: 16px;
     }
 }
 
