@@ -1874,6 +1874,94 @@ main section.bg-slate-50 h3 {
         padding-bottom: 42px;
     }
 
+    .travel-page .home-hero {
+        padding-top: 18px;
+        padding-bottom: 30px;
+    }
+
+    .travel-page .home-hero__badge {
+        font-size: 12px;
+        padding: 6px 10px;
+        margin-bottom: 12px;
+    }
+
+    .travel-page .home-hero__title {
+        font-size: clamp(1.55rem, 8vw, 2rem);
+        line-height: 1.32;
+        margin-bottom: 10px;
+    }
+
+    .travel-page .home-hero__subtitle {
+        font-size: 1.06rem;
+        margin-bottom: 14px;
+    }
+
+    .travel-page .home-hero .text-lg {
+        font-size: 0.99rem;
+        line-height: 1.72;
+        margin-bottom: 1.5rem;
+    }
+
+    .travel-page .hero-checklist {
+        gap: 9px;
+        margin-bottom: 1.1rem;
+    }
+
+    .travel-page .hero-checklist li {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        align-items: flex-start;
+    }
+
+    .travel-page .hero-actions {
+        gap: 8px;
+    }
+
+    .travel-page .hero-actions .site-cta {
+        min-height: 46px;
+        font-size: 0.95rem;
+    }
+
+    .travel-page #main > section.py-20,
+    .travel-page #main > section.md\:py-24 {
+        padding-top: 2.6rem;
+        padding-bottom: 2.6rem;
+    }
+
+    .travel-page #main .max-w-4xl {
+        margin-bottom: 1.6rem;
+    }
+
+    .travel-page #main h2.text-3xl {
+        font-size: 1.5rem;
+        line-height: 1.32;
+        margin-bottom: 0.75rem;
+    }
+
+    .travel-page #main p.text-lg {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .travel-page #main .grid.gap-6 {
+        gap: 0.8rem;
+    }
+
+    .travel-page #main .rounded-3xl {
+        border-radius: 1rem;
+    }
+
+    .travel-page #main .p-7,
+    .travel-page #main .p-8 {
+        padding: 1.05rem;
+    }
+
+    .travel-page #main .text-xl {
+        font-size: 1.06rem;
+        line-height: 1.45;
+        margin-bottom: 0.45rem;
+    }
+
     .companies-section-card {
         padding: 1.25rem;
         border-radius: 1.5rem;
