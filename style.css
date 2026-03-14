@@ -211,6 +211,7 @@ a {
 
 .bg-white { background-color: #fff; }
 .bg-slate-50 { background-color: #f8fafc; }
+.bg-\[var\(--navy-deep\)\] { background-color: var(--navy-deep); }
 .text-white { color: #fff; }
 .text-slate-200 { color: #e2e8f0; }
 .text-slate-300 { color: #cbd5e1; }
