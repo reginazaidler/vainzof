@@ -10,46 +10,162 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-	<meta name="robots" content="noindex">
+    <meta name="robots" content="noindex">
 
     <link rel="stylesheet" href="style.css">
-<style>
+    <style>
+        :root {
+            --thanks-bg: linear-gradient(180deg, #f6f8fb 0%, #edf3fb 100%);
+            --thanks-card: #ffffff;
+            --thanks-primary: #0b1b3b;
+            --thanks-secondary: #42526b;
+            --thanks-success-bg: #edf9f1;
+            --thanks-success-border: #bde8ca;
+            --thanks-success-title: #14603c;
+            --thanks-success-text: #1f7a4f;
+            --thanks-whatsapp: #128c7e;
+            --thanks-whatsapp-hover: #0f7a6f;
+        }
+
         body {
+            margin: 0;
             font-family: "Assistant", sans-serif;
+            background: var(--thanks-bg);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: clamp(16px, 4vw, 36px);
+            color: var(--thanks-primary);
+        }
+
+        .thanks-card {
+            width: min(100%, 640px);
+            background: var(--thanks-card);
+            border-radius: clamp(18px, 4vw, 30px);
+            border: 1px solid #dbe7f8;
+            box-shadow: 0 20px 50px rgba(7, 21, 46, 0.14);
+            padding: clamp(20px, 5vw, 48px);
+            text-align: center;
+        }
+
+        .thanks-icon {
+            font-size: clamp(42px, 10vw, 56px);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            margin: 0 0 14px;
+            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .thanks-lead {
+            margin: 0 auto 24px;
+            max-width: 48ch;
+            color: var(--thanks-secondary);
+            font-size: clamp(1rem, 3.8vw, 1.25rem);
+            line-height: 1.7;
+        }
+
+        .thanks-whatsapp-box {
+            background: var(--thanks-success-bg);
+            border: 1px solid var(--thanks-success-border);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 28px);
+            margin-bottom: 22px;
+            text-align: right;
+        }
+
+        .thanks-whatsapp-box h2 {
+            margin: 0 0 8px;
+            font-size: clamp(1.1rem, 3.8vw, 1.35rem);
+            color: var(--thanks-success-title);
+            font-weight: 800;
+        }
+
+        .thanks-whatsapp-box p {
+            margin: 0 0 16px;
+            color: var(--thanks-success-text);
+            font-size: clamp(0.98rem, 3.5vw, 1.1rem);
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .thanks-wa-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: 14px;
+            font-size: clamp(1rem, 3.8vw, 1.08rem);
+            font-weight: 800;
+            color: #fff;
+            background: var(--thanks-whatsapp);
+            transition: background-color 0.2s ease;
+            min-height: 52px;
+        }
+
+        .thanks-wa-link:hover,
+        .thanks-wa-link:focus-visible {
+            background: var(--thanks-whatsapp-hover);
+        }
+
+        .thanks-wa-link svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .thanks-home-link {
+            display: inline-block;
+            color: var(--thanks-primary);
+            font-weight: 800;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+            font-size: 1rem;
+        }
+
+        .thanks-home-link:hover,
+        .thanks-home-link:focus-visible {
+            color: #13336d;
+        }
+
+        @media (max-width: 420px) {
+            .thanks-whatsapp-box {
+                text-align: center;
+            }
         }
     </style>
 </head>
-<body class="bg-[#f6f8fb] flex items-center justify-center min-h-screen p-6">
-    <div class="max-w-xl w-full bg-white p-10 md:p-16 rounded-[3rem] shadow-2xl text-center border-b-8 border-blue-900 relative overflow-hidden">
-        
-        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
+<body>
+    <main class="thanks-card" aria-labelledby="thanks-title">
+        <div class="thanks-icon" aria-hidden="true">✅</div>
 
-        <div class="text-6xl mb-8 animate-bounce">✅</div>
-        
-        <h1 class="text-3xl md:text-4xl font-black text-blue-950 mb-6 italic">הפרטים התקבלו, עוברים לעבודה!</h1>
-        
-        <p class="text-xl text-slate-600 mb-10 font-medium leading-relaxed">
-            תודה רבה, קיבלתי את הפנייה שלך. <br>
-            אני אעבור על הדברים באופן אישי ואחזור אליך ב-24 השעות הקרובות עם תובנות ראשוניות לגבי התיק שלך.
+        <h1 id="thanks-title">הפרטים התקבלו, עוברים לעבודה!</h1>
+
+        <p class="thanks-lead">
+            תודה רבה, קיבלתי את הפנייה שלך.
+            אני אעבור על הדברים באופן אישי ואחזור אליך ב־24 השעות הקרובות עם תובנות ראשוניות לגבי התיק שלך.
         </p>
 
-        <div class="bg-green-50 border-2 border-green-100 p-8 rounded-[2rem] mb-10 shadow-sm">
-            <h2 class="text-green-800 font-black text-xl mb-3 italic">רוצה לזרז את הבדיקה?</h2>
-            <p class="text-green-700 font-bold mb-6">
-                צילום של הדו"ח השנתי האחרון (מכל חברת ביטוח) יאפשר לי לתת לך תשובות מדויקות כבר בשיחה הראשונה.
-            </p>
-            <a href="https://wa.me/972524520222?text=היי%20יובל,%20שלחתי%20פרטים%20באתר%20והנה%20צילום%20הדו%22ח%20שלי%20לבדיקה" 
-               target="_blank" 
-               class="inline-flex items-center gap-3 bg-green-500 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-green-600 transition shadow-lg" rel="noopener noreferrer">
-               שלחו לי את הדו"ח בוואטסאפ
-               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.558 0 11.895-5.335 11.898-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <section class="thanks-whatsapp-box" aria-label="אפשרות שליחה מהירה בוואטסאפ">
+            <h2>רוצה לזרז את הבדיקה?</h2>
+            <p>צילום של הדו״ח השנתי האחרון (מכל חברת ביטוח) יאפשר לי לתת לך תשובות מדויקות כבר בשיחה הראשונה.</p>
+            <a href="https://wa.me/972524520222?text=היי%20יובל,%20שלחתי%20פרטים%20באתר%20והנה%20צילום%20הדו%22ח%20שלי%20לבדיקה"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="thanks-wa-link">
+                שלחו לי את הדו"ח בוואטסאפ
+                <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.558 0 11.895-5.335 11.898-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             </a>
-        </div>
+        </section>
 
-        <a href="index.html" class="text-blue-900 font-extrabold hover:underline">
-            חזרה לדף הבית
-        </a>
-    </div>
-    <script src="js/whatsapp-float.js"></script>
+        <a href="index.html" class="thanks-home-link">חזרה לדף הבית</a>
+    </main>
 </body>
 </html>
