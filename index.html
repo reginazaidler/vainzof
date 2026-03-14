@@ -85,6 +85,18 @@ window.addEventListener('load', function () {
                 <a href="services.html" class="nav-link">דרך העבודה</a>
                 <a href="insurance-types.html" class="nav-link">סוגי ביטוחים</a>
                 <a href="reviews.html" class="nav-link">לקוחות ממליצים</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown__trigger" type="button">
+                        מרכז ידע
+                        <span aria-hidden="true">▾</span>
+                    </button>
+                    <div id="desktopKnowledgeMenu" class="nav-dropdown__menu" role="menu" aria-label="מרכז ידע">
+                        <a href="articles.html" class="nav-dropdown__item" role="menuitem">מאמרים מקצועיים</a>
+                        <a href="faq.html" class="nav-dropdown__item" role="menuitem">שאלות ותשובות</a>
+                        <a href="calculator.html" class="nav-dropdown__item" role="menuitem">מחשבון חיסכון</a>
+                        <a href="media.html" class="nav-dropdown__item" role="menuitem">וידאו ומדיה</a>
+                    </div>
+                </div>
                 <a href="tel:0524520222" class="header-phone">
                     <span>052-4520222</span>
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.1 15.1 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.7.59 1 1 0 011 1V20a1 1 0 01-1 1A18 18 0 013 4a1 1 0 011-1h3.43a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.27 1.1l-2.12 2.1z"/></svg>
@@ -112,8 +124,16 @@ window.addEventListener('load', function () {
             <a href="services.html" class="mobile-nav-link">דרך העבודה</a>
             <a href="insurance-types.html" class="mobile-nav-link">סוגי ביטוחים</a>
             <a href="reviews.html" class="mobile-nav-link">לקוחות ממליצים</a>
-            <a href="faq.html" class="mobile-nav-link">שאלות ותשובות</a>
-            <a href="articles.html" class="mobile-nav-link">מאמרים מקצועיים</a>
+            <button id="mobileKnowledgeToggle" class="mobile-nav-link mobile-nav-accordion-toggle" type="button" aria-expanded="false" aria-controls="mobileKnowledgeMenu">
+                מרכז ידע
+                <span class="mobile-nav-accordion-toggle__icon" aria-hidden="true">▾</span>
+            </button>
+            <div id="mobileKnowledgeMenu" class="mobile-subnav" hidden>
+                <a href="articles.html" class="mobile-subnav-link">מאמרים מקצועיים</a>
+                <a href="faq.html" class="mobile-subnav-link">שאלות ותשובות</a>
+                <a href="calculator.html" class="mobile-subnav-link">מחשבון חיסכון</a>
+                <a href="media.html" class="mobile-subnav-link">וידאו ומדיה</a>
+            </div>
             <a href="tel:0524520222" class="mobile-nav-link">התקשר עכשיו</a>
             <button id="openContactMobile" class="site-cta mobile-cta">לתיאום בדיקה אישית</button>
         </div>
@@ -915,6 +935,24 @@ const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileOverlay = document.getElementById('mobileOverlay');
 const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+const mobileKnowledgeToggle = document.getElementById('mobileKnowledgeToggle');
+const mobileKnowledgeMenu = document.getElementById('mobileKnowledgeMenu');
+
+function closeMobileKnowledgeMenu() {
+    mobileKnowledgeMenu?.setAttribute('hidden', '');
+    mobileKnowledgeToggle?.setAttribute('aria-expanded', 'false');
+}
+
+function toggleMobileKnowledgeMenu() {
+    const isExpanded = mobileKnowledgeToggle?.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+        closeMobileKnowledgeMenu();
+        return;
+    }
+
+    mobileKnowledgeMenu?.removeAttribute('hidden');
+    mobileKnowledgeToggle?.setAttribute('aria-expanded', 'true');
+}
 
 function openMobileMenu() {
     mobileMenu?.classList.add('is-open');
@@ -927,12 +965,14 @@ function closeMobileMenu() {
     mobileMenu?.classList.remove('is-open');
     mobileOverlay?.classList.remove('is-open');
     menuBtn?.setAttribute('aria-expanded', 'false');
+    closeMobileKnowledgeMenu();
     document.body.style.overflow = '';
 }
 
 menuBtn?.addEventListener('click', openMobileMenu);
 closeMobileMenuBtn?.addEventListener('click', closeMobileMenu);
 mobileOverlay?.addEventListener('click', closeMobileMenu);
+mobileKnowledgeToggle?.addEventListener('click', toggleMobileKnowledgeMenu);
 document.querySelectorAll('#mobileMenu a').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
 });
