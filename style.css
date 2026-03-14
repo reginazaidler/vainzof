@@ -16,8 +16,8 @@
     /* צבעי המותג הראשיים */
     --navy-main: #0B1B3B;
     --navy-deep: #07152E;
-    --gold-brand: #C6A15B;
-    --gold-hover: #D4B476;
+    --gold-brand: #8B6A2F;
+    --gold-hover: #A07C3A;
 
     /* צבעי רקע וטקסט */
     --bg-light: #F6F8FB;
@@ -1308,6 +1308,7 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     font-weight: 800;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
+    min-height: 44px;
 }
 
 .site-cta:hover {
@@ -1378,8 +1379,8 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border: 0;
     background: #f8fafc;
     border-radius: 10px;
@@ -1428,7 +1429,7 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
 }
 
 .mobile-sticky-cta__btn {
-    min-height: 46px;
+    min-height: 48px;
     border-radius: 12px;
     display: inline-flex;
     align-items: center;
@@ -1611,6 +1612,27 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     flex-direction: column;
     gap: 12px;
     align-items: stretch;
+}
+
+.mobile-quick-path {
+    display: none;
+}
+
+.section-summary {
+    max-width: 760px;
+    margin: 0 auto 1rem;
+    color: var(--text-body);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 700;
+}
+
+.mobile-form-note {
+    display: none;
+    margin: 0;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .btn-outline-light {
@@ -1861,6 +1883,64 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     .home-hero {
         padding-top: 16px;
         padding-bottom: 42px;
+    }
+
+    .section-summary {
+        font-size: 0.97rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+    }
+
+    .mobile-quick-path {
+        display: block;
+        margin-top: 1.1rem;
+        padding: 0.95rem;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .mobile-quick-path__title {
+        margin: 0 0 0.65rem;
+        font-size: 0.95rem;
+        color: #fff;
+        font-weight: 800;
+    }
+
+    .mobile-quick-path__actions {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    .mobile-quick-path__btn {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .mobile-quick-path__trust {
+        margin: 0.65rem 0 0;
+        color: #cbd5e1;
+        font-size: 0.77rem;
+        line-height: 1.5;
+        font-weight: 700;
+    }
+
+    .mobile-optional-field {
+        display: none;
+    }
+
+    .mobile-form-note {
+        display: block;
+    }
+
+    .card-clean p,
+    .text-slate-700,
+    .text-slate-600 {
+        line-height: 1.75;
+    }
+
+    section[class*="py-"] {
+        margin-bottom: 0.75rem;
     }
 
     .home-hero__badge,
