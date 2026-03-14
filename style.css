@@ -190,7 +190,9 @@ a {
 .mb-8 { margin-bottom: 2rem; }
 .mb-10 { margin-bottom: 2.5rem; }
 .mb-12 { margin-bottom: 3rem; }
+.mb-16 { margin-bottom: 4rem; }
 .mt-1 { margin-top: 0.25rem; }
+.mt-6 { margin-top: 1.5rem; }
 
 .p-2 { padding: 0.5rem; }
 .p-3 { padding: 0.75rem; }
@@ -198,6 +200,7 @@ a {
 .p-6 { padding: 1.5rem; }
 .p-7 { padding: 1.75rem; }
 .p-8 { padding: 2rem; }
+.p-10 { padding: 2.5rem; }
 .px-5 { padding-inline: 1.25rem; }
 .px-6 { padding-inline: 1.5rem; }
 .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
@@ -207,6 +210,7 @@ a {
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
 .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
 .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
 .pb-2 { padding-bottom: 0.5rem; }
 .pt-4 { padding-top: 1rem; }
@@ -215,6 +219,12 @@ a {
 .gap-3 { gap: 0.75rem; }
 .gap-4 { gap: 1rem; }
 .gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+.gap-10 { gap: 2.5rem; }
+
+.space-y-12 > * + * { margin-top: 3rem; }
+
+.max-w-4xl { max-width: 56rem; }
 
 .rounded-sm { border-radius: 0.125rem; }
 .rounded-lg { border-radius: 0.5rem; }
@@ -222,6 +232,7 @@ a {
 .rounded-2xl { border-radius: 1rem; }
 .rounded-3xl { border-radius: 1.5rem; }
 .rounded-full { border-radius: 9999px; }
+.rounded-\[2\.5rem\] { border-radius: 2.5rem; }
 
 .text-right { text-align: right; }
 .text-center { text-align: center; }
@@ -257,6 +268,7 @@ a {
 
 .border-b { border-bottom: 1px solid #e2e8f0; }
 .border-t { border-top: 1px solid #e2e8f0; }
+.border { border: 1px solid #e2e8f0; }
 .border-slate-100 { border-color: #f1f5f9; }
 .border-slate-200 { border-color: #e2e8f0; }
 .border-slate-300 { border-color: #cbd5e1; }
