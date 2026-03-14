@@ -1077,14 +1077,14 @@ main section.bg-slate-50 h3 {
    CALCULATOR PAGE - Savings simulation UI
    ========================================================= */
 .calc-shell {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    border: 1px solid #dbe4f0;
-    box-shadow: 0 20px 45px rgba(11, 27, 59, 0.12);
+    background: linear-gradient(180deg, #ffffff 0%, #fdfaf4 100%);
+    border: 1px solid rgba(139, 106, 47, 0.24);
+    box-shadow: 0 20px 45px rgba(11, 27, 59, 0.1);
 }
 
 .calc-chip {
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(139, 106, 47, 0.38);
     border-radius: 999px;
     padding: 0.55rem 0.95rem;
     color: #f8fafc;
@@ -1106,7 +1106,7 @@ main section.bg-slate-50 h3 {
 .calc-select {
     width: 100%;
     min-height: 52px;
-    border: 1px solid #cfd9e7;
+    border: 1px solid #d8dee9;
     border-radius: 14px;
     background: #ffffff;
     color: #0f172a;
@@ -1138,9 +1138,9 @@ main section.bg-slate-50 h3 {
 }
 
 .metric-card {
-    border: 1px solid #d6e1ee;
+    border: 1px solid rgba(139, 106, 47, 0.18);
     border-radius: 1rem;
-    background: #ffffff;
+    background: linear-gradient(180deg, #ffffff 0%, #fffcf7 100%);
     padding: 1rem 0.85rem;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
