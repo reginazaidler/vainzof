@@ -10,6 +10,10 @@
     return !!document.querySelector('.mobile-sticky-cta');
   }
 
+  function hasDesktopStickyCta() {
+    return !!document.querySelector('.desktop-sticky-cta');
+  }
+
   function createWidget() {
     var link = document.createElement('a');
     link.href = WHATSAPP_URL;
@@ -49,6 +53,18 @@
     document.body.appendChild(wrapper);
   }
 
+  function createDesktopStickyCta() {
+    var link = document.createElement('a');
+    link.href = WHATSAPP_URL;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 'desktop-sticky-cta';
+    link.setAttribute('aria-label', 'שליחת הודעה בוואטסאפ לתיאום בדיקה אישית');
+    link.textContent = 'לתיאום בדיקה אישית';
+
+    document.body.appendChild(link);
+  }
+
   function init() {
     if (!hasExistingWidget()) {
       createWidget();
@@ -56,6 +72,10 @@
 
     if (!hasMobileStickyCta()) {
       createMobileStickyCta();
+    }
+
+    if (!hasDesktopStickyCta()) {
+      createDesktopStickyCta();
     }
   }
 
