@@ -1710,6 +1710,22 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     box-shadow: 0 24px 55px rgba(15, 23, 42, 0.28);
 }
 
+.yuval-photo {
+    width: min(100%, 360px);
+    aspect-ratio: 3 / 4;
+    height: auto;
+    object-position: center 12%;
+}
+
+.about-teaser-photo {
+    width: min(100%, 420px);
+    aspect-ratio: 4 / 5;
+    height: auto;
+    object-fit: cover;
+    object-position: center 18%;
+    border-radius: 2rem;
+}
+
 /* גריד נתונים */
 .stats-grid {
     display: grid;
@@ -1995,6 +2011,12 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     .home-hero__subtitle,
     .page-hero__subtitle {
         line-height: 1.35;
+    }
+
+    .yuval-photo,
+    .about-teaser-photo {
+        width: 100%;
+        max-width: 320px;
     }
 
     .page-hero__description {
