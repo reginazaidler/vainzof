@@ -1,28 +1,54 @@
-# Mobile button clickability check (manual automation)
+# דוח בדיקות מובייל – לחיצות כפתורים וקישורי CTA
 
-Date: 2026-03-14
-Environment: local static server (`python3 -m http.server 4173`) + Playwright Firefox mobile viewport (390x844).
+תאריך: 2026-03-14  
+סביבה: שרת סטטי מקומי (`python3 -m http.server 4173`) + Playwright (Firefox) ברזולוציית מובייל `390x844`.
 
-## Scope
-Tested `index.html` in a mobile viewport and attempted to click all detected button-like elements:
+## מה נבדק
+בוצעה סריקה אוטומטית לכל עמודי האתר המרכזיים, וניסיון לחיצה על אלמנטים שמייצגים כפתור/CTA:
 - `button`
-- links with classes containing `btn`, `button`, `cta`
-- phone/mail/WhatsApp protocol links
+- קישורים עם מחלקות שמכילות `btn` / `button` / `cta`
+- קישורי `tel:` / `mailto:` / WhatsApp
 - `[role="button"]`
 
-## Result summary
-- Elements detected: **15**
-- Clearly clickable / actionable: **9**
-- Not clickable in current mobile flow: **6**
+## סיכום כללי
+- עמודים שנבדקו: **16**
+- אלמנטים שנבדקו: **169**
+- לחיצים/אינטראקטיביים: **64**
+- לא לחיצים בזרימת מובייל הנוכחית: **105**
 
-## Non-clickable items observed
-1. `052-4520222` (`tel:` link) — hidden in current state.
-2. `לתיאום בדיקה אישית` — hidden in current state.
-3. `לתיאום בדיקה אישית` — click timeout (likely covered by overlay or not interactable at that moment).
-4. `לתיאום בדיקה אישית` — click timeout (likely covered by overlay or not interactable at that moment).
-5. Empty-text button-like element — hidden in current state.
-6. `שלחו צילום לבדיקה בוואטסאפ` — hidden in current state.
+> הערה חשובה: חלק משמעותי מה"לא לחיץ" נובע ממצב אלמנט (מוסתר, תלוי פתיחת תפריט/מודאל, או תלוי מצב גלילה), ולא בהכרח מבאג פונקציונלי.
 
-## Notes
-- Some failures are due to **visibility/state**, not necessarily broken links.
-- Re-testing after explicitly opening/closing modal states may reduce false negatives.
+## תוצאות לפי עמוד
+| עמוד | סה"כ אלמנטים | לחיץ | לא לחיץ |
+|---|---:|---:|---:|
+| `index.html` | 15 | 4 | 11 |
+| `about.html` | 11 | 3 | 8 |
+| `services.html` | 11 | 3 | 8 |
+| `faq.html` | 10 | 3 | 7 |
+| `calculator.html` | 15 | 4 | 11 |
+| `reviews.html` | 11 | 4 | 7 |
+| `insurance-types.html` | 9 | 4 | 5 |
+| `life-insurance.html` | 11 | 5 | 6 |
+| `health-insurance.html` | 10 | 6 | 4 |
+| `critical-illness.html` | 11 | 6 | 5 |
+| `loss-of-income.html` | 10 | 6 | 4 |
+| `travel-insurance.html` | 11 | 3 | 8 |
+| `mortgage-insurance.html` | 11 | 6 | 5 |
+| `pension-guide.html` | 11 | 3 | 8 |
+| `media.html` | 11 | 3 | 8 |
+| `thanks.html` | 1 | 1 | 0 |
+
+## מה כדאי לבדוק ידנית (בהמשך)
+בגלל שציינת שלא בכל העמודים אפשרי, ההמלצה היא להתמקד ידנית בעמודים שבהם יחס הכפתורים הלא-לחיצים גבוה:
+- `index.html`
+- `calculator.html`
+- `about.html`
+- `services.html`
+- `travel-insurance.html`
+- `pension-guide.html`
+- `media.html`
+
+## המלצות להקטנת false positives
+1. להריץ סט שני של בדיקות אחרי פתיחה יזומה של תפריט מובייל (hamburger).
+2. לבצע בדיקה נפרדת למצבי מודאל פתוח/סגור לפני ניסיון הלחיצה.
+3. לאמת קישורי פרוטוקול (`tel`/`mailto`/`whatsapp`) כ"תקינים" גם אם הדפדפן החסום לא פותח אפליקציה בפועל.
