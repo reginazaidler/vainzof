@@ -1085,11 +1085,18 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     gap: 1.5rem;
 }
 
+.companies-section-card {
+    overflow: hidden;
+}
+
 /* איזון לוגואים עם יחס תמונה שונה */
 .company-logo-image {
-    width: min(150px, 100%);
-    height: 56px;
+    width: min(140px, 100%) !important;
+    height: 56px !important;
+    max-height: 56px;
     object-fit: contain;
+    object-position: center;
+    margin-inline: auto;
 }
 
 /* מסכים קטנים - המקום הכי חשוב באתר שלך */
@@ -1164,12 +1171,26 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
 
     .companies-logos-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.25rem;
+        gap: 1rem;
     }
 
     .company-logo-image {
-        width: min(130px, 100%);
-        height: 52px;
+        width: min(112px, 100%) !important;
+        height: 44px !important;
+        max-height: 44px;
+    }
+
+    .companies-section-card {
+        padding: 1.75rem 1rem;
+        border-radius: 1.5rem;
+    }
+
+    .companies-section-card h2 {
+        margin-bottom: 0.75rem;
+    }
+
+    .companies-section-card p {
+        margin-bottom: 1.75rem;
     }
 }
 
