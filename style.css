@@ -1678,6 +1678,73 @@ main section.bg-slate-50 h3 {
         line-height: 1.75;
     }
 
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 28px 8px;
+        text-align: right;
+    }
+
+    .stat-item {
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .stat-item__title {
+        font-size: 1.35rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+    }
+
+    .stat-item__desc {
+        font-size: 0.92rem;
+        line-height: 1.65;
+        letter-spacing: 0;
+        color: rgba(255, 255, 255, 0.86);
+        font-weight: 600;
+    }
+
+    .services-process-grid {
+        gap: 1rem;
+    }
+
+    .services-process-card {
+        padding: 1.25rem;
+        border-radius: 1rem;
+        text-align: right;
+    }
+
+    .services-process-card h3 {
+        font-size: 1.05rem;
+        line-height: 1.45;
+        margin-bottom: 0.5rem;
+    }
+
+    .services-process-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        font-weight: 600;
+    }
+
+    .services-process-card svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .services-more-link {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.45;
+        padding: 0.85rem 1rem;
+        border-radius: 1rem;
+    }
+
     section[class*="py-"] {
         margin-bottom: 0.75rem;
     }
