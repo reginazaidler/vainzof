@@ -1413,6 +1413,86 @@ main section.bg-slate-50 h3 {
     border-radius: 2rem;
 }
 
+.why-choose-me-cta--about-link {
+    max-width: 100%;
+}
+
+.about-teaser-section {
+    overflow: hidden;
+}
+
+.about-teaser-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.about-teaser-media {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-teaser-frame {
+    padding: 0.75rem;
+    background: #ffffff;
+    border-radius: 2.25rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease;
+}
+
+.about-teaser-frame:hover {
+    transform: scale(1.02);
+}
+
+.about-teaser-experience-badge {
+    position: absolute;
+    left: -1.5rem;
+    bottom: -1.5rem;
+    z-index: 20;
+    background: rgba(30, 58, 138, 0.9);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-teaser-content {
+    width: 100%;
+    text-align: right;
+}
+
+.about-teaser-title {
+    font-size: clamp(1.9rem, 5.2vw, 3rem);
+}
+
+.about-teaser-intro {
+    max-width: 40rem;
+    margin-inline-start: auto;
+    font-size: clamp(1.1rem, 3.2vw, 1.5rem);
+}
+
+.about-teaser-text {
+    display: grid;
+    gap: 1.25rem;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    color: #334155;
+}
+
+.about-teaser-text p {
+    margin: 0;
+}
+
+.about-teaser-text p:last-child {
+    color: #0f172a;
+    font-weight: 700;
+}
+
 @media (min-width: 768px) {
     .site-logo {
         height: 56px;
@@ -1445,6 +1525,11 @@ main section.bg-slate-50 h3 {
 
     .site-footer__inner {
         text-align: right;
+    }
+
+    .about-teaser-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 3rem;
     }
 }
 
@@ -1521,6 +1606,41 @@ main section.bg-slate-50 h3 {
         white-space: normal;
         padding-inline: 1.25rem;
         border-radius: 1rem;
+    }
+
+    .about-teaser-layout {
+        gap: 1.5rem;
+    }
+
+    .about-teaser-frame {
+        width: min(100%, 360px);
+        border-radius: 1.5rem;
+    }
+
+    .about-teaser-experience-badge {
+        position: static;
+        margin-top: 0.85rem;
+        width: fit-content;
+    }
+
+    .about-teaser-content {
+        text-align: right;
+    }
+
+    .about-teaser-title {
+        font-size: 1.85rem;
+        line-height: 1.3;
+    }
+
+    .about-teaser-intro {
+        font-size: 1.08rem;
+        line-height: 1.75;
+    }
+
+    .about-teaser-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        gap: 0.9rem;
     }
 
     .site-header__inner {
