@@ -63,7 +63,73 @@
     document.body.appendChild(link);
   }
 
+  function isKnowledgeHref(href) {
+    if (!href) return false;
+    return (
+      href.indexOf('articles.html') !== -1 ||
+      href.indexOf('faq.html') !== -1 ||
+      href.indexOf('calculator.html') !== -1 ||
+      href.indexOf('media.html') !== -1
+    );
+  }
+
+  function enhanceLegacyMobileMenu() {
+    var mobileMenu = document.getElementById('mobileMenu');
+    var menuBtn = document.getElementById('menuBtn');
+
+    if (!mobileMenu || !menuBtn) return;
+    if (mobileMenu.classList.contains('mobile-drawer')) return;
+    if (mobileMenu.querySelector('#mobileKnowledgeToggle')) return;
+
+    mobileMenu.classList.add('mobile-menu-enhanced');
+    menuBtn.classList.add('mobile-menu-toggle');
+
+    var links = Array.prototype.slice.call(mobileMenu.querySelectorAll('a'));
+    links.forEach(function (link) {
+      link.classList.add('mobile-nav-link');
+    });
+
+    var knowledgeLinks = links.filter(function (link) {
+      return isKnowledgeHref(link.getAttribute('href'));
+    });
+
+    if (!knowledgeLinks.length) return;
+
+    var firstKnowledgeLink = knowledgeLinks[0];
+
+    var knowledgeToggle = document.createElement('button');
+    knowledgeToggle.id = 'mobileKnowledgeToggle';
+    knowledgeToggle.type = 'button';
+    knowledgeToggle.className = 'mobile-nav-link mobile-nav-accordion-toggle';
+    knowledgeToggle.setAttribute('aria-expanded', 'false');
+    knowledgeToggle.setAttribute('aria-controls', 'mobileKnowledgeMenu');
+    knowledgeToggle.innerHTML =
+      'מרכז ידע <span class="mobile-nav-accordion-toggle__icon" aria-hidden="true">▾</span>';
+
+    var knowledgeMenu = document.createElement('div');
+    knowledgeMenu.id = 'mobileKnowledgeMenu';
+    knowledgeMenu.className = 'mobile-subnav';
+    knowledgeMenu.hidden = true;
+
+    knowledgeLinks.forEach(function (link) {
+      link.classList.remove('mobile-nav-link');
+      link.classList.add('mobile-subnav-link');
+      knowledgeMenu.appendChild(link);
+    });
+
+    mobileMenu.insertBefore(knowledgeToggle, firstKnowledgeLink);
+    mobileMenu.insertBefore(knowledgeMenu, firstKnowledgeLink);
+
+    knowledgeToggle.addEventListener('click', function () {
+      var expanded = knowledgeToggle.getAttribute('aria-expanded') === 'true';
+      knowledgeToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      knowledgeMenu.hidden = expanded;
+    });
+  }
+
   function init() {
+    enhanceLegacyMobileMenu();
+
     if (!hasMobileStickyCta()) {
       createMobileStickyCta();
     }

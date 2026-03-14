@@ -766,6 +766,29 @@ table {
     border-color: #cbd5e1;
 }
 
+.mobile-menu-enhanced {
+    padding: 12px 16px 18px !important;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14) !important;
+}
+
+.mobile-menu-enhanced > a,
+.mobile-menu-enhanced > button {
+    margin: 0;
+}
+
+.mobile-menu-enhanced .mobile-nav-link {
+    margin-bottom: 8px;
+}
+
+.mobile-menu-enhanced .mobile-subnav {
+    margin-bottom: 8px;
+}
+
+.mobile-menu-enhanced .mobile-contact-cta {
+    margin-top: 12px;
+}
+
 .mobile-nav .mobile-cta {
     margin-top: 8px;
     border-radius: 12px;
