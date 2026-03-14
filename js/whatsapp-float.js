@@ -1,14 +1,10 @@
 (function () {
-  var WHATSAPP_URL = 'https://wa.me/972524520222';
   var PHONE_URL = 'tel:0524520222';
-
-  function hasExistingWidget() {
-    return !!document.querySelector('.fixed-whatsapp, .whatsapp-float');
-  }
 
   function hasMobileStickyCta() {
     return !!document.querySelector('.mobile-sticky-cta');
   }
+
 
   function hasDesktopStickyCta() {
     return !!document.querySelector('.desktop-sticky-cta');
@@ -29,6 +25,7 @@
     document.body.appendChild(link);
   }
 
+
   function createMobileStickyCta() {
     var wrapper = document.createElement('div');
     wrapper.className = 'mobile-sticky-cta';
@@ -40,16 +37,7 @@
     phoneLink.setAttribute('aria-label', 'התקשרות מהירה');
     phoneLink.textContent = 'התקשרו עכשיו';
 
-    var whatsappLink = document.createElement('a');
-    whatsappLink.href = WHATSAPP_URL;
-    whatsappLink.target = '_blank';
-    whatsappLink.rel = 'noopener noreferrer';
-    whatsappLink.className = 'mobile-sticky-cta__btn mobile-sticky-cta__btn--whatsapp';
-    whatsappLink.setAttribute('aria-label', 'שליחת הודעה בוואטסאפ');
-    whatsappLink.textContent = 'WhatsApp';
-
     wrapper.appendChild(phoneLink);
-    wrapper.appendChild(whatsappLink);
     document.body.appendChild(wrapper);
   }
 
@@ -66,10 +54,6 @@
   }
 
   function init() {
-    if (!hasExistingWidget()) {
-      createWidget();
-    }
-
     if (!hasMobileStickyCta()) {
       createMobileStickyCta();
     }
