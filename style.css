@@ -1079,6 +1079,19 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
    19. RESPONSIVE - מובייל קודם, ואז טאבלט ודסקטופ
    ========================================================= */
 
+/* גריד לוגואים: נשאר 2 עמודות גם במובייל למניעת טור ארוך מדי */
+.companies-logos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+/* איזון לוגואים עם יחס תמונה שונה */
+.company-logo-image {
+    width: min(150px, 100%);
+    height: 56px;
+    object-fit: contain;
+}
+
 /* מסכים קטנים - המקום הכי חשוב באתר שלך */
 @media (max-width: 767px) {
     /* שומר מרווח בטוח מהצדדים במובייל */
@@ -1147,6 +1160,16 @@ details[open] .group-open\:rotate-180 { transform: rotate(180deg); }
     .grid-cols-2,
     .mobile-one-column {
         grid-template-columns: 1fr;
+    }
+
+    .companies-logos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .company-logo-image {
+        width: min(130px, 100%);
+        height: 52px;
     }
 }
 
