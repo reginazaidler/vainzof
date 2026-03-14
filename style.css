@@ -1468,6 +1468,40 @@ main section.bg-slate-50 h3 {
         padding-bottom: 82px;
     }
 
+    .why-choose-me-section {
+        margin-top: 0;
+    }
+
+    .why-choose-me-section .grid {
+        gap: 1rem;
+    }
+
+    .why-choose-me-section .card-clean {
+        padding: 1.25rem;
+        border-radius: 1rem;
+    }
+
+    .why-choose-me-section .card-clean h3 {
+        font-size: 1.1rem;
+        line-height: 1.45;
+    }
+
+    .why-choose-me-section .card-clean svg {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .why-choose-me-cta {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.45;
+        white-space: normal;
+        padding-inline: 1.25rem;
+        border-radius: 1rem;
+    }
+
     .site-header__inner {
         min-height: 68px;
     }
