@@ -2577,3 +2577,151 @@ main section.bg-slate-50 h3 {
         flex-shrink: 0;
     }
 }
+
+/* Reviews page mobile polish */
+.reviews-page .reviews-grid-section {
+    padding-block: 5.5rem;
+}
+
+.reviews-page .reviews-grid {
+    align-items: stretch;
+}
+
+.reviews-page .review-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.1rem;
+    width: min(100%, 540px);
+    min-height: 100%;
+    padding: 1.7rem 1.45rem 1.35rem;
+    border-radius: 1.25rem;
+    border: 1px solid #dbe4f0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
+}
+
+.reviews-page .quote-mark {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 800;
+    color: rgba(197, 160, 89, 0.26);
+    pointer-events: none;
+}
+
+.reviews-page .stars {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    color: #d39c2b;
+}
+
+.reviews-page .review-card p {
+    margin-bottom: 0;
+    padding-top: 0.35rem;
+    color: #1f2937;
+}
+
+.reviews-page .whatsapp-screenshot-card {
+    width: min(100%, 410px);
+    border-radius: 1.3rem;
+    background: #fff;
+    border: 1px solid #dbe4f0;
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.reviews-page .screenshot-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.reviews-page .whatsapp-caption {
+    padding: 0.9rem 1rem 1.05rem;
+    text-align: center;
+    color: #0b1f4d;
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 767px) {
+    .reviews-page .home-hero {
+        min-height: auto;
+        padding-top: 4.5rem;
+    }
+
+    .reviews-page .home-hero__inner {
+        padding-block: 2.2rem 2rem;
+    }
+
+    .reviews-page .home-hero__title {
+        font-size: clamp(1.85rem, 8.2vw, 2.35rem);
+        line-height: 1.22;
+    }
+
+    .reviews-page .home-hero__subtitle {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .reviews-page .hero-actions {
+        gap: 0.75rem;
+    }
+
+    .reviews-page .hero-actions .site-cta,
+    .reviews-page .hero-actions .btn-outline-light {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .reviews-page .reviews-grid-section {
+        padding-block: 3.2rem;
+    }
+
+    .reviews-page .reviews-grid {
+        gap: 0.95rem;
+    }
+
+    .reviews-page .review-card {
+        width: 100%;
+        padding: 1.2rem 1rem 1rem;
+        border-radius: 1rem;
+        gap: 0.8rem;
+    }
+
+    .reviews-page .quote-mark {
+        top: 0.32rem;
+        right: 0.62rem;
+        font-size: 2.6rem;
+    }
+
+    .reviews-page .stars {
+        margin-bottom: 0.45rem;
+        font-size: 0.9rem;
+    }
+
+    .reviews-page .review-card p {
+        font-size: 0.98rem;
+        line-height: 1.72;
+    }
+
+    .reviews-page .review-card .border-t {
+        padding-top: 0.75rem;
+    }
+
+    .reviews-page .whatsapp-screenshot-card {
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .reviews-page .whatsapp-caption {
+        padding: 0.75rem 0.8rem 0.9rem;
+        font-size: 0.9rem;
+    }
+}
