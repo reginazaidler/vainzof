@@ -2650,11 +2650,11 @@ main section.bg-slate-50 h3 {
 }
 
 .media-page .media-top-strip {
-    background: linear-gradient(90deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
+    background: radial-gradient(circle at top right, #1d4ed8 0%, #0b1f4d 45%, #05122f 100%);
 }
 
 .media-page .media-hero {
-    background: linear-gradient(150deg, #0b1f4d 0%, #163c88 50%, #0b1f4d 100%);
+    background: radial-gradient(circle at top right, #1d4ed8 0%, #0b1f4d 45%, #05122f 100%);
 }
 
 .media-page .video-card {
