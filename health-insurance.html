@@ -557,13 +557,7 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
         window.addEventListener('scroll', revealOnScroll);
         setTimeout(revealOnScroll, 100);
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) backToTop?.classList.remove('hidden');
-            else backToTop?.classList.add('hidden');
-        });
-
-        backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    });
+      
     </script>
 
 </body>
