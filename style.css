@@ -657,6 +657,43 @@ a {
     width: 100%;
 }
 
+.mobile-contact-cta {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 14px;
+    padding: 13px 16px;
+    margin-top: 8px;
+    min-height: 50px;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    cursor: pointer;
+    background: linear-gradient(135deg, #153a7a 0%, #0f2b59 100%);
+    box-shadow: 0 8px 22px rgba(15, 43, 89, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.mobile-contact-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 11px 24px rgba(15, 43, 89, 0.34);
+    filter: brightness(1.03);
+}
+
+.mobile-contact-cta:focus-visible {
+    outline: 3px solid rgba(198, 161, 91, 0.45);
+    outline-offset: 2px;
+}
+
+.mobile-contact-cta:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(15, 43, 89, 0.28);
+}
+
 .mobile-sticky-cta {
     position: fixed;
     left: 0;
