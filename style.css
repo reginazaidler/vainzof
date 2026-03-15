@@ -2669,12 +2669,18 @@ main section.bg-slate-50 h3 {
 
 .bottom-cta__title {
     color: #0b1f4d;
-    font-size: clamp(2.1rem, 3.25vw, 3.65rem);
+    font-size: clamp(1.9rem, 2.8vw, 3.2rem);
     line-height: 1.24;
     margin: 0 auto 16px;
-    max-width: 1200px;
+    max-width: 100%;
     font-weight: 900;
     letter-spacing: -0.01em;
+}
+
+@media (min-width: 1024px) {
+    .bottom-cta__title {
+        white-space: nowrap;
+    }
 }
 
 .bottom-cta__text {
