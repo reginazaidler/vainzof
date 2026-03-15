@@ -746,9 +746,7 @@ table {
     color: var(--gold-brand);
 }
 
-.header-phone span,
-.site-header a[href^="tel:"] span,
-header a[href^="tel:"] span {
+.header-phone span {
     direction: ltr;
     unicode-bidi: isolate;
     display: inline-block;

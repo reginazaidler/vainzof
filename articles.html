@@ -51,7 +51,7 @@ gtag('config', 'G-EM8SYH542C');
                 <a href="faq.html" class="nav-link">שאלות ותשובות</a>
                 <a href="articles.html" class="nav-link nav-link-active">מאמרים מקצועיים</a>
                 <a href="tel:0524520222" class="header-phone"><span>052-4520222</span></a>
-                <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="site-cta">שליחת פרטים ב-WhatsApp</a>
+                <button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
             </nav>
 
             <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט">
@@ -68,7 +68,7 @@ gtag('config', 'G-EM8SYH542C');
         <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
         <a href="articles.html" class="block font-bold text-blue-900 border-b pb-2">מאמרים מקצועיים</a>
         <a href="tel:0524520222" class="block font-bold text-slate-600 border-b pb-2">התקשר עכשיו</a>
-        <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="block font-bold text-slate-600 border-b pb-2">שליחת פרטים ב-WhatsApp</a>
+        <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
     </div>
 <main id="main">
 <section class="py-20 bg-slate-50 articles-section">
@@ -131,6 +131,15 @@ document.addEventListener('click', (e) => {
     mobileMenu?.classList.add('hidden');
   }
 });
+
+document.getElementById('openContactDesktop')?.addEventListener('click', () => {
+  window.open('https://wa.me/972524520222', '_blank', 'noopener,noreferrer');
+});
+
+document.getElementById('openContactMobile')?.addEventListener('click', () => {
+  window.open('https://wa.me/972524520222', '_blank', 'noopener,noreferrer');
+});
+
 </script>
     <script src="js/whatsapp-float.js"></script>
 </body>
