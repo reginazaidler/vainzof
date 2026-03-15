@@ -4650,18 +4650,18 @@ main section.bg-slate-50 h3 {
     .site-footer__nav {
         justify-content: center;
         gap: 10px 22px;
-        font-size: 1rem;
+        font-size: 11px;
     }
 
     .site-footer__meta {
         justify-self: end;
         text-align: right;
         direction: rtl;
-        font-size: 1.45rem;
-        line-height: 1.35;
+        font-size: 12px;
+        line-height: 1.45;
     }
 
     .site-footer__note {
-        font-size: 1.12rem;
+        font-size: 12px;
     }
 }
