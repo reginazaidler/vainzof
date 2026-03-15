@@ -7,8 +7,8 @@
   }
 
 
-  function hasDesktopStickyCta() {
-    return !!document.querySelector('.desktop-sticky-cta');
+  function hasDesktopWhatsappWidget() {
+    return !!document.querySelector('.whatsapp-float');
   }
 
   function createWidget() {
@@ -49,18 +49,6 @@
     wrapper.appendChild(phoneLink);
     wrapper.appendChild(whatsappLink);
     document.body.appendChild(wrapper);
-  }
-
-  function createDesktopStickyCta() {
-    var link = document.createElement('a');
-    link.href = WHATSAPP_URL;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.className = 'desktop-sticky-cta';
-    link.setAttribute('aria-label', 'שליחת הודעה בוואטסאפ לתיאום בדיקה אישית');
-    link.textContent = 'לתיאום בדיקה אישית';
-
-    document.body.appendChild(link);
   }
 
   function isKnowledgeHref(href) {
@@ -194,8 +182,8 @@
       createMobileStickyCta();
     }
 
-    if (!hasDesktopStickyCta()) {
-      createDesktopStickyCta();
+    if (window.matchMedia('(min-width: 1024px)').matches && !hasDesktopWhatsappWidget()) {
+      createWidget();
     }
   }
 
