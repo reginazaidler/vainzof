@@ -1775,8 +1775,8 @@ main section.bg-slate-50 h3 {
     align-items: stretch;
 }
 
-.calculator-hero .calculator-hero-actions .btn-primary,
-.calculator-hero .calculator-hero-actions .calculator-secondary-cta {
+.calculator-hero .calculator-hero-actions .site-cta,
+.calculator-hero .calculator-hero-actions .btn-outline-light {
     min-height: 52px;
 }
 
@@ -1803,17 +1803,12 @@ main section.bg-slate-50 h3 {
     }
 
     .calculator-hero__content {
-        text-align: center;
+        text-align: right;
     }
 
     .calculator-hero__content .home-hero__badge,
     .calculator-hero__content .home-hero__subtitle {
-        margin-inline: auto;
-    }
-
-    .calculator-hero__content .calculator-benefits,
-    .calculator-hero__content .calculator-hero-actions {
-        justify-content: center;
+        margin-inline: 0;
     }
 
     .calculator-simulation-section {
