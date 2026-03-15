@@ -3222,19 +3222,6 @@ main section.bg-slate-50 h3 {
 /* ABOUT PAGE - MOBILE POLISH */
 /* ============================= */
 @media (min-width: 1024px) {
-    .about-page .site-topbar {
-        font-size: 13px;
-        padding: 8px 0;
-    }
-
-    .about-page .site-header__inner {
-        min-height: 84px;
-    }
-
-    .about-page .site-logo {
-        height: 60px;
-    }
-
     .about-page .home-hero {
         padding-top: 20px;
         padding-bottom: 40px;
