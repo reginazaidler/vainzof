@@ -657,6 +657,15 @@ table {
     position: relative;
 }
 
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    height: 14px;
+}
+
 .nav-dropdown__trigger {
     display: inline-flex;
     align-items: center;
@@ -675,7 +684,7 @@ table {
 .nav-dropdown__menu {
     position: absolute;
     right: 0;
-    top: calc(100% + 10px);
+    top: calc(100% + 6px);
     min-width: 220px;
     padding: 10px;
     border-radius: 14px;
