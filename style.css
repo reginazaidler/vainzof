@@ -1137,6 +1137,10 @@ table {
 }
 
 @media (min-width: 769px) {
+    .site-footer__social {
+        flex-wrap: nowrap;
+    }
+
     .site-footer__social a {
         width: 2.25rem;
         height: 2.25rem;
