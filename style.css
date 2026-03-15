@@ -1116,6 +1116,12 @@ table {
     transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
 }
 
+.site-footer__social a svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+}
+
 .site-footer__social a::after {
     content: attr(aria-label);
     font-size: 12px;
@@ -1127,6 +1133,27 @@ table {
     color: #ffffff;
     opacity: 1;
     transform: translateY(-2px);
+}
+
+@media (min-width: 769px) {
+    .site-footer__social a {
+        width: 2.25rem;
+        height: 2.25rem;
+        justify-content: center;
+        gap: 0;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(12, 30, 63, 0.32);
+    }
+
+    .site-footer__social a::after {
+        display: none;
+    }
+
+    .site-footer__social a:hover {
+        border-color: rgba(255, 255, 255, 0.55);
+        background: rgba(12, 30, 63, 0.55);
+    }
 }
 
 /* פוטרים ישנים - מראה אחיד בכל העמודים */
