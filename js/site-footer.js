@@ -21,6 +21,7 @@
         <a href="articles.html">מאמרים מקצועיים</a>
         <a href="calculator.html">מחשבון חיסכון</a>
         <a href="media.html">וידאו</a>
+        <a href="reviews.html">לקוחות ממליצים</a>
         <button id="openContactFooter">צור קשר</button>
       </nav>
 
