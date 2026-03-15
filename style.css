@@ -2993,17 +2993,32 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .home-hero {
-        padding-top: 30px;
-        padding-bottom: 64px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    .about-page .home-hero__content {
+        max-width: 860px;
     }
 
     .about-page .home-hero__title {
-        font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+        font-size: clamp(2rem, 3.9vw, 3.1rem);
+        margin-bottom: 14px;
     }
 
     .about-page .home-hero__subtitle {
-        font-size: clamp(1.35rem, 2.9vw, 2.2rem);
-        margin-bottom: 28px;
+        font-size: clamp(1.15rem, 2.1vw, 1.7rem);
+        line-height: 1.45;
+        margin-bottom: 18px;
+    }
+
+    .about-page .hero-checklist {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .about-page .hero-checklist li {
+        font-size: 1.2rem;
     }
 
     .about-page .about-career-section {
