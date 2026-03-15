@@ -1189,6 +1189,19 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     font-weight: 700;
 }
 
+.card-clean {
+    background: #ffffff;
+    border: 1px solid rgba(11, 27, 59, 0.08);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+    transition: transform var(--ease-default), box-shadow var(--ease-default), border-color var(--ease-default);
+}
+
+.card-clean:hover {
+    border-color: rgba(139, 106, 47, 0.34);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}
+
 /* קריאות בעמוד הבית: בלוקים בהירים חייבים טקסט כהה,
    גם אם יש ירושה מ־section כהה כמו סטטיסטיקות/הירו. */
 main section.bg-white,
