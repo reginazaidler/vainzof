@@ -1780,6 +1780,47 @@ main section.bg-slate-50 h3 {
     min-height: 52px;
 }
 
+.calculator-hero__inner {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.calculator-hero__content {
+    max-width: 880px;
+}
+
+.calculator-simulation-section {
+    margin-top: -3rem;
+}
+
+@media (min-width: 1024px) {
+    .calculator-hero {
+        padding-bottom: 6.5rem;
+    }
+
+    .calculator-hero__inner {
+        justify-items: center;
+    }
+
+    .calculator-hero__content {
+        text-align: center;
+    }
+
+    .calculator-hero__content .home-hero__badge,
+    .calculator-hero__content .home-hero__subtitle {
+        margin-inline: auto;
+    }
+
+    .calculator-hero__content .calculator-benefits,
+    .calculator-hero__content .calculator-hero-actions {
+        justify-content: center;
+    }
+
+    .calculator-simulation-section {
+        margin-top: -4.5rem;
+    }
+}
+
 @media (max-width: 767px) {
     .calculator-hero {
         padding-top: 1.75rem;
