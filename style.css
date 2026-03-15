@@ -3532,6 +3532,19 @@ main section.bg-slate-50 h3 {
     margin: 0;
 }
 
+@media (min-width: 768px) {
+    .about-focus-area__intro {
+        text-align: right;
+        max-width: none;
+        margin: 0 0 2.6rem;
+    }
+
+    .about-focus-area__intro .accent-line,
+    .about-focus-area__intro p {
+        margin-inline: 0;
+    }
+}
+
 @media (max-width: 1199px) {
     .about-focus-area__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
