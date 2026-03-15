@@ -3286,6 +3286,8 @@ main section.bg-slate-50 h3 {
 
 .faq-guide-link-wrap {
     margin-top: 1.65rem;
+    margin-inline: auto;
+    width: min(100%, 760px);
     padding: 1.25rem;
     border: 1px solid #dbe4f0;
     border-radius: 1.25rem;
@@ -3300,10 +3302,18 @@ main section.bg-slate-50 h3 {
 }
 
 .faq-guide-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     max-width: 100%;
     white-space: normal;
     text-align: center;
     line-height: 1.5;
+    text-decoration: none;
+}
+
+.faq-guide-link svg {
+    flex-shrink: 0;
 }
 
 @media (max-width: 767px) {
