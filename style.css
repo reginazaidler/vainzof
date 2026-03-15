@@ -1024,6 +1024,26 @@ table {
     box-shadow: 0 6px 14px rgba(15, 43, 89, 0.28);
 }
 
+/* Keep modal form text readable on desktop and with browser autofill */
+#contactModal input,
+#contactModal textarea,
+#contactModal select {
+    color: #0f172a;
+}
+
+#contactModal input::placeholder,
+#contactModal textarea::placeholder {
+    color: #64748b;
+    opacity: 1;
+}
+
+#contactModal input:-webkit-autofill,
+#contactModal textarea:-webkit-autofill,
+#contactModal select:-webkit-autofill {
+    -webkit-text-fill-color: #0f172a;
+    box-shadow: 0 0 0 1000px #f8fafc inset;
+}
+
 .mobile-sticky-cta {
     position: fixed;
     left: 0;
