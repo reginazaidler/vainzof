@@ -5031,3 +5031,53 @@ main section.bg-slate-50 h3 {
         font-size: 12px;
     }
 }
+
+/* Desktop FAQ unification (based on service-pages Q&A look) */
+@media (min-width: 1024px) {
+    details.faq-item,
+    details.faq-card {
+        border: 1px solid #dbe4f0;
+        border-right: 4px solid var(--gold-brand);
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+        overflow: hidden;
+    }
+
+    details.faq-item summary,
+    details.faq-card summary {
+        list-style: none;
+        cursor: default;
+        margin: 0;
+        padding: 1.15rem 1.25rem 0.45rem;
+        color: #0f2b49;
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 1.45;
+        pointer-events: none;
+    }
+
+    details.faq-item summary::before,
+    details.faq-card summary::before {
+        display: none !important;
+    }
+
+    details.faq-item summary::-webkit-details-marker,
+    details.faq-card summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details.faq-item > *:not(summary),
+    details.faq-card > *:not(summary) {
+        display: block;
+        padding: 0 1.25rem 1.15rem;
+        color: #334155;
+        font-size: 1.03rem;
+        line-height: 1.9;
+    }
+
+    .home-faq-list,
+    .faq-page .faq-list {
+        gap: 1rem;
+    }
+}
