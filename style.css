@@ -142,6 +142,14 @@ a {
 /* ===================================================== */
 
 @media (min-width: 1024px) {
+    .home-hero__title-main {
+        white-space: nowrap;
+    }
+
+    .home-hero__title-main {
+        white-space: nowrap;
+    }
+
     .about-bottom-cta,
     .bottom-cta {
         background: #e9eef5;
@@ -1285,6 +1293,10 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     color: #ffffff;
 }
 
+.home-hero__title-main {
+    display: inline;
+}
+
 .home-hero__subtitle {
     font-size: clamp(1.2rem, 2.8vw, 2rem);
     font-weight: 800;
@@ -2371,6 +2383,10 @@ main section.bg-slate-50 h3 {
 }
 
 @media (min-width: 1024px) {
+    .home-hero__title-main {
+        white-space: nowrap;
+    }
+
     .site-nav {
         display: flex;
     }
