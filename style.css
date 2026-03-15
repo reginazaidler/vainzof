@@ -4066,6 +4066,7 @@ main section.bg-slate-50 h3 {
     box-shadow: var(--shadow-sm);
     color: #0f172a;
     min-height: 100%;
+    text-decoration: none;
 }
 
 .icon-box {
