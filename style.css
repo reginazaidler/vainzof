@@ -4529,7 +4529,7 @@ main section.bg-slate-50 h3 {
     .about-bottom-cta,
     .bottom-cta {
         background: #e9eef5;
-        padding: 98px 20px;
+        padding: 64px 20px;
     }
 
     .about-bottom-cta .container-clean,
@@ -4541,21 +4541,21 @@ main section.bg-slate-50 h3 {
     .about-bottom-cta h2,
     .bottom-cta__title {
         color: #081b4a;
-        font-size: clamp(3.1rem, 3.25vw, 4rem);
+        font-size: clamp(2.25rem, 2.35vw, 2.8rem);
         font-weight: 900;
-        line-height: 1.18;
+        line-height: 1.24;
         letter-spacing: -0.01em;
-        margin: 0 auto 18px;
+        margin: 0 auto 16px;
     }
 
     .about-bottom-cta p,
     .bottom-cta__text {
         color: #334155 !important;
-        font-size: clamp(1.1rem, 1.2vw, 1.35rem);
-        line-height: 1.65;
+        font-size: clamp(1rem, 1.02vw, 1.12rem);
+        line-height: 1.7;
         font-weight: 700;
-        max-width: 980px;
-        margin: 0 auto 34px;
+        max-width: 940px;
+        margin: 0 auto 28px;
     }
 
     .about-bottom-cta .btn-primary,
@@ -4563,16 +4563,16 @@ main section.bg-slate-50 h3 {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 284px;
-        min-height: 82px;
-        padding: 18px 44px;
+        min-width: 192px;
+        min-height: 56px;
+        padding: 14px 28px;
         border: 0;
-        border-radius: 22px;
+        border-radius: 14px;
         background: #c6a15b;
         color: #ffffff;
-        font-size: 1.2rem;
+        font-size: 1.05rem;
         font-weight: 800;
-        box-shadow: 0 12px 30px rgba(198, 161, 91, 0.25);
+        box-shadow: 0 10px 25px rgba(198, 161, 91, 0.22);
         cursor: pointer;
     }
 
