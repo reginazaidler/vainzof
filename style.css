@@ -1253,6 +1253,7 @@ main section.bg-slate-50 h3 {
 
 @media (min-width: 768px) {
     .companies-logos-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 2rem;
     }
 
