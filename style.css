@@ -235,6 +235,7 @@ table {
 }
 
 .flex { display: flex; }
+.inline-flex { display: inline-flex; }
 .grid { display: grid; }
 .hidden { display: none; }
 .block { display: block; }
