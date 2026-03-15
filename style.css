@@ -1680,6 +1680,55 @@ main section.bg-slate-50 h3 {
     }
 }
 
+@media (max-width: 767px) {
+    .financial-path-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .financial-path-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .financial-path-section h2 {
+        font-size: clamp(1.75rem, 9vw, 2.2rem);
+    }
+
+    .financial-path-timeline::before {
+        top: 1.5rem;
+        bottom: 1.5rem;
+        right: 50%;
+        left: auto;
+        width: 1px;
+        height: auto;
+        transform: translateX(50%);
+    }
+
+    .financial-path-steps {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .financial-path-step {
+        padding-inline: 0.4rem;
+    }
+
+    .financial-path-step > div {
+        margin-bottom: 1rem;
+    }
+
+    .financial-path-step h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .financial-path-step p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        padding-inline: 0.5rem;
+    }
+}
+
 @media (min-width: 768px) {
     .companies-logos-grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
