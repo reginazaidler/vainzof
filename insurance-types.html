@@ -116,7 +116,16 @@ gtag('config', 'G-EM8SYH542C');
             <a href="services.html" class="mobile-nav-link">דרך העבודה</a>
             <a href="insurance-types.html" class="mobile-nav-link mobile-nav-link-active">סוגי ביטוחים</a>
             <a href="reviews.html" class="mobile-nav-link">לקוחות ממליצים</a>
-            <a href="faq.html" class="mobile-nav-link">שאלות ותשובות</a>
+            <button id="mobileKnowledgeToggle" class="mobile-nav-link mobile-nav-accordion-toggle" type="button" aria-expanded="false" aria-controls="mobileKnowledgeMenu">
+                מרכז ידע
+                <span class="mobile-nav-accordion-toggle__icon" aria-hidden="true">▾</span>
+            </button>
+            <div id="mobileKnowledgeMenu" class="mobile-subnav" hidden>
+                <a href="articles.html" class="mobile-subnav-link">מאמרים מקצועיים</a>
+                <a href="faq.html" class="mobile-subnav-link">שאלות ותשובות</a>
+                <a href="calculator.html" class="mobile-subnav-link">מחשבון חיסכון</a>
+                <a href="media.html" class="mobile-subnav-link">וידאו ומדיה</a>
+            </div>
             <a href="tel:0524520222" class="mobile-nav-link">התקשר עכשיו</a>
             <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
         </div>
@@ -481,6 +490,8 @@ document.getElementById('user_phone')?.addEventListener('input', (e) => {
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileOverlay = document.getElementById('mobileOverlay');
     const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+    const mobileKnowledgeToggle = document.getElementById('mobileKnowledgeToggle');
+    const mobileKnowledgeMenu = document.getElementById('mobileKnowledgeMenu');
 
     function openMobileMenu() {
         mobileMenu?.classList.add('is-open');
@@ -497,8 +508,16 @@ document.getElementById('user_phone')?.addEventListener('input', (e) => {
     menuBtn?.addEventListener('click', openMobileMenu);
     closeMobileMenuBtn?.addEventListener('click', closeMobileMenu);
     mobileOverlay?.addEventListener('click', closeMobileMenu);
-    document.querySelectorAll('#mobileMenu a, #mobileMenu button').forEach(link => {
+    document.querySelectorAll('#mobileMenu a, #mobileMenu button.mobile-contact-cta').forEach(link => {
         link.addEventListener('click', closeMobileMenu);
+    });
+
+    mobileKnowledgeToggle?.addEventListener('click', () => {
+        const isExpanded = mobileKnowledgeToggle.getAttribute('aria-expanded') === 'true';
+        mobileKnowledgeToggle.setAttribute('aria-expanded', String(!isExpanded));
+        if (mobileKnowledgeMenu) {
+            mobileKnowledgeMenu.hidden = isExpanded;
+        }
     });
 
     // שליחת הטופס
