@@ -136,6 +136,91 @@ a {
     }
 }
 
+/* ===================================================== */
+/* DESKTOP BOTTOM AREA ALIGNMENT - התאמה לתצוגת הדוגמה */
+/* ===================================================== */
+
+@media (min-width: 1024px) {
+    .about-bottom-cta,
+    .bottom-cta {
+        background: #e9eef5;
+        padding-top: 98px;
+        padding-bottom: 98px;
+    }
+
+    .about-bottom-cta .container-clean,
+    .bottom-cta__inner {
+        max-width: 1180px;
+    }
+
+    .about-bottom-cta h2,
+    .bottom-cta__title {
+        margin: 0 auto 18px;
+        color: #081b4a;
+        font-size: clamp(2.7rem, 3.25vw, 4rem);
+        font-weight: 900;
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+    }
+
+    .about-bottom-cta p,
+    .bottom-cta__text {
+        margin: 0 auto 34px;
+        color: #334155 !important;
+        font-size: clamp(1.1rem, 1.25vw, 1.35rem);
+        font-weight: 700;
+        line-height: 1.65;
+        max-width: 980px;
+    }
+
+    .about-bottom-cta .btn-primary,
+    .bottom-cta .btn-primary {
+        min-width: 284px;
+        min-height: 82px;
+        border-radius: 22px;
+        padding: 18px 44px;
+        font-size: 2rem;
+        font-weight: 800;
+        box-shadow: 0 12px 30px rgba(198, 161, 91, 0.25);
+    }
+
+    .site-footer {
+        padding: 24px 0 22px;
+    }
+
+    .site-footer__inner {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 14px 28px;
+        text-align: initial;
+    }
+
+    .site-footer__social {
+        order: 1;
+        justify-content: flex-start;
+    }
+
+    .site-footer__nav {
+        order: 2;
+        justify-content: center;
+        gap: 10px 22px;
+        font-size: 1rem;
+    }
+
+    .site-footer__meta {
+        order: 3;
+        justify-self: end;
+        text-align: left;
+        font-size: 1.45rem;
+        line-height: 1.35;
+    }
+
+    .site-footer__note {
+        font-size: 1.12rem;
+    }
+}
+
 /* קישור "דלג לתוכן המרכזי" - נגיש, נסתר כברירת מחדל ומופיע בפוקוס */
 .sr-focusable {
     position: fixed;
@@ -4244,5 +4329,99 @@ main section.bg-slate-50 h3 {
         font-size: 0.93rem;
         line-height: 1.7;
         padding: 0 0.8rem 0.85rem;
+    }
+}
+
+/* ===================================================== */
+/* FINAL DESKTOP OVERRIDES - bottom CTA + footer layout */
+/* ===================================================== */
+@media (min-width: 1024px) {
+    .about-bottom-cta,
+    .bottom-cta {
+        background: #e9eef5;
+        padding: 98px 20px;
+    }
+
+    .about-bottom-cta .container-clean,
+    .bottom-cta__inner {
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    .about-bottom-cta h2,
+    .bottom-cta__title {
+        color: #081b4a;
+        font-size: clamp(3.1rem, 3.25vw, 4rem);
+        font-weight: 900;
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+        margin: 0 auto 18px;
+    }
+
+    .about-bottom-cta p,
+    .bottom-cta__text {
+        color: #334155 !important;
+        font-size: clamp(1.1rem, 1.2vw, 1.35rem);
+        line-height: 1.65;
+        font-weight: 700;
+        max-width: 980px;
+        margin: 0 auto 34px;
+    }
+
+    .about-bottom-cta .btn-primary,
+    .bottom-cta .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 284px;
+        min-height: 82px;
+        padding: 18px 44px;
+        border: 0;
+        border-radius: 22px;
+        background: #c6a15b;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: 800;
+        box-shadow: 0 12px 30px rgba(198, 161, 91, 0.25);
+        cursor: pointer;
+    }
+
+    .about-bottom-cta .btn-primary:hover,
+    .bottom-cta .btn-primary:hover {
+        background: #b8914e;
+    }
+
+    .site-footer {
+        padding: 24px 0 22px;
+    }
+
+    .site-footer__inner {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 14px 28px;
+        direction: ltr;
+    }
+
+    .site-footer__social {
+        justify-content: flex-start;
+    }
+
+    .site-footer__nav {
+        justify-content: center;
+        gap: 10px 22px;
+        font-size: 1rem;
+    }
+
+    .site-footer__meta {
+        justify-self: end;
+        text-align: right;
+        direction: rtl;
+        font-size: 1.45rem;
+        line-height: 1.35;
+    }
+
+    .site-footer__note {
+        font-size: 1.12rem;
     }
 }
