@@ -2906,6 +2906,33 @@ main section.bg-slate-50 h3 {
 /* ABOUT PAGE - MOBILE POLISH */
 /* ============================= */
 @media (min-width: 1024px) {
+    .about-page .site-topbar {
+        font-size: 13px;
+        padding: 8px 0;
+    }
+
+    .about-page .site-header__inner {
+        min-height: 84px;
+    }
+
+    .about-page .site-logo {
+        height: 60px;
+    }
+
+    .about-page .home-hero {
+        padding-top: 30px;
+        padding-bottom: 64px;
+    }
+
+    .about-page .home-hero__title {
+        font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+    }
+
+    .about-page .home-hero__subtitle {
+        font-size: clamp(1.35rem, 2.9vw, 2.2rem);
+        margin-bottom: 28px;
+    }
+
     .about-page .about-career-section {
         padding-top: 5rem;
         padding-bottom: 5.5rem;
