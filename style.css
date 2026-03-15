@@ -1678,9 +1678,19 @@ main section.bg-slate-50 h3 {
     box-shadow: 0 20px 45px rgba(11, 27, 59, 0.1);
 }
 
+.calculator-hero .home-hero__subtitle {
+    color: #cbd5e1;
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    margin-bottom: 2rem;
+}
+
 .calc-chip {
-    background: rgba(248, 250, 252, 0.09);
-    border: 1px solid rgba(139, 106, 47, 0.45);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
     padding: 0.55rem 0.95rem;
     color: #f8fafc;
@@ -1748,6 +1758,15 @@ main section.bg-slate-50 h3 {
     text-align: center;
 }
 
+.calculator-hero .calculator-hero-actions {
+    align-items: stretch;
+}
+
+.calculator-hero .calculator-hero-actions .btn-primary,
+.calculator-hero .calculator-hero-actions .calculator-secondary-cta {
+    min-height: 52px;
+}
+
 @media (max-width: 767px) {
     .calculator-hero {
         padding-top: 1.75rem;
@@ -1760,7 +1779,7 @@ main section.bg-slate-50 h3 {
         margin-bottom: 1rem;
     }
 
-    .calculator-hero-description {
+    .calculator-hero .home-hero__subtitle {
         font-size: 1rem;
         margin-bottom: 1.25rem;
     }
