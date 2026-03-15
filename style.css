@@ -4343,29 +4343,42 @@ main section.bg-slate-50 h3 {
     }
 
     .insurance-types-page .insurance-types-grid {
-        padding-top: 4.5rem;
-        padding-bottom: 4.5rem;
+        padding-top: 3.1rem;
+        padding-bottom: 4.2rem;
     }
 
     .insurance-types-page .insurance-types-grid .grid {
-        gap: 1.25rem;
+        gap: 2.15rem;
     }
 
     .insurance-types-page .insurance-card {
-        padding: 1.2rem 1.15rem;
-        border-radius: 1rem;
+        padding: 2.15rem 1.95rem 1.75rem;
+        border-radius: 1.9rem;
+        background: #f4f6f9;
+        border-color: #d7dde7;
     }
 
     .insurance-types-page .insurance-card h3 {
-        font-size: 1.33rem;
-        line-height: 1.35;
-        margin-bottom: 0.7rem;
+        font-size: clamp(2rem, 1.7vw, 2.35rem);
+        line-height: 1.25;
+        margin-bottom: 1rem;
     }
 
     .insurance-types-page .insurance-card p {
-        font-size: 0.97rem;
-        line-height: 1.65;
-        margin-bottom: 1rem;
+        font-size: 1.06rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .insurance-types-page .insurance-card .text-sm {
+        font-size: 1.03rem;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .insurance-types-page .insurance-types-grid .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
