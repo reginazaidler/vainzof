@@ -1106,12 +1106,23 @@ header a[href^="tel:"] span {
     align-items: center;
     justify-content: center;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .site-footer__social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     color: #94a3b8;
     opacity: 0.92;
     transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.site-footer__social a::after {
+    content: attr(aria-label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
 .site-footer__social a:hover {
