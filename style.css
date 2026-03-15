@@ -643,6 +643,10 @@ table {
     padding-bottom: 6px;
 }
 
+.fill-current {
+    fill: currentColor;
+}
+
 .header-phone {
     display: none;
     align-items: center;
@@ -654,6 +658,14 @@ table {
 
 .header-phone:hover {
     color: var(--gold-brand);
+}
+
+.header-phone span,
+.site-header a[href^="tel:"] span,
+header a[href^="tel:"] span {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
 }
 
 .site-cta {
