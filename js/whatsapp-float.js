@@ -111,14 +111,14 @@
     knowledgeMenu.className = 'mobile-subnav';
     knowledgeMenu.hidden = true;
 
+    mobileMenu.insertBefore(knowledgeToggle, firstKnowledgeLink);
+    mobileMenu.insertBefore(knowledgeMenu, firstKnowledgeLink);
+
     knowledgeLinks.forEach(function (link) {
       link.classList.remove('mobile-nav-link');
       link.classList.add('mobile-subnav-link');
       knowledgeMenu.appendChild(link);
     });
-
-    mobileMenu.insertBefore(knowledgeToggle, firstKnowledgeLink);
-    mobileMenu.insertBefore(knowledgeMenu, firstKnowledgeLink);
 
     knowledgeToggle.addEventListener('click', function () {
       var expanded = knowledgeToggle.getAttribute('aria-expanded') === 'true';
@@ -127,8 +127,68 @@
     });
   }
 
+  function createKnowledgeDropdown() {
+    var dropdown = document.createElement('div');
+    dropdown.className = 'nav-dropdown';
+
+    var trigger = document.createElement('button');
+    trigger.className = 'nav-dropdown__trigger';
+    trigger.type = 'button';
+    trigger.innerHTML = 'מרכז ידע <span aria-hidden="true">▾</span>';
+
+    var menu = document.createElement('div');
+    menu.className = 'nav-dropdown__menu';
+    menu.setAttribute('role', 'menu');
+    menu.setAttribute('aria-label', 'מרכז ידע');
+
+    [
+      { href: 'articles.html', label: 'מאמרים מקצועיים' },
+      { href: 'faq.html', label: 'שאלות ותשובות' },
+      { href: 'calculator.html', label: 'מחשבון חיסכון' },
+      { href: 'media.html', label: 'וידאו ומדיה' }
+    ].forEach(function (item) {
+      var link = document.createElement('a');
+      link.href = item.href;
+      link.className = 'nav-dropdown__item';
+      link.setAttribute('role', 'menuitem');
+      link.textContent = item.label;
+      menu.appendChild(link);
+    });
+
+    dropdown.appendChild(trigger);
+    dropdown.appendChild(menu);
+
+    return dropdown;
+  }
+
+  function enhanceDesktopKnowledgeMenu() {
+    var desktopNav = document.querySelector('.site-nav, .site-header nav.hidden[class~="lg:flex"]');
+
+    if (!desktopNav) return;
+    if (desktopNav.querySelector('.nav-dropdown')) return;
+
+    var desktopLinks = Array.prototype.slice.call(desktopNav.querySelectorAll('a[href]'));
+
+    desktopLinks.forEach(function (link) {
+      if (isKnowledgeHref(link.getAttribute('href'))) {
+        link.parentNode.removeChild(link);
+      }
+    });
+
+    var insertBeforeNode = desktopNav.querySelector('a[href^="tel:"]') || desktopNav.querySelector('button');
+    var dropdown = createKnowledgeDropdown();
+
+    if (insertBeforeNode) {
+      desktopNav.insertBefore(dropdown, insertBeforeNode);
+      return;
+    }
+
+    desktopNav.appendChild(dropdown);
+  }
+
   function init() {
     enhanceLegacyMobileMenu();
+    enhanceDesktopKnowledgeMenu();
 
     if (!hasMobileStickyCta()) {
       createMobileStickyCta();
