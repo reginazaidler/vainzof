@@ -3541,6 +3541,99 @@ main section.bg-slate-50 h3 {
 
 .media-page .media-hero {
     background: radial-gradient(circle at top right, #1d4ed8 0%, #0b1f4d 45%, #05122f 100%);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.media-page .media-hero__content {
+    max-width: 680px;
+}
+
+.media-page .media-hero__panel {
+    display: block;
+}
+
+.media-page .media-hero__panel-card {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 64, 175, 0.45) 100%);
+    box-shadow: 0 22px 46px rgba(2, 6, 23, 0.35);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(6px);
+}
+
+.media-page .media-hero__panel-label {
+    display: inline-flex;
+    border-radius: 9999px;
+    padding: 0.3rem 0.85rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #dbeafe;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.8rem;
+}
+
+.media-page .media-hero__panel-title {
+    color: #ffffff;
+    font-size: 1.55rem;
+    line-height: 1.35;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.media-page .media-hero__panel-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.media-page .media-hero__panel-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.media-page .media-hero__panel-icon {
+    color: var(--gold-brand);
+    font-weight: 800;
+    margin-top: 0.1rem;
+}
+
+.media-page .media-hero__panel-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-top: 1.15rem;
+}
+
+.media-page .media-hero__panel-stat {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.9rem;
+    padding: 0.65rem 0.5rem;
+    background: rgba(15, 23, 42, 0.35);
+    text-align: center;
+}
+
+.media-page .media-hero__panel-stat strong {
+    display: block;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.media-page .media-hero__panel-stat span {
+    display: block;
+    color: #cbd5e1;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-top: 0.15rem;
 }
 
 .media-page .video-card {
@@ -3568,6 +3661,10 @@ main section.bg-slate-50 h3 {
         padding-bottom: 2.25rem;
         border-bottom-left-radius: 1.25rem;
         border-bottom-right-radius: 1.25rem;
+    }
+
+    .media-page .media-hero__panel {
+        display: none;
     }
 
     .media-page .media-hero h1 {
