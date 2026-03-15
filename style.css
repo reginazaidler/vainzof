@@ -4987,6 +4987,16 @@ main section.bg-slate-50 h3 {
     .faq-page .site-footer__social a::after {
         display: inline;
     }
+
+    /* מובייל: פוטר אחיד גם בדף FAQ כמו בכל שאר העמודים */
+    .faq-page .site-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .faq-page .site-footer__nav {
+        max-width: none;
+        gap: 10px;
+    }
 }
 
 /* ===================================================== */
