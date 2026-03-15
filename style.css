@@ -4687,21 +4687,23 @@ main section.bg-slate-50 h3 {
         grid-template-columns: minmax(170px, 1fr) minmax(520px, auto) minmax(170px, 1fr);
         align-items: center;
         gap: 14px 28px;
-        direction: ltr;
     }
 
     .site-footer__social {
-        justify-content: flex-start;
+        grid-column: 3;
+        justify-content: flex-end;
     }
 
     .site-footer__nav {
+        grid-column: 2;
         justify-content: center;
         gap: 10px 22px;
         font-size: 11px;
     }
 
     .site-footer__meta {
-        justify-self: end;
+        grid-column: 1;
+        justify-self: start;
         text-align: right;
         direction: rtl;
         font-size: 12px;
