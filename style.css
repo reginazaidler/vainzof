@@ -979,6 +979,10 @@ header a[href^="tel:"] span {
     margin: 0;
 }
 
+.site-footer__meta p:first-child {
+    white-space: nowrap;
+}
+
 .site-footer__note {
     opacity: 0.8;
     font-weight: 400;
@@ -1019,7 +1023,7 @@ header a[href^="tel:"] span {
 }
 
 .site-footer__social a {
-    color: #f8d26a;
+    color: #94a3b8;
     opacity: 0.92;
     transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
 }
