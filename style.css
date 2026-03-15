@@ -2030,6 +2030,16 @@ main section.bg-slate-50 h3 {
     .site-footer__inner {
         text-align: right;
     }
+
+    .articles-page .home-hero__inner {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .articles-page .home-hero__media {
+        display: none;
+    }
 }
 
 
