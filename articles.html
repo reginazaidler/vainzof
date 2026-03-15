@@ -71,9 +71,38 @@ gtag('config', 'G-EM8SYH542C');
         <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
     </div>
 <main id="main">
-<section class="py-20 bg-slate-50 articles-section">
+<section class="home-hero articles-hero">
+  <div class="container-clean home-hero__inner">
+    <div class="home-hero__content">
+      <p class="home-hero__badge">
+        <span class="home-hero__dot"></span>
+        ידע מקצועי בגובה העיניים
+      </p>
+
+      <h1 class="home-hero__title">מאמרים מקצועיים בפנסיה, ביטוחים וניהול כסף</h1>
+      <p class="home-hero__subtitle">מדריכים קצרים ומעשיים שיעזרו לכם להבין מושגים, לבדוק עלויות ולבחור נכון.</p>
+
+      <ul class="hero-checklist">
+        <li><span class="hero-checklist__icon">✓</span><span>תוכן פרקטי שמסביר "מה לבדוק" ו"איך לפעול"</span></li>
+        <li><span class="hero-checklist__icon">✓</span><span>דוגמאות מעשיות על דמי ניהול, כפילויות וכיסויים</span></li>
+        <li><span class="hero-checklist__icon">✓</span><span>קריאה מהירה שמאפשרת קבלת החלטות בטוחה יותר</span></li>
+      </ul>
+
+      <div class="hero-actions">
+        <a href="#articles-grid" class="site-cta">למאמרים המלאים</a>
+        <button id="openContactHero" class="btn-outline-light" type="button">לתיאום בדיקה אישית</button>
+      </div>
+    </div>
+
+    <div class="home-hero__media">
+      <img src="assets/yuval.webp" alt="יובל ויינזוף - מומחה פנסיוני ופיננסי" class="hero-photo yuval-photo" loading="eager" fetchpriority="high" width="900" height="1200">
+    </div>
+  </div>
+</section>
+
+<section id="articles-grid" class="py-20 bg-slate-50 articles-section">
   <div class="container-clean max-w-5xl">
-    <h1 class="text-4xl font-black text-blue-950 mb-5 text-center">מאמרים מקצועיים בפנסיה, ביטוחים וניהול כסף</h1>
+    <h2 class="text-4xl font-black text-blue-950 mb-5 text-center">המאמרים שיעשו לכם סדר</h2>
     <p class="text-center text-slate-700 mb-12">כדי לעזור לכם להבין טוב יותר את המושגים, לבדוק עלויות ולבחור נכון - ריכזתי מדריכים קצרים ומעשיים.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -133,6 +162,10 @@ document.addEventListener('click', (e) => {
 });
 
 document.getElementById('openContactDesktop')?.addEventListener('click', () => {
+  window.open('https://wa.me/972524520222', '_blank', 'noopener,noreferrer');
+});
+
+document.getElementById('openContactHero')?.addEventListener('click', () => {
   window.open('https://wa.me/972524520222', '_blank', 'noopener,noreferrer');
 });
 
