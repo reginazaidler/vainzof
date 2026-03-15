@@ -4865,7 +4865,7 @@ main section.bg-slate-50 h3 {
 .qa-card {
     background: #fff;
     border: 1px solid #dbe4f0;
-    border-inline-end: 5px solid var(--gold-brand);
+    border-inline-start: 5px solid var(--gold-brand);
     border-radius: 1.5rem;
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
     padding: clamp(1.15rem, 2vw, 1.9rem) clamp(1rem, 3vw, 2.2rem);
@@ -4892,7 +4892,7 @@ main section.bg-slate-50 h3 {
 
     .qa-card {
         border-radius: 1rem;
-        border-inline-end-width: 4px;
+        border-inline-start-width: 4px;
         text-align: right;
         padding: 1rem 1rem 1.1rem;
     }
