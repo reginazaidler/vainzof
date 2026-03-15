@@ -1902,6 +1902,74 @@ main section.bg-slate-50 h3 {
     max-width: 100%;
 }
 
+.why-choose-heading-wrap {
+    position: relative;
+}
+
+.why-choose-me-grid {
+    align-items: stretch;
+}
+
+.why-choose-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 280px;
+}
+
+.why-choose-card svg {
+    margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+    .why-choose-me-section {
+        padding-top: 5.25rem;
+        padding-bottom: 5.5rem;
+    }
+
+    .why-choose-heading-wrap {
+        margin-bottom: 3.2rem;
+    }
+
+    .why-choose-me-accent {
+        margin-left: 0;
+        margin-right: auto;
+        width: 5.2rem;
+        transform: translateX(-10px);
+    }
+
+    .why-choose-me-grid {
+        gap: 2rem;
+    }
+
+    .why-choose-card {
+        border-radius: 1.9rem;
+        min-height: 374px;
+        border-color: rgba(11, 27, 59, 0.13);
+        box-shadow: none;
+        padding: 2.35rem 2rem;
+    }
+
+    .why-choose-card p {
+        font-size: 1.02rem;
+        line-height: 1.9;
+        max-width: 31ch;
+        margin-inline: auto;
+    }
+
+    .why-choose-me-section .section-inline-cta-wrap {
+        margin-top: 2.7rem;
+    }
+
+    .why-choose-me-section .section-inline-cta-wrap .why-choose-me-cta {
+        width: auto;
+        min-width: 560px;
+        max-width: 100%;
+        padding: 0.9rem 2.1rem;
+        border-radius: 999px;
+    }
+}
+
 .about-teaser-section {
     overflow: hidden;
 }
