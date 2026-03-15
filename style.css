@@ -4093,6 +4093,60 @@ main section.bg-slate-50 h3 {
     line-height: 1.75;
 }
 
+@media (min-width: 768px) {
+    .insurance-types-page .hero-gradient {
+        padding-top: 6.5rem;
+        padding-bottom: 5.25rem;
+    }
+
+    .insurance-types-page .hero-gradient h1 {
+        font-size: clamp(2.35rem, 3.8vw, 3.35rem);
+        line-height: 1.2;
+        margin-bottom: 1.25rem;
+    }
+
+    .insurance-types-page .hero-gradient p.text-lg {
+        font-size: 1.12rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .insurance-types-page .hero-gradient ul {
+        gap: 0.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .insurance-types-page .hero-gradient li span:last-child {
+        font-size: 1rem;
+    }
+
+    .insurance-types-page .insurance-types-grid {
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .insurance-types-page .insurance-types-grid .grid {
+        gap: 1.25rem;
+    }
+
+    .insurance-types-page .insurance-card {
+        padding: 1.2rem 1.15rem;
+        border-radius: 1rem;
+    }
+
+    .insurance-types-page .insurance-card h3 {
+        font-size: 1.33rem;
+        line-height: 1.35;
+        margin-bottom: 0.7rem;
+    }
+
+    .insurance-types-page .insurance-card p {
+        font-size: 0.97rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+    }
+}
+
 @media (max-width: 767px) {
     .insurance-types-page {
         background: var(--bg-light);
