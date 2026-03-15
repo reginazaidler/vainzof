@@ -4125,6 +4125,14 @@ main section.bg-slate-50 h3 {
     background: #f3f4f6;
 }
 
+.insurance-types-page .home-hero {
+    padding-top: 10px;
+}
+
+.insurance-types-page .home-hero__badge {
+    margin-top: 0;
+}
+
 .insurance-types-page .hero-gradient {
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
     border-bottom: 1px solid #d8e3f1;
@@ -4183,6 +4191,11 @@ main section.bg-slate-50 h3 {
 }
 
 @media (min-width: 768px) {
+    .insurance-types-page .home-hero {
+        padding-top: 8px;
+        padding-bottom: 44px;
+    }
+
     .insurance-types-page .hero-gradient {
         padding-top: 6.5rem;
         padding-bottom: 5.25rem;
