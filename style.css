@@ -3781,6 +3781,17 @@ main section.bg-slate-50 h3 {
         line-height: 1.7;
     }
 
+    .media-page .media-hero__actions {
+        width: 100%;
+    }
+
+    .media-page .media-hero__actions .btn-primary,
+    .media-page .media-hero__actions .btn-outline-light {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
     .media-page #videos {
         padding-top: 3rem;
     }
