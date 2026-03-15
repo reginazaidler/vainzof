@@ -4410,8 +4410,38 @@ main section.bg-slate-50 h3 {
 
 
 @media (min-width: 1024px) {
+    .insurance-types-page .hero-gradient h1 {
+        font-size: clamp(2.2rem, 3.4vw, 3.05rem);
+    }
+
+    .insurance-types-page .hero-gradient p.text-lg {
+        font-size: 1.06rem;
+    }
+
     .insurance-types-page .insurance-types-grid .grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .insurance-types-page .insurance-card {
+        padding: 1.95rem 1.8rem 1.6rem;
+    }
+
+    .insurance-types-page .insurance-card h3 {
+        font-size: clamp(1.8rem, 1.55vw, 2.15rem);
+    }
+
+    .insurance-types-page .insurance-card p {
+        font-size: 1rem;
+    }
+
+    .insurance-types-page .insurance-card .text-sm {
+        font-size: 0.97rem;
+    }
+
+    .insurance-types-page .icon-box {
+        width: 4.85rem;
+        height: 4.85rem;
+        margin-bottom: 1.5rem;
     }
 }
 
