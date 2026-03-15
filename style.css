@@ -3605,6 +3605,39 @@ main section.bg-slate-50 h3 {
     flex-shrink: 0;
 }
 
+@media (min-width: 768px) {
+    .home-faq-section {
+        padding-bottom: clamp(4.5rem, 8vw, 6rem);
+    }
+
+    .home-faq-section .container-clean {
+        max-width: 920px;
+    }
+
+    .home-faq-section .text-center.mb-12 {
+        margin-bottom: 3rem;
+    }
+
+    .home-faq-list {
+        display: grid;
+        gap: 1.2rem;
+    }
+
+    .home-faq-section .faq-item summary {
+        padding: 1.35rem 1.65rem;
+        font-size: 1.55rem;
+    }
+
+    .home-faq-section .faq-item > div {
+        padding: 1rem 1.65rem 1.35rem;
+    }
+
+    .faq-guide-link-wrap {
+        margin-top: 2.1rem;
+        padding: 1.4rem;
+    }
+}
+
 @media (max-width: 767px) {
     .home-faq-section {
         padding-top: 3.4rem;
