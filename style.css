@@ -4541,6 +4541,19 @@ main section.bg-slate-50 h3 {
     font-size: 0.95rem;
 }
 
+.reviews-page #mobileMenu {
+    position: fixed;
+    top: calc(6px + 76px);
+    right: 0;
+    left: 0;
+    z-index: 140 !important;
+    pointer-events: auto;
+}
+
+.reviews-page #mobileMenu.hidden {
+    pointer-events: none;
+}
+
 /* Insurance types page - align mobile visual language with the rest of the site */
 .insurance-types-page {
     background: #f3f4f6;
