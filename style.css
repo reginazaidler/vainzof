@@ -4455,6 +4455,38 @@ main section.bg-slate-50 h3 {
     margin: 0;
 }
 
+.faq-page-contact-strip {
+    background: #e9eef5;
+    padding: 4.75rem 1rem;
+}
+
+.faq-page-contact-strip__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.faq-page-contact-strip h2 {
+    margin: 0;
+    color: #081b4a;
+    font-size: clamp(2.2rem, 3.2vw, 3.35rem);
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.faq-page-contact-strip p {
+    margin: 1rem auto 0;
+    max-width: 680px;
+    color: #1e3a5f;
+    font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.faq-page-contact-strip .site-cta {
+    margin-top: 1.9rem;
+}
+
 @media (max-width: 768px) {
     .faq-page .faq-layout {
         padding-top: 1.5rem;
@@ -4519,6 +4551,24 @@ main section.bg-slate-50 h3 {
         font-size: 0.93rem;
         line-height: 1.7;
         padding: 0 0.8rem 0.85rem;
+    }
+
+    .faq-page-contact-strip {
+        padding: 3.25rem 1rem;
+    }
+
+    .faq-page-contact-strip h2 {
+        font-size: 2rem;
+    }
+
+    .faq-page-contact-strip p {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .faq-page-contact-strip .site-cta {
+        margin-top: 1.3rem;
     }
 }
 
