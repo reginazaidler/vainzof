@@ -1292,6 +1292,88 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
 }
 
+.methodology-section {
+    text-align: center;
+}
+
+.methodology-grid {
+    align-items: stretch;
+}
+
+.methodology-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-block: clamp(1.6rem, 2.6vw, 2.5rem);
+}
+
+.methodology-card .step-tag {
+    width: fit-content;
+    margin: 0 auto 1.1rem;
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    background: #f4f1ea;
+    color: #0b1b3b;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.methodology-card h3 {
+    min-height: 5.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.methodology-card p {
+    text-align: center;
+}
+
+.methodology-card__note {
+    margin-top: auto;
+    justify-content: center;
+}
+
+@media (max-width: 1023.98px) {
+    .methodology-card h3 {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .methodology-section {
+        text-align: right;
+    }
+
+    .methodology-section__intro {
+        text-align: center;
+    }
+
+    .methodology-grid {
+        gap: 0.95rem;
+    }
+
+    .methodology-card {
+        text-align: right;
+        border-radius: 1.2rem;
+    }
+
+    .methodology-card .step-tag {
+        margin: 0 0 0.8rem;
+        font-size: 1rem;
+    }
+
+    .methodology-card h3,
+    .methodology-card p,
+    .methodology-card__note {
+        text-align: right;
+        justify-content: flex-start;
+    }
+}
+
 /* קריאות בעמוד הבית: בלוקים בהירים חייבים טקסט כהה,
    גם אם יש ירושה מ־section כהה כמו סטטיסטיקות/הירו. */
 main section.bg-white,
