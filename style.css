@@ -5215,3 +5215,38 @@ main section.bg-slate-50 h3 {
         gap: 1rem;
     }
 }
+
+/* ===================================================== */
+/* EXTRA SMALL MOBILE POLISH (≤420px)                    */
+/* ===================================================== */
+@media (max-width: 420px) {
+    .home-hero__title,
+    .page-hero__title,
+    .calculator-hero-title,
+    .about-hero__title {
+        font-size: clamp(1.95rem, 9.1vw, 2.35rem);
+        line-height: 1.25;
+    }
+
+    .home-hero__subtitle,
+    .page-hero__subtitle,
+    .page-hero__description {
+        font-size: 1rem;
+        line-height: 1.62;
+    }
+
+    .faq-page .faq-quick-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-page .faq-quick-nav a {
+        min-height: 2.55rem;
+        font-size: 0.92rem;
+    }
+
+    .site-footer__nav,
+    .faq-page .site-footer__nav {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
