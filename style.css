@@ -3267,9 +3267,13 @@ main section.bg-slate-50 h3 {
 /* ABOUT PAGE - MOBILE POLISH */
 /* ============================= */
 @media (min-width: 1024px) {
+    .about-page {
+        font-size: 94%;
+    }
+
     .about-page .home-hero {
-        padding-top: 20px;
-        padding-bottom: 40px;
+        padding-top: 14px;
+        padding-bottom: 32px;
     }
 
     .about-page .home-hero__content {
@@ -3277,14 +3281,14 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .home-hero__title {
-        font-size: clamp(2rem, 3.9vw, 3.1rem);
-        margin-bottom: 14px;
+        font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+        margin-bottom: 12px;
     }
 
     .about-page .home-hero__subtitle {
-        font-size: clamp(1.15rem, 2.1vw, 1.7rem);
-        line-height: 1.45;
-        margin-bottom: 18px;
+        font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+        line-height: 1.5;
+        margin-bottom: 16px;
     }
 
     .about-page .hero-checklist {
@@ -3293,12 +3297,12 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .hero-checklist li {
-        font-size: 1.2rem;
+        font-size: 1.08rem;
     }
 
     .about-page .about-career-section {
-        padding-top: 5.5rem;
-        padding-bottom: 5.5rem;
+        padding-top: 4.75rem;
+        padding-bottom: 4.75rem;
         background: #ffffff;
     }
 
@@ -3307,9 +3311,11 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .about-career-section__intro {
-        margin-inline: auto;
+        margin-inline: 0;
+        margin-right: 0;
+        margin-left: auto;
         text-align: right;
-        max-width: 900px;
+        max-width: 820px;
         margin-bottom: 2.5rem;
     }
 
@@ -3321,14 +3327,14 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .about-career-section__intro h2 {
-        font-size: clamp(2.2rem, 2.7vw, 2.95rem);
+        font-size: clamp(2rem, 2.3vw, 2.55rem);
         line-height: 1.2;
         margin-bottom: 1rem;
     }
 
     .about-page .about-career-section__intro p {
-        font-size: 1.18rem;
-        line-height: 1.85;
+        font-size: 1.06rem;
+        line-height: 1.75;
         color: #334155;
     }
 
