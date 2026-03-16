@@ -35,6 +35,22 @@ jobs:
             --config config/queries.json \
             --output-dir output
 
+      - name: Send report by email
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_TO: ${{ secrets.SMTP_TO }}
+          REPORT_SUBJECT_PREFIX: ${{ secrets.REPORT_SUBJECT_PREFIX }}
+        run: |
+          DAILY_FILE="output/rankings_$(date -u -d 'yesterday' +%F).csv"
+          python scripts/send_report_email.py \
+            --summary-file output/daily_summary.md \
+            --history-file output/rank_history.csv \
+            --daily-file "$DAILY_FILE"
+
       - name: Upload output artifacts
         uses: actions/upload-artifact@v4
         with:

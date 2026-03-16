@@ -5,6 +5,7 @@ This repository includes an automated daily SEO rank-tracking job based on the *
 ## Folder structure
 
 - `scripts/check_rankings.py` - main Python script that fetches yesterday's query performance and writes reports.
+- `scripts/send_report_email.py` - sends the generated report files by email via SMTP.
 - `config/queries.json` - configurable site, country, device, and list of tracked queries.
 - `.github/workflows/daily-rank-check.yml` - scheduled + manual GitHub Actions workflow.
 - `requirements.txt` - Python dependencies.
@@ -58,9 +59,16 @@ Notes:
 
 ## Required GitHub Secret
 
-Add this repository secret:
+Add these repository secrets:
 
 - **`GSC_SERVICE_ACCOUNT_JSON`**: full JSON credentials of a Google Cloud service account.
+- **`SMTP_HOST`**: SMTP server host (for example `smtp.gmail.com`).
+- **`SMTP_PORT`**: SMTP port (`587` for STARTTLS or `465` for SSL).
+- **`SMTP_USERNAME`**: SMTP username/login.
+- **`SMTP_PASSWORD`**: SMTP password or app password.
+- **`SMTP_FROM`**: sender email address.
+- **`SMTP_TO`**: comma-separated recipient emails.
+- **`REPORT_SUBJECT_PREFIX`** (optional): custom email subject prefix.
 
 ### Important permissions setup
 
@@ -77,6 +85,7 @@ Workflow file: `.github/workflows/daily-rank-check.yml`
 - The Python script uses `Asia/Jerusalem` local time and proceeds only at local hour `05`.
 - If run outside that hour, it exits successfully without error.
 - Manual `workflow_dispatch` runs set `FORCE_RUN=true` so you can test instantly.
+- After a successful run, the workflow sends the summary + CSV files to the emails in `SMTP_TO`.
 
 ## Manual validation test plan (workflow_dispatch)
 
@@ -84,12 +93,13 @@ Workflow file: `.github/workflows/daily-rank-check.yml`
 2. Confirm the `GSC_SERVICE_ACCOUNT_JSON` secret is configured.
 3. Open **Actions** -> **Daily SEO Rank Check** -> **Run workflow**.
 4. Verify logs show per-query summary lines and output file paths.
-5. Download the uploaded artifact (`seo-rank-output-<run_id>`).
-6. Confirm the artifact includes:
+5. Verify the workflow step **Send report by email** completed successfully and the recipients received the email.
+6. Download the uploaded artifact (`seo-rank-output-<run_id>`).
+7. Confirm the artifact includes:
    - `output/rankings_YYYY-MM-DD.csv`
    - `output/rank_history.csv`
    - `output/daily_summary.md`
-7. Re-run `workflow_dispatch` on the same day and verify `rank_history.csv` remains idempotent for the same date+query keys.
+8. Re-run `workflow_dispatch` on the same day and verify `rank_history.csv` remains idempotent for the same date+query keys.
 
 
 
