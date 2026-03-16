@@ -1,6 +1,7 @@
-# Run SEO audit daily at 05:00 and email summary to:
+# Run SEO audit daily at 05:00 Israel time (Asia/Jerusalem) and email summary to:
 # - reginazaidler@gmail.com
 # - vainzofyuval@yahoo.com
 #
 # Required SMTP placeholders: replace with real values.
+CRON_TZ=Asia/Jerusalem
 0 5 * * * cd /workspace/vainzof && /usr/bin/python3 scripts/seo_audit.py --output-md seo-scan-report.md --output-json seo-scan-report.json --send-email --email-to reginazaidler@gmail.com vainzofyuval@yahoo.com --smtp-host SMTP_HOST --smtp-port 587 --smtp-user SMTP_USER --smtp-password SMTP_PASSWORD --smtp-from SMTP_FROM >> /workspace/vainzof/seo-audit.log 2>&1

@@ -20,7 +20,7 @@
 ## התזמון שביקשת: כל יום ב־05:00 + מייל לשתי כתובות
 
 הוגדר קובץ cron מוכן בנתיב `ops/seo-audit.cron` עם:
-- תזמון יומי ב־`05:00`
+- תזמון יומי ב־`05:00` **לפי שעון ישראל** (`Asia/Jerusalem`)
 - שליחת מייל ל:
   - `reginazaidler@gmail.com`
   - `vainzofyuval@yahoo.com`
@@ -28,6 +28,7 @@
 שורת ה-cron:
 
 ```bash
+CRON_TZ=Asia/Jerusalem
 0 5 * * * cd /workspace/vainzof && /usr/bin/python3 scripts/seo_audit.py --output-md seo-scan-report.md --output-json seo-scan-report.json --send-email --email-to reginazaidler@gmail.com vainzofyuval@yahoo.com --smtp-host SMTP_HOST --smtp-port 587 --smtp-user SMTP_USER --smtp-password SMTP_PASSWORD --smtp-from SMTP_FROM >> /workspace/vainzof/seo-audit.log 2>&1
 ```
 
