@@ -91,6 +91,18 @@ Workflow file: `.github/workflows/daily-rank-check.yml`
    - `output/daily_summary.md`
 7. Re-run `workflow_dispatch` on the same day and verify `rank_history.csv` remains idempotent for the same date+query keys.
 
+
+
+### Bootstrap/demo run (no API call)
+
+If you want to verify output generation immediately in an environment without Google credentials/dependencies, run:
+
+```bash
+python scripts/check_rankings.py --config config/queries.json --output-dir output --force-run --demo-run
+```
+
+This writes the same CSV/Markdown structure with zeroed metrics and empty position fields.
+
 ## Local run (optional)
 
 ```bash
