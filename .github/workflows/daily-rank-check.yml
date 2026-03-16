@@ -1,0 +1,59 @@
+name: Daily SEO Rank Check
+
+on:
+  schedule:
+    - cron: "17 1-4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-rankings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run rank tracking script
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
+        run: |
+          python scripts/check_rankings.py \
+            --config config/queries.json \
+            --output-dir output
+
+      - name: Send report by email
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_TO: ${{ secrets.SMTP_TO }}
+          REPORT_SUBJECT_PREFIX: ${{ secrets.REPORT_SUBJECT_PREFIX }}
+        run: |
+          DAILY_FILE="output/rankings_$(date -u -d 'yesterday' +%F).csv"
+          python scripts/send_report_email.py \
+            --summary-file output/daily_summary.md \
+            --history-file output/rank_history.csv \
+            --daily-file "$DAILY_FILE"
+
+      - name: Upload output artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-rank-output-${{ github.run_id }}
+          path: output/
+          if-no-files-found: warn
