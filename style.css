@@ -486,6 +486,7 @@ table {
 .border-white\/5 { border-color: rgba(255, 255, 255, 0.05); }
 
 .bg-amber-100 { background-color: #fef3c7; }
+.bg-blue-900 { background-color: #1e3a8a; }
 .bg-blue-900\/90 { background-color: rgba(30, 58, 138, 0.9); }
 
 .object-contain { object-fit: contain; }
@@ -513,6 +514,7 @@ table {
 .transition-colors { transition: color var(--ease-default), background-color var(--ease-default), border-color var(--ease-default); }
 .transform { transform: translateZ(0); }
 .hover\:-translate-y-1:hover { transform: translateY(-0.25rem); }
+.hover\:bg-blue-800:hover { background-color: #1e40af; }
 
 .backdrop-blur-sm { backdrop-filter: blur(4px); }
 .backdrop-blur-md { backdrop-filter: blur(12px); }
