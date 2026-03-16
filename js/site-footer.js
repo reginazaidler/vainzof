@@ -22,6 +22,9 @@
         <a href="calculator.html">מחשבון חיסכון</a>
         <a href="media.html">וידאו</a>
         <a href="reviews.html">לקוחות ממליצים</a>
+        <a href="sochen-bituach-herzliya.html">סוכן ביטוח בהרצליה</a>
+        <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
+        <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
         <button id="openContactFooter">צור קשר</button>
       </nav>
 
