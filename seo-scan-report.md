@@ -1,64 +1,49 @@
 # סריקת SEO – vainzof.co.il
 
-תאריך סריקה: 2026-03-15  
+תאריך סריקה: 2026-03-16  
 היקף: בדיקת SEO טכנית על קבצי HTML סטטיים בריפו (`*.html`) + בדיקת `robots.txt` ו-`sitemap.xml`.
 
 ## מתודולוגיה
 
-הסריקה בוצעה באמצעות פקודות טרמינל וסקריפט Python מקומי שבדק לכל עמוד:
+הסריקה בוצעה באמצעות סקריפט Python מקומי (`scripts/seo_audit.py`) שבודק לכל עמוד:
 - תגית `title`
 - `meta description`
 - `canonical`
-- תגיות Open Graph בסיסיות
-- קיום `h1`
+- `og:image`
+- קיום `h1` יחיד
 - קיום Schema (`application/ld+json`)
-- תמונות ללא `alt`
 
 ## סיכום תוצאות
 
-- נסרקו **23 עמודי HTML**.
-- `title`: תקין בכל העמודים (0 חסרים).
-- `meta description`: חסר בעמוד אחד.
-- `canonical`: חסר בעמוד אחד.
-- `h1`: קיים בדיוק פעם אחת בכל עמוד (ללא חריגות).
-- `og:image`: חסר ב-4 עמודים.
-- Schema (`ld+json`): חסר בעמוד אחד.
-- תמונות ללא `alt`: לא נמצאו.
-- `sitemap.xml`: כולל 22 כתובות URL.
-- `robots.txt`: מוגדר נכון עם הפניה ל-sitemap.
+- נסרקו **28 עמודי HTML**.
+- `title`: תקין ב-28 עמודים.
+- `meta description`: תקין ב-28 עמודים.
+- `canonical`: תקין ב-28 עמודים.
+- `og:image`: תקין ב-28 עמודים.
+- Schema (`ld+json`): תקין ב-28 עמודים.
+- `h1`: תקין ב-28 עמודים.
+- `sitemap.xml`: כולל 27 כתובות URL.
+- `robots.txt`: קיים בריפו.
 
-## ממצאים לפי עמוד
+## ממצאים
 
-### חסר `og:image`
-1. `family-emergency-fund.html`
-2. `freelancers-pension-mistakes.html`
-3. `insurance-checklist-after-birth.html`
-4. `thanks.html`
+### עמודים ללא `meta description`
+אין ממצאים.
 
-### חסרים מטא-דאטה בסיסיים
-- `thanks.html`:
-  - חסר `meta description`
-  - חסר `canonical`
-  - חסר Open Graph מלא
-  - חסר Schema
-  - כולל `meta name="robots" content="noindex"` (כנראה מכוון, ולכן בעדיפות נמוכה)
+### עמודים ללא `canonical`
+אין ממצאים.
 
-## פרשנות עסקית קצרה
+### עמודים ללא `og:image`
+אין ממצאים.
 
-- מצב SEO טכני כללי: **טוב מאוד**.
-- רוב הליקויים מרוכזים בעמוד `thanks.html`, שמוגדר `noindex`, ולכן ההשפעה שלו על אורגני נמוכה.
-- שלושת עמודי התוכן שחסרה בהם `og:image` כן יכולים להיפגע בעיקר בשיתופים חברתיים (CTR נמוך יותר בוואטסאפ/פייסבוק/לינקדאין).
+### עמודים ללא Schema (`ld+json`)
+אין ממצאים.
 
-## פעולות מומלצות (עדיפות)
-
-1. **גבוהה** – להוסיף `og:image` ל-3 עמודי תוכן:
-   - `family-emergency-fund.html`
-   - `freelancers-pension-mistakes.html`
-   - `insurance-checklist-after-birth.html`
-2. **בינונית** – להחליט אם `thanks.html` צריך להישאר `noindex` (ברוב המקרים כן).
-3. **נמוכה** – אם רוצים אחידות מלאה, ניתן להוסיף מטא-דאטה גם ל-`thanks.html`, למרות שאין לכך ערך SEO משמעותי כשיש `noindex`.
+### עמודים עם חריגה בכמות `h1`
+אין ממצאים.
 
 ## הערות
 
-- לא בוצעה כאן בדיקת ביצועים/Core Web Vitals (Lighthouse/PageSpeed) בזמן ריצה בדפדפן.
-- לא בוצעה בדיקת אינדוקס בפועל מול Google Search Console.
+- זוהי בדיקת SEO טכנית בסיסית בלבד, ללא בדיקת ביצועים/Core Web Vitals.
+- כברירת מחדל הסקריפט לא מתקן אוטומטית קבצים; הוא רק מדווח כדי למנוע שינויים לא בטוחים בתוכן.
+- כדי לנתח אינדוקס בפועל והופעה בתוצאות חיפוש, יש להשלים בדיקה ב-Google Search Console.
