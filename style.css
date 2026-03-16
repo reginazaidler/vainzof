@@ -643,6 +643,26 @@ table {
     pointer-events: auto;
 }
 
+@media (max-width: 1023px) {
+    .site-header {
+        z-index: 1000;
+    }
+
+    #menuBtn {
+        z-index: 1002;
+    }
+
+    #mobileMenu.absolute {
+        position: fixed;
+        top: calc(6px + 68px);
+        right: 0;
+        left: 0;
+        max-height: calc(100vh - 74px);
+        overflow-y: auto;
+        z-index: 1001 !important;
+    }
+}
+
 .site-header__inner {
     min-height: 76px;
     display: flex;
