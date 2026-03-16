@@ -53,5 +53,16 @@
     }
   });
 
+  const contactLink = footer.querySelector('#openContactFooter');
+  const contactModal = document.getElementById('contactModal');
+  if (contactLink && contactModal) {
+    contactLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      contactModal.classList.remove('hidden');
+      contactModal.classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    });
+  }
+
   currentScript.replaceWith(footer);
 })();
