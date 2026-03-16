@@ -345,6 +345,11 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
     });
 
+    // פתיחה אוטומטית כאשר מגיעים עם עוגן מהפוטר המשותף
+    if (window.location.hash === '#contactModal') {
+        openModal();
+    }
+
     // סגירה רק ב-X (ביטלתי את הסגירה בלחיצה על הרקע השחור)
     document.getElementById('closeContact')?.addEventListener('click', closeModal);
     

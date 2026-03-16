@@ -25,7 +25,7 @@
         <a href="sochen-bituach-herzliya.html">סוכן ביטוח בהרצליה</a>
         <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
         <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
-        <button id="openContactFooter">צור קשר</button>
+        <a id="openContactFooter" href="services.html#contactModal">צור קשר</a>
       </nav>
 
       <div class="site-footer__social">
