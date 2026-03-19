@@ -92,7 +92,7 @@
     knowledgeToggle.setAttribute('aria-expanded', 'false');
     knowledgeToggle.setAttribute('aria-controls', 'mobileKnowledgeMenu');
     knowledgeToggle.innerHTML =
-      'מרכז ידע <span class="mobile-nav-accordion-toggle__icon" aria-hidden="true">▾</span>';
+      '<span class="mobile-nav-accordion-toggle__label">מרכז ידע</span><span class="mobile-nav-accordion-toggle__icon" aria-hidden="true">▾</span>';
 
     var knowledgeMenu = document.createElement('div');
     knowledgeMenu.id = 'mobileKnowledgeMenu';
