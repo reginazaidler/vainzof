@@ -100,7 +100,7 @@ gtag('config', 'G-EM8SYH542C');
                 <button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
             </nav>
 
-            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט">
+            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
             </button>
         </div>
@@ -832,10 +832,16 @@ contactModal?.addEventListener('click', (e) => {
 <script>
 function closeMobileMenu() {
   document.getElementById('mobileMenu')?.classList.add('hidden');
+  document.getElementById('menuBtn')?.setAttribute('aria-expanded', 'false');
 }
 
 document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBtn = document.getElementById('menuBtn');
+  const isExpanded = menuBtn?.getAttribute('aria-expanded') === 'true';
+
+  mobileMenu?.classList.toggle('hidden');
+  menuBtn?.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 });
 
 document.querySelectorAll('#mobileMenu a').forEach(link => {
