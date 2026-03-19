@@ -100,7 +100,7 @@ gtag('config', 'G-EM8SYH542C');
                 <button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
             </nav>
 
-            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט">
+            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
             </button>
         </div>
@@ -562,13 +562,13 @@ gtag('config', 'G-EM8SYH542C');
 
     <script src="js/site-footer.js"></script>
 
-<div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden">
+<div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="bg-white rounded-[1.5rem] p-5 md:p-8 max-w-lg w-[92%] max-h-[90vh] overflow-y-auto relative shadow-2xl border-t-4 border-blue-600">
         
-        <button id="closeContact" class="absolute top-3 left-3 text-slate-400 hover:text-blue-900 text-2xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all z-50">×</button>
+        <button id="closeContact" class="absolute top-3 left-3 text-slate-400 hover:text-blue-900 text-2xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all z-50" aria-label="סגירת טופס יצירת קשר">×</button>
 
         <div class="mb-4 text-right">
-            <h2 class="text-2xl md:text-3xl font-black text-blue-950">השאירו פרטים</h2>
+            <h2 id="contactModalTitle" class="text-2xl md:text-3xl font-black text-blue-950">השאירו פרטים</h2>
             <p class="text-slate-600 text-sm font-bold">בדיקה מקצועית וליווי אישי - ללא עלות</p>
         </div>
 
@@ -587,6 +587,7 @@ gtag('config', 'G-EM8SYH542C');
 
             <input type="email" id="user_email" name="user_email" placeholder="אימייל (לא חובה)" 
                 class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
+            <p id="email-error" class="hidden text-[10px] text-red-600 font-bold mt-1"></p>
 
             <textarea name="message" rows="2" placeholder="מה תרצו לבדוק?" 
                 class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm resize-none"></textarea>
@@ -832,10 +833,16 @@ contactModal?.addEventListener('click', (e) => {
 <script>
 function closeMobileMenu() {
   document.getElementById('mobileMenu')?.classList.add('hidden');
+  document.getElementById('menuBtn')?.setAttribute('aria-expanded', 'false');
 }
 
 document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBtn = document.getElementById('menuBtn');
+  const isExpanded = menuBtn?.getAttribute('aria-expanded') === 'true';
+
+  mobileMenu?.classList.toggle('hidden');
+  menuBtn?.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 });
 
 document.querySelectorAll('#mobileMenu a').forEach(link => {
