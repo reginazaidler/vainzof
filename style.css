@@ -20,6 +20,10 @@
     --navy-deep: #07152E;
     --gold-brand: #8B6A2F;
     --gold-hover: #A07C3A;
+    --gold-soft: #F4EBDD;
+    --gold-glow: rgba(198, 161, 91, 0.22);
+    --navy-tint: #0F2B59;
+    --navy-accent: #153A7A;
 
     /* צבעי רקע וטקסט */
     --bg-light: #F6F8FB;
@@ -469,10 +473,10 @@ table {
 .text-slate-700 { color: #334155; }
 .text-slate-800 { color: #1e293b; }
 .text-slate-900 { color: #0f172a; }
-.text-blue-900 { color: #1e3a8a; }
-.text-blue-950 { color: #172554; }
-.text-amber-600 { color: #d97706; }
-.text-amber-500 { color: #f59e0b; }
+.text-blue-900 { color: var(--navy-main); }
+.text-blue-950 { color: var(--navy-deep); }
+.text-amber-600 { color: var(--gold-brand); }
+.text-amber-500 { color: var(--gold-hover); }
 .text-\[var\(--gold-brand\)\] { color: var(--gold-brand); }
 .text-\[var\(--navy-main\)\] { color: var(--navy-main); }
 
@@ -487,9 +491,9 @@ table {
 .border-white\/20 { border-color: rgba(255, 255, 255, 0.2); }
 .border-white\/5 { border-color: rgba(255, 255, 255, 0.05); }
 
-.bg-amber-100 { background-color: #fef3c7; }
-.bg-blue-900 { background-color: #1e3a8a; }
-.bg-blue-900\/90 { background-color: rgba(30, 58, 138, 0.9); }
+.bg-amber-100 { background-color: var(--gold-soft); }
+.bg-blue-900 { background-color: var(--navy-main); }
+.bg-blue-900\/90 { background-color: rgba(11, 27, 59, 0.9); }
 
 .object-contain { object-fit: contain; }
 .sticky { position: sticky; }
@@ -516,7 +520,7 @@ table {
 .transition-colors { transition: color var(--ease-default), background-color var(--ease-default), border-color var(--ease-default); }
 .transform { transform: translateZ(0); }
 .hover\:-translate-y-1:hover { transform: translateY(-0.25rem); }
-.hover\:bg-blue-800:hover { background-color: #1e40af; }
+.hover\:bg-blue-800:hover { background-color: var(--navy-tint); }
 
 .backdrop-blur-sm { backdrop-filter: blur(4px); }
 .backdrop-blur-md { backdrop-filter: blur(12px); }
@@ -3641,7 +3645,7 @@ main section.bg-slate-50 h3 {
 }
 
 .about-focus-area__card h3 {
-    color: #172554;
+    color: var(--navy-deep);
     font-size: 1.9rem;
     font-weight: 800;
     line-height: 1.25;
@@ -3709,11 +3713,11 @@ main section.bg-slate-50 h3 {
 }
 
 .media-page .media-top-strip {
-    background: radial-gradient(circle at top right, #1d4ed8 0%, #0b1f4d 45%, #05122f 100%);
+    background: radial-gradient(circle at top right, var(--navy-accent) 0%, var(--navy-main) 45%, var(--navy-deep) 100%);
 }
 
 .media-page .media-hero {
-    background: radial-gradient(circle at top right, #1d4ed8 0%, #0b1f4d 45%, #05122f 100%);
+    background: radial-gradient(circle at top right, var(--navy-accent) 0%, var(--navy-main) 45%, var(--navy-deep) 100%);
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
@@ -3735,7 +3739,7 @@ main section.bg-slate-50 h3 {
 }
 
 .media-page .media-hero__subtitle {
-    color: #dbeafe;
+    color: #e2e8f0;
 }
 
 .media-page .media-hero__checklist {
@@ -3752,7 +3756,7 @@ main section.bg-slate-50 h3 {
 
 .media-page .media-hero__panel-card {
     border: 1px solid rgba(255, 255, 255, 0.22);
-    background: linear-gradient(160deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 64, 175, 0.45) 100%);
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.62) 0%, rgba(21, 58, 122, 0.42) 100%);
     box-shadow: 0 22px 46px rgba(2, 6, 23, 0.35);
     border-radius: 1.5rem;
     padding: 1.5rem;
@@ -3765,7 +3769,7 @@ main section.bg-slate-50 h3 {
     padding: 0.3rem 0.85rem;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #dbeafe;
+    color: #e2e8f0;
     font-size: 0.74rem;
     font-weight: 800;
     letter-spacing: 0.04em;
@@ -3897,7 +3901,7 @@ main section.bg-slate-50 h3 {
         padding-bottom: 1.65rem;
         border-bottom-left-radius: 1.6rem;
         border-bottom-right-radius: 1.6rem;
-        background: linear-gradient(160deg, #04142f 0%, #0a2a63 50%, #1e40af 100%);
+        background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy-main) 55%, var(--navy-accent) 100%);
     }
 
     .media-page .media-hero::before,
@@ -3955,7 +3959,7 @@ main section.bg-slate-50 h3 {
         font-size: 0.93rem;
         line-height: 1.58;
         margin-bottom: 0.95rem;
-        color: #dbeafe;
+        color: #e2e8f0;
     }
 
     .media-page .media-hero__checklist {
@@ -3968,7 +3972,7 @@ main section.bg-slate-50 h3 {
         font-size: 0.86rem;
         line-height: 1.45;
         align-items: flex-start;
-        color: #dbeafe;
+        color: #e2e8f0;
     }
 
     .media-page .media-hero__checklist li span:last-child {
@@ -4086,13 +4090,13 @@ main section.bg-slate-50 h3 {
 }
 
 .video-filter__btn:hover {
-    border-color: #1d4ed8;
-    color: #1d4ed8;
+    border-color: var(--navy-main);
+    color: var(--navy-main);
 }
 
 .video-filter__btn.active {
-    border-color: #1d4ed8;
-    background: #1d4ed8;
+    border-color: var(--navy-main);
+    background: var(--navy-main);
     color: #ffffff;
 }
 
@@ -4105,7 +4109,7 @@ main section.bg-slate-50 h3 {
     inset: 0;
     border: 0;
     z-index: 2;
-    background: linear-gradient(160deg, rgba(11, 31, 77, 0.92) 0%, rgba(30, 64, 175, 0.88) 100%);
+    background: linear-gradient(160deg, rgba(11, 27, 59, 0.94) 0%, rgba(21, 58, 122, 0.86) 100%);
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -4156,7 +4160,7 @@ main section.bg-slate-50 h3 {
     border: 1px solid #dbe4f3;
     border-radius: 1.2rem;
     padding: 1rem 1.2rem;
-    background: linear-gradient(90deg, #eff6ff 0%, #ffffff 100%);
+    background: linear-gradient(90deg, rgba(244, 248, 251, 1) 0%, #ffffff 100%);
 }
 
 .video-inline-cta .btn-primary {
@@ -4199,7 +4203,7 @@ main section.bg-slate-50 h3 {
     width: 72px;
     height: 3px;
     margin-inline: auto;
-    background: linear-gradient(90deg, var(--gold-brand) 0%, #facc15 100%);
+    background: linear-gradient(90deg, var(--gold-brand) 0%, var(--gold-hover) 100%);
     border-radius: 9999px;
 }
 
@@ -4313,7 +4317,7 @@ main section.bg-slate-50 h3 {
 
 
 .hero-gradient {
-    background: radial-gradient(circle at top right, #1d4ed8 0%, #0b1f4d 45%, #05122f 100%);
+    background: radial-gradient(circle at top right, var(--navy-accent) 0%, var(--navy-main) 45%, var(--navy-deep) 100%);
 }
 
 .insurance-card {
@@ -4335,8 +4339,8 @@ main section.bg-slate-50 h3 {
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    background: #eff6ff;
-    color: #1e3a8a;
+    background: rgba(244, 248, 251, 1);
+    color: var(--navy-main);
 }
 
 /* Health insurance pages - improved second half readability */
