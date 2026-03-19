@@ -100,7 +100,7 @@ gtag('config', 'G-EM8SYH542C');
                 <button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
             </nav>
 
-            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט">
+            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
             </button>
         </div>
@@ -562,33 +562,42 @@ gtag('config', 'G-EM8SYH542C');
 
     <script src="js/site-footer.js"></script>
 
-<div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden">
+<div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" tabindex="-1">
     <div class="bg-white rounded-[1.5rem] p-5 md:p-8 max-w-lg w-[92%] max-h-[90vh] overflow-y-auto relative shadow-2xl border-t-4 border-blue-600">
         
-        <button id="closeContact" class="absolute top-3 left-3 text-slate-400 hover:text-blue-900 text-2xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all z-50">×</button>
+        <button id="closeContact" class="absolute top-3 left-3 text-slate-400 hover:text-blue-900 text-2xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all z-50" aria-label="סגירת טופס יצירת קשר">×</button>
 
         <div class="mb-4 text-right">
-            <h2 class="text-2xl md:text-3xl font-black text-blue-950">השאירו פרטים</h2>
+            <h2 id="contactModalTitle" class="text-2xl md:text-3xl font-black text-blue-950">השאירו פרטים</h2>
             <p class="text-slate-600 text-sm font-bold">בדיקה מקצועית וליווי אישי - ללא עלות</p>
         </div>
 
         <form id="modal-contact-form" class="space-y-3">
             <div>
+                <label for="user_name" class="sr-only">שם מלא</label>
                 <input type="text" id="user_name" name="user_name" required placeholder="שם מלא" 
+                    aria-describedby="name-error"
                     class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
-                <p id="name-error" class="hidden text-[10px] text-red-600 font-bold mt-1"></p>
+                <p id="name-error" class="hidden text-[10px] text-red-600 font-bold mt-1" aria-live="polite"></p>
             </div>
 
             <div>
+                <label for="user_phone" class="sr-only">מספר טלפון</label>
                 <input type="tel" id="user_phone" inputmode="tel" name="user_phone" required placeholder="מספר טלפון" 
+                    aria-describedby="phone-error"
                     class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
-                <p id="phone-error" class="hidden text-[10px] text-red-600 font-bold mt-1"></p>
+                <p id="phone-error" class="hidden text-[10px] text-red-600 font-bold mt-1" aria-live="polite"></p>
             </div>
 
+            <label for="user_email" class="sr-only">אימייל</label>
             <input type="email" id="user_email" name="user_email" placeholder="אימייל (לא חובה)" 
+                aria-describedby="email-error"
                 class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
+            <p id="email-error" class="hidden text-[10px] text-red-600 font-bold mt-1" aria-live="polite"></p>
 
+            <label for="user_message" class="sr-only">מה תרצו לבדוק?</label>
             <textarea name="message" rows="2" placeholder="מה תרצו לבדוק?" 
+                id="user_message"
                 class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm resize-none"></textarea>
 
             <p class="mobile-form-note">במובייל מספיק להשאיר שם וטלפון - שאר הפרטים יושלמו איתכם בשיחה.</p>
@@ -613,7 +622,7 @@ gtag('config', 'G-EM8SYH542C');
 
   
   
-<div id="exitPopup" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" style="display: none;">
+<div id="exitPopup" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-describedby="popupText" tabindex="-1">
         <div class="bg-white rounded-[2rem] p-8 md:p-12 max-w-lg w-[90%] relative shadow-2xl text-center border-4 border-green-500">
             <button id="closeExitPopup" class="absolute top-4 right-4 text-slate-300 hover:text-slate-600" aria-label="סגירת חלון ההצעה">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -665,26 +674,49 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactModal = document.getElementById('contactModal');
 const exitPopup = document.getElementById('exitPopup');
 const form = document.getElementById('modal-contact-form');
+    let activeModal = null;
+    let lastFocusedElement = null;
     
     let isEligibleForPopup = false;
     setTimeout(() => { isEligibleForPopup = true; }, 10000);
 
     // --- פונקציות עזר למודאלים ---
+    function getFocusableElements(modal) {
+    if (!modal) return [];
+    return Array.from(
+        modal.querySelectorAll(
+            'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        )
+    ).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+}
+
     function openModal(modal) {
     if (!modal) return;
+    lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    activeModal = modal;
     modal.classList.remove('hidden', 'opacity-0');
     modal.classList.add('opacity-100');
     modal.style.display = 'flex';
+
+    const focusableElements = getFocusableElements(modal);
+    const autofocusTarget =
+        modal.querySelector('#closeContact, #closeExitPopup, input, textarea, button, a[href]');
+    (autofocusTarget || focusableElements[0] || modal).focus?.();
 }
 
     function closeModal(modal) {
     if (!modal) return;
+    const shouldRestoreFocus = activeModal === modal;
     modal.classList.remove('opacity-100');
     modal.classList.add('opacity-0');
+    activeModal = activeModal === modal ? null : activeModal;
 
     setTimeout(() => {
         modal.classList.add('hidden');
         modal.style.display = 'none';
+        if (shouldRestoreFocus) {
+            lastFocusedElement?.focus?.();
+        }
     }, 300);
 }
 
@@ -693,6 +725,7 @@ const form = document.getElementById('modal-contact-form');
         const input = document.getElementById(inputId);
         const error = document.getElementById(errorId);
         input.classList.add('border-red-500');
+        input.setAttribute('aria-invalid', 'true');
         error.textContent = message;
         error.classList.remove('hidden');
     }
@@ -700,6 +733,7 @@ const form = document.getElementById('modal-contact-form');
     function clearErrors() {
         ['user_name', 'user_phone', 'user_email'].forEach(id => {
             document.getElementById(id)?.classList.remove('border-red-500');
+            document.getElementById(id)?.setAttribute('aria-invalid', 'false');
         });
         ['name-error', 'phone-error', 'email-error'].forEach(id => {
             const err = document.getElementById(id);
@@ -823,6 +857,30 @@ contactModal?.addEventListener('click', (e) => {
             closeModal(contactModal);
             closeModal(exitPopup);
             document.getElementById('accessibilityModal')?.classList.add('hidden');
+            return;
+        }
+
+        if (e.key !== 'Tab' || !activeModal || activeModal.classList.contains('hidden')) {
+            return;
+        }
+
+        const focusableElements = getFocusableElements(activeModal);
+        if (!focusableElements.length) {
+            e.preventDefault();
+            activeModal.focus?.();
+            return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const currentElement = document.activeElement;
+
+        if (e.shiftKey && currentElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        } else if (!e.shiftKey && currentElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
         }
     });
 });
@@ -832,10 +890,16 @@ contactModal?.addEventListener('click', (e) => {
 <script>
 function closeMobileMenu() {
   document.getElementById('mobileMenu')?.classList.add('hidden');
+  document.getElementById('menuBtn')?.setAttribute('aria-expanded', 'false');
 }
 
 document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBtn = document.getElementById('menuBtn');
+  const isExpanded = menuBtn?.getAttribute('aria-expanded') === 'true';
+
+  mobileMenu?.classList.toggle('hidden');
+  menuBtn?.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 });
 
 document.querySelectorAll('#mobileMenu a').forEach(link => {
