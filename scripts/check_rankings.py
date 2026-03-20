@@ -323,9 +323,6 @@ def main() -> int:
     setup_logging()
     args = parse_args()
 
-    if not should_run_now(args.target_hour, args.force_run):
-        return 0
-
     output_dir = Path(args.output_dir)
     target_date = datetime.now(timezone.utc).date() - timedelta(days=1)
     history_path = output_dir / "rank_history.csv"
