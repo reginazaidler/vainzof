@@ -5400,19 +5400,25 @@ main section.bg-slate-50 h3 {
     details.faq-item summary,
     details.faq-card summary {
         list-style: none;
-        cursor: default;
+        cursor: pointer;
         margin: 0;
-        padding: 1.15rem 1.25rem 0.45rem;
+        padding: 1.15rem 3.75rem 1.15rem 1.25rem;
         color: #0f2b49;
         font-size: 1.25rem;
         font-weight: 900;
         line-height: 1.45;
-        pointer-events: none;
+        pointer-events: auto;
     }
 
     details.faq-item summary::before,
     details.faq-card summary::before {
-        display: none !important;
+        display: grid !important;
+        left: 1.25rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 1.15rem;
+        background: #edf3fb;
+        color: #1e3a5f;
     }
 
     details.faq-item summary::-webkit-details-marker,
@@ -5422,7 +5428,6 @@ main section.bg-slate-50 h3 {
 
     details.faq-item > *:not(summary),
     details.faq-card > *:not(summary) {
-        display: block;
         padding: 0 1.25rem 1.15rem;
         color: #334155;
         font-size: 1.03rem;
