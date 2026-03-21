@@ -22,9 +22,11 @@
         <a href="calculator.html">מחשבון חיסכון</a>
         <a href="media.html">וידאו</a>
         <a href="reviews.html">לקוחות ממליצים</a>
-        <a href="sochen-bituach-herzliya.html">סוכן ביטוח בהרצליה</a>
-        <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
-        <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
+        <div class="site-footer__city-links" data-city-links>
+          <a href="sochen-bituach-herzliya.html">סוכן ביטוח בהרצליה</a>
+          <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
+          <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
+        </div>
         <a id="openContactFooter" href="services.html#contactModal">צור קשר</a>
       </nav>
 
@@ -46,6 +48,11 @@
   `;
 
   const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const cityPages = new Set(['sochen-bituach-herzliya.html', 'sochen-bituach-petah-tikva.html', 'sochen-bituach-ashdod.html']);
+  const cityLinksGroup = footer.querySelector('[data-city-links]');
+  if (cityPages.has(currentPage)) {
+    cityLinksGroup?.remove();
+  }
   footer.querySelectorAll('.site-footer__nav a').forEach((link) => {
     const href = (link.getAttribute('href') || '').toLowerCase();
     if (href === currentPage) {
