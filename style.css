@@ -4988,22 +4988,11 @@ main section.bg-slate-50 h3 {
 }
 
 .faq-page .faq-shell {
-    display: grid;
-    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
-    gap: 1.5rem;
-    align-items: start;
+    display: block;
 }
 
-.faq-page .faq-sidebar {
-    position: sticky;
-    top: 92px;
-    align-self: start;
-    height: fit-content;
-    display: grid;
-    gap: 1rem;
-}
-
-.faq-page .faq-sidebar__card,
+.faq-page .faq-top-tools__intro,
+.faq-page .faq-top-tools__contact,
 .faq-page .faq-overview,
 .faq-page .faq-section-block {
     border: 1px solid rgba(219, 228, 240, 0.95);
@@ -5012,11 +5001,12 @@ main section.bg-slate-50 h3 {
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
 }
 
-.faq-page .faq-sidebar__card {
+.faq-page .faq-top-tools__intro,
+.faq-page .faq-top-tools__contact {
     padding: 1.15rem;
 }
 
-.faq-page .faq-sidebar__card--intro {
+.faq-page .faq-top-tools__intro {
     background: linear-gradient(135deg, #0b1b3b 0%, #17396f 100%);
     color: #fff;
 }
@@ -5031,11 +5021,11 @@ main section.bg-slate-50 h3 {
     text-transform: uppercase;
 }
 
-.faq-page .faq-sidebar__card--intro .faq-sidebar__eyebrow {
+.faq-page .faq-top-tools__intro .faq-sidebar__eyebrow {
     color: rgba(255, 255, 255, 0.72);
 }
 
-.faq-page .faq-sidebar__card--intro h2,
+.faq-page .faq-top-tools__intro h3,
 .faq-page .faq-overview__header h2,
 .faq-page .faq-section-heading h2 {
     margin: 0;
@@ -5044,31 +5034,54 @@ main section.bg-slate-50 h3 {
     line-height: 1.22;
 }
 
-.faq-page .faq-sidebar__card--intro h2 {
+.faq-page .faq-top-tools__intro h3 {
     color: #fff;
     font-size: 1.35rem;
 }
 
-.faq-page .faq-sidebar__card p,
+.faq-page .faq-top-tools__intro p,
 .faq-page .faq-overview__text,
-.faq-page .faq-section-heading p {
+.faq-page .faq-section-heading p,
+.faq-page .faq-top-tools__contact p {
     margin: 0.75rem 0 0;
     color: #475569;
     line-height: 1.75;
 }
 
-.faq-page .faq-sidebar__card--intro p,
-.faq-page .faq-sidebar__contact-text {
+.faq-page .faq-top-tools__intro p {
     color: rgba(255, 255, 255, 0.9);
 }
 
-.faq-page .faq-sidebar__card--contact {
+.faq-page .faq-sidebar__contact-text {
+    color: #475569;
+}
+
+.faq-page .faq-top-tools__contact {
     background: linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
 }
 
 .faq-page .faq-sidebar__cta {
     width: 100%;
     margin-top: 1rem;
+}
+
+
+.faq-page .faq-top-tools {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.85fr) minmax(240px, 0.9fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
+}
+
+.faq-page .faq-top-tools__contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.faq-page .faq-top-tools__nav {
+    align-content: start;
 }
 
 .faq-page .faq-quick-nav {
@@ -5278,17 +5291,8 @@ main section.bg-slate-50 h3 {
 }
 
 @media (max-width: 1023px) {
-    .faq-page .faq-shell {
+    .faq-page .faq-top-tools {
         grid-template-columns: 1fr;
-    }
-
-    .faq-page .faq-sidebar {
-        position: static;
-        order: 2;
-    }
-
-    .faq-page .faq-main {
-        order: 1;
     }
 }
 
@@ -5300,7 +5304,8 @@ main section.bg-slate-50 h3 {
 
     .faq-page .faq-overview,
     .faq-page .faq-section-block,
-    .faq-page .faq-sidebar__card {
+    .faq-page .faq-top-tools__intro,
+    .faq-page .faq-top-tools__contact {
         border-radius: 1.1rem;
     }
 
