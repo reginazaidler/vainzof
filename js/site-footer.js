@@ -48,10 +48,23 @@
   `;
 
   const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  const cityPages = new Set(['sochen-bituach-herzliya.html', 'sochen-bituach-petah-tikva.html', 'sochen-bituach-ashdod.html']);
+  const cityPages = [
+    'sochen-bituach-herzliya.html',
+    'sochen-bituach-petah-tikva.html',
+    'sochen-bituach-ashdod.html'
+  ];
   const cityLinksGroup = footer.querySelector('[data-city-links]');
-  if (cityPages.has(currentPage)) {
-    cityLinksGroup?.remove();
+  if (cityLinksGroup) {
+    cityLinksGroup.querySelectorAll('a').forEach((link) => {
+      const href = (link.getAttribute('href') || '').toLowerCase();
+      if (cityPages.includes(currentPage) && href !== currentPage) {
+        link.remove();
+      }
+    });
+
+    if (!cityLinksGroup.querySelector('a')) {
+      cityLinksGroup.remove();
+    }
   }
   footer.querySelectorAll('.site-footer__nav a').forEach((link) => {
     const href = (link.getAttribute('href') || '').toLowerCase();
