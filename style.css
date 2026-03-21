@@ -3118,7 +3118,8 @@ main section.bg-slate-50 h3 {
 
 @media (min-width: 1024px) {
     .bottom-cta__title {
-        white-space: nowrap;
+        max-width: 22ch;
+        text-wrap: balance;
     }
 }
 
