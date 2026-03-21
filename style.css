@@ -4983,6 +4983,10 @@ main section.bg-slate-50 h3 {
         linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
 }
 
+.faq-page {
+    overflow-x: visible;
+}
+
 .faq-page .faq-shell {
     display: grid;
     grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
@@ -4993,6 +4997,8 @@ main section.bg-slate-50 h3 {
 .faq-page .faq-sidebar {
     position: sticky;
     top: 92px;
+    align-self: start;
+    height: fit-content;
     display: grid;
     gap: 1rem;
 }
