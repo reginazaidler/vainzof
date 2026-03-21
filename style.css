@@ -662,12 +662,13 @@ table {
     }
 
     #mobileMenu.absolute {
-        position: fixed;
-        top: calc(6px + 68px);
+        position: absolute;
+        top: 100%;
         right: 0;
         left: 0;
-        max-height: calc(100vh - 74px);
+        max-height: min(calc(100vh - 84px), calc(100dvh - 84px));
         overflow-y: auto;
+        overscroll-behavior: contain;
         z-index: 1001 !important;
     }
 }
@@ -2550,10 +2551,14 @@ main section.bg-slate-50 h3 {
 }
 
 @media (max-width: 1023px) {
+    body {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom));
+    }
 
     .desktop-sticky-cta {
         display: none;
     }
+
     .site-topbar {
         font-size: 11px;
     }
@@ -2565,7 +2570,17 @@ main section.bg-slate-50 h3 {
 
 @media (max-width: 767px) {
     body {
-        padding-bottom: 68px;
+        padding-bottom: calc(84px + env(safe-area-inset-bottom));
+    }
+
+    .mobile-sticky-cta {
+        gap: 8px;
+        padding-inline: 10px;
+    }
+
+    .mobile-sticky-cta__btn {
+        min-height: 46px;
+        font-size: 13px;
     }
 
     /* צמצום ריווח אנכי במובייל כדי למנוע תחושת "מקטעים ריקים" בדף הבית */
