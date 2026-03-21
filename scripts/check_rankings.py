@@ -86,13 +86,6 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Check daily Search Console ranks")
     parser.add_argument("--config", default="config/queries.json", help="Path to query config JSON")
     parser.add_argument("--output-dir", default="output", help="Directory for generated reports")
-    parser.add_argument("--target-hour", type=int, default=5, help="Required local hour in Asia/Jerusalem")
-    parser.add_argument(
-        "--force-run",
-        action="store_true",
-        default=os.getenv("FORCE_RUN", "false").lower() in {"1", "true", "yes"},
-        help="Ignore local-hour guard and run immediately",
-    )
     parser.add_argument(
         "--demo-run",
         action="store_true",
@@ -129,16 +122,6 @@ def load_config(path: Path) -> Config:
         queries=[str(q) for q in raw["queries"]],
     )
 
-
-def should_run_now(target_hour: int, force_run: bool) -> bool:
-    now_il = datetime.now(ISRAEL_TZ)
-    if force_run:
-        LOGGER.info("FORCE_RUN enabled (current Israel time: %s)", now_il.isoformat())
-        return True
-    if now_il.hour != target_hour:
-        LOGGER.info("Skipping run: local Israel hour is %s, target is %s", now_il.hour, target_hour)
-        return False
-    return True
 
 
 def load_credentials() -> Any:
