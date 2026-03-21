@@ -320,321 +320,351 @@ gtag('config', 'G-EM8SYH542C');
 </section>
 
     <section class="py-12 bg-white faq-layout">
-        <div class="container-clean max-w-6xl">
-            <nav class="faq-quick-nav" aria-label="ניווט מהיר בין קטגוריות">
-                <a href="#faq-pension">פנסיה וחיסכון</a>
-                <a href="#faq-insurance">ביטוחים ובריאות</a>
-                <a href="#faq-self-employed">עצמאיים ובעלי שליטה</a>
-                <a href="#faq-decisions">לפני קבלת החלטה</a>
-                <a href="#faq-costs">עלויות ושקיפות</a>
-            </nav>
+        <div class="container-clean faq-shell">
+            <aside class="faq-sidebar" aria-label="ניווט מהיר ויצירת קשר">
+                <div class="faq-sidebar__card faq-sidebar__card--intro">
+                    <p class="faq-sidebar__eyebrow">שאלות נפוצות</p>
+                    <h2>ריכזתי כאן תשובות קצרות וברורות לשאלות שחוזרות הכי הרבה.</h2>
+                    <p>
+                        אם חשוב לכם להבין מה לבדוק בפנסיה, בביטוחים או בחיסכון בלי להסתבך,
+                        תוכלו לעבור בין הנושאים ולפתוח רק את מה שרלוונטי עבורכם.
+                    </p>
+                </div>
 
-			<div id="faq-pension" class="mb-12 faq-section-block">
-    <h2 class="text-2xl font-black text-blue-950 mb-6 flex items-center gap-3">
-        <span class="w-8 h-1 bg-[var(--gold-brand)]"></span>
-        פנסיה, חיסכון ודוחות
-    </h2>
+                <nav class="faq-quick-nav faq-sidebar__card" aria-label="ניווט מהיר בין קטגוריות">
+                    <a href="#faq-pension"><strong>פנסיה וחיסכון</strong><span>דוחות, דמי ניהול וכספים מפוזרים</span></a>
+                    <a href="#faq-insurance"><strong>ביטוחים ובריאות</strong><span>כפל ביטוחי, סיעוד ובריאות פרטית</span></a>
+                    <a href="#faq-self-employed"><strong>עצמאיים</strong><span>הפקדות, הטבות מס ומה מפספסים</span></a>
+                    <a href="#faq-decisions"><strong>לפני החלטה</strong><span>בדיקות שכדאי לעשות לפני שינוי</span></a>
+                    <a href="#faq-costs"><strong>עלויות ושקיפות</strong><span>עלות הליווי, מסמכים ומה בודקים</span></a>
+                </nav>
 
-    <div class="faq-list">
+                <div class="faq-sidebar__card faq-sidebar__card--contact">
+                    <p class="faq-sidebar__eyebrow">צריכים תשובה אישית?</p>
+                    <p class="faq-sidebar__contact-text">אם לא מצאתם כאן את מה שחיפשתם, אפשר להשאיר פרטים ולקבל הכוונה אישית לפי המצב שלכם.</p>
+                    <button id="openContactSidebar" class="site-cta faq-sidebar__cta">לתיאום בדיקה אישית</button>
+                </div>
+            </aside>
 
-    <details class="faq-card group">
-        <summary>
-            מה זה דמי ניהול בפנסיה ואיך יודעים אם הם גבוהים?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            דמי ניהול הם העלות שאתם משלמים על ניהול החיסכון הפנסיוני. גם הבדל קטן באחוזים יכול להפוך לאורך השנים לעשרות אלפי שקלים, ולכן חשוב לבדוק אם התנאים שקיבלתם באמת תחרותיים.
+            <div class="faq-main">
+                <section class="faq-overview" aria-label="פתיח עמוד שאלות ותשובות">
+                    <div class="faq-overview__header">
+                        <p class="faq-overview__eyebrow">לפני שמקבלים החלטה</p>
+                        <h2>כל מה שחשוב לדעת על פנסיה, ביטוחים וחיסכון - במקום אחד.</h2>
+                        <p class="faq-overview__text">
+                            ריכזתי כאן שאלות נפוצות שעולות סביב דמי ניהול, כפל ביטוחים, כספים ישנים, מעבר עבודה,
+                            עצמאיים ובעלי שליטה. אפשר לעבור לפי נושא, לפתוח רק את השאלות שמעניינות אתכם,
+                            ולקבל תשובה ברורה בלי מונחים מסובכים.
+                        </p>
+                    </div>
+                </section>
+
+                <div class="faq-sections-grid">
+                    <section id="faq-pension" class="faq-section-block">
+                        <div class="faq-section-heading">
+                            <p class="faq-section-heading__eyebrow">פנסיה וחיסכון</p>
+                            <h2>פנסיה, חיסכון ודוחות</h2>
+                            <p>שאלות על דמי ניהול, דוחות שנתיים, קופות ישנות, פיצויים וכסף שלא בטוח מנוהל נכון.</p>
+                        </div>
+
+                        <div class="faq-list">
+                            <details class="faq-card group">
+                                <summary>
+                                    מה זה דמי ניהול בפנסיה ואיך יודעים אם הם גבוהים?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    דמי ניהול הם העלות שאתם משלמים על ניהול החיסכון הפנסיוני. גם הבדל קטן באחוזים יכול להפוך לאורך השנים לעשרות אלפי שקלים, ולכן חשוב לבדוק אם התנאים שקיבלתם באמת תחרותיים.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    האם כדאי לאחד קופות וקרנות ישנות?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לפעמים כן ולפעמים לא. איחוד קופות יכול לעשות סדר ולהפחית דמי ניהול, אבל לפני כל איחוד צריך לבדוק אם יש יתרונות ישנים, כיסויים מיוחדים או תנאים שלא כדאי לאבד.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    מה חשוב לבדוק בדוח השנתי של קרן הפנסיה?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    חשוב לבדוק את גובה ההפקדות, דמי הניהול, השכר המבוטח, מסלול ההשקעה והכיסויים הביטוחיים. הרבה אנשים לא שמים לב לפערים או לטעויות שמצטברות לאורך זמן.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    מה עושים אם יש פער בין השכר שלי לבין השכר המבוטח בפנסיה?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    פער בין השכר בפועל לשכר המבוטח עלול להשפיע גם על גובה ההפקדות וגם על הכיסויים הביטוחיים בקרן. לכן חשוב לבדוק אם כל רכיבי השכר דווחו נכון, ואם צריך לבצע תיקון מול המעסיק או הגוף המנהל לפני שהפער מצטבר לאורך זמן.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    יש לי כמה קרנות השתלמות ממקומות עבודה שונים - האם זה בעייתי?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לא בהכרח. לפעמים יש היגיון להשאיר כמה קרנות נפרדות, אבל במקרים רבים זה מקשה על המעקב ויוצר דמי ניהול שונים בין הקרנות. לפני כל איחוד או שינוי צריך לבדוק ותק, עלויות, מסלולי השקעה ונזילות כדי להבין מה באמת עדיף עבורכם.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    עזבתי מקום עבודה, האם כדאי לי למשוך את כספי הפיצויים?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    ברוב המקרים לא נכון למהר ולמשוך פיצויים בלי בדיקה. משיכה כזו יכולה לפגוע בחיסכון העתידי ולייצר גם השלכות מס, ולכן חשוב להבין את התמונה המלאה לפני שמקבלים החלטה.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    יש לי כסף בעו״ש או בפיקדון - מה האפשרויות שלי?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לעיתים כסף ששוכב בעו״ש או בפיקדון נשחק לאורך זמן. קיימות חלופות כמו קופת גמל להשקעה או פוליסת חיסכון, אבל הבחירה צריכה להתבסס על טווח הזמן, רמת הסיכון והמטרות שלכם.
+                                </div>
+                            </details>
+                        </div>
+                    </section>
+
+                    <section id="faq-insurance" class="faq-section-block">
+                        <div class="faq-section-heading">
+                            <p class="faq-section-heading__eyebrow">ביטוחים ובריאות</p>
+                            <h2>ביטוחים ובריאות</h2>
+                            <p>מקום אחד לכל מה שקשור לחפיפות, כיסויים חסרים והבדלים בין מוצרי הביטוח השונים.</p>
+                        </div>
+
+                        <div class="faq-list">
+                            <details class="faq-card group">
+                                <summary>
+                                    מה זה כפל ביטוחי ולמה זה קורה?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    כפל ביטוחי קורה כשאתם משלמים לשתי חברות שונות על אותו כיסוי. ברוב המקרים לא תקבלו פיצוי כפול, ולכן בפועל אתם משלמים יותר בלי לקבל ערך אמיתי. בדיקה מקצועית מאפשרת לזהות מה מיותר, מה חסר, ואיך לבנות תיק ביטוחי מדויק יותר.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    מה ההבדל בין אובדן כושר עבודה בקרן הפנסיה לביטוח פרטי?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    בקרן פנסיה הכיסוי הוא בדרך כלל כללי יותר, ואילו בביטוח פרטי אפשר לעיתים להגדיר כיסוי שמתאים לעיסוק הספציפי שלכם. ההבדל הזה יכול להיות קריטי במקרה של פגיעה ביכולת לעבוד במקצוע שלכם.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    יש לי ביטוח סיעודי דרך קופת החולים, האם זה מספיק?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    ביטוח סיעודי של קופת החולים נותן בסיס, אבל לרוב הוא מוגבל בזמן ובגובה הכיסוי. במקרים מסוימים צריך לבדוק האם יש צורך בהשלמה פרטית, כדי למנוע מצב שבו המשפחה נשארת עם הוצאה כבדה לאורך זמן.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    האם ביטוח בריאות פרטי מחליף את קופת החולים או את השב״ן?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    בדרך כלל לא. קופת החולים, השב״ן והביטוח הפרטי פועלים בשכבות שונות, ולכן חשוב להבין מה נותן כל מוצר, איפה יש חפיפה ואיפה יש חוסר. המטרה היא לא להחזיק כמה שיותר פוליסות, אלא לבנות כיסוי ברור, יעיל ולא כפול.
+                                </div>
+                            </details>
+                        </div>
+                    </section>
+
+                    <section id="faq-self-employed" class="faq-section-block">
+                        <div class="faq-section-heading">
+                            <p class="faq-section-heading__eyebrow">עצמאיים ובעלי שליטה</p>
+                            <h2>עצמאיים ובעלי שליטה</h2>
+                            <p>שאלות ממוקדות למי שמנהל עסק וצריך להבין הפקדות, מס, חיסכון וכיסוי בלי לבזבז זמן.</p>
+                        </div>
+
+                        <div class="faq-list">
+                            <details class="faq-card group">
+                                <summary>
+                                    אני עצמאי, כמה אני באמת חייב להפקיד לפנסיה?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    מעבר לחובת ההפקדה לפי חוק, השאלה החשובה באמת היא כמה נכון להפקיד כדי לשמור על רצף חיסכון וגם לנצל הטבות מס. אצל עצמאיים, תכנון נכון יכול להשפיע גם על העתיד וגם על מה שנשאר בכיס כבר עכשיו.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    אני עצמאי או בעל שליטה - מה בדרך כלל אנשים מפספסים?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    הרבה עצמאיים ובעלי שליטה מפקידים בלי לבדוק האם המבנה נכון, האם הכיסוי הביטוחי מתאים, והאם מנצלים את הטבות המס הקיימות. בדיקה נכונה יכולה לחשוף גם חיסכון מיותר וגם הזדמנויות שלא נוצלו.
+                                </div>
+                            </details>
+                        </div>
+                    </section>
+
+                    <section id="faq-decisions" class="faq-section-block">
+                        <div class="faq-section-heading">
+                            <p class="faq-section-heading__eyebrow">לפני החלטה</p>
+                            <h2>שאלות חשובות לפני קבלת החלטה</h2>
+                            <p>קטגוריה שמרכזת את השאלות שכדאי לפתוח לפני שינוי מסלול, מעבר עבודה או ביטול מוצר קיים.</p>
+                        </div>
+
+                        <div class="faq-list">
+                            <details class="faq-card group">
+                                <summary>
+                                    האם כל אחד באמת צריך בדיקה פנסיונית וביטוחית?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    כמעט כל מי שעבד במספר מקומות, מחזיק ביטוחים שונים או לא בדק את התנאים שלו בשנים האחרונות, יכול לגלות כפילויות, דמי ניהול גבוהים או חוסרים בכיסוי. המטרה של הבדיקה היא לעשות סדר ולמנוע טעויות יקרות.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    כל כמה זמן כדאי לבדוק את הפנסיה והביטוחים?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    מומלץ לבצע בדיקה לפחות פעם בשנה, ובוודאי אחרי שינוי משמעותי כמו החלפת עבודה, שינוי שכר, נישואין, ילדים או פתיחת עסק. כל שינוי כזה יכול להשפיע על הצרכים הביטוחיים והפנסיוניים שלכם.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    האם אפשר להוזיל דמי ניהול גם אם כבר יש לי סוכן?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לפעמים כן ולפעמים לא, אבל תמיד כדאי לבדוק. השאלה היא לא רק אם יש סוכן, אלא האם התנאים שיש לכם היום באמת טובים ביחס למה שניתן להשיג בשוק וביחס למבנה האישי שלכם.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    האם שינוי מסלול השקעה יכול להשפיע על החיסכון העתידי?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    כן. מסלול ההשקעה משפיע על רמת הסיכון ועל פוטנציאל התשואה של החיסכון לאורך זמן. המסלול הנכון צריך להתאים לגיל, למטרות, למצב המשפחתי וליכולת שלכם להתמודד עם תנודתיות.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    האם אפשר לשפר כיסויים ביטוחיים בלי להגדיל משמעותית את העלות?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לפעמים כן. במקרים רבים הבעיה היא לא רק גובה העלות, אלא חוסר התאמה בין מה שמשלמים לבין מה שבאמת מקבלים. בדיקה נכונה יכולה לחשוף גם כפילויות וגם חוסרים, ואז לבנות תיק מדויק יותר בלי לשלם סתם.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    איזה מסמכים כדאי להכין לפני בדיקת פנסיה וביטוחים?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    כדאי להכין דוחות שנתיים או רבעוניים, תלושי שכר עדכניים, פירוט פוליסות קיימות וכל מסמך שמראה הפקדות, כיסויים או דמי ניהול. גם אם אין לכם הכול מסודר, אפשר להתחיל ממה שיש - אבל ככל שהתמונה מלאה יותר, כך אפשר לזהות מהר יותר פערים, כפילויות והזדמנויות לשיפור.
+                                </div>
+                            </details>
+                        </div>
+                    </section>
+
+                    <section id="faq-costs" class="faq-section-block faq-section-block--accent">
+                        <div class="faq-section-heading">
+                            <p class="faq-section-heading__eyebrow">עלויות ושקיפות</p>
+                            <h2>עלויות, שקיפות וליווי</h2>
+                            <p>האזור שמרכז שאלות על עלות הבדיקה, מה מקבלים ממנה ואילו בדיקות חשוב לעשות לפני שמשנים משהו.</p>
+                        </div>
+
+                        <div class="faq-list">
+                            <details class="faq-card group" open>
+                                <summary>
+                                    כמה עולה הבדיקה והליווי שלכם?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    <p class="mb-3"><strong>הבדיקה והליווי מתבצעים ללא עלות.</strong></p>
+                                    <p class="mb-3">המטרה של הבדיקה היא למפות את התיק הקיים, לזהות כפל ביטוחים, לבדוק דמי ניהול ולבחון האם המבנה הפנסיוני והביטוחי שלכם נכון.</p>
+                                    <p class="mb-3">בסיום הבדיקה אתם מקבלים תמונה ברורה של המצב - מה קיים היום, מה מיותר, ומה ניתן לשפר.</p>
+                                    <p>ההסברים ניתנים בצורה מלאה ושקופה, כך שאתם מבינים בדיוק מה האפשרויות שלכם לפני שמקבלים החלטות.</p>
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    עברתי מקום עבודה - מה חשוב לבדוק בפנסיה מיד אחרי המעבר?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    אחרי מעבר עבודה חשוב לבדוק שההפקדות ממשיכות ברצף, שהשכר המדווח נכון ושלא נפתחה קרן חדשה בלי צורך. זה גם הזמן לוודא שהכיסויים הביטוחיים נשמרו ושהתנאים עדיין מתאימים למצב החדש.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    איך יודעים אם מסלול ההשקעה בפנסיה מתאים לגיל ולמצב שלי?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    מסלול ההשקעה צריך להתאים לגיל, לטווח החיסכון, ליכולת להתמודד עם תנודתיות ולמטרות האישיות. לא כל מסלול שמתאים למישהו אחר מתאים גם לכם, ולכן חשוב לבדוק אם הבחירה הנוכחית באמת תואמת את הצרכים שלכם.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    יש לי ביטוח חיים דרך העבודה - האם צריך גם ביטוח פרטי?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לא תמיד. ביטוח דרך מקום העבודה יכול לתת בסיס טוב, אבל חשוב לבדוק מה גובה הכיסוי, האם הוא מספיק למשפחה ומה קורה אם עוזבים את מקום העבודה. רק אחרי שבודקים את התמונה המלאה אפשר להבין אם יש צורך בהשלמה פרטית.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    איך יודעים אם יש לי כספים ישנים שלא מנוהלים נכון?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    בדרך כלל צריך לבדוק דוחות, קופות ישנות, קרנות ממקומות עבודה קודמים ומוצרים שלא נגעו בהם שנים. בהרבה מקרים מגלים כספים מפוזרים, דמי ניהול גבוהים או מסלולים שכבר לא מתאימים למטרות של היום.
+                                </div>
+                            </details>
+
+                            <details class="faq-card group">
+                                <summary>
+                                    מה בודקים לפני שמבטלים פוליסה קיימת?
+                                    <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </summary>
+                                <div class="faq-content">
+                                    לפני שמבטלים פוליסה צריך להבין בדיוק מה מאבדים - כיסויים, תנאים ישנים, החרגות, עלויות עתידיות או זכויות שנצברו. רק אחרי שמשווים בין הקיים לבין החלופה אפשר לקבל החלטה שלא תפגע בהגנה הביטוחית.
+                                </div>
+                            </details>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            האם כדאי לאחד קופות וקרנות ישנות?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לפעמים כן ולפעמים לא. איחוד קופות יכול לעשות סדר ולהפחית דמי ניהול, אבל לפני כל איחוד צריך לבדוק אם יש יתרונות ישנים, כיסויים מיוחדים או תנאים שלא כדאי לאבד.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            מה חשוב לבדוק בדוח השנתי של קרן הפנסיה?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            חשוב לבדוק את גובה ההפקדות, דמי הניהול, השכר המבוטח, מסלול ההשקעה והכיסויים הביטוחיים. הרבה אנשים לא שמים לב לפערים או לטעויות שמצטברות לאורך זמן.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            מה עושים אם יש פער בין השכר שלי לבין השכר המבוטח בפנסיה?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            פער בין השכר בפועל לשכר המבוטח עלול להשפיע גם על גובה ההפקדות וגם על הכיסויים הביטוחיים בקרן. לכן חשוב לבדוק אם כל רכיבי השכר דווחו נכון, ואם צריך לבצע תיקון מול המעסיק או הגוף המנהל לפני שהפער מצטבר לאורך זמן.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            יש לי כמה קרנות השתלמות ממקומות עבודה שונים - האם זה בעייתי?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לא בהכרח. לפעמים יש היגיון להשאיר כמה קרנות נפרדות, אבל במקרים רבים זה מקשה על המעקב ויוצר דמי ניהול שונים בין הקרנות. לפני כל איחוד או שינוי צריך לבדוק ותק, עלויות, מסלולי השקעה ונזילות כדי להבין מה באמת עדיף עבורכם.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            עזבתי מקום עבודה, האם כדאי לי למשוך את כספי הפיצויים?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            ברוב המקרים לא נכון למהר ולמשוך פיצויים בלי בדיקה. משיכה כזו יכולה לפגוע בחיסכון העתידי ולייצר גם השלכות מס, ולכן חשוב להבין את התמונה המלאה לפני שמקבלים החלטה.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            יש לי כסף בעו״ש או בפיקדון - מה האפשרויות שלי?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לעיתים כסף ששוכב בעו״ש או בפיקדון נשחק לאורך זמן. קיימות חלופות כמו קופת גמל להשקעה או פוליסת חיסכון, אבל הבחירה צריכה להתבסס על טווח הזמן, רמת הסיכון והמטרות שלכם.
-        </div>
-    </details>
-</div>
-</div>
-          
-        <div id="faq-insurance" class="mb-12 faq-section-block">
-    <h2 class="text-2xl font-black text-blue-950 mb-6 flex items-center gap-3">
-        <span class="w-8 h-1 bg-[var(--gold-brand)]"></span>
-        ביטוחים ובריאות
-    </h2>
-
-    <div class="faq-list">
-
-    <details class="faq-card group">
-        <summary>
-            מה זה כפל ביטוחי ולמה זה קורה?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            כפל ביטוחי קורה כשאתם משלמים לשתי חברות שונות על אותו כיסוי. ברוב המקרים לא תקבלו פיצוי כפול, ולכן בפועל אתם משלמים יותר בלי לקבל ערך אמיתי. בדיקה מקצועית מאפשרת לזהות מה מיותר, מה חסר, ואיך לבנות תיק ביטוחי מדויק יותר.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            מה ההבדל בין אובדן כושר עבודה בקרן הפנסיה לביטוח פרטי?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            בקרן פנסיה הכיסוי הוא בדרך כלל כללי יותר, ואילו בביטוח פרטי אפשר לעיתים להגדיר כיסוי שמתאים לעיסוק הספציפי שלכם. ההבדל הזה יכול להיות קריטי במקרה של פגיעה ביכולת לעבוד במקצוע שלכם.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            יש לי ביטוח סיעודי דרך קופת החולים, האם זה מספיק?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            ביטוח סיעודי של קופת החולים נותן בסיס, אבל לרוב הוא מוגבל בזמן ובגובה הכיסוי. במקרים מסוימים צריך לבדוק האם יש צורך בהשלמה פרטית, כדי למנוע מצב שבו המשפחה נשארת עם הוצאה כבדה לאורך זמן.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            האם ביטוח בריאות פרטי מחליף את קופת החולים או את השב״ן?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            בדרך כלל לא. קופת החולים, השב״ן והביטוח הפרטי פועלים בשכבות שונות, ולכן חשוב להבין מה נותן כל מוצר, איפה יש חפיפה ואיפה יש חוסר. המטרה היא לא להחזיק כמה שיותר פוליסות, אלא לבנות כיסוי ברור, יעיל ולא כפול.
-        </div>
-    </details>
-</div>
-</div>
-
-<div id="faq-self-employed" class="mb-12 faq-section-block">
-    <h2 class="text-2xl font-black text-blue-950 mb-6 flex items-center gap-3">
-        <span class="w-8 h-1 bg-[var(--gold-brand)]"></span>
-        עצמאיים ובעלי שליטה
-    </h2>
-
-    <div class="faq-list">
-
-    <details class="faq-card group">
-        <summary>
-            אני עצמאי, כמה אני באמת חייב להפקיד לפנסיה?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            מעבר לחובת ההפקדה לפי חוק, השאלה החשובה באמת היא כמה נכון להפקיד כדי לשמור על רצף חיסכון וגם לנצל הטבות מס. אצל עצמאיים, תכנון נכון יכול להשפיע גם על העתיד וגם על מה שנשאר בכיס כבר עכשיו.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            אני עצמאי או בעל שליטה - מה בדרך כלל אנשים מפספסים?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            הרבה עצמאיים ובעלי שליטה מפקידים בלי לבדוק האם המבנה נכון, האם הכיסוי הביטוחי מתאים, והאם מנצלים את הטבות המס הקיימות. בדיקה נכונה יכולה לחשוף גם חיסכון מיותר וגם הזדמנויות שלא נוצלו.
-        </div>
-    </details>
-</div>
-</div>
-
-<div id="faq-decisions" class="mb-12 faq-section-block">
-    <h2 class="text-2xl font-black text-blue-950 mb-6 flex items-center gap-3">
-        <span class="w-8 h-1 bg-[var(--gold-brand)]"></span>
-        שאלות חשובות לפני קבלת החלטה
-    </h2>
-
-    <div class="faq-list">
-
-    <details class="faq-card group">
-        <summary>
-            האם כל אחד באמת צריך בדיקה פנסיונית וביטוחית?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            כמעט כל מי שעבד במספר מקומות, מחזיק ביטוחים שונים או לא בדק את התנאים שלו בשנים האחרונות, יכול לגלות כפילויות, דמי ניהול גבוהים או חוסרים בכיסוי. המטרה של הבדיקה היא לעשות סדר ולמנוע טעויות יקרות.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            כל כמה זמן כדאי לבדוק את הפנסיה והביטוחים?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            מומלץ לבצע בדיקה לפחות פעם בשנה, ובוודאי אחרי שינוי משמעותי כמו החלפת עבודה, שינוי שכר, נישואין, ילדים או פתיחת עסק. כל שינוי כזה יכול להשפיע על הצרכים הביטוחיים והפנסיוניים שלכם.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            האם אפשר להוזיל דמי ניהול גם אם כבר יש לי סוכן?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לפעמים כן ולפעמים לא, אבל תמיד כדאי לבדוק. השאלה היא לא רק אם יש סוכן, אלא האם התנאים שיש לכם היום באמת טובים ביחס למה שניתן להשיג בשוק וביחס למבנה האישי שלכם.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            האם שינוי מסלול השקעה יכול להשפיע על החיסכון העתידי?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            כן. מסלול ההשקעה משפיע על רמת הסיכון ועל פוטנציאל התשואה של החיסכון לאורך זמן. המסלול הנכון צריך להתאים לגיל, למטרות, למצב המשפחתי וליכולת שלכם להתמודד עם תנודתיות.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            האם אפשר לשפר כיסויים ביטוחיים בלי להגדיל משמעותית את העלות?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לפעמים כן. במקרים רבים הבעיה היא לא רק גובה העלות, אלא חוסר התאמה בין מה שמשלמים לבין מה שבאמת מקבלים. בדיקה נכונה יכולה לחשוף גם כפילויות וגם חוסרים, ואז לבנות תיק מדויק יותר בלי לשלם סתם.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            איזה מסמכים כדאי להכין לפני בדיקת פנסיה וביטוחים?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            כדאי להכין דוחות שנתיים או רבעוניים, תלושי שכר עדכניים, פירוט פוליסות קיימות וכל מסמך שמראה הפקדות, כיסויים או דמי ניהול. גם אם אין לכם הכול מסודר, אפשר להתחיל ממה שיש - אבל ככל שהתמונה מלאה יותר, כך אפשר לזהות מהר יותר פערים, כפילויות והזדמנויות לשיפור.
-        </div>
-    </details>
-</div>
-</div>
-
-<div id="faq-costs" class="mb-12 faq-section-block">
-    <h2 class="text-2xl font-black text-blue-950 mb-6 flex items-center gap-3">
-        <span class="w-8 h-1 bg-[var(--gold-brand)]"></span>
-        עלויות ושקיפות
-    </h2>
-
-    <div class="faq-list">
-
-    <details class="faq-card group">
-        <summary>
-            כמה עולה הבדיקה והליווי שלכם?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-    <p class="mb-3"><strong>הבדיקה והליווי מתבצעים ללא עלות.</strong></p>
-    <p class="mb-3">המטרה של הבדיקה היא למפות את התיק הקיים, לזהות כפל ביטוחים, לבדוק דמי ניהול ולבחון האם המבנה הפנסיוני והביטוחי שלכם נכון.</p>
-    <p class="mb-3">בסיום הבדיקה אתם מקבלים תמונה ברורה של המצב - מה קיים היום, מה מיותר, ומה ניתן לשפר.</p>
-    <p>ההסברים ניתנים בצורה מלאה ושקופה, כך שאתם מבינים בדיוק מה האפשרויות שלכם לפני שמקבלים החלטות.</p>
-</div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            עברתי מקום עבודה - מה חשוב לבדוק בפנסיה מיד אחרי המעבר?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            אחרי מעבר עבודה חשוב לבדוק שההפקדות ממשיכות ברצף, שהשכר המדווח נכון ושלא נפתחה קרן חדשה בלי צורך. זה גם הזמן לוודא שהכיסויים הביטוחיים נשמרו ושהתנאים עדיין מתאימים למצב החדש.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            איך יודעים אם מסלול ההשקעה בפנסיה מתאים לגיל ולמצב שלי?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            מסלול ההשקעה צריך להתאים לגיל, לטווח החיסכון, ליכולת להתמודד עם תנודתיות ולמטרות האישיות. לא כל מסלול שמתאים למישהו אחר מתאים גם לכם, ולכן חשוב לבדוק אם הבחירה הנוכחית באמת תואמת את הצרכים שלכם.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            יש לי ביטוח חיים דרך העבודה - האם צריך גם ביטוח פרטי?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לא תמיד. ביטוח דרך מקום העבודה יכול לתת בסיס טוב, אבל חשוב לבדוק מה גובה הכיסוי, האם הוא מספיק למשפחה ומה קורה אם עוזבים את מקום העבודה. רק אחרי שבודקים את התמונה המלאה אפשר להבין אם יש צורך בהשלמה פרטית.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            איך יודעים אם יש לי כספים ישנים שלא מנוהלים נכון?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            בדרך כלל צריך לבדוק דוחות, קופות ישנות, קרנות ממקומות עבודה קודמים ומוצרים שלא נגעו בהם שנים. בהרבה מקרים מגלים כספים מפוזרים, דמי ניהול גבוהים או מסלולים שכבר לא מתאימים למטרות של היום.
-        </div>
-    </details>
-
-    <details class="faq-card group">
-        <summary>
-            מה בודקים לפני שמבטלים פוליסה קיימת?
-            <svg class="w-5 h-5 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </summary>
-        <div class="faq-content">
-            לפני שמבטלים פוליסה צריך להבין בדיוק מה מאבדים - כיסויים, תנאים ישנים, החרגות, עלויות עתידיות או זכויות שנצברו. רק אחרי שמשווים בין הקיים לבין החלופה אפשר לקבל החלטה שלא תפגע בהגנה הביטוחית.
-        </div>
-    </details>
-</div>
-</div>
-    
-    </div>
-
-
     </section>
 
 <section class="faq-page-contact-strip">
