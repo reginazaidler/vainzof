@@ -5770,6 +5770,61 @@ main section.bg-slate-50 h3 {
   font-family: inherit;
   color: #64748b;
 }
+.contact-card .btn-primary,
+.contact-card .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.4rem;
+  padding: 0.95rem 1.25rem;
+  border-radius: 1rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.contact-card .btn-primary {
+  border: 1px solid #0f4cbd;
+  background: linear-gradient(135deg, #0f4cbd 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+}
+.contact-card .btn-primary:hover,
+.contact-card .btn-primary:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 36px rgba(37, 99, 235, 0.28);
+}
+.contact-card .btn-outline {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #0f4cbd;
+}
+.contact-card .btn-outline:hover,
+.contact-card .btn-outline:focus-visible {
+  transform: translateY(-1px);
+  border-color: #60a5fa;
+  background: #dbeafe;
+}
+.contact-card .btn-primary:focus-visible,
+.contact-card .btn-outline:focus-visible,
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.22);
+  outline-offset: 2px;
+}
+.checklist-contact-actions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 640px) {
+  .checklist-contact-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .checklist-contact-actions .btn-outline:last-child {
+    grid-column: span 2;
+  }
+}
 .notice-box {
   border-right: 4px solid #0f4cbd;
   background: #eff6ff;
