@@ -139,32 +139,35 @@ gtag('config', 'G-EM8SYH542C');
     </script>
 <link rel="stylesheet" href="style.css">
 <style>
-.insurance-content { max-width: 72rem; margin: 0 auto; width: 100%; }
-.insurance-shell { display: grid; gap: 1.5rem; }
-.insurance-intro, .insurance-card, .insurance-panel, .insurance-section, .toc-nav, .faq-list details, .cta-panel { margin-bottom: 0; width: 100%; }
-.insurance-intro, .insurance-section, .insurance-panel, .cta-panel, .toc-nav { border: 1px solid #e2e8f0; border-radius: 1.5rem; background: #fff; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04); }
-.insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.25rem; }
+body.insurance-types-page { overflow-x: hidden; }
+.insurance-content, .insurance-shell, .insurance-intro, .insurance-section, .insurance-panel, .insurance-card, .toc-nav, .cta-panel { width: 100%; max-width: 100%; box-sizing: border-box; min-width: 0; }
+.insurance-content { max-width: 72rem; margin: 0 auto; }
+.insurance-shell { display: grid; gap: 1rem; }
+.insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { border: 1px solid #e2e8f0; border-radius: 1rem; background: #fff; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04); padding: 1rem; }
 .insurance-rich-text { width: 100%; max-width: none; }
-.insurance-rich-text > p,
-.insurance-rich-text > ul,
-.insurance-rich-text > ol,
-.insurance-rich-text > .internal-links { max-width: 72ch; }
-.insurance-rich-text p, .insurance-rich-text ul, .insurance-rich-text ol { margin-bottom: 0.85rem; }
-.insurance-rich-text ul { padding-right: 1.25rem; list-style: disc; }
-.insurance-grid { display: grid; gap: 1rem; align-items: start; }
-.insurance-card { border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.25rem; background: #fff; }
-.insurance-card h3 { margin-bottom: 0.75rem; }
-.insurance-subgrid { display: grid; gap: 1rem; margin-bottom: 1rem; }
-.toc-nav ul { display: grid; gap: 0.55rem; padding-right: 1.25rem; list-style: disc; }
+.insurance-rich-text p, .insurance-rich-text ul, .insurance-rich-text ol { margin: 0 0 0.75rem; max-width: none; }
+.insurance-rich-text p:last-child, .insurance-rich-text ul:last-child, .insurance-rich-text ol:last-child { margin-bottom: 0; }
+.insurance-rich-text ul { padding-right: 1.1rem; list-style: disc; }
+.insurance-rich-text h2 { margin-bottom: 1rem; }
+.insurance-rich-text h3 { margin: 0 0 0.55rem; }
+.insurance-grid { display: grid; gap: 0.75rem; align-items: start; }
+.insurance-card { border: 1px solid #e2e8f0; border-radius: 0.9rem; padding: 1rem; background: #fff; }
+.insurance-card > *:last-child { margin-bottom: 0; }
+.insurance-subgrid { display: grid; gap: 0.75rem; margin-bottom: 0.75rem; }
+.toc-nav ul { display: grid; gap: 0.45rem; padding-right: 1.1rem; list-style: disc; margin-bottom: 0; }
 .toc-nav a, .internal-links a { color: #1d4ed8; font-weight: 700; text-decoration: none; }
 .toc-nav a:hover, .internal-links a:hover { text-decoration: underline; }
-.faq-list { display: grid; gap: 0.75rem; }
-.faq-list details { border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; background: #fff; }
+.faq-list { display: grid; gap: 0.6rem; }
+.faq-list details { border: 1px solid #e2e8f0; border-radius: 0.85rem; padding: 0.9rem 1rem; background: #fff; }
 .faq-list summary { cursor: pointer; font-weight: 800; color: #061a40; }
-.faq-list details p { margin: 0.85rem 0 0; }
-.cta-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+.faq-list details p { margin: 0.7rem 0 0; }
+.cta-buttons { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
+.cta-buttons > * { max-width: 100%; }
+@media (max-width: 767px) {
+  .cta-buttons > * { width: 100%; text-align: center; justify-content: center; }
+}
 @media (min-width: 768px) {
-  .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.75rem; }
+  .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.35rem; }
   .insurance-subgrid.two-col, .insurance-grid.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .insurance-grid.three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
