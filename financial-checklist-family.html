@@ -96,6 +96,14 @@ gtag('config', 'G-EM8SYH542C');
 .checklist-page {
   background: linear-gradient(180deg, #f8fbff 0%, #eef4fb 40%, #ffffff 100%);
   color: #0f172a;
+  font-family: 'Assistant', sans-serif;
+}
+.checklist-page,
+.checklist-page input,
+.checklist-page textarea,
+.checklist-page button,
+.checklist-page select {
+  font-family: 'Assistant', sans-serif;
 }
 .checklist-shell {
   max-width: 74rem;
@@ -241,6 +249,11 @@ gtag('config', 'G-EM8SYH542C');
   min-height: 8rem;
   resize: vertical;
 }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  font-family: inherit;
+  color: #64748b;
+}
 .notice-box {
   border-right: 4px solid #0f4cbd;
   background: #eff6ff;
@@ -250,7 +263,7 @@ gtag('config', 'G-EM8SYH542C');
 .floating-anchor-nav {
   position: fixed;
   left: 1rem;
-  bottom: 1rem;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 6.5rem);
   z-index: 60;
   width: min(22rem, calc(100vw - 2rem));
   display: flex;
@@ -305,9 +318,39 @@ gtag('config', 'G-EM8SYH542C');
   background: #eff6ff;
   outline: none;
 }
+@media (max-width: 767px) {
+  .checklist-hero,
+  .checklist-card,
+  .checklist-summary,
+  .faq-card,
+  .contact-card,
+  .inline-cta,
+  .mid-cta {
+    padding: 1.15rem;
+    border-radius: 1.15rem;
+  }
+  .checklist-hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .checklist-item {
+    gap: 0.65rem;
+    padding: 0.85rem;
+  }
+  .floating-anchor-nav {
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 6.25rem);
+  }
+  .floating-anchor-nav__toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}
 @media (min-width: 1024px) {
   .floating-anchor-nav {
-    bottom: 1.5rem;
+    display: none;
   }
 }
 </style>
@@ -352,7 +395,7 @@ gtag('config', 'G-EM8SYH542C');
         <a href="tel:0524520222" class="block font-bold text-slate-600 border-b pb-2">התקשר עכשיו</a>
         <button id="openContactMobile" class="mobile-contact-cta" type="button">לתיאום בדיקה אישית</button>
     </div>
-<main id="main">
+<main id="main" class="pb-32 lg:pb-0">
   <section class="py-14">
     <div class="container-clean checklist-shell">
       <div class="checklist-hero text-right">
