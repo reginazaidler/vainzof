@@ -79,6 +79,33 @@ gtag('config', 'G-EM8SYH542C');
 <style>
 body.pension-fees-page {
   background: linear-gradient(180deg, #f8fafc 0%, #edf4ff 100%);
+  font-family: 'Assistant', sans-serif;
+}
+body.pension-fees-page,
+body.pension-fees-page button,
+body.pension-fees-page input,
+body.pension-fees-page textarea,
+body.pension-fees-page select {
+  font-family: 'Assistant', sans-serif;
+}
+body.pension-fees-page main {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 768px) {
+  body.pension-fees-page main {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+.pension-fees-page .mt-5 {
+  margin-top: 1.25rem;
+}
+.pension-fees-page .mt-8 {
+  margin-top: 2rem;
+}
+.pension-fees-page .mb-5 {
+  margin-bottom: 1.25rem;
 }
 .pension-guide-wrap {
   max-width: 76rem;
@@ -120,9 +147,24 @@ body.pension-fees-page {
 .pension-rich-text table {
   margin-bottom: 1.15rem;
 }
+.pension-rich-text,
+.pension-rich-text p,
+.pension-rich-text li,
+.pension-rich-text input,
+.pension-rich-text textarea,
+.pension-rich-text button {
+  font-family: 'Assistant', sans-serif;
+}
 .pension-rich-text p {
   color: #334155;
   line-height: 1.95;
+}
+.pension-rich-text strong,
+.pension-rich-text th,
+.pension-rich-text h1,
+.pension-rich-text h2,
+.pension-rich-text h3 {
+  letter-spacing: normal;
 }
 .pension-rich-text h2 {
   font-size: clamp(1.65rem, 2vw, 2.2rem);
@@ -168,6 +210,7 @@ body.pension-fees-page {
   padding: 0.95rem 0.85rem;
   border-bottom: 1px solid #dbe5f2;
   text-align: right;
+  vertical-align: top;
 }
 .pension-table th {
   background: #eff6ff;
@@ -278,10 +321,39 @@ body.pension-fees-page {
   border-radius: 1rem;
   color: #0f172a;
   font-weight: 700;
+  text-align: right;
 }
 .pension-form-section textarea {
   min-height: 130px;
   resize: vertical;
+}
+.pension-form-section input::placeholder,
+.pension-form-section textarea::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+.pension-hero .inline-flex,
+.pension-btn-row,
+.pension-form-actions {
+  row-gap: 0.75rem;
+}
+@media (max-width: 767px) {
+  .pension-hero {
+    padding: 1.35rem;
+  }
+  .pension-guide-wrap {
+    padding: 0 0.75rem;
+  }
+  .pension-table {
+    min-width: 100%;
+  }
+  .pension-btn,
+  .pension-btn-secondary {
+    width: 100%;
+  }
+  .pension-form-actions {
+    align-items: stretch;
+  }
 }
 .pension-form-actions {
   display: flex;
