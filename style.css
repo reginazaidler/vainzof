@@ -5604,3 +5604,77 @@ main section.bg-slate-50 h3 {
         gap: 8px;
     }
 }
+
+/* =========================================================
+   LANGUAGE SWITCHER - Hebrew / Russian
+   ========================================================= */
+.site-language-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    margin-inline-start: auto;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(11, 27, 59, 0.1);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-sm);
+}
+
+.site-language-switcher__label {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--navy-main);
+}
+
+.site-language-switcher__controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.site-language-switcher__option {
+    border: 1px solid rgba(11, 27, 59, 0.18);
+    background: #fff;
+    color: var(--navy-main);
+    border-radius: var(--radius-pill);
+    min-width: 3rem;
+    padding: 0.45rem 0.7rem;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background var(--ease-default), color var(--ease-default), border-color var(--ease-default), transform var(--ease-default);
+}
+
+.site-language-switcher__option:hover,
+.site-language-switcher__option:focus-visible {
+    border-color: var(--gold-brand);
+    color: var(--gold-brand);
+    transform: translateY(-1px);
+}
+
+.site-language-switcher__option.is-active {
+    background: var(--navy-main);
+    border-color: var(--navy-main);
+    color: #fff;
+}
+
+.site-language-switcher__note {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+}
+
+@media (max-width: 1023px) {
+    .site-header__inner {
+        gap: 0.75rem;
+    }
+
+    .site-language-switcher {
+        width: 100%;
+        justify-content: space-between;
+        order: 3;
+        margin-inline-start: 0;
+    }
+}
