@@ -247,6 +247,69 @@ gtag('config', 'G-EM8SYH542C');
   padding: 1rem 1.1rem;
   border-radius: 1rem;
 }
+.floating-anchor-nav {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  width: min(22rem, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+.floating-anchor-nav__toggle,
+.floating-anchor-nav__panel {
+  pointer-events: auto;
+}
+.floating-anchor-nav__toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: #0f4cbd;
+  color: #fff;
+  padding: 0.9rem 1.2rem;
+  font-weight: 800;
+  box-shadow: 0 14px 32px rgba(15, 76, 189, 0.24);
+}
+.floating-anchor-nav__toggle-icon {
+  transition: transform 0.2s ease;
+}
+.floating-anchor-nav.is-open .floating-anchor-nav__toggle-icon {
+  transform: rotate(180deg);
+}
+.floating-anchor-nav__panel {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #dbe7f5;
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.14);
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+}
+.floating-anchor-nav__panel[hidden] {
+  display: none;
+}
+.floating-anchor-nav__panel .anchor-list {
+  max-height: min(55vh, 24rem);
+  overflow-y: auto;
+}
+.floating-anchor-nav__panel .anchor-list a {
+  border: 1px solid transparent;
+}
+.floating-anchor-nav__panel .anchor-list a:hover,
+.floating-anchor-nav__panel .anchor-list a:focus-visible {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  outline: none;
+}
+@media (min-width: 1024px) {
+  .floating-anchor-nav {
+    bottom: 1.5rem;
+  }
+}
 </style>
 </head>
 <body class="checklist-page">
@@ -518,10 +581,36 @@ gtag('config', 'G-EM8SYH542C');
             <a href="#lead-form">בדיקה חינם</a>
           </nav>
         </div>
+
+        <div class="checklist-summary lg:hidden">
+          <p class="text-sm font-bold text-blue-950 mb-2">במובייל הניווט זמין גם בכפתור הצף בפינה.</p>
+          <p class="text-slate-700 text-sm leading-6">כך אפשר לקפוץ ישר לכל סעיף בלי לגלול עד סוף העמוד.</p>
+        </div>
       </aside>
     </div>
-  </section>
+    </section>
 </main>
+
+<div id="floatingAnchorNav" class="floating-anchor-nav">
+  <button id="floatingAnchorToggle" class="floating-anchor-nav__toggle" type="button" aria-expanded="false" aria-controls="floatingAnchorPanel">
+    <span>ניווט מהיר</span>
+    <span class="floating-anchor-nav__toggle-icon" aria-hidden="true">▴</span>
+  </button>
+  <div id="floatingAnchorPanel" class="floating-anchor-nav__panel" hidden>
+    <p class="text-sm font-bold text-blue-950 mb-3 text-right">קפיצה מיידית לכל סעיף בצ׳קליסט</p>
+    <nav class="anchor-list text-right" aria-label="ניווט מהיר צף בתוך העמוד">
+      <a href="#income-expenses">הכנסות והוצאות</a>
+      <a href="#savings-emergency">חסכונות וקרן חירום</a>
+      <a href="#insurance">ביטוחים</a>
+      <a href="#pension">פנסיה וחיסכון לטווח ארוך</a>
+      <a href="#debts">התחייבויות</a>
+      <a href="#documents">מסמכים חשובים</a>
+      <a href="#mistakes">טעויות נפוצות</a>
+      <a href="#faq">FAQ</a>
+      <a href="#lead-form">בדיקה חינם</a>
+    </nav>
+  </div>
+</div>
 <script src="js/site-footer.js"></script>
 <script>
 document.getElementById('menuBtn')?.addEventListener('click', () => {
@@ -582,6 +671,32 @@ function updateChecklistSummary() {
 
 checkboxes.forEach((checkbox) => checkbox.addEventListener('change', updateChecklistSummary));
 updateChecklistSummary();
+
+const floatingAnchorNav = document.getElementById('floatingAnchorNav');
+const floatingAnchorToggle = document.getElementById('floatingAnchorToggle');
+const floatingAnchorPanel = document.getElementById('floatingAnchorPanel');
+
+function setFloatingAnchorOpen(isOpen) {
+  if (!floatingAnchorNav || !floatingAnchorToggle || !floatingAnchorPanel) return;
+  floatingAnchorNav.classList.toggle('is-open', isOpen);
+  floatingAnchorToggle.setAttribute('aria-expanded', String(isOpen));
+  floatingAnchorPanel.hidden = !isOpen;
+}
+
+floatingAnchorToggle?.addEventListener('click', () => {
+  const isOpen = floatingAnchorToggle.getAttribute('aria-expanded') === 'true';
+  setFloatingAnchorOpen(!isOpen);
+});
+
+floatingAnchorPanel?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => setFloatingAnchorOpen(false));
+});
+
+document.addEventListener('click', (event) => {
+  if (!floatingAnchorNav?.contains(event.target)) {
+    setFloatingAnchorOpen(false);
+  }
+});
 </script>
 <script src="js/whatsapp-float.js"></script>
 </body>
