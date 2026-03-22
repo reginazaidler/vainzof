@@ -461,6 +461,7 @@ table {
 
 .bg-white { background-color: #fff; }
 .bg-white\/70 { background-color: rgba(255, 255, 255, 0.7); }
+.bg-blue-950 { background-color: var(--navy-deep); }
 .bg-slate-950 { background-color: #020617; }
 .bg-slate-900\/80 { background-color: rgba(15, 23, 42, 0.8); }
 .bg-slate-50 { background-color: #f8fafc; }
