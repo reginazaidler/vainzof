@@ -290,22 +290,86 @@ gtag('config', 'G-EM8SYH542C');
     display: grid;
     gap: 0.9rem;
   }
+  .contact-form__field {
+    display: grid;
+    gap: 0.45rem;
+  }
+  .contact-form__field--full {
+    grid-column: 1 / -1;
+  }
+  .contact-form label {
+    font-size: 0.97rem;
+    font-weight: 800;
+    color: #334155;
+  }
   .contact-form input,
   .contact-form textarea {
     width: 100%;
     border: 1px solid #cbd5e1;
     border-radius: 0.9rem;
-    padding: 0.85rem 1rem;
+    padding: 0.9rem 1rem;
     background: #fff;
+    line-height: 1.5;
   }
   .contact-form textarea {
-    min-height: 8rem;
+    min-height: 9.5rem;
     resize: vertical;
   }
   .contact-form input::placeholder,
   .contact-form textarea::placeholder {
     font-family: inherit;
     color: #64748b;
+  }
+  .contact-card .btn-primary,
+  .contact-card .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3.5rem;
+    padding: 0.95rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    font-weight: 800;
+    line-height: 1.35;
+    text-decoration: none;
+    text-align: center;
+    text-wrap: balance;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .contact-card .btn-primary {
+    border-color: #0f4cbd;
+    background: linear-gradient(135deg, #0f4cbd 0%, #2563eb 100%);
+    color: #ffffff;
+    box-shadow: 0 16px 34px rgba(37, 99, 235, 0.24);
+  }
+  .contact-card .btn-primary:hover,
+  .contact-card .btn-primary:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 36px rgba(37, 99, 235, 0.28);
+  }
+  .contact-card .btn-outline {
+    border-color: #bfdbfe;
+    background: #eff6ff;
+    color: #0f4cbd;
+  }
+  .contact-card .btn-outline:hover,
+  .contact-card .btn-outline:focus-visible {
+    transform: translateY(-1px);
+    border-color: #60a5fa;
+    background: #dbeafe;
+  }
+  .contact-card .btn-primary:focus-visible,
+  .contact-card .btn-outline:focus-visible,
+  .contact-form input:focus-visible,
+  .contact-form textarea:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.22);
+    outline-offset: 2px;
+  }
+  .checklist-contact-actions {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
   }
   .notice-box {
     border-right: 4px solid #0f4cbd;
@@ -407,6 +471,19 @@ gtag('config', 'G-EM8SYH542C');
     border-color: #bfdbfe;
     background: #eff6ff;
     outline: none;
+  }
+  @media (min-width: 768px) {
+    .contact-form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+    .contact-form button,
+    .checklist-contact-actions {
+      grid-column: 1 / -1;
+    }
+    .checklist-contact-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
   @media (min-width: 1024px) {
     .checklist-grid {
@@ -687,10 +764,22 @@ gtag('config', 'G-EM8SYH542C');
           <h2 class="text-3xl font-black mb-4">רוצה להפוך את הצ׳קליסט לבדיקה אמיתית?</h2>
           <p class="text-slate-700 leading-8 mb-6">אם במהלך הקריאה הבנת שיש סעיפים שלא בדקת, שזה בדיוק הזמן לעצור ולעשות סדר. אפשר להשאיר פרטים לבדיקה ראשונית או לקפוץ ישר ל־WhatsApp כדי לעבור על הכל ביחד.</p>
           <form class="contact-form" action="https://formspree.io/f/mayvlzda" method="POST">
-            <input type="text" name="name" placeholder="שם מלא" required>
-            <input type="tel" name="phone" placeholder="טלפון" required>
-            <input type="email" name="email" placeholder="אימייל">
-            <textarea name="message" placeholder="מה הכי מדאיג אותך היום - ביטוחים, פנסיה, הוצאות, חובות או חיסכון?"></textarea>
+            <div class="contact-form__field">
+              <label for="checklist-name">שם מלא</label>
+              <input id="checklist-name" type="text" name="name" placeholder="איך קוראים לך?" required>
+            </div>
+            <div class="contact-form__field">
+              <label for="checklist-phone">טלפון</label>
+              <input id="checklist-phone" type="tel" name="phone" placeholder="מספר טלפון לחזרה" required>
+            </div>
+            <div class="contact-form__field contact-form__field--full">
+              <label for="checklist-email">אימייל</label>
+              <input id="checklist-email" type="email" name="email" placeholder="אימייל (לא חובה)">
+            </div>
+            <div class="contact-form__field contact-form__field--full">
+              <label for="checklist-message">מה הכי מדאיג אותך היום?</label>
+              <textarea id="checklist-message" name="message" placeholder="למשל: ביטוחים, פנסיה, הוצאות, חובות או חיסכון"></textarea>
+            </div>
             <button type="submit" class="btn-primary">אני רוצה בדיקה פיננסית למשפחה</button>
           </form>
           <div class="checklist-contact-actions">
