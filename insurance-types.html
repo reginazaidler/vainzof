@@ -139,26 +139,32 @@ gtag('config', 'G-EM8SYH542C');
     </script>
 <link rel="stylesheet" href="style.css">
 <style>
-.insurance-content { max-width: 72rem; margin: 0 auto; }
-.insurance-shell { display: grid; gap: 2.5rem; }
-.insurance-intro, .insurance-card, .insurance-panel, .insurance-section, .toc-nav, .faq-list details, .cta-panel { margin-bottom: 0; }
-.insurance-intro, .insurance-section, .insurance-panel, .cta-panel, .toc-nav { border: 1px solid #e2e8f0; border-radius: 2rem; background: #fff; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); }
-.insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.5rem; }
-.insurance-rich-text { max-width: 68ch; }
-.insurance-rich-text p, .insurance-rich-text ul, .insurance-rich-text ol { margin-bottom: 1rem; }
+.insurance-content { max-width: 72rem; margin: 0 auto; width: 100%; }
+.insurance-shell { display: grid; gap: 1.5rem; }
+.insurance-intro, .insurance-card, .insurance-panel, .insurance-section, .toc-nav, .faq-list details, .cta-panel { margin-bottom: 0; width: 100%; }
+.insurance-intro, .insurance-section, .insurance-panel, .cta-panel, .toc-nav { border: 1px solid #e2e8f0; border-radius: 1.5rem; background: #fff; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04); }
+.insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.25rem; }
+.insurance-rich-text { width: 100%; max-width: none; }
+.insurance-rich-text > p,
+.insurance-rich-text > ul,
+.insurance-rich-text > ol,
+.insurance-rich-text > .internal-links { max-width: 72ch; }
+.insurance-rich-text p, .insurance-rich-text ul, .insurance-rich-text ol { margin-bottom: 0.85rem; }
 .insurance-rich-text ul { padding-right: 1.25rem; list-style: disc; }
-.insurance-grid { display: grid; gap: 1rem; }
-.insurance-card { border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 1.5rem; background: #fff; }
-.insurance-card h3 { margin-bottom: 1rem; }
-.insurance-subgrid { display: grid; gap: 1rem; }
-.toc-nav ul { display: grid; gap: .75rem; padding-right: 1.25rem; list-style: disc; }
+.insurance-grid { display: grid; gap: 1rem; align-items: start; }
+.insurance-card { border: 1px solid #e2e8f0; border-radius: 1.25rem; padding: 1.25rem; background: #fff; }
+.insurance-card h3 { margin-bottom: 0.75rem; }
+.insurance-subgrid { display: grid; gap: 1rem; margin-bottom: 1rem; }
+.toc-nav ul { display: grid; gap: 0.55rem; padding-right: 1.25rem; list-style: disc; }
 .toc-nav a, .internal-links a { color: #1d4ed8; font-weight: 700; text-decoration: none; }
 .toc-nav a:hover, .internal-links a:hover { text-decoration: underline; }
-.faq-list { display: grid; gap: 1rem; }
+.faq-list { display: grid; gap: 0.75rem; }
+.faq-list details { border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1rem 1.1rem; background: #fff; }
 .faq-list summary { cursor: pointer; font-weight: 800; color: #061a40; }
-.cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.faq-list details p { margin: 0.85rem 0 0; }
+.cta-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
 @media (min-width: 768px) {
-  .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 2.25rem; }
+  .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.75rem; }
   .insurance-subgrid.two-col, .insurance-grid.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .insurance-grid.three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -472,7 +478,7 @@ gtag('config', 'G-EM8SYH542C');
                 </section>
 
                 <section id="why-yuval" class="insurance-section insurance-rich-text bg-blue-950 text-white" aria-labelledby="why-yuval-title">
-                    <h2 id="why-yuval-title" class="text-3xl md:text-4xl font-black text-white mb-5">למה לעבוד עם יובל ויינזוף</h2>
+                    <h2 id="why-yuval-title" class="text-3xl md:text-4xl font-black mb-5">למה לעבוד עם יובל ויינזוף</h2>
                     <p>יובל ויינזוף מתמחה בהתאמת ביטוחים אישית לפי מצב משפחתי וכלכלי, עם דגש על שקיפות, פשטות והבנה אמיתית של הצרכים. במקום למכור רשימת פוליסות, המטרה היא לבדוק מה כבר קיים, לזהות כפילויות, להבין איפה חסר כיסוי, ולבנות פתרון מדויק יותר.</p>
                     <p>היתרון הגדול בעבודה עם יובל הוא החיבור בין הסתכלות מקצועית לבין שיחה פשוטה בגובה העיניים. אם צריך ביטוח חיים — בודקים כמה באמת צריך. אם נדרש ביטוח בריאות — בודקים מה כבר יש דרך העבודה, הקופה והפוליסות הקיימות. אם מדובר בפנסיה — בודקים דמי ניהול, מסלולים וכיסויים. ואם יש משכנתא — בוחנים אם אפשר לחסוך בעלויות בלי לפגוע בדרישות הבנק.</p>
                     <p>זו בדיוק הנקודה שמבדילה בין רכישה אקראית לבין תכנון נכון: לא רק לבחור ביטוח, אלא להבין מה קונים, למה קונים, וכמה נכון לשלם עליו. הרבה פעמים הערך האמיתי של הבדיקה הוא לא רק בפוליסה חדשה, אלא דווקא במה שמגלים על התיק הקיים.</p>
