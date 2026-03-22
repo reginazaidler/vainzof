@@ -74,9 +74,11 @@
   });
 
   const contactLink = footer.querySelector('#openContactFooter');
-  const contactModal = document.getElementById('contactModal');
-  if (contactLink && contactModal) {
+  if (contactLink) {
     contactLink.addEventListener('click', (event) => {
+      const contactModal = document.getElementById('contactModal');
+      if (!contactModal) return;
+
       event.preventDefault();
       contactModal.classList.remove('hidden');
       contactModal.classList.add('flex');
