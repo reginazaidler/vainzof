@@ -140,15 +140,17 @@ gtag('config', 'G-EM8SYH542C');
 <link rel="stylesheet" href="style.css">
 <style>
 body.insurance-types-page {
-  overflow-x: hidden;
-  background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
+  background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 42%, #ffffff 100%);
+  color: #334155;
 }
+
 body.insurance-types-page main,
 body.insurance-types-page section,
 body.insurance-types-page article,
 body.insurance-types-page div {
   min-width: 0;
 }
+
 .insurance-content,
 .insurance-shell,
 .insurance-intro,
@@ -161,174 +163,295 @@ body.insurance-types-page div {
   max-width: 100%;
   box-sizing: border-box;
 }
+
 .insurance-content {
-  max-width: 72rem;
+  max-width: 68rem;
   margin: 0 auto;
 }
+
 .insurance-shell {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
+
 .insurance-intro,
+.toc-nav,
 .insurance-panel,
 .insurance-section,
-.cta-panel,
-.toc-nav {
-  border: 1px solid #e2e8f0;
-  border-radius: 1.25rem;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-  padding: 1rem;
+.cta-panel {
+  border: 1px solid #dbe5f2;
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+  padding: clamp(1.4rem, 2vw, 2.35rem);
 }
+
 .insurance-rich-text {
   width: 100%;
   max-width: none;
 }
+
+.insurance-rich-text > * {
+  max-width: 100%;
+}
+
 .insurance-rich-text p,
 .insurance-rich-text ul,
 .insurance-rich-text ol {
-  margin: 0 0 0.9rem;
+  margin: 0 0 1rem;
   max-width: none;
+  line-height: 1.95;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: manual;
 }
+
 .insurance-rich-text p:last-child,
 .insurance-rich-text ul:last-child,
 .insurance-rich-text ol:last-child {
   margin-bottom: 0;
 }
+
 .insurance-rich-text ul {
-  padding-right: 1.1rem;
+  padding-right: 1.25rem;
   list-style: disc;
 }
+
 .insurance-rich-text li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
+
 .insurance-rich-text h2 {
   margin-bottom: 1rem;
+  line-height: 1.25;
 }
+
 .insurance-rich-text h3 {
-  margin: 1.15rem 0 0.55rem;
+  margin: 1.1rem 0 0.7rem;
+  line-height: 1.35;
 }
+
 .insurance-section {
   scroll-margin-top: 120px;
 }
+
+.insurance-section + .insurance-section {
+  margin-top: 0;
+}
+
+#insurance-types-main,
+#insurance-prices,
+#how-to-choose-insurance,
+#common-mistakes,
+#why-agent,
+#faq {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
 .insurance-grid {
   display: grid;
-  gap: 0.9rem;
-  align-items: start;
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
 }
+
 .insurance-grid > .insurance-card {
-  height: auto;
+  height: 100%;
 }
+
 .insurance-section > .insurance-card {
   display: block;
+  margin-top: 1.15rem;
 }
+
 .insurance-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 1rem;
-  padding: 1.25rem;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  overflow-wrap: anywhere;
+  border: 1px solid #d8e3f0;
+  border-radius: 1.3rem;
+  padding: 1.35rem;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
 }
+
 .insurance-card > *:first-child { margin-top: 0; }
 .insurance-card > *:last-child { margin-bottom: 0; }
+
 .insurance-card h3 {
-  font-size: clamp(1.2rem, 1.1rem + 0.45vw, 1.7rem);
+  font-size: clamp(1.15rem, 1.05rem + 0.45vw, 1.55rem);
   line-height: 1.35;
 }
+
 .insurance-card p,
-.insurance-card li { color: #334155; }
+.insurance-card li {
+  color: #334155;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
 .insurance-subgrid {
   display: grid;
   gap: 0.9rem;
-  margin: 1rem 0;
+  margin: 1.15rem 0;
 }
+
 .insurance-subgrid > div {
-  padding: 1rem;
+  padding: 1rem 1.1rem;
   border: 1px solid #dbe5f2;
-  border-radius: 0.9rem;
+  border-radius: 1rem;
   background: #f8fbff;
 }
+
+.toc-nav {
+  background: linear-gradient(135deg, #0f2b61 0%, #17479d 100%);
+  border-color: #17479d;
+}
+
+.toc-nav h2,
+.toc-nav li,
+.toc-nav a {
+  color: #ffffff;
+}
+
 .toc-nav ul {
   display: grid;
-  gap: 0.45rem;
-  padding-right: 1.1rem;
+  gap: 0.6rem;
+  padding-right: 1.2rem;
   list-style: disc;
   margin-bottom: 0;
 }
+
 .toc-nav a,
 .internal-links a {
   color: #1d4ed8;
   font-weight: 700;
   text-decoration: none;
 }
+
+.toc-nav a {
+  color: #ffffff;
+}
+
 .toc-nav a:hover,
 .internal-links a:hover {
   text-decoration: underline;
 }
+
+.internal-links {
+  font-weight: 500;
+}
+
 #why-yuval {
   background: linear-gradient(135deg, #082257 0%, #0b3b86 100%);
   border-color: #0f3d85;
 }
+
 #why-yuval,
 #why-yuval p,
 #why-yuval h2,
 #why-yuval a {
   color: #ffffff;
 }
+
 #why-yuval a {
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
+
 .faq-list {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
+
 .faq-list details {
-  border: 1px solid #e2e8f0;
-  border-radius: 0.85rem;
-  padding: 0.9rem 1rem;
+  border: 1px solid #dbe5f2;
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
   background: #fff;
 }
+
 .faq-list summary {
   cursor: pointer;
   font-weight: 800;
   color: #061a40;
 }
+
 .faq-list details p {
-  margin: 0.7rem 0 0;
+  margin: 0.8rem 0 0;
 }
+
 .bottom-cta {
   padding-inline: clamp(1rem, 3vw, 2rem);
 }
+
 .bottom-cta__inner {
   width: min(100%, 72rem);
   margin: 0 auto;
 }
+
 .cta-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-top: 1rem;
 }
+
 .cta-buttons > * {
   max-width: 100%;
 }
+
+
+.bottom-cta__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.bottom-cta__link {
+  color: #0f3d85;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.bottom-cta__link:hover {
+  text-decoration: underline;
+}
+
 #contactModal {
   padding: 1rem;
 }
+
 #contactModal > div {
   width: min(100%, 34rem);
   border-radius: 1.5rem;
 }
+
 @media (max-width: 767px) {
-  .insurance-shell { gap: 0.85rem; }
-  .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav, .insurance-card { padding: 1rem; }
-  .insurance-card h3 { font-size: 1.16rem; }
-  .cta-buttons > * { width: 100%; text-align: center; justify-content: center; }
+  .insurance-shell { gap: 1rem; }
+  .insurance-intro,
+  .insurance-panel,
+  .insurance-section,
+  .cta-panel,
+  .toc-nav,
+  .insurance-card {
+    padding: 1.1rem;
+    border-radius: 1.25rem;
+  }
+  .insurance-card h3 { font-size: 1.08rem; }
+  .insurance-rich-text p,
+  .insurance-rich-text li {
+    line-height: 1.8;
+  }
+  .cta-buttons > *,
+  .bottom-cta__actions > * {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
+
 @media (min-width: 768px) {
-  .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav { padding: 1.35rem; }
-  .insurance-subgrid.two-col, .insurance-grid.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .insurance-subgrid.two-col,
+  .insurance-grid.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .insurance-grid.three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 </style>
@@ -429,244 +552,123 @@ body.insurance-types-page div {
         <div class="container-clean insurance-content mx-auto">
             <article class="insurance-shell text-slate-700 leading-8">
                 <section class="insurance-intro insurance-rich-text" aria-labelledby="page-intro-title">
-                    <h2 id="page-intro-title" class="text-2xl md:text-3xl font-black text-blue-950 mb-4">מבוא קצר לפני שבוחרים כיסוי</h2>
-                    <p class="text-lg md:text-xl font-bold text-blue-950">במדריך הזה תמצא פירוט ברור של סוגי הביטוחים המרכזיים, למי הם מתאימים, מה באמת חשוב לבדוק לפני רכישה, איך לזהות כפל ביטוחים, ואיך להחליט מה נכון עבורך בלי להחזיק פוליסות רק כי מישהו פעם אמר ש"כדאי".</p>
-                    <p>הרבה אנשים מחפשים מידע על סוגי ביטוחים רק אחרי שהם חותמים על משכנתא, מקימים משפחה, מחליפים עבודה או מגלים שההוצאה החודשית על ביטוחים עלתה בלי להבין למה. הבעיה היא שרוב העמודים ברשת מסבירים מהו ביטוח, אבל לא באמת עונים על השאלות שהציבור מחפש: כמה עולה ביטוח חיים, איזה ביטוח בריאות כדאי, איך בוחרים ביטוח פנסיוני, ומה עושים אם כבר משלמים על כמה מוצרים במקביל.</p>
-                    <p>לכן המטרה בעמוד הזה היא לא רק לעשות סדר תיאורטי, אלא לתת תשובות פרקטיות: מה חשוב באמת, מה בדרך כלל מיותר, אילו טעויות חוזרות רואים שוב ושוב בתיקים של לקוחות, ואיך בדיקה מקצועית יכולה לחסוך כסף בלי לפגוע בהגנה הכלכלית של המשפחה. בבדיקות שבוצעו בתיקים של לקוחות, נפוץ לראות שהשאלות המרכזיות הן איך לבחור ביטוח, כמה עולה ביטוח חיים, ואיזה ביטוח בריאות כדאי כשכבר קיימים כיסויים דרך העבודה או הקופה.</p>
-                    <p class="text-blue-950 font-bold">סוגי ביטוחים בישראל כוללים ביטוח חיים, ביטוח בריאות, ביטוח פנסיוני וביטוח משכנתא. הבחירה הנכונה תלויה במצב המשפחתי, בהכנסה ובהתחייבויות, ולא כל ביטוח מתאים לכל אדם.</p>
-                    <p class="internal-links">אם תרצה להעמיק בהמשך, אפשר לעבור גם אל <a href="faq.html">עמוד השאלות הנפוצות</a>, לקרוא על <a href="services.html">דרך העבודה</a>, להכיר <a href="about.html">קצת עלי</a>, לעיין ב<a href="articles.html">מאמרים מקצועיים על ביטוחים ופנסיה</a>, לבדוק את <a href="life-insurance.html">המדריך המלא לביטוח חיים</a>, להבין <a href="health-insurance.html">איזה ביטוח בריאות כדאי לבדוק לעומק</a> ולקרוא גם את המדריך <a href="pension-guide.html">ביטוח פנסיוני הסבר וסדר בפנסיה ובביטוחים</a>.</p>
+                    <h2 id="page-intro-title" class="text-2xl md:text-3xl font-black text-blue-950 mb-4">מה שינינו בעמוד הזה</h2>
+                    <p class="text-lg md:text-xl font-bold text-blue-950">במקום מדריך ארוך ומתיש עם המון בלוקים, העמוד מסודר עכשיו כמו שאר האתר: תוכן קצר, כרטיסים ברורים, וריווח נעים שלא יוצר תחושה של מסכים ריקים.</p>
+                    <p>המטרה כאן היא לא לדחוף את כל עולם הביטוח לעמוד אחד, אלא לתת תמונה נקייה: אילו ביטוחים בדרך כלל חשובים, מה בודקים לפני שקונים, ואיפה בדרך כלל משלמים סתם. אם תרצה להעמיק, יש קישורים למדריכים הייעודיים בהמשך.</p>
+                    <p class="internal-links">להעמקה לפי נושא אפשר לעבור אל <a href="life-insurance.html">ביטוח חיים</a>, <a href="health-insurance.html">ביטוח בריאות</a>, <a href="mortgage-insurance.html">ביטוח משכנתא</a>, <a href="pension-guide.html">פנסיה</a> ואל <a href="faq.html">עמוד השאלות הנפוצות</a>.</p>
                 </section>
 
                 <nav class="toc-nav insurance-rich-text" aria-labelledby="toc-title">
-                    <h2 id="toc-title" class="text-2xl md:text-3xl font-black text-blue-950 mb-4">תוכן עניינים פנימי</h2>
+                    <h2 id="toc-title" class="text-2xl md:text-3xl font-black mb-4">מה תמצא בעמוד</h2>
                     <ul>
-                        <li><a href="#insurance-types-main">סוגי הביטוחים המרכזיים</a></li>
-                        <li><a href="#life-insurance">ביטוח חיים</a></li>
-                        <li><a href="#health-insurance">ביטוח בריאות</a></li>
-                        <li><a href="#pension-insurance">ביטוח פנסיוני</a></li>
-                        <li><a href="#mortgage-insurance">ביטוח משכנתא</a></li>
-                        <li><a href="#insurance-prices">כמה זה עולה</a></li>
-                        <li><a href="#how-to-choose-insurance">איך לבחור ביטוח נכון</a></li>
+                        <li><a href="#insurance-types-main">ארבעת הביטוחים המרכזיים</a></li>
+                        <li><a href="#insurance-prices">טווחי מחירים כלליים</a></li>
+                        <li><a href="#how-to-choose-insurance">איך בוחרים נכון</a></li>
                         <li><a href="#common-mistakes">טעויות נפוצות</a></li>
+                        <li><a href="#why-agent">למה לעבוד עם סוכן</a></li>
                         <li><a href="#faq">שאלות נפוצות</a></li>
                         <li><a href="#personal-check">בדיקה אישית</a></li>
                     </ul>
                 </nav>
 
                 <section id="insurance-types-main" class="insurance-section insurance-rich-text" aria-labelledby="insurance-types-main-title">
-                    <h2 id="insurance-types-main-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-6">סוגי הביטוחים המרכזיים</h2>
-                    <p>יש הרבה סוגי ביטוחים בישראל, אך בפועל ארבעה תחומים מרכזיים חוזרים כמעט בכל שיחה מקצועית: ביטוח חיים, ביטוח בריאות, ביטוח פנסיוני וביטוח משכנתא. כל אחד מהם נועד לפתור בעיה אחרת, ולכן חשוב להבין לא רק מה שם המוצר, אלא מה הוא אמור לעשות ברגע האמת, כמה הוא עשוי לעלות, ואיך להחליט אם הוא באמת נחוץ לך.</p>
-
-                    <section id="life-insurance" class="insurance-card insurance-rich-text" aria-labelledby="life-insurance-title">
-                        <h3 id="life-insurance-title" class="text-2xl font-black text-blue-950">ביטוח חיים - כמה עולה ומה חשוב לבדוק</h3>
-                        <p>ביטוח חיים נועד להגן כלכלית על בני המשפחה במקרה של פטירה. זה לא ביטוח שקונים "כי צריך", אלא כלי שנועד לאפשר לבן או בת הזוג ולילדים להמשיך לשלם משכנתא, שכר דירה, מסגרות חינוך והוצאות שוטפות גם אם אחד המפרנסים כבר לא בתמונה. לכן ביטוח חיים חשוב במיוחד למשפחות עם ילדים, לבעלי משכנתא, ולמי שיש עליו התחייבויות פיננסיות משמעותיות. בבדיקות שבוצעו בתיקים של לקוחות, מקרים רבים מראים שהבנה נכונה של כמה עולה ביטוח חיים מתחילה בכלל מחישוב הצורך הכלכלי ולא מהמחיר החודשי בלבד.</p>
-                        <p>השאלה שאנשים באמת שואלים היא כמה עולה ביטוח חיים. התשובה היא שהמחיר משתנה לפי גיל, מצב רפואי, עישון, סכום הכיסוי ומשך הביטוח. כדוגמה בלבד, אדם בריא בן 35 שאינו מעשן עשוי לראות לעיתים הצעות בטווח של עשרות שקלים לחודש לכיסוי בסיסי נמוך יחסית, ולעיתים גם מעל 100 ש"ח ואף יותר כאשר סכום הביטוח גבוה או כאשר יש צורך בכיסוי משמעותי למשפחה עם משכנתא. במקרים רבים רואים שכאשר שואלים כמה עולה ביטוח חיים בלי לחשב התחייבויות, מקבלים מחיר זול אבל כיסוי שלא באמת מגן על המשפחה. לכן אין משמעות אמיתית למחיר בלי לבדוק מה הסכום שהפוליסה אמורה לספק למשפחה ביום שבו באמת צריך אותה.</p>
-                        <div class="insurance-subgrid two-col">
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">למי מתאים</h3>
-                                <ul>
-                                    <li>משפחות עם ילדים שתלויות בהכנסה השוטפת של אחד ההורים או של שניהם.</li>
-                                    <li>בעלי משכנתא שרוצים לוודא שהמשפחה לא תישאר עם חוב גדול במקרה קיצון.</li>
-                                    <li>זוגות בתחילת הדרך שרוצים לייצר יציבות כלכלית לטווח בינוני וארוך.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">מה חשוב לבדוק</h3>
-                                <ul>
-                                    <li>סכום הכיסוי והאם הוא באמת תואם את ההתחייבויות וההוצאות של המשפחה.</li>
-                                    <li>הפרמיה החודשית לאורך זמן ולא רק המחיר ההתחלתי.</li>
-                                    <li>תנאי הפוליסה, חריגים, הצהרת בריאות ואפשרות לעדכון הכיסוי בעתיד.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-blue-900">טעויות נפוצות</h3>
-                        <ul>
-                            <li>כיסוי נמוך מדי ביחס להתחייבויות האמיתיות של המשפחה.</li>
-                            <li>פוליסה ישנה שלא עודכנה אחרי לידת ילדים או הגדלת משכנתא.</li>
-                            <li>בחירה רק לפי המחיר החודשי בלי לבדוק מה קורה בפועל למשפחה.</li>
-                        </ul>
-                        <h3 class="text-xl font-extrabold text-blue-900">דוגמה מהשטח</h3>
-                        <p>זוג צעיר עם שני ילדים יכול לגלות שיש לו ביטוח חיים דרך המשכנתא בלבד, אבל בלי כיסוי אמיתי שמחליף הכנסה משפחתית במקרה פטירה.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">טיפ חשוב</h3>
-                        <p>לא לבחור רק לפי מחיר. בודקים קודם כמה כסף המשפחה באמת תצטרך, ורק אחר כך משווים בין פוליסות וחברות.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">סיכום קצר - ביטוח חיים</h3>
-                        <p>ביטוח חיים הוא אחד המרכיבים המרכזיים בתוך סוגי ביטוחים בישראל למשפחות עם התחייבויות, ולכן חשוב להבין כמה עולה ביטוח חיים בהקשר של גובה הכיסוי ולא רק של התשלום החודשי. כשבודקים איך לבחור ביטוח חיים נכון, מתחילים בצרכים של המשפחה, ממשיכים להשוואת תנאים ורק אז בוחנים מחיר.</p>
-                    </section>
-
-                    <section id="health-insurance" class="insurance-card insurance-rich-text" aria-labelledby="health-insurance-title">
-                        <h3 id="health-insurance-title" class="text-2xl font-black text-blue-950">ביטוח בריאות - איזה ביטוח בריאות כדאי ואיך לבחור</h3>
-                        <p>ביטוח בריאות פרטי נועד להשלים את מה שקופות החולים והביטוחים המשלימים לא תמיד מכסים במלואו. בפועל, ביטוח בריאות יכול לאפשר גישה מהירה יותר לרופאים, ניתוחים פרטיים, תרופות מחוץ לסל, בדיקות מתקדמות וטיפולים יקרים במצבים שבהם ההשלכות הכלכליות והרפואיות עלולות להיות משמעותיות מאוד.</p>
-                        <p>אחת השאלות הנפוצות ביותר היא איזה ביטוח בריאות כדאי. התשובה הנכונה היא שלא מתחילים במילה "איזה", אלא במילה "מה כבר יש". הרבה אנשים מחזיקים גם שב"ן של קופת החולים, גם פוליסה פרטית, לפעמים גם כיסוי דרך מקום העבודה, ולא תמיד מבינים איפה יש השלמה אמיתית ואיפה יש כפל. דווקא בגלל זה, בחירת ביטוח בריאות נכון מתחילה במיפוי ולא בקנייה. בבדיקות שבוצעו בתיקים של לקוחות, נפוץ לראות שאנשים שואלים איזה ביטוח בריאות כדאי רק אחרי שכבר נוצר כפל, בזמן שהשלב החשוב באמת הוא להבין איך לבחור ביטוח בריאות שמתאים לכיסויים הקיימים.</p>
-                        <p>מבחינת מחיר, ביטוח בריאות משתנה לפי גיל, מצב רפואי, מבנה הכיסוי ואם מדובר בפוליסה בסיסית או רחבה יותר. כדוגמה בלבד, בגיל צעיר ובריא אפשר לראות לעיתים מחירים נמוכים יחסית של עשרות שקלים בודדים במסלולים מסוימים, בעוד שבכיסויים רחבים יותר, בגילים מתקדמים יותר או עם רכיבים מורחבים, העלות יכולה להגיע למאות שקלים בחודש. לכן כששואלים כמה עולה ביטוח בריאות, חשוב לשאול גם מה מקבלים, מה החריגים, ומה בדיוק חסר ללא הפוליסה.</p>
-                        <div class="insurance-subgrid two-col">
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">מה הוא כולל בדרך כלל</h3>
-                                <ul>
-                                    <li>ניתוחים פרטיים בארץ ולעיתים גם בחו"ל בהתאם לתנאי הפוליסה.</li>
-                                    <li>תרופות מחוץ לסל במצבים שבהם העלות הכספית עלולה להיות גבוהה מאוד.</li>
-                                    <li>ייעוץ מומחים, בדיקות מתקדמות וטכנולוגיות רפואיות חדשות.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">למי מתאים</h3>
-                                <ul>
-                                    <li>כמעט לכל אחד, במיוחד למשפחות שרוצות ודאות גבוהה יותר בעת אירוע רפואי משמעותי.</li>
-                                    <li>עצמאיים ושכירים שמבינים שעיכוב בטיפול רפואי עלול לפגוע גם בהכנסה.</li>
-                                    <li>מי שרוצה שליטה רחבה יותר בבחירת הרופא, בית החולים ואופי הטיפול.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-blue-900">טעויות נפוצות</h3>
-                        <ul>
-                            <li>לקנות פוליסה חדשה בלי לבדוק מה כבר קיים.</li>
-                            <li>לשלם כפול על אותם ניתוחים או כיסויים חופפים.</li>
-                            <li>לבחור מסלול זול מאוד שלא נותן מענה ברגע שבו באמת צריך הפעלה.</li>
-                        </ul>
-                        <h3 class="text-xl font-extrabold text-blue-900">דוגמה מהשטח</h3>
-                        <p>לקוח עם שב"ן דרך הקופה ועם ביטוח קבוצתי מהעבודה בטוח שיש לו כיסוי מלא, אבל מגלה שרכיב תרופות מחוץ לסל או בחירת מנתח דווקא חסר.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">טיפ חשוב</h3>
-                        <p>בביטוח בריאות לא בוחנים רק מחיר, אלא גם זמינות, חריגים, תהליך תביעה, ואיכות הכיסוי למקרי קיצון ולאירועים יקרים באמת.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">סיכום קצר - ביטוח בריאות</h3>
-                        <p>כדי להבין איזה ביטוח בריאות כדאי, צריך למפות את מה שכבר קיים ולבדוק היכן חסר כיסוי אמיתי. בסקירה של סוגי ביטוחים בישראל, ביטוח בריאות הוא תחום שבו איך לבחור ביטוח נכון משפיע מאוד על העלות, על איכות הכיסוי ועל מניעת כפילויות.</p>
-                    </section>
-
-                    <section id="pension-insurance" class="insurance-card insurance-rich-text" aria-labelledby="pension-insurance-title">
-                        <h3 id="pension-insurance-title" class="text-2xl font-black text-blue-950">ביטוח פנסיוני - הסבר איך לבחור מסלול נכון</h3>
-                        <p>ביטוח פנסיוני הוא הבסיס הכלכלי לגיל פרישה, אבל לא רק. מאחורי המונח הזה מסתתרים מוצרים שמשלבים חיסכון ארוך טווח, כיסוי לשארים ולעיתים גם רכיבים של אובדן כושר עבודה. זו אחת ההחלטות הכספיות החשובות ביותר בחיים, משום שגם שינוי קטן בדמי הניהול, במסלול ההשקעה או בגובה ההפקדה יכול להשפיע דרמטית על העתיד.</p>
-                        <p>הרבה אנשים מחפשים ביטוח פנסיוני הסבר שייתן תשובה פשוטה לשאלה איך לבחור ביטוח פנסיוני, אך בפועל לא תמיד מבינים שהשאלה היא לא רק "באיזו חברה" אלא גם איזה מבנה מתאים: קרן פנסיה, ביטוח מנהלים, קופת גמל, ומה היחס ביניהם. מעבר לכך, תכנון פנסיוני טוב חייב לקחת בחשבון גיל, שכר, יציבות תעסוקתית, מצב משפחתי, רמת סיכון רצויה, וכמה כיסוי ביטוחי כבר קיים במוצרים אחרים. במקרים רבים רואים שביטוח פנסיוני הסבר ברור חוסך שנים של הישארות במסלול ברירת מחדל שלא מתאים למצב בפועל.</p>
-                        <p>בניגוד לביטוח חיים או ביטוח בריאות, כאן ה"מחיר" הוא לא רק פרמיה חודשית אלא גם דמי הניהול וההשפעה המצטברת שלהם לאורך שנים. גם פער של עשיריות אחוז בדמי הניהול יכול להצטבר לסכומים משמעותיים מאוד לאורך עשרות שנים. לכן מי שמחפש לחסוך צריך להסתכל לא רק על התשואה שהייתה, אלא גם על דמי הניהול שהוא משלם, מסלול ההשקעה שבו הוא נמצא, והאם הכיסויים הנלווים בכלל רלוונטיים.</p>
-                        <div class="insurance-subgrid two-col">
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">מה כולל התחום</h3>
-                                <ul>
-                                    <li>קרן פנסיה עם חיסכון לגיל פרישה וכיסויים ביטוחיים מובנים.</li>
-                                    <li>ביטוח מנהלים במקרים מסוימים, בהתאם לצרכים ולהיסטוריית החיסכון.</li>
-                                    <li>קופות גמל ככלי חיסכון ארוך טווח עם יתרונות מסוימים.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">מה חשוב לבדוק</h3>
-                                <ul>
-                                    <li>דמי ניהול, משום שגם פער קטן לאורך שנים עשוי להצטבר לסכומים משמעותיים.</li>
-                                    <li>מסלול ההשקעה והאם הוא מתאים לגיל, לסיכון הרצוי ולמטרות שלך.</li>
-                                    <li>כיסויים נלווים כמו אובדן כושר עבודה ושארים, והאם הם מספיקים בפועל.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-blue-900">טעויות נפוצות</h3>
-                        <ul>
-                            <li>להישאר שנים במסלול ברירת מחדל בלי לבדוק התאמה.</li>
-                            <li>להתמקד רק בתשואה שנתית אחת במקום בתמונה ארוכת טווח.</li>
-                            <li>לא להבין שחלק מההוצאה היא בכלל דמי ניהול שניתן לשפר.</li>
-                        </ul>
-                        <h3 class="text-xl font-extrabold text-blue-900">דוגמה מהשטח</h3>
-                        <p>שכיר שעבר בין כמה מקומות עבודה צבר מוצרים שונים, אבל מעולם לא בדק אם יש כפילות בכיסוי או דמי ניהול גבוהים במוצר שנשכח.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">טיפ חשוב</h3>
-                        <p>בפנסיה בודקים תמונה מלאה: כמה מופקד, מה דמי הניהול, באיזה מסלול אתה, ומה באמת צפוי להישאר בגיל פרישה.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">סיכום קצר - ביטוח פנסיוני</h3>
-                        <p>ביטוח פנסיוני הסבר טוב צריך לחבר בין החיסכון, דמי הניהול והכיסויים הנלווים כדי להבין איך לבחור ביטוח שמתאים לשכר, לגיל ולסיכון הרצוי. בתוך סוגי ביטוחים בישראל, זהו התחום שבו החלטות קטנות היום יכולות להשפיע מאוד על העתיד הכלכלי.</p>
-                    </section>
-
-                    <section id="mortgage-insurance" class="insurance-card insurance-rich-text" aria-labelledby="mortgage-insurance-title">
-                        <h3 id="mortgage-insurance-title" class="text-2xl font-black text-blue-950">ביטוח משכנתא - מה זה ואיך בוחרים נכון</h3>
-                        <p>ביטוח משכנתא הוא כיסוי שהבנק דורש בעת לקיחת משכנתא, אך זה לא אומר שחייבים לקנות אותו דווקא דרך הבנק או לקבל את ההצעה הראשונה בלי בדיקה. בפועל מדובר בשילוב של ביטוח חיים למשכנתא וביטוח נכס, ושניהם יכולים להשפיע על העלות הכוללת לאורך שנים. מי שמחפש ביטוח משכנתא מה זה צריך להבין שמדובר לא רק בדרישת בנק, אלא במרכיב חשוב בתקציב המשפחתי ובחלק מרכזי מתוך סוגי ביטוחים בישראל.</p>
-                        <p>רבים מחפשים כמה עולה ביטוח משכנתא, ובצדק. העלות משתנה לפי גיל, מצב רפואי, גובה ההלוואה, מאפייני הנכס ולעיתים גם תקופת ההלוואה. בדוגמאות רבות הפרמיה יכולה להתחיל בעשרות שקלים בחודש ולהגיע גם למאות שקלים, במיוחד כאשר מדובר בכיסוי חיים לזוג לווים, בגילים מתקדמים יותר או בהיסטוריה רפואית מורכבת. מה שנראה כמו פער קטן של עשרות שקלים בחודש בתחילת הדרך, עלול להפוך לאלפי ואף עשרות אלפי שקלים לאורך חיי המשכנתא.</p>
-                        <p>הטעות המרכזית היא להתייחס לביטוח משכנתא כאל סעיף טכני. דווקא כאן, בדיקה מקצועית יכולה לגלות האם הצעת הבנק תחרותית, האם הפרמיה צפויה להשתנות, והאם אפשר לשפר תנאים בלי לפגוע בדרישות הבנק. זו אחת הנקודות שבהן אנשים משלמים יותר מדי פשוט כי הם עסוקים בתהליך רכישת הדירה ולא עוצרים להשוות. בבדיקות שבוצעו בתיקים של לקוחות, מקרים רבים מראים שכאשר מבינים ביטוח משכנתא מה זה באמת, קל יותר להשוות בין הצעת הבנק לבין חלופות חיצוניות ולבחור נכון.</p>
-                        <div class="insurance-subgrid two-col">
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">ממה הוא מורכב</h3>
-                                <ul>
-                                    <li>ביטוח חיים שמכסה את יתרת ההלוואה במקרה של פטירה.</li>
-                                    <li>ביטוח נכס שמגן על המבנה מפני נזקים בהתאם לדרישות הבנק.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-extrabold text-blue-900">מה כדאי לבדוק</h3>
-                                <ul>
-                                    <li>אם ההצעה שקיבלת מהבנק היא באמת תחרותית לעומת השוק.</li>
-                                    <li>האם קיימות מגבלות רפואיות או חיתומיות שמשפיעות על המחיר.</li>
-                                    <li>איך הפרמיה משתנה לאורך השנים והאם יש מקום לבצע התאמה מחדש.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-blue-900">טעויות נפוצות</h3>
-                        <ul>
-                            <li>לקבל אוטומטית את הצעת הבנק בלי לבדוק חלופות.</li>
-                            <li>לא להבין איך פרמיה משתנה לאורך השנים משפיעה על העלות המצטברת.</li>
-                            <li>להתייחס לביטוח משכנתא כסעיף טכני במקום כמרכיב משמעותי בתקציב.</li>
-                        </ul>
-                        <h3 class="text-xl font-extrabold text-blue-900">דוגמה מהשטח</h3>
-                        <p>זוג שלקח משכנתא במהירות חתם על ביטוח דרך הבנק, ורק מאוחר יותר גילה שאפשר היה לקבל תנאים טובים יותר ולהוזיל את ההוצאה.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">טיפ חשוב</h3>
-                        <p>ביטוח משכנתא בודקים כמו כל הוצאה גדולה אחרת: השוואה, תנאים, חיתום ועלות כוללת לאורך זמן — לא רק את המחיר של החודש הראשון.</p>
-                        <h3 class="text-xl font-extrabold text-blue-900">סיכום קצר - ביטוח משכנתא</h3>
-                        <p>ביטוח משכנתא מה זה? זהו שילוב של כיסוי חיים ונכס שנועד להגן על ההלוואה ועל המבנה, אבל גם מצריך בדיקה של מחיר, תנאים וחיתום. מי שרוצה להבין איך לבחור ביטוח משכנתא נכון צריך להשוות חלופות ולא להסתפק אוטומטית בהצעה הראשונה של הבנק.</p>
-                    </section>
+                    <h2 id="insurance-types-main-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-4">ארבעת הביטוחים המרכזיים</h2>
+                    <p>ברוב המקרים, זה הסדר הנכון להתחיל ממנו. לא כל אדם צריך את כולם באותו היקף, אבל אלו התחומים שבדרך כלל משפיעים באמת על המשפחה והתקציב.</p>
+                    <div class="insurance-grid two-col">
+                        <section id="life-insurance" class="insurance-card insurance-rich-text" aria-labelledby="life-insurance-title">
+                            <h3 id="life-insurance-title" class="text-2xl font-black text-blue-950">ביטוח חיים</h3>
+                            <p>נועד להגן על המשפחה כלכלית במקרה פטירה. בדרך כלל רלוונטי במיוחד כשיש ילדים, משכנתא או תלות בהכנסה של אחד מבני הזוג.</p>
+                            <ul>
+                                <li>בודקים גובה כיסוי ולא רק מחיר חודשי.</li>
+                                <li>חשוב לעדכן אחרי לידה, משכנתא או שינוי שכר.</li>
+                                <li><a href="life-insurance.html">למדריך המלא על ביטוח חיים</a></li>
+                            </ul>
+                        </section>
+                        <section id="health-insurance" class="insurance-card insurance-rich-text" aria-labelledby="health-insurance-title">
+                            <h3 id="health-insurance-title" class="text-2xl font-black text-blue-950">ביטוח בריאות</h3>
+                            <p>לא מתחילים מהשאלה “איזה ביטוח לקנות”, אלא ממה שכבר יש דרך הקופה, העבודה או פוליסות קיימות. המטרה היא להשלים, לא לשלם כפול.</p>
+                            <ul>
+                                <li>בודקים חפיפות בין שב"ן, קבוצתי ופרטי.</li>
+                                <li>חשוב להבין חריגים, ניתוחים ותרופות מחוץ לסל.</li>
+                                <li><a href="health-insurance.html">למדריך על ביטוח בריאות</a></li>
+                            </ul>
+                        </section>
+                        <section id="pension-insurance" class="insurance-card insurance-rich-text" aria-labelledby="pension-insurance-title">
+                            <h3 id="pension-insurance-title" class="text-2xl font-black text-blue-950">ביטוח פנסיוני</h3>
+                            <p>כאן לא מסתכלים רק על “מחיר”, אלא על דמי ניהול, מסלול השקעה והכיסויים הביטוחיים שנלווים לחיסכון. החלטות קטנות יכולות להשפיע לאורך שנים.</p>
+                            <ul>
+                                <li>בודקים דמי ניהול, מסלול והשארים.</li>
+                                <li>לא נשארים שנים במסלול ברירת מחדל בלי בדיקה.</li>
+                                <li><a href="pension-guide.html">למדריך הפנסיוני</a></li>
+                            </ul>
+                        </section>
+                        <section id="mortgage-insurance" class="insurance-card insurance-rich-text" aria-labelledby="mortgage-insurance-title">
+                            <h3 id="mortgage-insurance-title" class="text-2xl font-black text-blue-950">ביטוח משכנתא</h3>
+                            <p>זהו סעיף שהרבה משפחות חותמות עליו מהר מדי. בפועל כדאי לבדוק אם ההצעה מהבנק תחרותית ומה קורה לפרמיה לאורך השנים.</p>
+                            <ul>
+                                <li>כולל בדרך כלל ביטוח חיים + ביטוח מבנה.</li>
+                                <li>שווה להשוות חלופות מחוץ לבנק.</li>
+                                <li><a href="mortgage-insurance.html">למדריך ביטוח משכנתא</a></li>
+                            </ul>
+                        </section>
+                    </div>
                 </section>
 
                 <section id="insurance-prices" class="insurance-panel insurance-rich-text" aria-labelledby="insurance-prices-title">
-                    <h2 id="insurance-prices-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-6">כמה זה עולה? טווחי מחירים שחשוב להכיר בסוגי ביטוחים בישראל</h2>
-                    <p>מחירי ביטוח משתנים לפי גיל, מצב רפואי, עישון, סכום כיסוי, מקצוע, סוג הפוליסה והחברה המבטחת. לכן אי אפשר לתת מחיר אחד שמתאים לכולם. ובכל זאת, הרבה אנשים מחפשים תשובה מעשית לפני שהם פונים לבדיקה — וזה לגמרי מובן.</p>
-                    <p>הטווחים הבאים הם דוגמאות כלליות להמחשה בלבד, לא הצעת מחיר מחייבת. המטרה שלהם היא לעזור להבין אם אתה נמצא באזור סביר או אם יש סיכוי שאתה משלם גבוה מדי ביחס למבנה הכיסוי שלך.</p>
+                    <h2 id="insurance-prices-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-4">טווחי מחירים כלליים</h2>
+                    <p>המחיר תמיד תלוי בגיל, בריאות, סכום כיסוי ומבנה הפוליסה. לכן הטווחים כאן הם רק אינדיקציה כדי להבין אם יש בכלל סיבה לבדיקה.</p>
                     <div class="insurance-grid two-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח חיים</h3><p>למבוטחים צעירים ובריאים המחיר יכול להתחיל בעשרות שקלים לחודש, אך בכיסויים גבוהים יותר או בגילים מבוגרים יותר העלות יכולה לעלות משמעותית. מי שמעשן או בעל היסטוריה רפואית יראה בדרך כלל פרמיה גבוהה יותר, ולכן השאלה כמה עולה ביטוח חיים חייבת להיבדק לפי סכום הכיסוי ולא רק לפי תג המחיר.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח בריאות</h3><p>פוליסות בסיסיות מסוימות עשויות להתחיל בעשרות שקלים, אבל ביטוח בריאות רחב יותר, או כיסוי בגיל מבוגר יותר, יכול להגיע גם למאות שקלים בחודש — במיוחד כשיש הרחבות וכיסויים מקיפים.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח פנסיוני</h3><p>כאן מסתכלים פחות על "מחיר" ויותר על דמי ניהול, גובה הפקדה ומסלול השקעה. גם חיסכון קטן בדמי הניהול יכול להיות משמעותי מאוד לאורך השנים.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח משכנתא</h3><p>לעיתים רואים מחירים של עשרות שקלים בחודש בתחילת הדרך, אך העלות עשויה להשתנות לפי גיל, יתרת הלוואה, מצב רפואי ומבנה הנכס. לכן חשוב לבדוק לא רק את התשלום הראשון אלא את התמונה לאורך חיי המשכנתא.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח חיים</h3><p>לעיתים מתחיל בעשרות שקלים, אבל עולה ככל שהכיסוי גבוה יותר או כשהגיל והמצב הרפואי משתנים.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח בריאות</h3><p>יכול להתחיל נמוך יחסית, אבל בפוליסות רחבות או בגילים מבוגרים יותר המחיר יכול לעלות משמעותית.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">פנסיה</h3><p>כאן מסתכלים בעיקר על דמי ניהול, רמת הפקדה וההשפעה המצטברת לאורך שנים.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח משכנתא</h3><p>העלות מושפעת מגיל, הלוואה, בריאות ומבנה הנכס — ולכן חשוב לבדוק את כל חיי ההלוואה, לא רק את המחיר הראשוני.</p></div>
                     </div>
                 </section>
 
                 <section id="how-to-choose-insurance" class="insurance-section insurance-rich-text" aria-labelledby="how-to-choose-insurance-title">
-                    <h2 id="how-to-choose-insurance-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-6">איך לבחור ביטוח נכון בלי לשלם על מה שלא צריך</h2>
-                    <p>הטעות הנפוצה ביותר היא לקנות ביטוחים לפי פחד, לחץ או המלצה כללית בלי להבין מה באמת צריך. כדי לבחור נכון, צריך להתחיל מהמצב האישי — לא מהמוצר. אדם רווק בלי ילדים צריך סדר עדיפויות אחר לגמרי מזוג עם שלושה ילדים, משכנתא והוצאות חודשיות גבוהות. מי שמחפש איך לבחור ביטוח צריך להבין קודם את צרכי המשפחה, ורק אחר כך להחליט אילו סוגי ביטוחים בישראל באמת רלוונטיים עבורו.</p>
+                    <h2 id="how-to-choose-insurance-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-4">איך בוחרים נכון בלי להסתבך</h2>
                     <div class="insurance-grid three-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">להבין את הצרכים האישיים</h3><p>האם יש ילדים? האם קיימת משכנתא? האם יש תלות בהכנסה של אדם אחד? האם יש היסטוריה רפואית או מקצוע עם סיכון מיוחד? כל תשובה משנה את סדר העדיפויות.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">לבדוק מה כבר יש</h3><p>לפני שמוסיפים ביטוח חדש, בודקים אילו כיסויים כבר קיימים דרך מקום העבודה, קרן הפנסיה, קופת החולים, ביטוח קבוצתי או פוליסה ישנה שנשכחה בדרך.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">להשוות מחירים ותנאים</h3><p>מחיר נמוך לא תמיד מעיד על מוצר טוב. צריך להשוות גם חריגים, שירות, תקופות אכשרה, תהליך תביעה, והאם הכיסוי מתאים באמת למצב המשפחתי.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">1. מתחילים מהחיים עצמם</h3><p>ילדים, משכנתא, הכנסה, מצב בריאותי ויציבות תעסוקתית — אלה הדברים שקובעים מה חשוב באמת.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">2. בודקים מה כבר קיים</h3><p>לפני כל רכישה חדשה, ממפים פוליסות קיימות דרך עבודה, קופה, פנסיה או פוליסות ישנות.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">3. רק אז משווים</h3><p>משווים מחיר, חריגים, תהליך תביעה וגמישות לעדכון — לא רק את המספר בשורה התחתונה.</p></div>
                     </div>
-                    <p>הרבה אנשים משלמים כפול בלי לדעת. זה קורה כשיש ביטוח בריאות פרטי בנוסף לשב"ן, כיסוי חיים דרך מקום העבודה לצד פוליסה פרטית שלא נבדקה, או רכיב אובדן כושר עבודה בכמה מסגרות שונות. לכן שלב הבדיקה חשוב לא פחות משלב הקנייה. נפוץ לראות שאנשים בטוחים שהם יודעים איך לבחור ביטוח, אבל בפועל מדלגים על מיפוי הכיסויים הקיימים ועל בדיקת קישורים בין ביטוח חיים, בריאות, פנסיה ומשכנתא.</p>
-                    <p>בחירה נכונה בביטוח היא לא תהליך של "לקנות יותר", אלא של להבין מה נחוץ, מה עודף, ואיך לבנות מעטפת כלכלית נכונה. לפעמים ההמלצה תהיה לשמור על פוליסה קיימת, לפעמים לעדכן סכומים, ולפעמים דווקא לבטל מוצר שלא משרת אותך יותר. אם תרצה לראות עוד דוגמאות אמיתיות, אפשר להמשיך אל <a href="articles.html">מאמרים מקצועיים על ביטוחים ופנסיה</a>, אל <a href="check-insurance-policies.html">בדיקת תיק ביטוח</a>, אל <a href="mortgage-insurance.html">מדריך ביטוח משכנתא</a> או אל <a href="choose-insurance-agent.html">מדריך איך לבחור סוכן ביטוח</a>.</p>
+                    <p class="internal-links">אם המטרה שלך היא פשוט לעשות סדר, עדיף להתחיל מ־<a href="check-insurance-policies.html">בדיקת תיק ביטוח</a> או לקרוא את <a href="choose-insurance-agent.html">המדריך לבחירת סוכן ביטוח</a>.</p>
                 </section>
 
                 <section id="common-mistakes" class="insurance-section insurance-rich-text" aria-labelledby="common-mistakes-title">
-                    <h2 id="common-mistakes-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-6">טעויות נפוצות</h2>
-                    <ul>
-                        <li><strong class="text-blue-950">כפל ביטוחים:</strong> אנשים מחזיקים מספר פוליסות דומות בלי להבין שחלק מהכיסויים חופפים. התוצאה היא הוצאה גבוהה ללא תועלת אמיתית.</li>
-                        <li><strong class="text-blue-950">תשלום גבוה מדי:</strong> פוליסה ישנה נשארת בתוקף בלי בדיקה תקופתית, למרות שכבר אפשר להשיג חלופה טובה יותר או להתאים מחדש את הכיסוי.</li>
-                        <li><strong class="text-blue-950">חוסר התאמה למצב המשפחתי:</strong> ביטוח שרכש רווק בן 28 לא בהכרח מתאים לאדם נשוי עם ילדים ומשכנתא. החיים משתנים, והפוליסות צריכות להשתנות יחד איתם.</li>
-                        <li><strong class="text-blue-950">בחירה לפי מחיר בלבד:</strong> מי שבודק רק כמה עולה ביטוח, בלי לבדוק תנאים, כיסויים ותהליך תביעה, עלול לגלות ברגע האמת שהחיסכון היה יקר מאוד.</li>
-                    </ul>
-                    <p>אם יש מסר אחד חשוב, הוא שלא מספיק לדעת אילו סוגי ביטוחים קיימים. צריך גם לבדוק אם הם עדיין משרתים את המציאות שלך היום — לא את מה שהיה נכון לפני חמש או עשר שנים. במקרים רבים רואים שהפער בין פוליסה קיימת לבין הצורך האמיתי נובע מכך שלא עצרו בזמן לשאול איך לבחור ביטוח מחדש אחרי שינוי משפחתי או כלכלי.</p>
+                    <h2 id="common-mistakes-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-4">טעויות שחוזרות שוב ושוב</h2>
+                    <div class="insurance-grid two-col">
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">כפל ביטוחים</h3><p>אותו כיסוי מופיע בכמה מסגרות שונות, והמשפחה משלמת פעמיים בלי לקבל ערך כפול.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">קנייה מתוך לחץ</h3><p>חותמים מהר כי “צריך”, בלי לבדוק אם המוצר באמת מתאים לצרכים.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">התמקדות במחיר בלבד</h3><p>פוליסה זולה שלא נותנת מענה ברגע האמת עלולה להיות היקרה ביותר.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">אי־עדכון לאורך השנים</h3><p>החיים משתנים, אבל הפוליסה נשארת זהה — ואז נוצרת אי התאמה.</p></div>
+                    </div>
                 </section>
 
                 <section id="why-agent" class="insurance-section insurance-rich-text" aria-labelledby="why-agent-title">
-                    <h2 id="why-agent-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-6">למה לעבוד עם סוכן ביטוח</h2>
-                    <p>בעולם שבו יש כל כך הרבה סוגי ביטוחים בישראל, מסלולים, כיסויים ושינויים רגולטוריים, לא תמיד קל להבין לבד מה באמת נכון עבורך. סוכן ביטוח טוב לא אמור רק למכור פוליסה, אלא ללוות תהליך קבלת החלטות ולתרגם מוצרים מורכבים לשפה פשוטה והחלטות טובות.</p>
+                    <h2 id="why-agent-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-4">למה לעבוד עם סוכן ביטוח</h2>
                     <div class="insurance-grid three-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">התאמת כיסוי לצרכים</h3><p>הסתכלות על המשפחה, ההכנסה, החיסכון וההתחייבויות כדי להתאים כיסוי אמיתי ולא פתרון גנרי.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">חיסכון בעלויות</h3><p>זיהוי כפילויות, בדיקת עלויות מול תועלת, והכוונה לשלם על מה שצריך — לא על מה שנשמע מרשים.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ליווי בעת תביעה</h3><p>ברגע האמת, כשצריך להפעיל את הפוליסה, חשוב שיהיה מי שמכיר את התיק, את התנאים ואת הדרך לקדם את הטיפול במהירות.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ממפים את התמונה המלאה</h3><p>לא מסתכלים על פוליסה אחת, אלא על החיים, הבריאות, הפנסיה והמשכנתא יחד.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">חוסכים כסף מיותר</h3><p>בדיקה טובה מגלה חפיפות, מוצרים ישנים ועלויות שלא באמת משרתות אותך.</p></div>
+                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">מקבלים ליווי גם אחרי הרכישה</h3><p>ברגע האמת, חשוב שיש מי שמכיר את התיק שלך ויודע לעזור גם בתביעה ובשינויים.</p></div>
                     </div>
                 </section>
 
                 <section id="why-yuval" class="insurance-section insurance-rich-text bg-blue-950 text-white" aria-labelledby="why-yuval-title">
                     <h2 id="why-yuval-title" class="text-3xl md:text-4xl font-black mb-5">למה לעבוד עם יובל ויינזוף</h2>
-                    <p>יובל ויינזוף מתמחה בהתאמת ביטוחים אישית לפי מצב משפחתי וכלכלי, עם דגש על שקיפות, פשטות והבנה אמיתית של הצרכים. במקום למכור רשימת פוליסות, המטרה היא לבדוק מה כבר קיים, לזהות כפילויות, להבין איפה חסר כיסוי, ולבנות פתרון מדויק יותר.</p>
-                    <p>היתרון הגדול בעבודה עם יובל הוא החיבור בין הסתכלות מקצועית לבין שיחה פשוטה בגובה העיניים. אם צריך ביטוח חיים — בודקים כמה באמת צריך. אם נדרש ביטוח בריאות — בודקים מה כבר יש דרך העבודה, הקופה והפוליסות הקיימות. אם מדובר בפנסיה — בודקים דמי ניהול, מסלולים וכיסויים. ואם יש משכנתא — בוחנים אם אפשר לחסוך בעלויות בלי לפגוע בדרישות הבנק.</p>
-                    <p>זו בדיוק הנקודה שמבדילה בין רכישה אקראית לבין תכנון נכון: לא רק לבחור ביטוח, אלא להבין מה קונים, למה קונים, וכמה נכון לשלם עליו. הרבה פעמים הערך האמיתי של הבדיקה הוא לא רק בפוליסה חדשה, אלא דווקא במה שמגלים על התיק הקיים.</p>
-                    <p>אם חשוב לך לקבל הסבר ברור, התאמה אישית וליווי שגם רואה את התמונה המשפחתית וגם את המספרים, זו בדיוק הגישה שיובל מביא לשולחן. אפשר לקרוא עוד <a href="about.html" class="underline font-bold text-white">על יובל</a>, להבין את <a href="services.html" class="underline font-bold text-white">דרך העבודה</a> או לעבור ישר אל <a href="index.html#contact" class="underline font-bold text-white">צור קשר</a>.</p>
+                    <p>הגישה של יובל היא לא “למכור עוד פוליסה”, אלא לבדוק מה כבר קיים, לזהות חוסרים או כפילויות, ולהתאים פתרון ברור שמבין גם מספרים וגם משפחה.</p>
+                    <p>אם צריך ביטוח חיים — בודקים כמה באמת צריך. אם מדובר בבריאות — ממפים מה כבר יש. אם זו פנסיה — בוחנים דמי ניהול ומסלול. ואם זו משכנתא — משווים בצורה מסודרת ולא חותמים אוטומטית.</p>
+                    <p>אפשר לקרוא עוד <a href="about.html" class="underline font-bold text-white">על יובל</a>, להבין את <a href="services.html" class="underline font-bold text-white">דרך העבודה</a> או להשאיר פנייה דרך <a href="index.html#contact" class="underline font-bold text-white">צור קשר</a>.</p>
                 </section>
 
                 <section id="faq" class="insurance-section insurance-rich-text" aria-labelledby="faq-title">
-                    <h2 id="faq-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-6">שאלות נפוצות</h2>
+                    <h2 id="faq-title" class="text-3xl md:text-4xl font-black text-blue-950 mb-4">שאלות נפוצות</h2>
                     <div class="faq-list">
-                        <details open><summary>מה הביטוח הכי חשוב?</summary><p>בדרך כלל ביטוח חיים וביטוח בריאות הם בין הכיסויים הראשונים שכדאי לבדוק, אבל ההחלטה המדויקת תלויה במצב המשפחתי, בגובה ההתחייבויות ובהכנסה.</p></details>
-                        <details><summary>איך יודעים אם משלמים יותר מדי?</summary><p>בודקים מה כבר קיים, האם יש כפל ביטוחים, מה גובה הכיסוי בפועל, ומה העלות הכוללת ביחס לצרכים האמיתיים. הרבה פעמים רק בדיקה מסודרת מגלה תשלומים מיותרים.</p></details>
-                        <details><summary>אפשר לבטל ביטוח?</summary><p>במקרים רבים אפשר לבטל פוליסה, אבל לפני שעושים זאת חשוב לבדוק שלא מבטלים כיסוי מהותי ושאין פגיעה בהגנה הכלכלית או הרפואית.</p></details>
-                        <details><summary>איך בוחרים בין כמה סוגי ביטוחים?</summary><p>מתחילים מהמצב האישי - משפחה, ילדים, משכנתא, הכנסה, מצב בריאותי וכיסויים קיימים - ורק אחר כך בוחנים אילו ביטוחים באמת נחוצים ומה מיותר.</p></details>
-                        <details><summary>האם כדאי לעשות בדיקת תיק ביטוח לפני רכישה חדשה?</summary><p>כן. בדיקה מוקדמת יכולה לגלות כפילויות, כיסויים חסרים ותשלומים מיותרים, ולעזור לקבל החלטה מדויקת יותר לפני שמוסיפים פוליסה חדשה.</p></details>
+                        <details open><summary>מה הביטוח הראשון שבדרך כלל בודקים?</summary><p>לרוב מתחילים מביטוח חיים, בריאות ופנסיה — אבל הסדר המדויק תלוי במשפחה, בהתחייבויות ובכיסויים שכבר קיימים.</p></details>
+                        <details><summary>איך יודעים אם יש כפל?</summary><p>ממפים את כל הכיסויים הקיימים ובודקים איפה יש חפיפה בין הקופה, העבודה, הפנסיה והפוליסות הפרטיות.</p></details>
+                        <details><summary>האם חייבים לקנות הכול מחדש?</summary><p>ממש לא. הרבה פעמים ההמלצה הנכונה היא דווקא לעדכן, לצמצם או לבטל מה שכבר לא מתאים.</p></details>
+                        <details><summary>מתי נכון לעשות בדיקה מחדש?</summary><p>אחרי לידה, לקיחת משכנתא, שינוי שכר, מעבר עבודה, או כשמרגישים שההוצאה החודשית על ביטוחים מתחילה לטפס.</p></details>
                     </div>
-                    <p class="internal-links">לעוד תשובות מהירות אפשר להיכנס אל <a href="faq.html">מרכז השאלות והתשובות</a>, לקרוא <a href="mortgage-life-checklist.html">מה לבדוק סביב משכנתא וביטוחים</a> או להשאיר פנייה דרך <a href="index.html#contact">צור קשר</a>.</p>
                 </section>
             </article>
         </div>
@@ -936,13 +938,15 @@ document.getElementById('user_phone')?.addEventListener('input', (e) => {
 });
 </script>
 
-<section id="personal-check" class="bottom-cta" aria-labelledby="insurance-types-bottom-cta-title">
-    <div class="bottom-cta__inner cta-panel insurance-rich-text">
-        <h2 id="insurance-types-bottom-cta-title" class="bottom-cta__title">רוצה להבין איזה ביטוחים באמת מתאימים לך?</h2>
-        <p class="bottom-cta__text">השאר פרטים או צור קשר לבדיקה אישית ללא התחייבות, כדי להבין אילו סוגי ביטוחים רלוונטיים עבורך, איפה יש כפילויות, ואיך אפשר לבנות כיסוי מדויק בלי לשלם סתם.</p>
-        <div class="cta-buttons">
-            <button id="openContactInsuranceTypesBottom" class="btn-primary" type="button">לתיאום בדיקה אישית</button>
-            <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">לשיחה מהירה ב-WhatsApp</a>
+<section id="personal-check" class="bottom-cta text-center" aria-labelledby="insurance-types-bottom-cta-title">
+    <div class="container-clean">
+        <div class="bottom-cta__inner insurance-rich-text">
+            <h2 id="insurance-types-bottom-cta-title" class="bottom-cta__title">רוצים שנבדוק לכם את כל התמונה?</h2>
+            <p class="bottom-cta__text">במקום לנחש אם התיק שלכם מסודר, אפשר לעבור יחד על ביטוחים, פנסיה, חובות, הוצאות וחיסכון — ולזהות מה חסר, מה כפול ומה כדאי לשפר כבר עכשיו.</p>
+            <div class="bottom-cta__actions">
+                <button id="openContactInsuranceTypesBottom" class="btn-primary" type="button">לתיאום בדיקה חינם</button>
+                <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="bottom-cta__link">לתיאום מהיר ב-WhatsApp</a>
+            </div>
         </div>
     </div>
 </section>
