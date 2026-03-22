@@ -6084,7 +6084,7 @@ body.pension-fees-page main {
   font-weight: 700;
 }
 .pension-links-box a,
-.pension-rich-text a,
+.pension-rich-text a:not(.pension-btn):not(.pension-btn-secondary),
 .pension-toc a {
   color: #1d4ed8;
   font-weight: 700;
