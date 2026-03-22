@@ -139,31 +139,89 @@ gtag('config', 'G-EM8SYH542C');
     </script>
 <link rel="stylesheet" href="style.css">
 <style>
-body.insurance-types-page { overflow-x: hidden; }
-.insurance-content, .insurance-shell, .insurance-intro, .insurance-section, .insurance-panel, .insurance-card, .toc-nav, .cta-panel { width: 100%; max-width: 100%; box-sizing: border-box; min-width: 0; }
-.insurance-content { max-width: 72rem; margin: 0 auto; }
-.insurance-shell { display: grid; gap: 1rem; }
-.insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav {
+body.insurance-types-page {
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
+}
+body.insurance-types-page main,
+body.insurance-types-page section,
+body.insurance-types-page article,
+body.insurance-types-page div {
+  min-width: 0;
+}
+.insurance-content,
+.insurance-shell,
+.insurance-intro,
+.insurance-section,
+.insurance-panel,
+.insurance-card,
+.toc-nav,
+.cta-panel {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.insurance-content {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.insurance-shell {
+  display: grid;
+  gap: 1rem;
+}
+.insurance-intro,
+.insurance-panel,
+.insurance-section,
+.cta-panel,
+.toc-nav {
   border: 1px solid #e2e8f0;
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   background: #fff;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
   padding: 1rem;
 }
-.insurance-rich-text { width: 100%; max-width: none; }
-.insurance-rich-text p, .insurance-rich-text ul, .insurance-rich-text ol { margin: 0 0 0.9rem; max-width: none; }
-.insurance-rich-text p:last-child, .insurance-rich-text ul:last-child, .insurance-rich-text ol:last-child { margin-bottom: 0; }
-.insurance-rich-text ul { padding-right: 1.1rem; list-style: disc; }
-.insurance-rich-text li { margin-bottom: 0.35rem; }
-.insurance-rich-text h2 { margin-bottom: 1rem; }
-.insurance-rich-text h3 { margin: 1.15rem 0 0.55rem; }
-.insurance-section { scroll-margin-top: 120px; }
-.insurance-grid { display: grid; gap: 0.9rem; align-items: stretch; }
+.insurance-rich-text {
+  width: 100%;
+  max-width: none;
+}
+.insurance-rich-text p,
+.insurance-rich-text ul,
+.insurance-rich-text ol {
+  margin: 0 0 0.9rem;
+  max-width: none;
+}
+.insurance-rich-text p:last-child,
+.insurance-rich-text ul:last-child,
+.insurance-rich-text ol:last-child {
+  margin-bottom: 0;
+}
+.insurance-rich-text ul {
+  padding-right: 1.1rem;
+  list-style: disc;
+}
+.insurance-rich-text li {
+  margin-bottom: 0.35rem;
+}
+.insurance-rich-text h2 {
+  margin-bottom: 1rem;
+}
+.insurance-rich-text h3 {
+  margin: 1.15rem 0 0.55rem;
+}
+.insurance-section {
+  scroll-margin-top: 120px;
+}
+.insurance-grid {
+  display: grid;
+  gap: 0.9rem;
+  align-items: stretch;
+}
 .insurance-card {
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
   padding: 1.25rem;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  overflow-wrap: anywhere;
 }
 .insurance-card > *:first-child { margin-top: 0; }
 .insurance-card > *:last-child { margin-bottom: 0; }
@@ -171,29 +229,91 @@ body.insurance-types-page { overflow-x: hidden; }
   font-size: clamp(1.2rem, 1.1rem + 0.45vw, 1.7rem);
   line-height: 1.35;
 }
-.insurance-card p, .insurance-card li { color: #334155; }
-.insurance-subgrid { display: grid; gap: 0.9rem; margin: 1rem 0; }
+.insurance-card p,
+.insurance-card li { color: #334155; }
+.insurance-subgrid {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1rem 0;
+}
 .insurance-subgrid > div {
   padding: 1rem;
   border: 1px solid #dbe5f2;
   border-radius: 0.9rem;
   background: #f8fbff;
 }
-.toc-nav ul { display: grid; gap: 0.45rem; padding-right: 1.1rem; list-style: disc; margin-bottom: 0; }
-.toc-nav a, .internal-links a { color: #1d4ed8; font-weight: 700; text-decoration: none; }
-.toc-nav a:hover, .internal-links a:hover { text-decoration: underline; }
+.toc-nav ul {
+  display: grid;
+  gap: 0.45rem;
+  padding-right: 1.1rem;
+  list-style: disc;
+  margin-bottom: 0;
+}
+.toc-nav a,
+.internal-links a {
+  color: #1d4ed8;
+  font-weight: 700;
+  text-decoration: none;
+}
+.toc-nav a:hover,
+.internal-links a:hover {
+  text-decoration: underline;
+}
 #why-yuval {
   background: linear-gradient(135deg, #082257 0%, #0b3b86 100%);
   border-color: #0f3d85;
 }
-#why-yuval, #why-yuval p, #why-yuval h2, #why-yuval a { color: #ffffff; }
-#why-yuval a { text-decoration: underline; text-underline-offset: 0.18em; }
-.faq-list { display: grid; gap: 0.6rem; }
-.faq-list details { border: 1px solid #e2e8f0; border-radius: 0.85rem; padding: 0.9rem 1rem; background: #fff; }
-.faq-list summary { cursor: pointer; font-weight: 800; color: #061a40; }
-.faq-list details p { margin: 0.7rem 0 0; }
-.cta-buttons { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem; }
-.cta-buttons > * { max-width: 100%; }
+#why-yuval,
+#why-yuval p,
+#why-yuval h2,
+#why-yuval a {
+  color: #ffffff;
+}
+#why-yuval a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.faq-list {
+  display: grid;
+  gap: 0.6rem;
+}
+.faq-list details {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 0.9rem 1rem;
+  background: #fff;
+}
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 800;
+  color: #061a40;
+}
+.faq-list details p {
+  margin: 0.7rem 0 0;
+}
+.bottom-cta {
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+.bottom-cta__inner {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+.cta-buttons > * {
+  max-width: 100%;
+}
+#contactModal {
+  padding: 1rem;
+}
+#contactModal > div {
+  width: min(100%, 34rem);
+  border-radius: 1.5rem;
+}
 @media (max-width: 767px) {
   .insurance-shell { gap: 0.85rem; }
   .insurance-intro, .insurance-panel, .insurance-section, .cta-panel, .toc-nav, .insurance-card { padding: 1rem; }
