@@ -4684,9 +4684,6 @@ main section.bg-slate-50 h3 {
 }
 
 .insurance-types-page .insurance-card {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
     padding: 2.05rem 2.2rem 1.8rem;
     border: 1px solid #d8dde7;
     border-right: 1px solid #d8dde7;
