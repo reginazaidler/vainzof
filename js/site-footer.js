@@ -18,7 +18,7 @@
         <a href="insurance-types.html">סוגי ביטוחים</a>
         <a href="pension-guide.html">איך עושים סדר בפנסיה ובביטוחים</a>
         <a href="faq.html">FAQ</a>
-        <a href="articles.html">מאמרים מקצועיים</a>
+        <a href="articles.html">מאמרים מקצועיים על פנסיה וביטוחים</a>
         <a href="calculator.html">מחשבון חיסכון</a>
         <a href="media.html">וידאו</a>
         <a href="reviews.html">לקוחות ממליצים</a>
