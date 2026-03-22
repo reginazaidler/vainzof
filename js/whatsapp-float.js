@@ -130,7 +130,7 @@
     menu.setAttribute('aria-label', 'מרכז ידע');
 
     [
-      { href: 'articles.html', label: 'מאמרים מקצועיים' },
+      { href: 'articles.html', label: 'מאמרים מקצועיים על פנסיה וביטוחים' },
       { href: 'faq.html', label: 'שאלות ותשובות' },
       { href: 'calculator.html', label: 'מחשבון חיסכון' },
       { href: 'media.html', label: 'וידאו ומדיה' }
