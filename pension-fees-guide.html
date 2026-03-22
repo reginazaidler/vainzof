@@ -76,6 +76,153 @@ gtag('config', 'G-EM8SYH542C');
 }
 </script>
 <link rel="stylesheet" href="style.css">
+<style>
+body.pension-fees-page {
+  background: linear-gradient(180deg, #f8fafc 0%, #edf4ff 100%);
+  font-family: "Assistant", sans-serif;
+}
+body.pension-fees-page,
+body.pension-fees-page button,
+body.pension-fees-page input,
+body.pension-fees-page textarea,
+body.pension-fees-page select {
+  font-family: "Assistant", sans-serif;
+}
+body.pension-fees-page main {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.pension-fees-page .hidden { display: none; }
+.pension-fees-page .block { display: block; }
+.pension-fees-page .inline-flex { display: inline-flex; }
+.pension-fees-page .items-center { align-items: center; }
+.pension-fees-page .gap-2 { gap: 0.5rem; }
+.pension-fees-page .w-7 { width: 1.75rem; }
+.pension-fees-page .h-7 { height: 1.75rem; }
+.pension-fees-page .w-full { width: 100%; }
+.pension-fees-page .p-2 { padding: 0.5rem; }
+.pension-fees-page .px-4 { padding-inline: 1rem; }
+.pension-fees-page .px-6 { padding-inline: 1.5rem; }
+.pension-fees-page .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.pension-fees-page .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.pension-fees-page .pb-2 { padding-bottom: 0.5rem; }
+.pension-fees-page .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.pension-fees-page .mt-0 { margin-top: 0; }
+.pension-fees-page .mt-5 { margin-top: 1.25rem; }
+.pension-fees-page .mt-6 { margin-top: 1.5rem; }
+.pension-fees-page .mt-8 { margin-top: 2rem; }
+.pension-fees-page .mb-2 { margin-bottom: 0.5rem; }
+.pension-fees-page .mb-3 { margin-bottom: 0.75rem; }
+.pension-fees-page .mb-4 { margin-bottom: 1rem; }
+.pension-fees-page .mb-5 { margin-bottom: 1.25rem; }
+.pension-fees-page .mb-6 { margin-bottom: 1.5rem; }
+.pension-fees-page .space-y-4 > * + * { margin-top: 1rem; }
+.pension-fees-page .space-y-6 > * + * { margin-top: 1.5rem; }
+.pension-fees-page .rounded-full { border-radius: 9999px; }
+.pension-fees-page .border-b { border-bottom: 1px solid #e2e8f0; }
+.pension-fees-page .border-slate-100 { border-color: #f1f5f9; }
+.pension-fees-page .bg-white { background: #fff; }
+.pension-fees-page .bg-blue-50 { background: #eff6ff; }
+.pension-fees-page .text-sm { font-size: 0.875rem; }
+.pension-fees-page .text-2xl { font-size: 1.5rem; }
+.pension-fees-page .text-3xl { font-size: 1.875rem; }
+.pension-fees-page .text-4xl { font-size: 2.25rem; }
+.pension-fees-page .font-bold { font-weight: 700; }
+.pension-fees-page .font-extrabold { font-weight: 800; }
+.pension-fees-page .font-black { font-weight: 900; }
+.pension-fees-page .text-blue-900 { color: var(--navy-main); }
+.pension-fees-page .text-blue-950 { color: var(--navy-deep); }
+.pension-fees-page .text-slate-600 { color: #475569; }
+.pension-fees-page .text-slate-700 { color: #334155; }
+.pension-fees-page .text-\[var\(--navy-main\)\] { color: var(--navy-main); }
+.pension-fees-page .absolute { position: absolute; }
+.pension-fees-page .right-0 { right: 0; }
+.pension-fees-page .top-full { top: 100%; }
+.pension-fees-page .z-50 { z-index: 50; }
+.pension-fees-page .shadow-xl { box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18); }
+.pension-guide-wrap {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.pension-grid { display: grid; gap: 1.25rem; }
+.pension-hero,
+.pension-section,
+.pension-cta-inline,
+.pension-lead-box,
+.pension-form-section,
+.pension-links-box,
+.pension-toc {
+  background: #fff;
+  border: 1px solid #dbe5f2;
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+.pension-hero { padding: clamp(1.5rem, 4vw, 3rem); }
+.pension-rich-text p,
+.pension-rich-text ul,
+.pension-rich-text ol,
+.pension-rich-text table { margin-bottom: 1.15rem; }
+.pension-rich-text p,
+.pension-rich-text li { color: #334155; line-height: 1.95; }
+.pension-rich-text h2 { font-size: clamp(1.65rem, 2vw, 2.2rem); color: #061a40; font-weight: 800; margin-bottom: 1rem; }
+.pension-rich-text h3 { font-size: clamp(1.2rem, 1.4vw, 1.45rem); color: #0f172a; font-weight: 800; margin: 1.4rem 0 0.7rem; }
+.pension-section, .pension-form-section { padding: clamp(1.3rem, 3vw, 2.2rem); scroll-margin-top: 7rem; }
+.pension-toc, .pension-lead-box, .pension-links-box { padding: 1.35rem; }
+.pension-toc ul, .pension-rich-text ul { list-style: disc; padding-right: 1.25rem; }
+.pension-table-wrap { overflow-x: auto; }
+.pension-table { width: 100%; border-collapse: collapse; min-width: 540px; }
+.pension-table th, .pension-table td { padding: 0.95rem 0.85rem; border-bottom: 1px solid #dbe5f2; text-align: right; vertical-align: top; }
+.pension-table th { background: #eff6ff; color: #061a40; font-weight: 800; }
+.pension-table tr:last-child td { border-bottom: 0; }
+.pension-pill-grid { display: grid; gap: 0.85rem; }
+.pension-pill { border-radius: 1rem; padding: 1rem; border: 1px solid #dbe5f2; background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%); }
+.pension-pill strong { display: block; color: #061a40; margin-bottom: 0.35rem; }
+.pension-cta-inline { padding: 1.35rem; background: linear-gradient(135deg, #0f172a 0%, #17356a 100%); color: #fff; }
+.pension-cta-inline p, .pension-cta-inline h2 { color: #fff; }
+.pension-btn-row, .pension-form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.pension-btn, .pension-btn-secondary {
+  display: inline-flex; justify-content: center; align-items: center; min-height: 50px; padding: 0.9rem 1.3rem;
+  border-radius: 999px; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.pension-btn { background: #c69a3a; color: #061a40; box-shadow: 0 12px 28px rgba(198, 154, 58, 0.25); }
+.pension-btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+.pension-note { background: #eff6ff; border-right: 4px solid #1d4ed8; padding: 1rem 1.1rem; border-radius: 1rem; color: #1e293b; font-weight: 700; }
+.pension-links-box a, .pension-rich-text a:not(.pension-btn):not(.pension-btn-secondary), .pension-toc a {
+  color: #1d4ed8; font-weight: 700; text-decoration: underline; text-underline-offset: .2rem;
+}
+.pension-form-grid { display: grid; gap: 0.9rem; }
+.pension-form-grid .full-span { grid-column: 1 / -1; }
+.pension-form-section input, .pension-form-section textarea {
+  width: 100%; padding: 0.95rem 1rem; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 1rem; color: #0f172a; font-weight: 700; text-align: right;
+}
+.pension-form-section textarea { min-height: 130px; resize: vertical; }
+.pension-success, .pension-error { display: none; font-weight: 700; }
+.pension-success { color: #166534; }
+.pension-error { color: #b91c1c; }
+@media (min-width: 768px) {
+  body.pension-fees-page main, .pension-fees-page .md\:py-14 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .pension-fees-page .md\:text-5xl { font-size: 3rem; }
+  .pension-pill-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pension-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1023px) {
+  .pension-fees-page .lg\:hidden { display: inline-flex; }
+  #mobileMenu.lg\:hidden { display: none; }
+  #mobileMenu:not(.hidden) { display: block; }
+}
+@media (min-width: 1024px) {
+  .pension-grid { grid-template-columns: minmax(0, 2.1fr) minmax(280px, 0.9fr); align-items: start; }
+  .pension-sidebar { position: sticky; top: 7rem; }
+  .pension-fees-page .lg\:hidden { display: none; }
+}
+@media (max-width: 767px) {
+  .pension-hero { padding: 1.35rem; }
+  .pension-guide-wrap { padding: 0 0.75rem; }
+  .pension-table { min-width: 100%; }
+  .pension-btn, .pension-btn-secondary { width: 100%; }
+}
+</style>
 
 </head>
 <body class="pension-fees-page">
