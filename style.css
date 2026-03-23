@@ -839,6 +839,42 @@ table {
     transform: translateY(-1px);
 }
 
+.article-contact-cta {
+    margin: 0 0 2.5rem;
+    padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(11, 27, 59, 0.08);
+    border-radius: var(--radius-2xl);
+    background: linear-gradient(135deg, rgba(11, 27, 59, 0.04) 0%, rgba(244, 235, 221, 0.9) 100%);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.article-contact-cta__title {
+    margin: 0 0 0.75rem;
+    color: var(--navy-main);
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+.article-contact-cta__text {
+    margin: 0 auto 1.25rem;
+    max-width: 40rem;
+    color: #334155;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.article-contact-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: min(100%, 18rem);
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(198, 161, 91, 0.22);
+}
+
 .mobile-menu-toggle {
     display: inline-flex;
     align-items: center;
