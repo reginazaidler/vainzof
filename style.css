@@ -769,12 +769,14 @@ table {
 }
 
 .nav-dropdown:hover .nav-dropdown__menu,
-.nav-dropdown:focus-within .nav-dropdown__menu {
+.nav-dropdown:focus-within .nav-dropdown__menu,
+.nav-dropdown.is-open .nav-dropdown__menu {
     display: block;
 }
 
 .nav-dropdown:hover .nav-dropdown__trigger,
-.nav-dropdown:focus-within .nav-dropdown__trigger {
+.nav-dropdown:focus-within .nav-dropdown__trigger,
+.nav-dropdown.is-open .nav-dropdown__trigger {
     border-color: rgba(160, 124, 58, 0.45);
     color: var(--gold-brand);
     background: #fffaf0;
