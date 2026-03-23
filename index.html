@@ -854,35 +854,7 @@ contactModal?.addEventListener('click', (e) => {
 
 </script>
 
-<script>
-function closeMobileMenu() {
-  document.getElementById('mobileMenu')?.classList.add('hidden');
-  document.getElementById('menuBtn')?.setAttribute('aria-expanded', 'false');
-}
 
-document.getElementById('menuBtn')?.addEventListener('click', () => {
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuBtn = document.getElementById('menuBtn');
-  const isExpanded = menuBtn?.getAttribute('aria-expanded') === 'true';
-
-  mobileMenu?.classList.toggle('hidden');
-  menuBtn?.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-});
-
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-  link.addEventListener('click', () => {
-    closeMobileMenu();
-  });
-});
-
-document.addEventListener('click', (e) => {
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuBtn = document.getElementById('menuBtn');
-  if (!mobileMenu?.contains(e.target) && !menuBtn?.contains(e.target)) {
-    closeMobileMenu();
-  }
-});
-</script>
 
     <script src="js/whatsapp-float.js"></script>
 </body>
