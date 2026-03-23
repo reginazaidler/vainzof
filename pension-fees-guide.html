@@ -198,11 +198,57 @@ body.pension-fees-page main {
 .pension-cta-inline p, .pension-cta-inline h2 { color: #fff; }
 .pension-btn-row, .pension-form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .pension-btn, .pension-btn-secondary {
-  display: inline-flex; justify-content: center; align-items: center; min-height: 50px; padding: 0.9rem 1.3rem;
-  border-radius: 999px; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
 }
-.pension-btn { background: #c69a3a; color: #061a40; box-shadow: 0 12px 28px rgba(198, 154, 58, 0.25); }
-.pension-btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+.pension-btn {
+  background: linear-gradient(135deg, #d3a63d 0%, #b88622 100%);
+  color: #061a40;
+  box-shadow: 0 16px 34px rgba(198, 154, 58, 0.28);
+}
+.pension-btn-secondary {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-color: rgba(255,255,255,0.22);
+  box-shadow: 0 12px 28px rgba(7, 21, 46, 0.18);
+}
+.pension-btn--light {
+  background: linear-gradient(180deg, #ffffff 0%, #edf4ff 100%);
+  color: #0f172a;
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+.pension-btn--whatsapp {
+  background: linear-gradient(135deg, #19a866 0%, #128c7e 100%);
+  color: #fff;
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 16px 34px rgba(18, 140, 126, 0.28);
+}
+.pension-btn:hover, .pension-btn-secondary:hover,
+.pension-btn:focus-visible, .pension-btn-secondary:focus-visible {
+  transform: translateY(-2px);
+}
+.pension-btn:hover, .pension-btn:focus-visible {
+  box-shadow: 0 20px 40px rgba(198, 154, 58, 0.34);
+}
+.pension-btn-secondary:hover, .pension-btn-secondary:focus-visible {
+  box-shadow: 0 18px 36px rgba(7, 21, 46, 0.24);
+}
+.pension-btn--light:hover, .pension-btn--light:focus-visible {
+  border-color: #94a3b8;
+  color: #061a40;
+}
+.pension-btn--whatsapp:hover, .pension-btn--whatsapp:focus-visible {
+  box-shadow: 0 20px 40px rgba(18, 140, 126, 0.34);
+}
 .pension-note { background: #eff6ff; border-right: 4px solid #1d4ed8; padding: 1rem 1.1rem; border-radius: 1rem; color: #1e293b; font-weight: 700; }
 .pension-links-box a, .pension-rich-text a:not(.pension-btn):not(.pension-btn-secondary), .pension-toc a {
   color: #1d4ed8; font-weight: 700; text-decoration: underline; text-underline-offset: .2rem;
@@ -297,7 +343,7 @@ body.pension-fees-page main {
           <p>אפשר להתחיל בבדיקה קצרה ולראות אם יש פער בין מה שאת משלמת היום לבין מה שאפשר לקבל בפועל.</p>
           <div class="pension-btn-row">
             <a href="#lead-form" class="pension-btn">בדיקת דמי ניהול חינם</a>
-            <a href="https://wa.me/972524520222?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%91%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%91%D7%93%D7%99%D7%A7%D7%AA%20%D7%93%D7%9E%D7%99%20%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%91%D7%A4%D7%A0%D7%A1%D7%99%D7%94" target="_blank" rel="noopener noreferrer" class="pension-btn-secondary">שליחת הודעה ב-WhatsApp</a>
+            <a href="https://wa.me/972524520222?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%91%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%91%D7%93%D7%99%D7%A7%D7%AA%20%D7%93%D7%9E%D7%99%20%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%91%D7%A4%D7%A0%D7%A1%D7%99%D7%94" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">שליחת הודעה ב-WhatsApp</a>
           </div>
         </div>
       </section>
@@ -500,7 +546,7 @@ body.pension-fees-page main {
             </div>
             <div class="pension-btn-row mt-0">
               <button type="submit" class="pension-btn">שליחת טופס</button>
-              <a href="https://wa.me/972524520222?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%91%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%93%D7%9E%D7%99%20%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%91%D7%A4%D7%A0%D7%A1%D7%99%D7%94" target="_blank" rel="noopener noreferrer" class="pension-btn-secondary" style="background:#128C7E;border-color:#128C7E;">כפתור WhatsApp</a>
+              <a href="https://wa.me/972524520222?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%91%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%93%D7%9E%D7%99%20%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%91%D7%A4%D7%A0%D7%A1%D7%99%D7%94" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">שליחת הודעה ב-WhatsApp</a>
             </div>
           </div>
         </form>
@@ -528,7 +574,7 @@ body.pension-fees-page main {
         </div>
         <div class="pension-btn-row">
           <a href="#lead-form" class="pension-btn">בדיקה חינם</a>
-          <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="pension-btn-secondary" style="background:#128C7E;border-color:#128C7E;">WhatsApp</a>
+          <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">שליחת הודעה ב-WhatsApp</a>
         </div>
       </section>
     </aside>
