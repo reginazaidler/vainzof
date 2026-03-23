@@ -22,8 +22,47 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50">
-<main class="container-clean max-w-4xl py-16 text-right">
+<body>
+<a href="#main" class="sr-focusable">דלג לתוכן המרכזי</a>
+    <div id="top-anchor" class="site-topbar">
+        <div class="container-clean site-topbar__inner">
+            תכנון ביטוחי ופיננסי ברור מתחיל בבדיקה מסודרת של הצרכים שלכם
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="container-clean site-header__inner">
+            <a href="index.html" class="site-brand" aria-label="חזרה לדף הבית">
+                <img src="assets/logo.png" alt="יובל ויינזוף - לוגו" class="site-logo">
+            </a>
+
+            <nav class="site-nav" aria-label="ניווט ראשי">
+                <a href="index.html" class="nav-link">דף הבית</a>
+                <a href="about.html" class="nav-link">קצת עלי</a>
+                <a href="services.html" class="nav-link">דרך העבודה</a>
+                <a href="insurance-types.html" class="nav-link">סוגי ביטוחים</a>
+                <a href="faq.html" class="nav-link">שאלות ותשובות</a>
+                <a href="articles.html" class="nav-link nav-link-active">מאמרים מקצועיים על פנסיה וביטוחים</a>
+                <a href="tel:0524520222" class="header-phone"><span>052-4520222</span></a>
+                <button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
+            </nav>
+
+            <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            </button>
+        </div>
+    </header>
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50" aria-label="תפריט מובייל">
+        <a href="index.html" class="block font-bold text-slate-600 border-b pb-2">דף הבית</a>
+        <a href="about.html" class="block font-bold text-slate-600 border-b pb-2">קצת עלי</a>
+        <a href="services.html" class="block font-bold text-slate-600 border-b pb-2">דרך העבודה</a>
+        <a href="insurance-types.html" class="block font-bold text-slate-600 border-b pb-2">סוגי ביטוחים</a>
+        <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
+        <a href="articles.html" class="block font-bold text-blue-900 border-b pb-2">מאמרים מקצועיים על פנסיה וביטוחים</a>
+        <a href="tel:0524520222" class="block font-bold text-slate-600 border-b pb-2">התקשר עכשיו</a>
+        <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
+    </div>
+<main id="main" class="container-clean max-w-4xl py-16 text-right">
 <a href="articles.html" class="font-bold text-[var(--navy-main)]">← חזרה לכל המאמרים</a>
 <h1 class="text-4xl font-black text-blue-950 mt-6 mb-6">קרן חירום למשפחה - כמה כסף צריך (ואיך לא להיתקע בלי כסף ברגע האמת)</h1>
 <p class="text-slate-700 mb-6"><strong>רוב המשפחות לא מחזיקות קרן חירום מספקת - וכשקורה משהו לא צפוי, הן נאלצות לקחת הלוואה או להיכנס למינוס.</strong></p>
@@ -104,7 +143,35 @@
     </div>
   </div>
 </section>
-    <script src="js/site-footer.js"></script>
+        <script src="js/site-footer.js"></script>
+
+<script>
+document.getElementById('menuBtn')?.addEventListener('click', () => {
+  document.getElementById('mobileMenu')?.classList.toggle('hidden');
+});
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileMenu')?.classList.add('hidden');
+  });
+});
+
+document.addEventListener('click', (e) => {
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuBtn = document.getElementById('menuBtn');
+  if (!mobileMenu?.contains(e.target) && !menuBtn?.contains(e.target)) {
+    mobileMenu?.classList.add('hidden');
+  }
+});
+
+document.getElementById('openContactDesktop')?.addEventListener('click', () => {
+  window.open('https://wa.me/972524520222', '_blank', 'noopener,noreferrer');
+});
+
+document.getElementById('openContactMobile')?.addEventListener('click', () => {
+  window.open('https://wa.me/972524520222', '_blank', 'noopener,noreferrer');
+});
+</script>
 
 <script src="js/whatsapp-float.js"></script>
 </body>
