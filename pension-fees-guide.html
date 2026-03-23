@@ -537,28 +537,7 @@ body.pension-fees-page main {
 <script src="js/site-header.js"></script>
     <script src="js/site-footer.js"></script>
 <script>
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
 
-menuBtn?.addEventListener('click', () => {
-  const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-  mobileMenu?.classList.toggle('hidden');
-  menuBtn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-});
-
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu?.classList.add('hidden');
-    menuBtn?.setAttribute('aria-expanded', 'false');
-  });
-});
-
-document.addEventListener('click', (event) => {
-  if (!mobileMenu?.contains(event.target) && !menuBtn?.contains(event.target)) {
-    mobileMenu?.classList.add('hidden');
-    menuBtn?.setAttribute('aria-expanded', 'false');
-  }
-});
 
 function scrollToLeadForm() {
   document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });

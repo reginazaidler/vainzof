@@ -208,15 +208,7 @@ gtag('config', 'G-EM8SYH542C');
     <script src="js/site-footer.js"></script>
 
 <script>
-document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileMenu')?.classList.toggle('hidden');
-});
 
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('mobileMenu')?.classList.add('hidden');
-  });
-});
 
 document.addEventListener('click', (e) => {
   const mobileMenu = document.getElementById('mobileMenu');

@@ -581,22 +581,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 });
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-
-menuBtn?.addEventListener('click', function () {
-    mobileMenu?.classList.toggle('hidden');
-});
-
-document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', function () {
-        mobileMenu?.classList.add('hidden');
-    });
-});
-
-document.getElementById('openContactMobile')?.addEventListener('click', function () {
-    mobileMenu?.classList.add('hidden');
-});
 </script>
     <script src="js/whatsapp-float.js"></script>
 </body>
