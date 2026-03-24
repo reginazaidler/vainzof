@@ -403,12 +403,29 @@ body.insurance-types-page div {
 .cta-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.75rem;
   margin-top: 1rem;
+  justify-content: center;
 }
 
 .cta-buttons > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(100%, 15rem);
   max-width: 100%;
+}
+
+.bottom-cta .cta-buttons .btn-outline-light {
+  border-color: #cbd5e1;
+  color: #0f172a;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.02);
+}
+
+.bottom-cta .cta-buttons .btn-outline-light:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
 }
 
 #contactModal {
