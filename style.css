@@ -706,6 +706,7 @@ table {
     display: none;
     align-items: center;
     gap: 22px;
+    margin-inline-end: 12px;
     font-weight: 800;
     font-size: 14px;
     color: #1e293b;
