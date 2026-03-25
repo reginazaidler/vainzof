@@ -693,7 +693,7 @@ table {
     min-height: 76px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 16px;
 }
 
@@ -713,7 +713,7 @@ table {
     display: none;
     align-items: center;
     gap: 22px;
-    margin-inline-end: 12px;
+    margin-inline-end: 0;
     font-weight: 800;
     font-size: 14px;
     color: #1e293b;
@@ -817,6 +817,12 @@ table {
     color: var(--navy-main);
     font-weight: 800;
     text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+    .header-phone {
+        margin-inline-start: auto;
+    }
 }
 
 .header-phone:hover {
