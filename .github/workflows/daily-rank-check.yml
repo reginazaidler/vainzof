@@ -44,7 +44,8 @@ jobs:
           SMTP_TO: ${{ secrets.SMTP_TO }}
           REPORT_SUBJECT_PREFIX: ${{ secrets.REPORT_SUBJECT_PREFIX }}
         run: |
-          DAILY_FILE="output/rankings_$(date -u -d 'yesterday' +%F).csv"
+          TARGET_DATE="$(cat output/last_target_date.txt)"
+          DAILY_FILE="output/rankings_${TARGET_DATE}.csv"
           python scripts/send_report_email.py \
             --summary-file output/daily_summary.md \
             --history-file output/rank_history.csv \

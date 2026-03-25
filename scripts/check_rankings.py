@@ -87,6 +87,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", default="config/queries.json", help="Path to query config JSON")
     parser.add_argument("--output-dir", default="output", help="Directory for generated reports")
     parser.add_argument(
+        "--max-date-lag-days",
+        type=int,
+        default=int(os.getenv("MAX_DATE_LAG_DAYS", "3")),
+        help=(
+            "How many extra days to look back when Search Console has not published data yet. "
+            "Example: 3 checks yesterday, two days ago, three days ago, and four days ago."
+        ),
+    )
+    parser.add_argument(
         "--demo-run",
         action="store_true",
         default=os.getenv("DEMO_RUN", "false").lower() in {"1", "true", "yes"},
@@ -302,15 +311,53 @@ def print_summary(results: list[QueryResult], demo_run: bool) -> None:
         )
 
 
+def has_any_search_data(results: list[QueryResult]) -> bool:
+    return any(r.impressions > 0 or r.clicks > 0 or bool(r.avg_position) for r in results)
+
+
+def resolve_target_date(
+    max_date_lag_days: int,
+    config: Config,
+    history: list[dict[str, str]],
+    service: Any | None,
+    demo_run: bool,
+) -> tuple[date, list[QueryResult]]:
+    lag_days = max(0, max_date_lag_days)
+    base_date = datetime.now(timezone.utc).date() - timedelta(days=1)
+    last_results: list[QueryResult] = []
+
+    for offset in range(lag_days + 1):
+        candidate_date = base_date - timedelta(days=offset)
+        candidate_results = build_results(config, candidate_date, history, service, demo_run)
+        if demo_run:
+            return candidate_date, candidate_results
+        if has_any_search_data(candidate_results):
+            if offset > 0:
+                LOGGER.warning(
+                    "No Search Console data for %s yet. Falling back to %s (offset=%d day[s]).",
+                    base_date.isoformat(),
+                    candidate_date.isoformat(),
+                    offset,
+                )
+            return candidate_date, candidate_results
+        last_results = candidate_results
+
+    LOGGER.warning(
+        "No Search Console data found in %d-day window ending on %s. Keeping latest target date with zero metrics.",
+        lag_days + 1,
+        base_date.isoformat(),
+    )
+    return base_date, last_results
+
+
 def main() -> int:
     setup_logging()
     args = parse_args()
 
     output_dir = Path(args.output_dir)
-    target_date = datetime.now(timezone.utc).date() - timedelta(days=1)
     history_path = output_dir / "rank_history.csv"
-    daily_path = output_dir / f"rankings_{target_date.isoformat()}.csv"
     summary_path = output_dir / "daily_summary.md"
+    target_date_file = output_dir / "last_target_date.txt"
 
     try:
         config = load_config(Path(args.config))
@@ -329,21 +376,25 @@ def main() -> int:
 
     history = read_history(history_path)
     try:
-        results = build_results(config, target_date, history, service, args.demo_run)
+        target_date, results = resolve_target_date(args.max_date_lag_days, config, history, service, args.demo_run)
     except Exception as exc:  # noqa: BLE001
         LOGGER.error("Search Console query failed: %s", exc)
         return 1
 
+    daily_path = output_dir / f"rankings_{target_date.isoformat()}.csv"
     daily_rows = [r.as_dict() for r in results]
     merged_history = merge_history(history, results)
     write_csv(daily_path, daily_rows, HISTORY_COLUMNS)
     write_csv(history_path, merged_history, HISTORY_COLUMNS)
     write_daily_summary(summary_path, results)
+    target_date_file.parent.mkdir(parents=True, exist_ok=True)
+    target_date_file.write_text(f"{target_date.isoformat()}\n", encoding="utf-8")
     print_summary(results, args.demo_run)
 
     LOGGER.info("Saved daily snapshot: %s", daily_path)
     LOGGER.info("Saved cumulative history: %s", history_path)
     LOGGER.info("Saved markdown summary: %s", summary_path)
+    LOGGER.info("Saved target date marker: %s", target_date_file)
     return 0
 
 

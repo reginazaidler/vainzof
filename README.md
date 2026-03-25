@@ -4,7 +4,7 @@ This repository includes an automated daily SEO rank-tracking job based on the *
 
 ## Folder structure
 
-- `scripts/check_rankings.py` - main Python script that fetches yesterday's query performance and writes reports.
+- `scripts/check_rankings.py` - main Python script that fetches Search Console query performance and writes reports.
 - `scripts/send_report_email.py` - sends the generated report files by email via SMTP.
 - `config/queries.json` - configurable site, country, device, and list of tracked queries.
 - `.github/workflows/daily-rank-check.yml` - scheduled + manual GitHub Actions workflow.
@@ -18,6 +18,9 @@ On each successful run:
 - `output/rankings_YYYY-MM-DD.csv` - daily snapshot.
 - `output/rank_history.csv` - cumulative history (idempotent replacement by date+query key).
 - `output/daily_summary.md` - quick Markdown table for that run.
+- `output/last_target_date.txt` - the exact date used for the current run (used by email step).
+
+> Search Console data can be delayed. The script starts with yesterday (UTC) and can automatically fall back to older dates until data exists.
 
 Columns written per query:
 
@@ -121,3 +124,8 @@ python -m pip install -r requirements.txt
 python scripts/check_rankings.py --config config/queries.json --output-dir output --force-run
 ```
 
+Optional fallback tuning:
+
+```bash
+python scripts/check_rankings.py --config config/queries.json --output-dir output --max-date-lag-days 3
+```
