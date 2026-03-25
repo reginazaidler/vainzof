@@ -73,6 +73,13 @@ html {
     font-family: 'Assistant', sans-serif;
 }
 
+button,
+input,
+select,
+textarea {
+    font-family: 'Assistant', sans-serif;
+}
+
 :root {
     --container-inline-padding: clamp(14px, 4vw, 32px);
 }
