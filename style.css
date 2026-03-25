@@ -5339,6 +5339,15 @@ main section.bg-slate-50 h3 {
 
 .faq-page {
     overflow-x: visible;
+    font-family: 'Assistant', sans-serif;
+}
+
+.faq-page,
+.faq-page button,
+.faq-page input,
+.faq-page select,
+.faq-page textarea {
+    font-family: 'Assistant', sans-serif;
 }
 
 .faq-page .faq-shell {
