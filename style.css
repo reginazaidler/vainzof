@@ -6606,6 +6606,15 @@ body.pension-fees-page main {
   font-weight: 900;
 }
 
+.about-page .about-compact-card {
+  padding: 1.1rem 0.65rem 0.85rem !important;
+}
+
+.about-page .about-fit-card {
+  min-height: 140px;
+  padding: 1rem;
+}
+
 .why-choose-card--highlight {
   border: 2px solid rgba(198, 161, 91, 0.55);
   transform: scale(1.03);
