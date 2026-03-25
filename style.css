@@ -2760,8 +2760,31 @@ main section.bg-slate-50 h3 {
 
     .mobile-menu-toggle,
     .mobile-overlay,
-    .mobile-drawer,
+    .mobile-drawer {
+        display: none;
+    }
+
     .mobile-sticky-cta {
+        left: auto;
+        right: 24px;
+        bottom: 24px;
+        width: auto;
+        min-width: 320px;
+        max-width: min(420px, calc(100vw - 48px));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border: 1px solid #dbe5f2;
+        border-radius: 16px;
+        padding: 8px;
+        box-shadow: 0 16px 34px rgba(15, 23, 42, 0.18);
+        z-index: 60;
+    }
+
+    .mobile-sticky-cta__btn {
+        min-height: 46px;
+        font-size: 14px;
+    }
+
+    .whatsapp-float {
         display: none;
     }
 
