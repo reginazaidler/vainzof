@@ -1404,13 +1404,13 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 .home-hero {
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
     color: #ffffff;
-    padding: 20px 0 52px;
+    padding: 12px 0 32px;
 }
 
 .home-hero__inner {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -1423,12 +1423,12 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
+    padding: 7px 12px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    font-size: 14px;
-    margin-bottom: 18px;
+    font-size: 13px;
+    margin-bottom: 12px;
 }
 
 .home-hero__dot,
@@ -1441,10 +1441,10 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 }
 
 .home-hero__title {
-    font-size: clamp(2.3rem, 4.8vw, 4rem);
-    line-height: 1.15;
+    font-size: clamp(1.95rem, 4vw, 3.15rem);
+    line-height: 1.18;
     font-weight: 900;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     color: #ffffff;
 }
 
@@ -1453,10 +1453,10 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 }
 
 .home-hero__subtitle {
-    font-size: clamp(1.35rem, 3vw, 2.2rem);
+    font-size: clamp(1.06rem, 2.1vw, 1.55rem);
     font-weight: 900;
     color: var(--gold-brand);
-    margin: 0 0 24px;
+    margin: 0 0 16px;
 }
 
 .services-page .home-hero {
@@ -1477,9 +1477,9 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 .hero-checklist {
     list-style: none;
     padding: 0;
-    margin: 0 0 28px;
+    margin: 0 0 18px;
     display: grid;
-    gap: 12px;
+    gap: 10px;
 }
 
 .hero-checklist li {
@@ -1488,6 +1488,8 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     gap: 10px;
     color: #e2e8f0;
     font-weight: 600;
+    font-size: 0.98rem;
+    line-height: 1.5;
 }
 
 .hero-checklist__icon {
@@ -1498,8 +1500,22 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 .hero-actions {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     align-items: stretch;
+}
+
+
+.home-hero .site-cta,
+.hero-actions .site-cta,
+.media-hero__actions .btn-primary {
+    background: var(--gold-brand);
+    color: #ffffff;
+}
+
+.home-hero .site-cta:hover,
+.hero-actions .site-cta:hover,
+.media-hero__actions .btn-primary:hover {
+    background: #b08d4a;
 }
 
 .section-summary {
@@ -2986,8 +3002,8 @@ main section.bg-slate-50 h3 {
     }
 
     .home-hero {
-        padding-top: 16px;
-        padding-bottom: 42px;
+        padding-top: 12px;
+        padding-bottom: 28px;
     }
 
     .travel-page .home-hero {
