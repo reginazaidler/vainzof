@@ -1528,6 +1528,17 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     text-align: center;
 }
 
+/* הקטנת המרווח בין ההירו למתודולוגיה בעמוד השירותים */
+.services-page .methodology-section {
+    padding-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .services-page .methodology-section {
+        padding-top: 4rem;
+    }
+}
+
 .methodology-grid {
     align-items: stretch;
 }
