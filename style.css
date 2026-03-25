@@ -6277,3 +6277,189 @@ body.pension-fees-page main {
 }
 .pension-success { color: #166534; }
 .pension-error { color: #b91c1c; }
+
+/* Homepage visual hierarchy refresh */
+.home-hero__intro {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.02rem, 2vw, 1.24rem);
+  font-weight: 800;
+}
+
+.home-hero__title {
+  font-size: clamp(2.2rem, 4.7vw, 3.9rem);
+  line-height: 1.12;
+  margin-bottom: 12px;
+}
+
+.home-hero__subtitle {
+  font-size: clamp(1.25rem, 3vw, 2.15rem);
+}
+
+.hero-photo,
+.yuval-photo {
+  width: min(100%, 280px);
+}
+
+.coverage-layout {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.coverage-layout__bullets {
+  margin: 0;
+  padding: 1.25rem 1.2rem;
+  border-radius: 1.25rem;
+  background: #f8fbff;
+  border: 1px solid #dbe4f0;
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.coverage-layout__bullets li {
+  position: relative;
+  padding-right: 1.25rem;
+  color: #1e293b;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.coverage-layout__bullets li::before {
+  content: "•";
+  position: absolute;
+  right: 0;
+  color: var(--gold-brand);
+}
+
+.companies-section-card {
+  padding: 2.4rem 2.2rem;
+}
+
+.company-logo-tile {
+  min-height: 82px;
+}
+
+.services-process-card {
+  position: relative;
+  padding: 2rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.services-process-card__number {
+  position: absolute;
+  top: 0.95rem;
+  right: 0.95rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: var(--navy-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.why-choose-card--highlight {
+  border: 2px solid rgba(198, 161, 91, 0.55);
+  transform: scale(1.03);
+  box-shadow: 0 22px 40px rgba(15, 23, 42, 0.12);
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf0 100%);
+}
+
+.about-teaser-photo {
+  width: min(100%, 336px);
+}
+
+.mid-dark-cta {
+  background: linear-gradient(135deg, #0b1b3b 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 3rem 0;
+}
+
+.mid-dark-cta__inner {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mid-dark-cta__inner h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 900;
+}
+
+.mid-dark-cta__inner p {
+  margin: 0 0 1.5rem;
+  color: #dbeafe;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.qa-cards-list details {
+  border: 1px solid #dbe4f0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.qa-cards-list summary {
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  padding: 1.15rem 1.25rem;
+  position: relative;
+  padding-left: 2.8rem;
+}
+
+.qa-cards-list summary::before {
+  content: "+";
+  position: absolute;
+  left: 1rem;
+  top: 1.05rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: #edf3fb;
+  color: #1e3a5f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.qa-cards-list details[open] summary::before {
+  content: "−";
+}
+
+.qa-cards-list details > div {
+  padding: 0 1.25rem 1.2rem;
+}
+
+.articles-main-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--navy-main);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.8rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.articles-main-cta:hover {
+  background: #123f93;
+  transform: translateY(-1px);
+}
+
+@media (min-width: 960px) {
+  .coverage-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
