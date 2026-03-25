@@ -1474,6 +1474,42 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     margin-bottom: 18px;
 }
 
+
+.services-hero {
+    padding: 60px 0 40px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(11, 27, 59, 0.06);
+}
+
+.services-hero__inner {
+    max-width: 900px;
+}
+
+.services-hero__badge {
+    display: inline-block;
+    background: rgba(11, 27, 59, 0.06);
+    color: var(--navy-main);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.services-hero__title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--navy-deep);
+}
+
+.services-hero__text {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    font-weight: 700;
+    color: var(--text-body);
+}
+
 .hero-checklist {
     list-style: none;
     padding: 0;
