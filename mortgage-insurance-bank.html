@@ -104,42 +104,43 @@
       <div class="container-clean max-w-6xl">
         <h2 class="text-3xl md:text-4xl font-black text-blue-950 mb-8">ביטוח משכנתא דרך הבנק מול ביטוח חיצוני</h2>
         <div class="overflow-x-auto bg-white border border-slate-200 rounded-3xl shadow-sm">
-          <table class="min-w-full text-right text-slate-700">
+          <table class="min-w-full text-right text-slate-700" aria-label="השוואה בין ביטוח משכנתא דרך הבנק לבין ביטוח חיצוני">
+            <caption class="sr-only">השוואה בין אפשרויות ביטוח משכנתא: דרך הבנק מול פוליסה חיצונית</caption>
             <thead class="bg-blue-950 text-white">
               <tr>
-                <th class="px-5 py-4 text-base md:text-lg font-bold">פרמטר להשוואה</th>
-                <th class="px-5 py-4 text-base md:text-lg font-bold">דרך הבנק</th>
-                <th class="px-5 py-4 text-base md:text-lg font-bold">ביטוח חיצוני</th>
+                <th scope="col" class="px-5 py-4 text-base md:text-lg font-bold">פרמטר להשוואה</th>
+                <th scope="col" class="px-5 py-4 text-base md:text-lg font-bold">דרך הבנק</th>
+                <th scope="col" class="px-5 py-4 text-base md:text-lg font-bold">ביטוח חיצוני</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-200">
               <tr>
-                <td class="px-5 py-4 font-bold">מחיר</td>
+                <th scope="row" class="px-5 py-4 font-bold">מחיר</th>
                 <td class="px-5 py-4">לעיתים נוח לסגירה מיידית, אך לא תמיד המחיר התחרותי ביותר לאורך זמן.</td>
                 <td class="px-5 py-4">לעיתים קרובות מאפשר השוואת הצעות רחבה ותמחור תחרותי יותר.</td>
               </tr>
               <tr>
-                <td class="px-5 py-4 font-bold">נוחות</td>
+                <th scope="row" class="px-5 py-4 font-bold">נוחות</th>
                 <td class="px-5 py-4">תהליך מרוכז במקום אחד במהלך חתימת המשכנתא.</td>
                 <td class="px-5 py-4">דורש עוד שלב איסוף נתונים ומסמכים, אך עדיין ניתן לבצע במהירות עם ליווי נכון.</td>
               </tr>
               <tr>
-                <td class="px-5 py-4 font-bold">גמישות</td>
+                <th scope="row" class="px-5 py-4 font-bold">גמישות</th>
                 <td class="px-5 py-4">בדרך כלל מסלול פחות גמיש לשינויים והתאמות בהמשך.</td>
                 <td class="px-5 py-4">יותר אפשרויות להתאמה, שינוי מסלול ובדיקת אלטרנטיבות לאורך חיי ההלוואה.</td>
               </tr>
               <tr>
-                <td class="px-5 py-4 font-bold">התאמה אישית</td>
+                <th scope="row" class="px-5 py-4 font-bold">התאמה אישית</th>
                 <td class="px-5 py-4">פתרון סטנדרטי יחסית לפי מסגרת הבנק.</td>
                 <td class="px-5 py-4">התאמה טובה יותר למצב משפחתי, בריאותי ופיננסי.</td>
               </tr>
               <tr>
-                <td class="px-5 py-4 font-bold">שינוי תנאים בהמשך</td>
+                <th scope="row" class="px-5 py-4 font-bold">שינוי תנאים בהמשך</th>
                 <td class="px-5 py-4">אפשרי, אך לעיתים פחות תחרותי וללא בדיקת שוק תקופתית.</td>
                 <td class="px-5 py-4">קל יותר לבצע השוואה מחודשת ולעדכן פוליסה לפי שינויי חיים ומחיר.</td>
               </tr>
               <tr>
-                <td class="px-5 py-4 font-bold">מהירות אישור</td>
+                <th scope="row" class="px-5 py-4 font-bold">מהירות אישור</th>
                 <td class="px-5 py-4">לרוב מהיר במיוחד סביב יום החתימה.</td>
                 <td class="px-5 py-4">יכול להיות מהיר מאוד אם מעבירים מראש את טפסי השעבוד והכיסוי הנדרשים.</td>
               </tr>
