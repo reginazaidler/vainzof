@@ -1459,6 +1459,21 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     margin: 0 0 24px;
 }
 
+.services-page .home-hero {
+    padding: 16px 0 38px;
+}
+
+.services-page .home-hero__title {
+    font-size: clamp(1.95rem, 3.6vw, 3.05rem);
+    line-height: 1.22;
+    margin-bottom: 12px;
+}
+
+.services-page .home-hero__subtitle {
+    font-size: clamp(1.2rem, 2.1vw, 1.8rem);
+    margin-bottom: 18px;
+}
+
 .hero-checklist {
     list-style: none;
     padding: 0;
