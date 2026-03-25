@@ -7259,12 +7259,32 @@ body.pension-fees-page main {
 
 .services-cta-v2 {
     background: #e9eef5;
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .services-cta-v2__inner {
     max-width: 860px;
     margin: 0 auto;
+}
+
+.services-cta-v2 .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #c6a15b;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 28px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(198, 161, 91, 0.22);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.services-cta-v2 .btn-primary:hover {
+    background: #b8914e;
+    transform: translateY(-1px);
 }
 
 @media (min-width: 768px) {
@@ -7301,7 +7321,7 @@ body.pension-fees-page main {
     .services-proof-v2,
     .services-audience-v2,
     .services-cta-v2 {
-        padding: 42px 0;
+        padding: 30px 0;
     }
 
     .services-method-v2__card,
