@@ -4968,7 +4968,8 @@ main section.bg-slate-50 h3 {
 
     .home-faq-section .faq-item summary {
         padding: 14px 1.65rem;
-        font-size: 1.55rem;
+        font-size: clamp(1.08rem, 1.25vw, 1.25rem);
+        line-height: 1.45;
     }
 
     .home-faq-section .faq-item > div {
@@ -6023,7 +6024,7 @@ main section.bg-slate-50 h3 {
         margin: 0;
         padding: 14px 3.75rem 14px 1.25rem;
         color: #0f2b49;
-        font-size: 1.25rem;
+        font-size: clamp(1rem, 0.95vw, 1.12rem);
         font-weight: 900;
         line-height: 1.45;
         pointer-events: auto;
