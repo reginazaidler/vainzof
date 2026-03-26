@@ -1467,6 +1467,14 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     margin: 0 0 16px;
 }
 
+.hero-proof {
+    margin: 0 0 14px;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.92);
+}
+
 .home-section-paragraph {
     font-size: 16px;
     line-height: 1.6;
