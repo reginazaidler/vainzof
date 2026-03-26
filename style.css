@@ -7290,7 +7290,7 @@ body.pension-fees-page main {
 
 .services-hero-v2 {
     background: #ffffff;
-    padding: 44px 0 30px;
+    padding: 34px 0 24px;
     border-bottom: 1px solid rgba(11, 27, 59, 0.06);
 }
 
@@ -7312,19 +7312,11 @@ body.pension-fees-page main {
     margin-bottom: 10px;
 }
 
-.services-hero-v2__eyebrow {
-    margin: 0 0 10px;
-    color: var(--text-body);
-    font-size: 0.98rem;
-    font-weight: 700;
-    line-height: 1.5;
-}
-
 .services-hero-v2__title {
     margin: 0 0 12px;
     color: var(--navy-deep);
-    font-size: clamp(2.5rem, 5vw, 4.25rem);
-    line-height: 1.08;
+    font-size: clamp(2rem, 3.8vw, 3.15rem);
+    line-height: 1.18;
     font-weight: 900;
     max-width: 980px;
 }
@@ -7559,36 +7551,6 @@ body.pension-fees-page main {
     font-weight: 800;
 }
 
-.services-cta-v2 {
-    background: #e9eef5;
-    padding: 35px 0;
-}
-
-.services-cta-v2__inner {
-    max-width: 860px;
-    margin: 0 auto;
-}
-
-.services-cta-v2 .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #c6a15b;
-    color: #ffffff;
-    border: none;
-    border-radius: 14px;
-    padding: 14px 28px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(198, 161, 91, 0.22);
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.services-cta-v2 .btn-primary:hover {
-    background: #b8914e;
-    transform: translateY(-1px);
-}
-
 @media (min-width: 768px) {
     .services-why-needed-v2__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -7612,14 +7574,9 @@ body.pension-fees-page main {
         margin-bottom: 8px;
     }
 
-    .services-hero-v2__eyebrow {
-        margin-bottom: 8px;
-        font-size: 0.92rem;
-    }
-
     .services-hero-v2__title {
-        font-size: 2.2rem;
-        line-height: 1.15;
+        font-size: 2rem;
+        line-height: 1.24;
     }
 
     .services-hero-v2__text {
@@ -7632,8 +7589,7 @@ body.pension-fees-page main {
     .services-method-v2,
     .services-proof-v2,
     .services-personal-trigger-v2,
-    .services-audience-v2,
-    .services-cta-v2 {
+    .services-audience-v2 {
         padding: 26px 0;
     }
 
