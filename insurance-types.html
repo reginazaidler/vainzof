@@ -169,8 +169,6 @@ body.insurance-types-page div {
 .insurance-intro,
 .insurance-section,
 .insurance-panel,
-.insurance-card,
-.toc-nav,
 .cta-panel {
   width: 100%;
   max-width: 100%;
@@ -190,7 +188,7 @@ body.insurance-types-page div {
 .insurance-intro,
 .insurance-panel,
 .insurance-section {
-  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 1.75rem);
+  padding: clamp(1.35rem, 2.5vw, 2.4rem) clamp(0.9rem, 2.4vw, 1.4rem);
 }
 
 .insurance-intro {
@@ -258,9 +256,8 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
   line-height: 1.35;
 }
 
-.insurance-section + .insurance-section,
-.toc-nav + .insurance-section {
-  margin-top: 0.4rem;
+.insurance-section + .insurance-section {
+  margin-top: 0.2rem;
 }
 
 #insurance-types-main,
@@ -274,38 +271,36 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
 
 .insurance-grid {
   display: grid;
-  gap: 1.2rem;
+  gap: 0.85rem;
   align-items: stretch;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
-.insurance-grid > .insurance-card {
+.insurance-grid > .card-clean {
   height: 100%;
 }
 
-.insurance-section > .insurance-card {
+.insurance-section > .card-clean {
   display: block;
-  margin-top: 1.15rem;
+  margin-top: 0.85rem;
 }
 
-.insurance-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 1.35rem;
-  padding: 1.4rem;
-  background: #fff;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+.insurance-types-page .card-clean {
+  padding: 1.05rem 1.1rem;
+  border-radius: 1.15rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
-.insurance-card > *:first-child { margin-top: 0; }
-.insurance-card > *:last-child { margin-bottom: 0; }
+.insurance-types-page .card-clean > *:first-child { margin-top: 0; }
+.insurance-types-page .card-clean > *:last-child { margin-bottom: 0; }
 
-.insurance-card h3 {
+.insurance-types-page .card-clean h3 {
   font-size: clamp(1.15rem, 1.05rem + 0.45vw, 1.55rem);
   line-height: 1.35;
 }
 
-.insurance-card p,
-.insurance-card li {
+.insurance-types-page .card-clean p,
+.insurance-types-page .card-clean li {
   color: #334155;
   word-break: normal;
   overflow-wrap: normal;
@@ -324,40 +319,11 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
   background: #f8fbff;
 }
 
-.toc-nav {
-  border: 1px solid #17479d;
-  border-radius: 1.75rem;
-  background: linear-gradient(135deg, #0f2b61 0%, #17479d 100%);
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.18);
-  padding: clamp(1.4rem, 2vw, 2.35rem);
-}
-
-.toc-nav h2,
-.toc-nav li,
-.toc-nav a {
-  color: #ffffff;
-}
-
-.toc-nav ul {
-  display: grid;
-  gap: 0.6rem;
-  padding-right: 1.2rem;
-  list-style: disc;
-  margin-bottom: 0;
-}
-
-.toc-nav a,
 .internal-links a {
   color: #1d4ed8;
   font-weight: 700;
   text-decoration: none;
 }
-
-.toc-nav a {
-  color: #ffffff;
-}
-
-.toc-nav a:hover,
 .internal-links a:hover {
   text-decoration: underline;
 }
@@ -403,7 +369,7 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
 
 .insurance-section-heading {
   max-width: 52rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .insurance-accent-line {
@@ -458,16 +424,16 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
   .insurance-shell { gap: 0.2rem; }
   .insurance-intro,
   .insurance-panel,
-  .insurance-section,
-  .toc-nav,
-  .insurance-card {
-    padding: 1.1rem;
+  .insurance-section {
+    padding: 1rem 0.9rem;
   }
-  .toc-nav,
   #faq {
     border-radius: 1.25rem;
   }
-  .insurance-card h3 { font-size: 1.08rem; }
+  .insurance-types-page .card-clean {
+    padding: 0.95rem;
+  }
+  .insurance-types-page .card-clean h3 { font-size: 1.08rem; }
   .insurance-rich-text p,
   .insurance-rich-text li {
     line-height: 1.8;
@@ -570,10 +536,6 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                     <li><span class="hero-checklist__icon">✓</span><span>הכוונה לבדיקה אישית לפני החלטה</span></li>
                 </ul>
 
-                <div class="hero-actions">
-                    <button id="openContactHero" class="site-cta">לתיאום בדיקה אישית</button>
-                    <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">לשיחה מהירה ב-WhatsApp</a>
-                </div>
             </div>
         </div>
     </section>
@@ -584,24 +546,10 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                 <section class="insurance-intro insurance-rich-text" aria-labelledby="page-intro-title">
                     <h2 id="page-intro-title" class="text-3xl md:text-4xl font-black text-blue-950">מה תמצא בעמוד הזה</h2>
                     <div class="accent-line insurance-accent-line"></div>
-                    <p class="text-lg md:text-xl font-bold text-blue-950">ריכזנו כאן בצורה ברורה וקצרה את הדברים שחשוב להכיר לפני שבוחרים ביטוח: אילו כיסויים בדרך כלל רלוונטיים, מה כדאי לבדוק לפני רכישה, ואיך לזהות תשלומים מיותרים.</p>
-                    <p>המטרה כאן היא לעשות סדר בלי להעמיס: לתת תמונה נקייה של סוגי הביטוחים המרכזיים, הנקודות שחשוב לבדוק לפני שמחליטים, והטעויות הנפוצות שכדאי להימנע מהן. אם תרצה להעמיק, יש קישורים למדריכים הייעודיים בהמשך.</p>
-                    <p>סוגי ביטוחים בישראל כוללים ביטוח חיים, ביטוח בריאות, ביטוח פנסיוני וביטוח משכנתא. הבחירה הנכונה תלויה במצב המשפחתי, בגובה ההכנסה, בהתחייבויות כמו משכנתא ובהגנות שכבר קיימות דרך מקום העבודה, קופת החולים או החיסכון הפנסיוני. המטרה בעמוד הזה היא לא לדחוף עוד מוצר, אלא להבין איפה כיסוי באמת מגן על המשפחה, איפה יש חוסר שחשוב להשלים, ואיפה משלמים על סעיפים שלא מוסיפים ערך אמיתי. כך אפשר לשמור על חוויית שימוש נקייה וברורה, אבל גם לתת לגוגל ולגולש תוכן עמוק, שימושי ומבוסס חיפוש.</p>
+                    <p class="text-lg md:text-xl font-bold text-blue-950">תקציר: עוברים על ארבעת הכיסויים המרכזיים, מסננים כפילויות ומבינים מה באמת חשוב לפני שקונים.</p>
+                    <p>סוגי הביטוחים המרכזיים בישראל הם ביטוח חיים, בריאות, פנסיה ומשכנתא. בעמוד הזה תקבל מבנה קצר וברור: מה בודקים קודם, איפה נוצר בזבוז, ואיך לבחור כיסוי שמתאים למצב המשפחתי והתקציבי שלך בלי להעמיס בפוליסות מיותרות.</p>
                     <p class="internal-links">להעמקה לפי נושא אפשר לעבור אל <a href="life-insurance.html">ביטוח חיים</a>, <a href="health-insurance.html">ביטוח בריאות</a>, <a href="mortgage-insurance.html">ביטוח משכנתא</a>, <a href="pension-guide.html">פנסיה</a> ואל <a href="faq.html">עמוד השאלות הנפוצות</a>.</p>
                 </section>
-
-                <nav class="toc-nav insurance-rich-text" aria-labelledby="toc-title">
-                    <h2 id="toc-title" class="text-2xl md:text-3xl font-black mb-4">מה תמצא בעמוד</h2>
-                    <ul>
-                        <li><a href="#insurance-types-main">ארבעת הביטוחים המרכזיים</a></li>
-                        <li><a href="#insurance-prices">טווחי מחירים כלליים</a></li>
-                        <li><a href="#how-to-choose-insurance">איך בוחרים נכון</a></li>
-                        <li><a href="#common-mistakes">טעויות נפוצות</a></li>
-                        <li><a href="#why-agent">למה לעבוד עם סוכן</a></li>
-                        <li><a href="#faq">שאלות נפוצות</a></li>
-                        <li><a href="#personal-check">בדיקה אישית</a></li>
-                    </ul>
-                </nav>
 
                 <section id="insurance-types-main" class="insurance-section section-white insurance-rich-text" aria-labelledby="insurance-types-main-title">
                     <div class="insurance-section-heading">
@@ -610,7 +558,7 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                     </div>
                     <p>ברוב המקרים, זה הסדר הנכון להתחיל ממנו. לא כל אדם צריך את כולם באותו היקף, אבל אלו התחומים שבדרך כלל משפיעים באמת על המשפחה והתקציב.</p>
                     <div class="insurance-grid two-col">
-                        <section id="life-insurance" class="insurance-card insurance-rich-text" aria-labelledby="life-insurance-title">
+                        <section id="life-insurance" class="card-clean insurance-rich-text" aria-labelledby="life-insurance-title">
                             <h3 id="life-insurance-title" class="text-2xl font-black text-blue-950">ביטוח חיים</h3>
                             <p>ביטוח חיים נותן רשת ביטחון כלכלית למשפחה במקרה פטירה, ובעיקר רלוונטי כשיש ילדים, משכנתא או תלות בהכנסה של אחד מבני הזוג.</p>
                             <ul>
@@ -619,7 +567,7 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                                 <li><a href="life-insurance.html">למדריך המלא על ביטוח חיים</a></li>
                             </ul>
                         </section>
-                        <section id="health-insurance" class="insurance-card insurance-rich-text" aria-labelledby="health-insurance-title">
+                        <section id="health-insurance" class="card-clean insurance-rich-text" aria-labelledby="health-insurance-title">
                             <h3 id="health-insurance-title" class="text-2xl font-black text-blue-950">ביטוח בריאות</h3>
                             <p>ביטוח בריאות נועד להשלים כיסויים קיימים ולהגן במצבים רפואיים מורכבים כמו ניתוחים, תרופות מחוץ לסל וטיפולים מיוחדים.</p>
                             <ul>
@@ -628,7 +576,7 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                                 <li><a href="health-insurance.html">למדריך על ביטוח בריאות</a></li>
                             </ul>
                         </section>
-                        <section id="pension-insurance" class="insurance-card insurance-rich-text" aria-labelledby="pension-insurance-title">
+                        <section id="pension-insurance" class="card-clean insurance-rich-text" aria-labelledby="pension-insurance-title">
                             <h3 id="pension-insurance-title" class="text-2xl font-black text-blue-950">ביטוח פנסיוני</h3>
                             <p>ביטוח פנסיוני משלב חיסכון ארוך טווח עם כיסויים ביטוחיים, ולכן בחירה נכונה משפיעה גם על העתיד וגם על ההגנה השוטפת למשפחה.</p>
                             <ul>
@@ -637,7 +585,7 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                                 <li><a href="pension-guide.html">למדריך הפנסיוני</a></li>
                             </ul>
                         </section>
-                        <section id="mortgage-insurance" class="insurance-card insurance-rich-text" aria-labelledby="mortgage-insurance-title">
+                        <section id="mortgage-insurance" class="card-clean insurance-rich-text" aria-labelledby="mortgage-insurance-title">
                             <h3 id="mortgage-insurance-title" class="text-2xl font-black text-blue-950">ביטוח משכנתא</h3>
                             <p>ביטוח משכנתא כולל לרוב ביטוח חיים וביטוח מבנה, והוא נדרש על ידי הבנק כדי להגן על ההלוואה ועל הנכס לאורך זמן.</p>
                             <ul>
@@ -656,10 +604,10 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                     </div>
                     <p>המחיר תמיד תלוי בגיל, בריאות, סכום כיסוי ומבנה הפוליסה. לכן הטווחים כאן הם רק אינדיקציה כדי להבין אם יש בכלל סיבה לבדיקה.</p>
                     <div class="insurance-grid two-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח חיים</h3><p>לעיתים מתחיל בעשרות שקלים, אבל עולה ככל שהכיסוי גבוה יותר או כשהגיל והמצב הרפואי משתנים.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח בריאות</h3><p>יכול להתחיל נמוך יחסית, אבל בפוליסות רחבות או בגילים מבוגרים יותר המחיר יכול לעלות משמעותית.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">פנסיה</h3><p>כאן מסתכלים בעיקר על דמי ניהול, רמת הפקדה וההשפעה המצטברת לאורך שנים.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ביטוח משכנתא</h3><p>העלות מושפעת מגיל, הלוואה, בריאות ומבנה הנכס — ולכן חשוב לבדוק את כל חיי ההלוואה, לא רק את המחיר הראשוני.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">ביטוח חיים</h3><p>לעיתים מתחיל בעשרות שקלים, אבל עולה ככל שהכיסוי גבוה יותר או כשהגיל והמצב הרפואי משתנים.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">ביטוח בריאות</h3><p>יכול להתחיל נמוך יחסית, אבל בפוליסות רחבות או בגילים מבוגרים יותר המחיר יכול לעלות משמעותית.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">פנסיה</h3><p>כאן מסתכלים בעיקר על דמי ניהול, רמת הפקדה וההשפעה המצטברת לאורך שנים.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">ביטוח משכנתא</h3><p>העלות מושפעת מגיל, הלוואה, בריאות ומבנה הנכס — ולכן חשוב לבדוק את כל חיי ההלוואה, לא רק את המחיר הראשוני.</p></div>
                     </div>
                 </section>
 
@@ -669,22 +617,11 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                         <div class="accent-line insurance-accent-line"></div>
                     </div>
                     <div class="insurance-grid three-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">1. מתחילים מהחיים עצמם</h3><p>ילדים, משכנתא, הכנסה, מצב בריאותי ויציבות תעסוקתית — אלה הדברים שקובעים מה חשוב באמת.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">2. בודקים מה כבר קיים</h3><p>לפני כל רכישה חדשה, ממפים פוליסות קיימות דרך עבודה, קופה, פנסיה או פוליסות ישנות.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">3. רק אז משווים</h3><p>משווים מחיר, חריגים, תהליך תביעה וגמישות לעדכון — לא רק את המספר בשורה התחתונה.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">1. מתחילים מהחיים עצמם</h3><p>ילדים, משכנתא, הכנסה, מצב בריאותי ויציבות תעסוקתית — אלה הדברים שקובעים מה חשוב באמת.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">2. בודקים מה כבר קיים</h3><p>לפני כל רכישה חדשה, ממפים פוליסות קיימות דרך עבודה, קופה, פנסיה או פוליסות ישנות.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">3. רק אז משווים</h3><p>משווים מחיר, חריגים, תהליך תביעה וגמישות לעדכון — לא רק את המספר בשורה התחתונה.</p></div>
                     </div>
                     <p class="internal-links">אם המטרה שלך היא פשוט לעשות סדר, עדיף להתחיל מ־<a href="check-insurance-policies.html">בדיקת תיק ביטוח</a> או לקרוא את <a href="choose-insurance-agent.html">המדריך לבחירת סוכן ביטוח</a>.</p>
-                </section>
-
-                <section class="insurance-section section-soft insurance-rich-text" aria-labelledby="insurance-types-mid-cta-title">
-                    <div class="insurance-card">
-                        <h2 id="insurance-types-mid-cta-title" class="text-3xl md:text-4xl font-black text-blue-950">רוצים לדעת מה באמת חסר ומה מיותר?</h2>
-                        <p>אפשר לבצע בדיקה קצרה וממוקדת של התיק הקיים ולקבל תמונה ברורה לפני כל רכישה חדשה.</p>
-                        <div class="cta-buttons">
-                            <button id="openContactInsuranceTypesMid" class="btn-primary" type="button">לתיאום בדיקה אישית</button>
-                            <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">לשיחה מהירה ב-WhatsApp</a>
-                        </div>
-                    </div>
                 </section>
 
                 <section id="common-mistakes" class="insurance-section section-soft insurance-rich-text" aria-labelledby="common-mistakes-title">
@@ -693,10 +630,10 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                         <div class="accent-line insurance-accent-line"></div>
                     </div>
                     <div class="insurance-grid two-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">כפל ביטוחים</h3><p>אותו כיסוי מופיע בכמה מסגרות שונות, והמשפחה משלמת פעמיים בלי לקבל ערך כפול.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">קנייה מתוך לחץ</h3><p>חותמים מהר כי “צריך”, בלי לבדוק אם המוצר באמת מתאים לצרכים.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">התמקדות במחיר בלבד</h3><p>פוליסה זולה שלא נותנת מענה ברגע האמת עלולה להיות היקרה ביותר.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">אי־עדכון לאורך השנים</h3><p>החיים משתנים, אבל הפוליסה נשארת זהה — ואז נוצרת אי התאמה.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">כפל ביטוחים</h3><p>אותו כיסוי מופיע בכמה מסגרות שונות, והמשפחה משלמת פעמיים בלי לקבל ערך כפול.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">קנייה מתוך לחץ</h3><p>חותמים מהר כי “צריך”, בלי לבדוק אם המוצר באמת מתאים לצרכים.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">התמקדות במחיר בלבד</h3><p>פוליסה זולה שלא נותנת מענה ברגע האמת עלולה להיות היקרה ביותר.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">אי־עדכון לאורך השנים</h3><p>החיים משתנים, אבל הפוליסה נשארת זהה — ואז נוצרת אי התאמה.</p></div>
                     </div>
                 </section>
 
@@ -706,9 +643,9 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                         <div class="accent-line insurance-accent-line"></div>
                     </div>
                     <div class="insurance-grid three-col">
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">ממפים את התמונה המלאה</h3><p>לא מסתכלים על פוליסה אחת, אלא על החיים, הבריאות, הפנסיה והמשכנתא יחד.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">חוסכים כסף מיותר</h3><p>בדיקה טובה מגלה חפיפות, מוצרים ישנים ועלויות שלא באמת משרתות אותך.</p></div>
-                        <div class="insurance-card"><h3 class="text-xl font-black text-blue-950">מקבלים ליווי גם אחרי הרכישה</h3><p>ברגע האמת, חשוב שיש מי שמכיר את התיק שלך ויודע לעזור גם בתביעה ובשינויים.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">ממפים את התמונה המלאה</h3><p>לא מסתכלים על פוליסה אחת, אלא על החיים, הבריאות, הפנסיה והמשכנתא יחד.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">חוסכים כסף מיותר</h3><p>בדיקה טובה מגלה חפיפות, מוצרים ישנים ועלויות שלא באמת משרתות אותך.</p></div>
+                        <div class="card-clean"><h3 class="text-xl font-black text-blue-950">מקבלים ליווי גם אחרי הרכישה</h3><p>ברגע האמת, חשוב שיש מי שמכיר את התיק שלך ויודע לעזור גם בתביעה ובשינויים.</p></div>
                     </div>
                 </section>
 
@@ -718,16 +655,16 @@ body.insurance-types-page #main > section.py-16.md\:py-20 {
                         <div class="accent-line insurance-accent-line"></div>
                     </div>
                     <div class="insurance-grid two-col">
-                        <div class="insurance-card">
-                            <h3 class="text-xl font-black text-blue-950">בדיקה לפני מכירה</h3>
-                            <p>הגישה של יובל היא לא “למכור עוד פוליסה”, אלא לבדוק מה כבר קיים, לזהות חוסרים או כפילויות, ולהתאים פתרון ברור שמבין גם מספרים וגם משפחה.</p>
+                        <div class="card-clean">
+                            <h3 class="text-xl font-black text-blue-950">קודם בדיקה, אחר כך החלטה</h3>
+                            <p>ממפים את כל הכיסויים הקיימים, מזהים חוסר או כפל, ורק אז ממליצים על פעולה.</p>
                         </div>
-                        <div class="insurance-card">
-                            <h3 class="text-xl font-black text-blue-950">התאמה לפי החיים עצמם</h3>
-                            <p>אם צריך ביטוח חיים — בודקים כמה באמת צריך. אם מדובר בבריאות — ממפים מה כבר יש. אם זו פנסיה — בוחנים דמי ניהול ומסלול. ואם זו משכנתא — משווים בצורה מסודרת.</p>
+                        <div class="card-clean">
+                            <h3 class="text-xl font-black text-blue-950">דיוק שמחזיק לאורך זמן</h3>
+                            <p>התיק נבנה לפי משפחה, משכנתא והכנסה — ומתעדכן כשיש שינוי כדי לשמור על הגנה רלוונטית.</p>
                         </div>
                     </div>
-                    <p class="mt-6">אפשר לקרוא עוד <a href="about.html" class="font-bold">על יובל</a>, להבין את <a href="services.html" class="font-bold">דרך העבודה</a> או להשאיר פנייה דרך <a href="index.html#contact" class="font-bold">צור קשר</a>.</p>
+                    <p class="mt-4">רוצה תכל'ס? <a href="about.html" class="font-bold">להכיר את יובל</a>, לראות את <a href="services.html" class="font-bold">דרך העבודה</a> או להשאיר פנייה דרך <a href="index.html#contact" class="font-bold">צור קשר</a>.</p>
                 </section>
 
                 <section id="faq" class="insurance-section section-white insurance-rich-text" aria-labelledby="faq-title">
