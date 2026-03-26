@@ -7322,7 +7322,7 @@ body.pension-fees-page main {
     background: rgba(11, 27, 59, 0.06);
     color: var(--navy-main);
     font-size: 0.95rem;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
@@ -7337,10 +7337,10 @@ body.pension-fees-page main {
 
 .services-hero-v2__text {
     margin: 0;
-    max-width: 520px;
+    max-width: 600px;
     color: var(--text-body);
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.6;
     font-weight: 400;
 }
 
@@ -7348,9 +7348,23 @@ body.pension-fees-page main {
     margin-top: 16px;
 }
 
-.services-why-needed-v2 {
+.services-includes-v2,
+.services-process-v2,
+.services-audience-v2,
+.services-approach-v2,
+.services-faq-v2 {
     background: #ffffff;
-    padding: 50px 0;
+    padding: 48px 0;
+}
+
+.services-transition-v2,
+.services-bottom-cta-v2 {
+    padding: 40px 0;
+}
+
+.services-transition-v2 {
+    background: #f3f6fb;
+    text-align: center;
 }
 
 .services-section-head {
@@ -7358,7 +7372,7 @@ body.pension-fees-page main {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    margin-bottom: 26px;
+    margin-bottom: 16px;
 }
 
 .services-section-head--center {
@@ -7367,7 +7381,7 @@ body.pension-fees-page main {
 }
 
 .services-section-head--tight {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .services-section-head__line {
@@ -7377,205 +7391,187 @@ body.pension-fees-page main {
     background: var(--navy-main);
 }
 
-.services-section-head__title {
+.services-section-head__title,
+.services-transition-v2__title,
+.services-bottom-cta-v2__inner h2 {
     margin: 0;
     color: var(--navy-deep);
-    font-size: clamp(1.9rem, 3vw, 2.8rem);
-    line-height: 1.2;
-    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
 }
 
-.services-why-needed-v2__grid {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: 1fr;
-}
-
-.services-why-needed-v2__card {
-    padding: 22px 20px;
+.services-includes-v2__card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 16px;
     text-align: right;
 }
 
-.services-why-needed-v2__card h3 {
+.services-includes-v2__card p,
+.services-process-v2__card p,
+.services-transition-v2__text,
+.services-approach-v2__content p,
+.services-faq-v2__item p,
+.services-bottom-cta-v2__inner p {
+    margin: 0;
+    color: var(--text-body);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.services-includes-v2__card p + p,
+.services-approach-v2__content p + p {
+    margin-top: 12px;
+}
+
+.services-subtitle {
+    margin: 16px 0 8px;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--navy-deep);
+    font-weight: 700;
+}
+
+.services-check-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.services-check-list li {
+    position: relative;
+    padding-right: 28px;
+    color: var(--text-body);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.services-check-list li::before {
+    content: "✔";
+    position: absolute;
+    right: 0;
+    top: 1px;
+    color: var(--navy-main);
+    font-weight: 700;
+}
+
+.services-check-list li + li {
+    margin-top: 12px;
+}
+
+.services-check-list--narrow {
+    max-width: 600px;
+}
+
+.services-process-v2__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.services-process-v2__card {
+    padding: 20px 19px;
+    border-radius: 16px;
+    min-height: 140px;
+    text-align: right;
+}
+
+.services-process-v2__icon {
+    font-size: 28px;
+    line-height: 1;
+    color: var(--navy-main);
+    margin-bottom: 10px;
+}
+
+.services-process-v2__card h3 {
     margin: 0 0 8px;
     color: var(--navy-deep);
-    font-size: 1.3rem;
-    font-weight: 900;
-}
-
-.services-why-needed-v2__card p {
-    margin: 0;
-    color: var(--text-body);
-    font-size: 1rem;
-    line-height: 1.8;
-    font-weight: 700;
-}
-
-.services-why-yuval-v2 {
-    background: #f8fbff;
-    padding: 0 0 50px;
-}
-
-.services-why-yuval-v2__card {
-    padding: 28px 24px;
-    text-align: right;
-}
-
-.services-why-yuval-v2__card p {
-    margin: 0;
-    color: var(--text-body);
-    font-size: 1.06rem;
-    line-height: 1.9;
-    font-weight: 700;
-}
-
-.services-method-v2 {
-    background: #ffffff;
-    padding: 56px 0;
-}
-
-.services-method-v2__grid {
-    display: grid;
-    gap: 22px;
-    grid-template-columns: 1fr;
-}
-
-.services-method-v2__card {
-    padding: 28px 24px;
-    text-align: right;
-    min-height: auto;
-}
-
-.services-method-v2__tag {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #f5f1e6;
-    color: var(--navy-main);
-    font-size: 0.95rem;
-    font-weight: 900;
-    margin-bottom: 16px;
-}
-
-.services-method-v2__card-title {
-    margin: 0 0 12px;
-    color: var(--navy-deep);
-    font-size: 1.55rem;
-    line-height: 1.25;
-    font-weight: 900;
-}
-
-.services-method-v2__card-text {
-    margin: 0 0 14px;
-    color: var(--text-body);
-    font-size: 1.03rem;
-    line-height: 1.85;
-    font-weight: 700;
-}
-
-.services-method-v2__card-result {
-    margin: 0;
-    color: var(--navy-deep);
-    font-size: 1rem;
-    line-height: 1.75;
-    font-weight: 800;
-}
-
-.services-proof-v2 {
-    background: #f3f6fb;
-    padding: 50px 0;
-}
-
-.services-proof-v2__inner {
-    max-width: 980px;
-    text-align: right;
-}
-
-.services-proof-v2__list {
-    margin: 0;
-    padding-right: 1.2rem;
-    color: var(--navy-deep);
-    font-size: 1.08rem;
-    line-height: 2;
-    font-weight: 800;
-}
-
-.services-proof-v2__list li + li {
-    margin-top: 10px;
-}
-
-.services-audience-v2 {
-    background: #ffffff;
-    padding: 50px 0;
-}
-
-.services-audience-v2__box {
-    background: #ffffff;
-    border: 1px solid rgba(11, 27, 59, 0.08);
-    border-radius: 28px;
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
-    padding: 30px 24px;
-}
-
-.services-audience-v2__grid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: 1fr;
-}
-
-.services-audience-v2__col-title {
-    margin: 0 0 10px;
-    color: var(--navy-deep);
-    font-size: 1.35rem;
+    font-size: 22px;
     line-height: 1.3;
-    font-weight: 900;
-}
-
-.services-audience-v2__items {
-    margin: 0;
-    padding-right: 1.2rem;
-    color: var(--text-body);
-    font-size: 1.02rem;
-    line-height: 1.9;
     font-weight: 700;
 }
 
-.services-audience-v2__items li + li {
-    margin-top: 8px;
+.services-transition-v2__title {
+    font-size: 28px;
+    margin-bottom: 12px;
 }
 
-.services-personal-trigger-v2 {
-    padding: 50px 0;
-    background: linear-gradient(135deg, #0b1b3b 0%, #1d3f76 100%);
-}
-
-.services-personal-trigger-v2__panel {
-    max-width: 980px;
+.services-transition-v2__text {
     margin: 0 auto;
+}
+
+.services-approach-v2__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.services-approach-v2__media {
+    margin: 0;
+}
+
+.services-approach-v2__media img {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    border-radius: 14px;
+}
+
+.services-faq-v2__list {
+    max-width: 760px;
+}
+
+.services-faq-v2__item {
+    border: 1px solid rgba(11, 27, 59, 0.12);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.services-faq-v2__item + .services-faq-v2__item {
+    margin-top: 12px;
+}
+
+.services-faq-v2__item summary {
+    cursor: pointer;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy-deep);
+}
+
+.services-faq-v2__item > div {
+    padding: 0 14px 14px;
+}
+
+.services-bottom-cta-v2 {
+    background: #f3f6fb;
+}
+
+.services-bottom-cta-v2__inner {
     text-align: right;
 }
 
-.services-personal-trigger-v2__text {
-    margin: 0;
-    color: #ffffff;
-    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
-    line-height: 1.75;
-    font-weight: 800;
+.services-bottom-cta-v2__inner p {
+    margin: 12px 0 16px;
 }
 
 @media (min-width: 768px) {
-    .services-why-needed-v2__grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .services-method-v2__grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .services-audience-v2__grid {
+    .services-process-v2__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-approach-v2__layout {
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 20px;
+    }
+
+    .services-approach-v2__media {
+        justify-self: end;
     }
 }
 
@@ -7584,37 +7580,38 @@ body.pension-fees-page main {
         padding: 24px 0;
     }
 
-    .services-hero-v2__badge {
-        margin-bottom: 10px;
-    }
-
     .services-hero-v2__title {
         font-size: 30px;
-        line-height: 1.2;
     }
 
     .services-hero-v2__text {
-        font-size: 17px;
-        line-height: 1.5;
+        font-size: 16px;
     }
 
-    .services-why-needed-v2,
-    .services-why-yuval-v2,
-    .services-method-v2,
-    .services-proof-v2,
-    .services-personal-trigger-v2,
-    .services-audience-v2 {
-        padding: 26px 0;
+    .services-includes-v2,
+    .services-process-v2,
+    .services-audience-v2,
+    .services-approach-v2,
+    .services-faq-v2 {
+        padding: 40px 0;
     }
 
-    .services-method-v2__card,
-    .services-why-yuval-v2__card,
-    .services-audience-v2__box {
-        padding: 22px 18px;
+    .services-transition-v2,
+    .services-bottom-cta-v2 {
+        padding: 40px 0;
     }
 
-    .services-section-head__title {
-        font-size: 2rem;
+    .services-section-head__title,
+    .services-bottom-cta-v2__inner h2 {
+        font-size: 24px;
+    }
+
+    .services-subtitle {
+        font-size: 20px;
+    }
+
+    .services-process-v2__icon {
+        font-size: 25px;
     }
 }
 
