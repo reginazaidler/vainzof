@@ -2563,11 +2563,15 @@ main section.bg-slate-50 h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 280px;
+    min-height: 240px;
+    padding: 1.65rem 1.5rem;
 }
 
 .why-choose-card svg {
     margin-inline: auto;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.85rem;
 }
 
 .why-choose-card--highlight {
@@ -2724,10 +2728,10 @@ main section.bg-slate-50 h3 {
 
     .why-choose-card {
         border-radius: 1.9rem;
-        min-height: 374px;
+        min-height: 305px;
         border-color: rgba(11, 27, 59, 0.13);
         box-shadow: none;
-        padding: 2.35rem 2rem;
+        padding: 1.95rem 1.65rem;
     }
 
     .why-choose-card p {
@@ -2761,7 +2765,7 @@ main section.bg-slate-50 h3 {
 .about-teaser-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
 }
 
@@ -2883,7 +2887,7 @@ main section.bg-slate-50 h3 {
 
     .about-teaser-layout {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 3rem;
+        gap: 2rem;
     }
 }
 
