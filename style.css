@@ -413,6 +413,7 @@ table {
 .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
 .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
 .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
@@ -544,6 +545,7 @@ table {
     .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .md\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .md\:py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
     .md\:py-20 { padding-top: 5rem; padding-bottom: 5rem; }
     .md\:py-16 { padding-top: 4rem; padding-bottom: 4rem; }
     .md\:text-3xl { font-size: 1.875rem; }
@@ -7671,6 +7673,20 @@ body.pension-fees-page main {
     padding-bottom: 2.6rem;
 }
 
+.home-page #main > section.py-20,
+.home-page #main > section.py-24,
+.home-page #main > section.md\:py-20,
+.home-page #main > section.md\:py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.home-page #main > section.py-16,
+.home-page #main > section.md\:py-16 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
 .home-page #services {
     padding-top: 0.8rem;
     padding-bottom: 2.5rem;
@@ -7679,6 +7695,24 @@ body.pension-fees-page main {
 .home-page #main > section.py-8 {
     padding-top: 1.7rem;
     padding-bottom: 1.7rem;
+}
+
+.home-page #main > section + section {
+    margin-top: 2.5rem;
+}
+
+.home-page #main > section h2 + p,
+.home-page #main > section h3 + p {
+    margin-top: 0;
+    margin-bottom: 0.875rem;
+}
+
+.home-page #main > section p + ul,
+.home-page #main > section p + ol,
+.home-page #main > section p + .grid,
+.home-page #main > section p + [class*="cards"],
+.home-page #main > section p + [class*="list"] {
+    margin-top: 1rem;
 }
 
 @media (max-width: 767px) {
