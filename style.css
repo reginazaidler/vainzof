@@ -7595,11 +7595,11 @@ body.pension-fees-page main {
 }
 
 .services-bottom-cta-v2__inner {
-    text-align: right;
+    text-align: center;
 }
 
 .services-bottom-cta-v2__inner p {
-    margin: 12px 0 16px;
+    margin: 12px auto 16px;
 }
 
 @media (min-width: 768px) {
