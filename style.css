@@ -7772,3 +7772,22 @@ body.pension-fees-page main {
         font-size: 16px;
     }
 }
+
+/* Homepage bottom CTA compact sizing */
+.home-page .bottom-cta {
+    padding: 32px 16px !important;
+}
+
+.home-page .bottom-cta__title {
+    font-size: clamp(1.6rem, 2.1vw, 2.2rem);
+    margin-bottom: 10px;
+}
+
+.home-page .bottom-cta__text {
+    margin-bottom: 16px;
+    font-size: clamp(0.98rem, 1vw, 1.08rem);
+}
+
+.home-page .home-service-areas + .bottom-cta {
+    margin-top: 0.9rem;
+}
