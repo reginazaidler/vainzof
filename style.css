@@ -4903,6 +4903,15 @@ main section.bg-slate-50 h3 {
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
 }
 
+.home-service-areas {
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.25rem !important;
+}
+
+.home-service-areas__links {
+    gap: 0.45rem !important;
+}
+
 .faq-guide-link-wrap {
     margin-top: 1.65rem;
     margin-inline: auto;
@@ -4954,7 +4963,7 @@ main section.bg-slate-50 h3 {
     }
 
     .home-faq-section .faq-item summary {
-        padding: 1.35rem 1.65rem;
+        padding: 14px 1.65rem;
         font-size: 1.55rem;
     }
 
@@ -4979,7 +4988,7 @@ main section.bg-slate-50 h3 {
     }
 
     .home-faq-section .faq-item summary {
-        padding: 1rem;
+        padding: 14px;
         gap: 0.75rem;
         font-size: 1rem;
         line-height: 1.45;
@@ -6008,7 +6017,7 @@ main section.bg-slate-50 h3 {
         list-style: none;
         cursor: pointer;
         margin: 0;
-        padding: 1.15rem 3.75rem 1.15rem 1.25rem;
+        padding: 14px 3.75rem 14px 1.25rem;
         color: #0f2b49;
         font-size: 1.25rem;
         font-weight: 900;
