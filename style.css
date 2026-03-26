@@ -7862,6 +7862,14 @@ body.pension-fees-page main {
     }
 }
 
+@media (min-width: 1024px) {
+    .home-page .home-hero__subtitle {
+        max-width: none;
+        white-space: nowrap;
+        text-wrap: nowrap;
+    }
+}
+
 /* Homepage bottom CTA compact sizing */
 .home-page .bottom-cta {
     padding: 32px 16px !important;
