@@ -1459,6 +1459,15 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     margin: 0 0 16px;
 }
 
+.home-hero__pain {
+    margin: 0 0 10px;
+    font-size: clamp(1rem, 1.9vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 58ch;
+}
+
 .services-page .home-hero {
     padding: 16px 0 38px;
 }
@@ -2737,12 +2746,14 @@ main section.bg-slate-50 h3 {
 
 .about-teaser-section {
     overflow: hidden;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
 }
 
 .about-teaser-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -2796,9 +2807,9 @@ main section.bg-slate-50 h3 {
 
 .about-teaser-text {
     display: grid;
-    gap: 1.25rem;
-    font-size: 1.08rem;
-    line-height: 1.9;
+    gap: 0.85rem;
+    font-size: 1.02rem;
+    line-height: 1.72;
     color: #334155;
 }
 
@@ -2809,6 +2820,23 @@ main section.bg-slate-50 h3 {
 .about-teaser-text p:last-child {
     color: #0f172a;
     font-weight: 700;
+}
+
+.home-breaker {
+    padding: 2.9rem 0;
+    background: linear-gradient(135deg, #eaf0f8 0%, #f3f7fc 100%);
+    border-top: 1px solid rgba(11, 27, 59, 0.08);
+    border-bottom: 1px solid rgba(11, 27, 59, 0.08);
+}
+
+.home-breaker__text {
+    margin: 0;
+    text-align: center;
+    font-size: clamp(1.35rem, 2.9vw, 2rem);
+    line-height: 1.45;
+    font-weight: 900;
+    color: #0b1b3b;
+    letter-spacing: -0.01em;
 }
 
 @media (min-width: 768px) {
@@ -7573,4 +7601,27 @@ body.pension-fees-page main {
 
 .about-proof-text:last-child {
     margin-bottom: 0;
+}
+
+/* Homepage tightening (requested hierarchy/spacing refinement) */
+.home-page #main > section.py-12 {
+    padding-top: 2.6rem;
+    padding-bottom: 2.6rem;
+}
+
+.home-page #services {
+    padding-top: 0.8rem;
+    padding-bottom: 2.5rem;
+}
+
+.home-page #main > section.py-8 {
+    padding-top: 1.7rem;
+    padding-bottom: 1.7rem;
+}
+
+@media (max-width: 767px) {
+    .home-page #services {
+        padding-top: 2.3rem;
+        padding-bottom: 2.3rem;
+    }
 }
