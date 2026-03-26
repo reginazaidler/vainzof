@@ -7245,14 +7245,9 @@ body.pension-fees-page main {
     margin-top: 28px;
 }
 
-.services-dark-band {
-    background: var(--navy-main);
-    color: #fff;
+.services-why-needed-v2 {
+    background: #ffffff;
     padding: 56px 0;
-}
-
-.services-dark-band__inner {
-    text-align: right;
 }
 
 .services-section-head {
@@ -7266,14 +7261,6 @@ body.pension-fees-page main {
 .services-section-head--center {
     align-items: center;
     text-align: center;
-}
-
-.services-section-head--light .services-section-head__title {
-    color: #fff;
-}
-
-.services-section-head--light .services-section-head__line {
-    background: var(--gold-brand);
 }
 
 .services-section-head--tight {
@@ -7295,31 +7282,47 @@ body.pension-fees-page main {
     font-weight: 900;
 }
 
-.services-dark-band__grid {
+.services-why-needed-v2__grid {
     display: grid;
     gap: 18px;
     grid-template-columns: 1fr;
 }
 
-.services-dark-band__item {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+.services-why-needed-v2__card {
     padding: 22px 20px;
+    text-align: right;
 }
 
-.services-dark-band__item h3 {
+.services-why-needed-v2__card h3 {
     margin: 0 0 8px;
-    color: #fff;
+    color: var(--navy-deep);
     font-size: 1.3rem;
     font-weight: 900;
 }
 
-.services-dark-band__item p {
+.services-why-needed-v2__card p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-body);
     font-size: 1rem;
     line-height: 1.8;
+    font-weight: 700;
+}
+
+.services-why-yuval-v2 {
+    background: #f8fbff;
+    padding: 0 0 56px;
+}
+
+.services-why-yuval-v2__card {
+    padding: 28px 24px;
+    text-align: right;
+}
+
+.services-why-yuval-v2__card p {
+    margin: 0;
+    color: var(--text-body);
+    font-size: 1.06rem;
+    line-height: 1.9;
     font-weight: 700;
 }
 
@@ -7375,41 +7378,6 @@ body.pension-fees-page main {
     font-size: 1rem;
     line-height: 1.75;
     font-weight: 800;
-}
-
-.services-method-v2__extra {
-    margin-top: 22px;
-}
-
-.services-method-v2__extra-box {
-    background: #f8fafc;
-    border: 1px solid rgba(11, 27, 59, 0.08);
-    border-radius: 24px;
-    padding: 24px;
-    text-align: right;
-}
-
-.services-method-v2__extra-label {
-    display: inline-block;
-    color: var(--gold-brand);
-    font-size: 0.92rem;
-    font-weight: 900;
-    margin-bottom: 10px;
-}
-
-.services-method-v2__extra-title {
-    margin: 0 0 10px;
-    color: var(--navy-deep);
-    font-size: 1.35rem;
-    font-weight: 900;
-}
-
-.services-method-v2__extra-text {
-    margin: 0;
-    color: var(--text-body);
-    font-size: 1rem;
-    line-height: 1.8;
-    font-weight: 700;
 }
 
 .services-proof-v2 {
@@ -7506,7 +7474,7 @@ body.pension-fees-page main {
 }
 
 @media (min-width: 768px) {
-    .services-dark-band__grid {
+    .services-why-needed-v2__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
@@ -7534,7 +7502,8 @@ body.pension-fees-page main {
         line-height: 1.85;
     }
 
-    .services-dark-band,
+    .services-why-needed-v2,
+    .services-why-yuval-v2,
     .services-method-v2,
     .services-proof-v2,
     .services-audience-v2,
@@ -7543,7 +7512,7 @@ body.pension-fees-page main {
     }
 
     .services-method-v2__card,
-    .services-method-v2__extra-box,
+    .services-why-yuval-v2__card,
     .services-audience-v2__box {
         padding: 22px 18px;
     }
