@@ -3535,6 +3535,13 @@ main section.bg-slate-50 h3 {
     }
 }
 
+
+/* התאמת כותרת CTA תחתונה בעמוד אודות */
+.about-page .bottom-cta__title {
+    font-size: clamp(1.55rem, 2.05vw, 2.35rem);
+    max-width: 18ch;
+}
+
 /* ============================= */
 /* ABOUT PAGE - SMALL FIXES */
 /* שיפורים קטנים בלבד, בלי לשנות את המבנה המקורי */
