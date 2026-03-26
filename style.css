@@ -7687,3 +7687,61 @@ body.pension-fees-page main {
         padding-bottom: 2.3rem;
     }
 }
+
+/* Homepage hero precision refresh */
+.home-page .home-hero {
+    padding: 64px 0;
+}
+
+.home-page .home-hero__title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 12px;
+}
+
+.home-page .home-hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 520px;
+    margin: 0 0 10px;
+}
+
+.home-page .home-hero__highlight {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--gold-brand);
+}
+
+.home-page .hero-checklist {
+    margin: 0 0 16px;
+    gap: 7px;
+}
+
+.home-page .hero-checklist li {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.home-page .hero-actions {
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .home-page .home-hero {
+        padding: 64px 0;
+    }
+
+    .home-page .home-hero__title {
+        font-size: 32px;
+    }
+
+    .home-page .home-hero__subtitle {
+        font-size: 16px;
+    }
+}
