@@ -2438,9 +2438,25 @@ main section.bg-slate-50 h3 {
     padding: 12px 24px;
 }
 
+.home-hero .hero-actions .btn-outline-light[href*="wa.me"],
+.page-hero .hero-actions .btn-outline-light[href*="wa.me"],
+.media-hero__actions .btn-outline-light[href*="wa.me"] {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    border-color: #16a34a;
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(22, 163, 74, 0.28);
+}
+
 .btn-outline-light:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.34);
+}
+
+.home-hero .hero-actions .btn-outline-light[href*="wa.me"]:hover,
+.page-hero .hero-actions .btn-outline-light[href*="wa.me"]:hover,
+.media-hero__actions .btn-outline-light[href*="wa.me"]:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    border-color: #15803d;
 }
 
 .home-hero__media {
