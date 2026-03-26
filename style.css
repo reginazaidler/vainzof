@@ -2121,6 +2121,10 @@ main section.bg-slate-50 h3 {
     min-height: 52px;
 }
 
+.calculator-hero {
+    padding: 20px 0 48px;
+}
+
 .calculator-hero__inner {
     display: grid;
     gap: 2.5rem;
@@ -2136,7 +2140,8 @@ main section.bg-slate-50 h3 {
 
 @media (min-width: 1024px) {
     .calculator-hero {
-        padding-bottom: 6.5rem;
+        padding-top: 20px;
+        padding-bottom: 48px;
     }
 
     .calculator-hero__inner {
@@ -2159,8 +2164,8 @@ main section.bg-slate-50 h3 {
 
 @media (max-width: 767px) {
     .calculator-hero {
-        padding-top: 1.75rem;
-        padding-bottom: 3rem;
+        padding-top: 14px;
+        padding-bottom: 40px;
     }
 
     .calculator-hero-title {
