@@ -7677,6 +7677,10 @@ body.pension-fees-page main {
     margin-top: 2.5rem;
 }
 
+.home-page .home-hero + section {
+    margin-top: 1rem;
+}
+
 .home-page #main h2 {
     font-size: 24px;
     font-weight: 700;
