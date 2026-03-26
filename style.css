@@ -5125,39 +5125,52 @@ main section.bg-slate-50 h3 {
 }
 
 .insurance-types-page .home-hero {
-    padding-top: 8px;
-    padding-bottom: 20px;
+    padding: 20px 0 48px;
 }
 
 .insurance-types-page .home-hero__badge {
     margin-top: 0;
-    margin-bottom: 0.6rem;
+    margin-bottom: 10px;
 }
 
 .insurance-types-page .home-hero__title {
-    font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+    font-size: 42px;
+    font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 0.7rem;
+    margin: 0 0 12px;
 }
 
 .insurance-types-page .home-hero__subtitle {
-    font-size: clamp(0.98rem, 1.5vw, 1.2rem);
-    line-height: 1.62;
-    margin-bottom: 0.8rem;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 620px;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 10px;
+}
+
+.insurance-types-page .home-hero__highlight {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--gold-brand);
 }
 
 .insurance-types-page .hero-checklist {
-    gap: 0.35rem;
-    margin-bottom: 0.9rem;
+    gap: 6px;
+    margin-bottom: 16px;
 }
 
 .insurance-types-page .hero-checklist li {
-    font-size: 0.92rem;
-    line-height: 1.42;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 .insurance-types-page .hero-actions {
-    gap: 0.55rem;
+    margin-top: 0;
+    gap: 10px;
 }
 
 .insurance-types-page .hero-gradient {
@@ -5319,6 +5332,18 @@ main section.bg-slate-50 h3 {
 @media (max-width: 767px) {
     .insurance-types-page {
         background: var(--bg-light);
+    }
+
+    .insurance-types-page .home-hero {
+        padding: 14px 0 40px;
+    }
+
+    .insurance-types-page .home-hero__title {
+        font-size: 32px;
+    }
+
+    .insurance-types-page .home-hero__subtitle {
+        font-size: 16px;
     }
 
     .insurance-types-page .hero-gradient {
