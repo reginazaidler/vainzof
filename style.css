@@ -832,6 +832,33 @@ table {
     }
 }
 
+@media (min-width: 1024px) and (max-width: 1320px) {
+    .site-header__inner {
+        gap: 12px;
+    }
+
+    .site-nav {
+        gap: 14px;
+        font-size: 13px;
+    }
+
+    .nav-dropdown__trigger {
+        padding: 7px 10px;
+        gap: 4px;
+    }
+
+    .header-phone {
+        gap: 6px;
+        font-size: 12px;
+    }
+
+    .site-cta {
+        padding: 10px 14px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
 .header-phone:hover {
     color: var(--gold-brand);
 }
