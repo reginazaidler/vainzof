@@ -7893,3 +7893,40 @@ body.pension-fees-page main {
     margin-bottom: 16px;
     font-size: clamp(0.98rem, 1vw, 1.08rem);
 }
+
+/* Articles hero alignment with site-wide hero scale */
+.articles-page .home-hero {
+    padding: 16px 0 34px;
+}
+
+.articles-page .home-hero__title {
+    font-size: clamp(1.95rem, 3.9vw, 3.05rem);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.articles-page .home-hero__subtitle {
+    font-size: clamp(1.08rem, 2.1vw, 1.6rem);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.articles-page .hero-checklist li {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .articles-page .home-hero {
+        padding: 14px 0 28px;
+    }
+
+    .articles-page .home-hero__title {
+        font-size: clamp(1.65rem, 7.4vw, 2.05rem);
+        line-height: 1.28;
+    }
+
+    .articles-page .home-hero__subtitle {
+        font-size: 1.02rem;
+        line-height: 1.65;
+    }
+}
