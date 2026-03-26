@@ -5544,6 +5544,15 @@ main section.bg-slate-50 h3 {
         linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
 }
 
+.faq-page .home-hero {
+    padding: 24px 0 48px;
+}
+
+.faq-page .home-hero__inner {
+    min-height: clamp(360px, 52vh, 560px);
+    align-content: center;
+}
+
 .faq-page {
     overflow-x: visible;
     font-family: 'Assistant', sans-serif;
