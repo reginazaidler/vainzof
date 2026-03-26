@@ -2831,7 +2831,7 @@ main section.bg-slate-50 h3 {
 }
 
 .home-breaker {
-    padding: 2.9rem 0;
+    padding: 2.5rem 0;
     background: linear-gradient(135deg, #eaf0f8 0%, #f3f7fc 100%);
     border-top: 1px solid rgba(11, 27, 59, 0.08);
     border-bottom: 1px solid rgba(11, 27, 59, 0.08);
@@ -2840,7 +2840,7 @@ main section.bg-slate-50 h3 {
 .home-breaker__text {
     margin: 0;
     text-align: center;
-    font-size: clamp(1.35rem, 2.9vw, 2rem);
+    font-size: 28px;
     line-height: 1.45;
     font-weight: 900;
     color: #0b1b3b;
