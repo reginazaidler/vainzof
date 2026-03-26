@@ -350,11 +350,8 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(revealOnScroll, 100);
 
     const contactModal = document.getElementById('contactModal');
-const exitPopup = document.getElementById('exitPopup');
 const form = document.getElementById('modal-contact-form');
     
-    let isEligibleForPopup = false;
-    setTimeout(() => { isEligibleForPopup = true; }, 10000);
 
     // --- פונקציות עזר למודאלים ---
     function openModal(modal) {
@@ -458,24 +455,11 @@ document.getElementById('openContactFooter')?.addEventListener('click', (e) => {
     document.getElementById('closeContact')?.addEventListener('click', () => closeModal(contactModal));
 	
 
-exitPopup?.addEventListener('click', (e) => {
-    if (e.target === exitPopup) {
-        closeModal(exitPopup);
-    }
-});
-document.getElementById('closeExitPopup')?.addEventListener('click', () => closeModal(exitPopup));
 
 
 document.getElementById('user_phone')?.addEventListener('input', (e) => {
     e.target.value = e.target.value.replace(/[^\d\s\-()]/g, '');
 });
-    // יציאה מהדף
-    document.addEventListener('mouseleave', (e) => {
-        if (e.clientY <= 0 && isEligibleForPopup && !sessionStorage.getItem('exitPopupShown')) {
-            openModal(exitPopup);
-            sessionStorage.setItem('exitPopupShown', 'true');
-        }
-    });
 
     // שליחת הטופס
     if (form) {
@@ -509,7 +493,6 @@ document.getElementById('user_phone')?.addEventListener('input', (e) => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal(contactModal);
-            closeModal(exitPopup);
             document.getElementById('accessibilityModal')?.classList.add('hidden');
         }
     });
