@@ -7552,3 +7552,28 @@ body.pension-fees-page main {
         font-size: 2rem;
     }
 }
+
+.about-proof-card {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.about-proof-title {
+    margin-bottom: 14px;
+    font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--navy-main);
+}
+
+.about-proof-text {
+    margin: 0 0 14px;
+    color: #334155;
+    font-size: 1.03rem;
+    line-height: 1.85;
+    font-weight: 700;
+}
+
+.about-proof-text:last-child {
+    margin-bottom: 0;
+}
