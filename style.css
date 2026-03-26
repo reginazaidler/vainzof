@@ -2484,6 +2484,23 @@ main section.bg-slate-50 h3 {
     max-width: 700px;
 }
 
+.section-inline-cta-wrap--integrated {
+    margin-top: 1.5rem;
+    padding: 0.9rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.15rem;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.section-inline-cta-wrap__kicker {
+    margin: 0 0 0.55rem;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
 .section-inline-cta-wrap .services-more-link,
 .section-inline-cta-wrap .why-choose-me-cta {
     width: 100%;
@@ -2492,6 +2509,16 @@ main section.bg-slate-50 h3 {
     white-space: normal;
     line-height: 1.45;
     max-width: 100%;
+}
+
+.section-inline-cta-link {
+    border-color: #d6e0eb;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.section-inline-cta-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.1);
 }
 
 .about-teaser-photo {
@@ -4682,6 +4709,11 @@ main section.bg-slate-50 h3 {
         border: 1px solid #e2e8f0;
         border-radius: 1.1rem;
         background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .section-inline-cta-wrap__kicker {
+        font-size: 0.8rem;
+        margin-bottom: 0.45rem;
     }
 
     .section-inline-cta-wrap .services-more-link,
