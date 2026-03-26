@@ -65,8 +65,12 @@
     padding: 1.5rem;
   }
   .emergency-hero {
-    background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
-    border-color: #bfdbfe;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+  .emergency-hero p,
+  .emergency-hero li {
+    color: rgba(255, 255, 255, 0.9);
   }
   .emergency-hero h1,
   .emergency-card h2,
@@ -74,7 +78,7 @@
   .emergency-faq h2,
   .emergency-side-card h2,
   .emergency-bottom-cta h2 {
-    color: #082f6b;
+    color: #ffffff;
   }
   .emergency-kicker {
     display: inline-flex;
@@ -82,8 +86,8 @@
     gap: 0.5rem;
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold-brand);
     font-weight: 800;
     font-size: 0.95rem;
     margin-bottom: 1rem;
@@ -215,7 +219,7 @@
   .emergency-back-link {
     display: inline-flex;
     margin-bottom: 1rem;
-    color: #1d4ed8;
+    color: var(--gold-brand);
     font-weight: 700;
     text-decoration: none;
   }
