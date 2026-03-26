@@ -7678,6 +7678,12 @@ body.pension-fees-page main {
     margin-top: 2.5rem;
 }
 
+
+.home-page #main > section.home-companies-section {
+    margin-top: 0;
+}
+
+
 .home-page .home-hero + section {
     margin-top: 1rem;
 }
