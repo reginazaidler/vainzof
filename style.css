@@ -4257,9 +4257,11 @@ main section.bg-slate-50 h3 {
 }
 
 .media-page .media-hero {
-    background: radial-gradient(circle at top right, var(--navy-accent) 0%, var(--navy-main) 45%, var(--navy-deep) 100%);
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-top: 12px !important;
+    padding-bottom: 32px !important;
 }
 
 .media-page .media-hero__content {
@@ -4279,15 +4281,42 @@ main section.bg-slate-50 h3 {
 }
 
 .media-page .media-hero__subtitle {
-    color: #e2e8f0;
+    color: var(--gold-brand);
+    font-size: clamp(1.06rem, 2.1vw, 1.55rem);
+    font-weight: 900;
 }
 
 .media-page .media-hero__checklist {
-    margin-bottom: 0;
+    margin-bottom: 18px;
 }
 
 .media-page .media-hero__stats-mobile {
     display: none;
+}
+
+.media-page .media-hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.media-page .media-hero__actions .btn-primary,
+.media-page .media-hero__actions .btn-outline-light {
+    min-height: 50px;
+    padding: 12px 24px;
+}
+
+.media-page .media-hero__actions .btn-primary {
+    background: var(--gold-brand);
+    color: #ffffff;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.media-page .media-hero__actions .btn-primary:hover {
+    background: #b08d4a;
 }
 
 .media-page .media-hero__panel {
@@ -4382,6 +4411,15 @@ main section.bg-slate-50 h3 {
     box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
 }
 
+@media (min-width: 768px) {
+    .media-page .media-hero__actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
 @media (min-width: 1024px) {
     .media-page .media-hero {
         background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
@@ -4399,6 +4437,13 @@ main section.bg-slate-50 h3 {
 
     .media-page .media-hero__content {
         max-width: 760px;
+    }
+
+    .media-page .media-hero__actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 
     .media-page .media-hero h1 {
@@ -7375,7 +7420,7 @@ body.pension-fees-page main {
 .services-hero-v2 {
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
     color: #ffffff;
-    padding: 32px 0;
+    padding: 12px 0 32px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -7401,19 +7446,19 @@ body.pension-fees-page main {
 .services-hero-v2__title {
     margin: 0 0 12px;
     color: #ffffff;
-    font-size: 40px;
-    line-height: 1.2;
-    font-weight: 700;
+    font-size: clamp(1.95rem, 4vw, 3.15rem);
+    line-height: 1.18;
+    font-weight: 900;
     max-width: 720px;
 }
 
 .services-hero-v2__text {
     margin: 0;
     max-width: 600px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    line-height: 1.6;
-    font-weight: 400;
+    color: var(--gold-brand);
+    font-size: clamp(1.06rem, 2.1vw, 1.55rem);
+    line-height: 1.5;
+    font-weight: 900;
 }
 
 .services-hero-v2__actions {
