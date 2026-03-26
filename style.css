@@ -7299,7 +7299,7 @@ body.pension-fees-page main {
 
 .services-hero-v2 {
     background: #ffffff;
-    padding: 34px 0 24px;
+    padding: 24px 0;
     border-bottom: 1px solid rgba(11, 27, 59, 0.06);
 }
 
@@ -7324,23 +7324,23 @@ body.pension-fees-page main {
 .services-hero-v2__title {
     margin: 0 0 12px;
     color: var(--navy-deep);
-    font-size: clamp(2rem, 3.8vw, 3.15rem);
-    line-height: 1.18;
-    font-weight: 900;
-    max-width: 980px;
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 700;
+    max-width: 720px;
 }
 
 .services-hero-v2__text {
     margin: 0;
-    max-width: 860px;
+    max-width: 520px;
     color: var(--text-body);
-    font-size: 1.14rem;
-    line-height: 1.9;
-    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
 }
 
 .services-hero-v2__actions {
-    margin-top: 18px;
+    margin-top: 16px;
 }
 
 .services-why-needed-v2 {
@@ -7576,21 +7576,21 @@ body.pension-fees-page main {
 
 @media (max-width: 767px) {
     .services-hero-v2 {
-        padding: 30px 0 24px;
+        padding: 24px 0;
     }
 
     .services-hero-v2__badge {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
     .services-hero-v2__title {
-        font-size: 2rem;
-        line-height: 1.24;
+        font-size: 30px;
+        line-height: 1.2;
     }
 
     .services-hero-v2__text {
-        font-size: 1rem;
-        line-height: 1.85;
+        font-size: 17px;
+        line-height: 1.5;
     }
 
     .services-why-needed-v2,
