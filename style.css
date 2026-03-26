@@ -4260,8 +4260,8 @@ main section.bg-slate-50 h3 {
     background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    padding-top: 12px !important;
-    padding-bottom: 32px !important;
+    padding-top: 8px !important;
+    padding-bottom: 24px !important;
 }
 
 .media-page .media-hero__content {
@@ -4287,7 +4287,7 @@ main section.bg-slate-50 h3 {
 }
 
 .media-page .media-hero__checklist {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
 }
 
 .media-page .media-hero__stats-mobile {
@@ -4482,8 +4482,8 @@ main section.bg-slate-50 h3 {
     .media-page .media-hero {
         position: relative;
         overflow: hidden;
-        padding-top: 1.35rem;
-        padding-bottom: 1.65rem;
+        padding-top: 1rem;
+        padding-bottom: 1.1rem;
         border-bottom-left-radius: 1.6rem;
         border-bottom-right-radius: 1.6rem;
         background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy-main) 55%, var(--navy-accent) 100%);
@@ -4534,22 +4534,22 @@ main section.bg-slate-50 h3 {
     }
 
     .media-page .media-hero h1 {
-        font-size: clamp(1.78rem, 7.2vw, 2.05rem);
+        font-size: clamp(1.64rem, 6.6vw, 1.92rem);
         line-height: 1.2;
         letter-spacing: -0.01em;
-        margin-bottom: 0.9rem;
+        margin-bottom: 0.6rem;
     }
 
     .media-page .media-hero p {
-        font-size: 0.93rem;
-        line-height: 1.58;
-        margin-bottom: 0.95rem;
+        font-size: 0.88rem;
+        line-height: 1.45;
+        margin-bottom: 0.7rem;
         color: #e2e8f0;
     }
 
     .media-page .media-hero__checklist {
-        gap: 0.55rem;
-        margin-bottom: 0.95rem;
+        gap: 0.4rem;
+        margin-bottom: 0.7rem;
     }
 
     .media-page .media-hero__checklist li {
@@ -4564,12 +4564,7 @@ main section.bg-slate-50 h3 {
         color: #dbeafe !important;
     }
 
-    .media-page .media-hero__stats-mobile {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.45rem;
-        margin-bottom: 1rem;
-    }
+    .media-page .media-hero__stats-mobile { display: none; }
 
     .media-page .media-hero__stat-mobile {
         background: rgba(15, 23, 42, 0.35);
@@ -4598,7 +4593,7 @@ main section.bg-slate-50 h3 {
     .media-page .media-hero__actions {
         width: 100%;
         margin-top: 0;
-        gap: 0.55rem;
+        gap: 0.45rem;
     }
 
     .media-page .media-hero__actions .btn-primary,
