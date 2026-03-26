@@ -3830,14 +3830,44 @@ main section.bg-slate-50 h3 {
 /* ============================= */
 /* ABOUT PAGE - MOBILE POLISH */
 /* ============================= */
+.about-page .home-hero {
+    padding-top: 10px;
+    padding-bottom: 22px;
+}
+
+.about-page .home-hero__title {
+    font-size: clamp(1.75rem, 4.2vw, 2.35rem);
+    line-height: 1.18;
+    margin-bottom: 8px;
+}
+
+.about-page .about-hero-meta {
+    margin: 0 0 10px;
+    font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.about-page .home-hero__subtitle {
+    margin-bottom: 10px;
+}
+
+.about-page .hero-checklist {
+    margin-bottom: 14px;
+}
+
+.about-page .hero-actions {
+    gap: 8px;
+}
+
 @media (min-width: 1024px) {
     .about-page {
         font-size: 94%;
     }
 
     .about-page .home-hero {
-        padding-top: 14px;
-        padding-bottom: 32px;
+        padding-top: 10px;
+        padding-bottom: 24px;
     }
 
     .about-page .home-hero__content {
@@ -3845,19 +3875,27 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .home-hero__title {
-        font-size: clamp(1.85rem, 3.4vw, 2.75rem);
-        margin-bottom: 12px;
+        font-size: clamp(1.7rem, 3.05vw, 2.4rem);
+        margin-bottom: 8px;
+        line-height: 1.16;
+    }
+
+    .about-page .about-hero-meta {
+        margin: 0 0 10px;
+        font-size: clamp(0.95rem, 1.45vw, 1.1rem);
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.86);
     }
 
     .about-page .home-hero__subtitle {
         font-size: clamp(1.05rem, 1.8vw, 1.45rem);
         line-height: 1.5;
-        margin-bottom: 16px;
+        margin-bottom: 10px;
     }
 
     .about-page .hero-checklist {
         gap: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
     }
 
     .about-page .hero-checklist li {
@@ -3961,27 +3999,34 @@ main section.bg-slate-50 h3 {
 
 @media (max-width: 767px) {
     .about-page .home-hero {
-        padding-top: 24px;
-        padding-bottom: 36px;
+        padding-top: 10px;
+        padding-bottom: 20px;
     }
 
     .about-page .home-hero__title {
-        font-size: clamp(1.85rem, 9vw, 2.25rem);
-        line-height: 1.25;
-        margin-bottom: 12px;
+        font-size: clamp(1.65rem, 8vw, 2rem);
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
+
+    .about-page .about-hero-meta {
+        margin: 0 0 8px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.82);
     }
 
     .about-page .home-hero__subtitle {
         font-size: 1rem;
-        line-height: 1.75;
+        line-height: 1.65;
         font-weight: 700;
         color: #cbd5e1;
-        margin-bottom: 18px;
+        margin-bottom: 10px;
     }
 
     .about-page .hero-checklist {
         gap: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 14px;
     }
 
     .about-page .hero-checklist li {
@@ -3991,7 +4036,7 @@ main section.bg-slate-50 h3 {
     }
 
     .about-page .hero-actions {
-        gap: 10px;
+        gap: 8px;
     }
 
     .about-page section.py-12,
