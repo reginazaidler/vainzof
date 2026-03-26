@@ -700,8 +700,7 @@ table {
 }
 
 /* Ensure global modals always render above sticky/fixed header layers */
-#contactModal,
-#exitPopup {
+#contactModal {
     z-index: 2000 !important;
 }
 
