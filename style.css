@@ -699,6 +699,12 @@ table {
     gap: 16px;
 }
 
+/* Ensure global modals always render above sticky/fixed header layers */
+#contactModal,
+#exitPopup {
+    z-index: 2000 !important;
+}
+
 .site-brand {
     display: inline-flex;
     align-items: center;
