@@ -7208,7 +7208,7 @@ body.pension-fees-page main {
 
 .services-hero-v2 {
     background: #ffffff;
-    padding: 64px 0 48px;
+    padding: 56px 0 42px;
     border-bottom: 1px solid rgba(11, 27, 59, 0.06);
 }
 
@@ -7254,7 +7254,7 @@ body.pension-fees-page main {
 
 .services-why-needed-v2 {
     background: #ffffff;
-    padding: 56px 0;
+    padding: 50px 0;
 }
 
 .services-section-head {
@@ -7317,7 +7317,7 @@ body.pension-fees-page main {
 
 .services-why-yuval-v2 {
     background: #f8fbff;
-    padding: 0 0 56px;
+    padding: 0 0 50px;
 }
 
 .services-why-yuval-v2__card {
@@ -7335,7 +7335,7 @@ body.pension-fees-page main {
 
 .services-method-v2 {
     background: #ffffff;
-    padding: 64px 0;
+    padding: 56px 0;
 }
 
 .services-method-v2__grid {
@@ -7389,7 +7389,7 @@ body.pension-fees-page main {
 
 .services-proof-v2 {
     background: #f3f6fb;
-    padding: 56px 0;
+    padding: 50px 0;
 }
 
 .services-proof-v2__inner {
@@ -7412,7 +7412,7 @@ body.pension-fees-page main {
 
 .services-audience-v2 {
     background: #ffffff;
-    padding: 56px 0;
+    padding: 50px 0;
 }
 
 .services-audience-v2__box {
@@ -7450,9 +7450,28 @@ body.pension-fees-page main {
     margin-top: 8px;
 }
 
+.services-personal-trigger-v2 {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #0b1b3b 0%, #1d3f76 100%);
+}
+
+.services-personal-trigger-v2__panel {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.services-personal-trigger-v2__text {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    line-height: 1.75;
+    font-weight: 800;
+}
+
 .services-cta-v2 {
     background: #e9eef5;
-    padding: 40px 0;
+    padding: 35px 0;
 }
 
 .services-cta-v2__inner {
@@ -7496,7 +7515,7 @@ body.pension-fees-page main {
 
 @media (max-width: 767px) {
     .services-hero-v2 {
-        padding: 44px 0 34px;
+        padding: 38px 0 30px;
     }
 
     .services-hero-v2__title {
@@ -7513,9 +7532,10 @@ body.pension-fees-page main {
     .services-why-yuval-v2,
     .services-method-v2,
     .services-proof-v2,
+    .services-personal-trigger-v2,
     .services-audience-v2,
     .services-cta-v2 {
-        padding: 30px 0;
+        padding: 26px 0;
     }
 
     .services-method-v2__card,
