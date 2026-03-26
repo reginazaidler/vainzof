@@ -2587,7 +2587,7 @@ main section.bg-slate-50 h3 {
     background: linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
     border: 1px solid #dbe4f0;
     border-radius: 1.25rem;
-    padding: 1.3rem 1.2rem;
+    padding: 20px;
 }
 
 .check-includes-points h3 {
@@ -2608,7 +2608,7 @@ main section.bg-slate-50 h3 {
 
 .services-process-card {
     position: relative;
-    padding: 2.2rem 1.3rem 1.7rem !important;
+    padding: 1.76rem 1.04rem 1.36rem !important;
     box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08) !important;
 }
 
@@ -3043,7 +3043,7 @@ main section.bg-slate-50 h3 {
     }
 
     .why-choose-me-section .card-clean {
-        padding: 1.25rem;
+        padding: 1rem;
         border-radius: 1rem;
     }
 
@@ -3302,7 +3302,7 @@ main section.bg-slate-50 h3 {
     }
 
     .services-process-card {
-        padding: 1.25rem;
+        padding: 1rem;
         border-radius: 1rem;
         text-align: right;
     }
@@ -3320,8 +3320,8 @@ main section.bg-slate-50 h3 {
     }
 
     .services-process-card svg {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 1.98rem;
+        height: 1.98rem;
         margin-bottom: 0.85rem;
     }
 
@@ -4699,7 +4699,8 @@ main section.bg-slate-50 h3 {
 }
 
 #services .services-process-card {
-    min-height: 100%;
+    min-height: auto;
+    padding: 1.6rem;
 }
 
 #services .services-process-card p {
@@ -4729,7 +4730,7 @@ main section.bg-slate-50 h3 {
 
 @media (max-width: 767px) {
     .video-card {
-        padding: 1.25rem;
+        padding: 1rem;
     }
 
     .phone-frame {
@@ -6115,7 +6116,7 @@ main section.bg-slate-50 h3 {
   box-shadow: 0 18px 50px rgba(15, 23, 42, 0.07);
 }
 .checklist-hero {
-  padding: 2rem;
+  padding: 1.6rem;
 }
 .checklist-grid {
   display: grid;
@@ -6760,7 +6761,7 @@ body.pension-fees-page main {
 
 .services-process-card {
   position: relative;
-  padding: 2rem;
+  padding: 1.6rem;
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
