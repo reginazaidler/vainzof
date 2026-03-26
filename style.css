@@ -7713,7 +7713,7 @@ body.pension-fees-page main {
 
 /* Homepage hero precision refresh */
 .home-page .home-hero {
-    padding: 64px 0;
+    padding: 48px 0 64px;
 }
 
 .home-page .home-hero__title {
@@ -7757,7 +7757,7 @@ body.pension-fees-page main {
 
 @media (max-width: 768px) {
     .home-page .home-hero {
-        padding: 64px 0;
+        padding: 44px 0 56px;
     }
 
     .home-page .home-hero__title {
