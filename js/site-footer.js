@@ -14,7 +14,6 @@
       <nav class="site-footer__nav" aria-label="ניווט תחתון">
         <a href="index.html">דף הבית</a>
         <a href="about.html">קצת עלי</a>
-        <a href="services.html">דרך העבודה</a>
         <a href="insurance-types.html">סוגי ביטוחים</a>
         <a href="pension-guide.html">איך עושים סדר בפנסיה ובביטוחים</a>
         <a href="faq.html">FAQ</a>
@@ -27,7 +26,7 @@
           <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
           <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
         </div>
-        <a id="openContactFooter" href="services.html#contactModal">צור קשר</a>
+        <a id="openContactFooter" href="index.html#contact">צור קשר</a>
       </nav>
 
       <div class="site-footer__social">
