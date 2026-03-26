@@ -7525,6 +7525,7 @@ body.pension-fees-page main {
 .about-proof-card {
     max-width: 950px;
     margin: 0 auto;
+    text-align: right;
 }
 
 .about-proof-title {
