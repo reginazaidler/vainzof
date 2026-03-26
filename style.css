@@ -7819,8 +7819,15 @@ body.pension-fees-page main {
     margin-bottom: 10px;
 }
 
+@media (min-width: 1024px) {
+    .home-page .bottom-cta__title {
+        max-width: none;
+        white-space: nowrap;
+        text-wrap: nowrap;
+    }
+}
+
 .home-page .bottom-cta__text {
     margin-bottom: 16px;
     font-size: clamp(0.98rem, 1vw, 1.08rem);
 }
-
