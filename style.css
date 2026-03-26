@@ -7517,16 +7517,6 @@ body.pension-fees-page main {
     align-items: center;
 }
 
-.services-approach-v2__media {
-    margin: 0;
-}
-
-.services-approach-v2__media img {
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    border-radius: 14px;
-}
 
 .services-faq-v2__list {
     max-width: 760px;
@@ -7571,14 +7561,6 @@ body.pension-fees-page main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .services-approach-v2__layout {
-        grid-template-columns: minmax(0, 1fr) 280px;
-        gap: 20px;
-    }
-
-    .services-approach-v2__media {
-        justify-self: end;
-    }
 }
 
 @media (max-width: 767px) {
