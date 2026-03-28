@@ -4281,6 +4281,10 @@ main section.bg-slate-50 h3 {
 
 .media-page .media-hero__title {
     text-wrap: balance;
+    font-size: 42px !important;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 12px;
 }
 
 .media-page .media-hero__subtitle {
@@ -4333,6 +4337,12 @@ main section.bg-slate-50 h3 {
     border-radius: 1.5rem;
     padding: 1.5rem;
     backdrop-filter: blur(6px);
+}
+
+@media (max-width: 768px) {
+    .media-page .media-hero__title {
+        font-size: 32px !important;
+    }
 }
 
 .media-page .media-hero__panel-label {
