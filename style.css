@@ -2172,7 +2172,7 @@ main section.bg-slate-50 h3 {
     }
 
     .calculator-hero__inner {
-        justify-items: center;
+        justify-items: start;
     }
 
     .calculator-hero__content {
