@@ -4762,17 +4762,73 @@ main section.bg-slate-50 h3 {
 .video-inline-cta {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.9rem;
-    border: 1px solid #dbe4f3;
-    border-radius: 1.2rem;
-    padding: 1rem 1.2rem;
-    background: linear-gradient(90deg, rgba(244, 248, 251, 1) 0%, #ffffff 100%);
+    gap: 1rem;
+    border: 1px solid #d8e6de;
+    border-radius: 1.25rem;
+    padding: 1.1rem 1.2rem;
+    background: linear-gradient(110deg, #f4fbf7 0%, #ffffff 58%, #f8fbff 100%);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
-.video-inline-cta .btn-primary {
+.video-inline-cta__content {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.video-inline-cta__badge {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.18rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #b7ebca;
+}
+
+.video-inline-cta__title {
+    margin: 0;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.video-inline-cta__subtitle {
+    margin: 0;
+    color: #475569;
+    font-size: 0.92rem;
+}
+
+.video-inline-cta__whatsapp {
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 0.95rem;
+    padding: 0.72rem 1.15rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    box-shadow: 0 10px 24px rgba(21, 128, 61, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.video-inline-cta__whatsapp:hover,
+.video-inline-cta__whatsapp:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(21, 128, 61, 0.32);
+    filter: brightness(1.03);
+}
+
+.video-inline-cta__whatsapp:focus-visible {
+    outline: 3px solid rgba(22, 163, 74, 0.28);
+    outline-offset: 2px;
 }
 
 .phone-frame iframe {
@@ -4877,6 +4933,20 @@ main section.bg-slate-50 h3 {
 
     .video-inline-cta {
         text-align: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .video-inline-cta__content {
+        justify-items: center;
+    }
+
+    .video-inline-cta__subtitle {
+        font-size: 0.85rem;
+    }
+
+    .video-inline-cta__whatsapp {
+        width: 100%;
     }
 
     #services {
