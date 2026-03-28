@@ -2501,9 +2501,7 @@ main section.bg-slate-50 h3 {
     }
 
     .articles-page .home-hero__inner {
-        grid-template-columns: minmax(0, 1fr);
-        max-width: none;
-        margin: 0;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 360px);
     }
 
     .articles-page .home-hero__media {
