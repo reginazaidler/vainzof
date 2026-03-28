@@ -1478,8 +1478,18 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     font-size: clamp(1.95rem, 4vw, 3.15rem);
     line-height: 1.18;
     font-weight: 900;
+    font-family: 'Assistant', sans-serif;
     margin: 0 0 12px;
     color: #ffffff;
+}
+
+.page-hero__title,
+.page-hero__subtitle,
+.services-hero__title,
+.services-hero-v2__title,
+.media-hero__title,
+.about-hero__title {
+    font-family: 'Assistant', sans-serif;
 }
 
 .home-hero__title-main {
