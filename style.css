@@ -3630,6 +3630,38 @@ main section.bg-slate-50 h3 {
     background: #b8914e;
 }
 
+.home-page .bottom-cta--home-reference {
+    background: #cfd4dc;
+    padding-top: 56px;
+    padding-bottom: 48px;
+}
+
+.home-page .bottom-cta--home-reference .bottom-cta__inner {
+    max-width: 1080px;
+}
+
+.home-page .bottom-cta--home-reference .bottom-cta__title {
+    font-size: clamp(2rem, 2.25vw, 2.95rem);
+    margin-bottom: 16px;
+    line-height: 1.22;
+    max-width: none;
+}
+
+.home-page .bottom-cta--home-reference .bottom-cta__text {
+    font-size: clamp(1.2rem, 1.2vw, 1.58rem);
+    margin-bottom: 30px;
+    color: #263a5f;
+}
+
+.home-page .bottom-cta--home-reference .btn-primary {
+    border-radius: 24px;
+    min-width: 306px;
+    min-height: 70px;
+    font-size: clamp(1.3rem, 1.35vw, 1.9rem);
+    padding: 15px 42px;
+    box-shadow: 0 14px 32px rgba(198, 161, 91, 0.24);
+}
+
 @media (max-width: 768px) {
     .bottom-cta {
         padding: 48px 16px;
@@ -3647,6 +3679,29 @@ main section.bg-slate-50 h3 {
     .bottom-cta__text {
         font-size: 1rem;
         font-weight: 600;
+    }
+
+    .home-page .bottom-cta--home-reference {
+        padding-top: 36px;
+        padding-bottom: 34px;
+        background: #d8dde5;
+    }
+
+    .home-page .bottom-cta--home-reference .bottom-cta__title {
+        font-size: clamp(1.35rem, 6.4vw, 1.9rem);
+        line-height: 1.35;
+    }
+
+    .home-page .bottom-cta--home-reference .bottom-cta__text {
+        font-size: 1.02rem;
+        margin-bottom: 20px;
+    }
+
+    .home-page .bottom-cta--home-reference .btn-primary {
+        min-width: min(100%, 330px);
+        min-height: 58px;
+        font-size: 1.18rem;
+        border-radius: 18px;
     }
 }
 
