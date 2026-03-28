@@ -3665,6 +3665,13 @@ main section.bg-slate-50 h3 {
 .about-page .bottom-cta--about-mini .bottom-cta__title {
     font-size: clamp(1.35rem, 1.5vw, 1.9rem);
     margin-bottom: 0.6rem;
+    max-width: none;
+}
+
+@media (min-width: 768px) {
+    .about-page .bottom-cta--about-mini .bottom-cta__title {
+        white-space: nowrap;
+    }
 }
 
 .about-page .bottom-cta--about-mini .bottom-cta__text {
