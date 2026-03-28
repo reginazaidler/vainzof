@@ -7960,3 +7960,76 @@ body.pension-fees-page main {
         font-size: 16px;
     }
 }
+
+/* ===== Unified hero system (aligned to index hero) ===== */
+:root {
+    --hero-unified-title-size: clamp(2rem, 4.2vw, 2.625rem);
+    --hero-unified-title-weight: 700;
+    --hero-unified-title-line: 1.2;
+    --hero-unified-subtitle-size: clamp(1rem, 1.6vw, 1.125rem);
+    --hero-unified-subtitle-line: 1.6;
+    --hero-unified-checklist-size: 0.97rem;
+    --hero-unified-checklist-line: 1.6;
+}
+
+.home-hero .home-hero__title,
+.media-page .media-hero__title,
+.services-hero-v2__title,
+.pension-hero h1,
+.checklist-hero h1,
+.emergency-hero h1 {
+    font-size: var(--hero-unified-title-size) !important;
+    font-weight: var(--hero-unified-title-weight) !important;
+    line-height: var(--hero-unified-title-line) !important;
+    margin-bottom: 12px;
+}
+
+.home-hero .home-hero__subtitle,
+.media-page .media-hero__subtitle,
+.services-hero-v2__text,
+.pension-hero p,
+.checklist-hero p,
+.emergency-hero p {
+    font-size: var(--hero-unified-subtitle-size) !important;
+    line-height: var(--hero-unified-subtitle-line) !important;
+}
+
+.home-hero .hero-checklist li,
+.media-page .media-hero__checklist li,
+.services-hero-v2 .hero-checklist li,
+.pension-hero li,
+.checklist-hero li,
+.emergency-hero li {
+    font-size: var(--hero-unified-checklist-size) !important;
+    line-height: var(--hero-unified-checklist-line) !important;
+}
+
+.home-hero .hero-actions,
+.media-page .media-hero__actions,
+.services-hero-v2__actions,
+.pension-hero .hero-actions,
+.checklist-hero .hero-actions,
+.emergency-hero .hero-actions {
+    gap: 12px;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .home-hero .home-hero__title,
+    .media-page .media-hero__title,
+    .services-hero-v2__title,
+    .pension-hero h1,
+    .checklist-hero h1,
+    .emergency-hero h1 {
+        font-size: clamp(1.8rem, 8.2vw, 2rem) !important;
+    }
+
+    .home-hero .home-hero__subtitle,
+    .media-page .media-hero__subtitle,
+    .services-hero-v2__text,
+    .pension-hero p,
+    .checklist-hero p,
+    .emergency-hero p {
+        font-size: 1rem !important;
+    }
+}
