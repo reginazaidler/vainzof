@@ -8070,6 +8070,17 @@ body.pension-fees-page main {
     line-height: 1.6;
 }
 
+.articles-page .hero-actions .site-cta {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    border-color: #16a34a;
+    box-shadow: 0 10px 22px rgba(22, 163, 74, 0.28);
+}
+
+.articles-page .hero-actions .site-cta:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    border-color: #15803d;
+}
+
 @media (max-width: 768px) {
     .articles-page .home-hero {
         padding: 14px 0 40px;
