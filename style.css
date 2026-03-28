@@ -2487,8 +2487,8 @@ main section.bg-slate-50 h3 {
 
     .articles-page .home-hero__inner {
         grid-template-columns: minmax(0, 1fr);
-        max-width: 900px;
-        margin: 0 auto;
+        max-width: none;
+        margin: 0;
     }
 
     .articles-page .home-hero__media {
