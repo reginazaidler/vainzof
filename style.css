@@ -2152,6 +2152,11 @@ main section.bg-slate-50 h3 {
     padding: 20px 0 48px;
 }
 
+.calculator-hero .calculator-hero-title {
+    font-size: 42px;
+    line-height: 1.2;
+}
+
 .calculator-hero__inner {
     display: grid;
     gap: 2.5rem;
@@ -2196,7 +2201,7 @@ main section.bg-slate-50 h3 {
     }
 
     .calculator-hero-title {
-        font-size: clamp(1.9rem, 7.6vw, 2.35rem);
+        font-size: 32px;
         line-height: 1.2;
         margin-bottom: 1rem;
     }
