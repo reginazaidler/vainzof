@@ -3042,7 +3042,7 @@ main section.bg-slate-50 h3 {
     }
 
     .mobile-sticky-cta__btn {
-        min-height: 42px;
+        min-height: 44px;
         font-size: 13px;
     }
 
@@ -3549,7 +3549,7 @@ main section.bg-slate-50 h3 {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 40px;
+        min-height: 44px;
         padding: 8px 10px;
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.04);
