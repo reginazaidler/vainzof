@@ -255,155 +255,76 @@
     </main>
   </div>
   <script>
-    const cardTextLines = [
-      "לקוחות יקרים,",
-      "",
-      "בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.",
-      "תודה על האמון, תודה על הדרך המשותפת",
-      "ותודה על הזכות ללוות אתכם בהחלטות החשובות בחיים.",
-      "",
-      "התקופה האחרונה מזכירה לנו עד כמה יציבות וביטחון הם לא דבר מובן מאליו.",
-      "בתוך מציאות משתנה, היכולת לתכנן קדימה, לקבל החלטות מושכלות",
-      "ולשמור על עוגן פיננסי - הוא צורך וכוח אמיתי שמאפשר ביטחון גם בימים מאתגרים.",
-      "",
-      "אני כאן עבורכם - ממשיך ללוות, לדייק, לבנות ולחזק את הדרך הכלכלית שלכם,",
-      "כדי שתרגישו ביטחון בכל חוסר הוודאות.",
-      "אני מאחל לכם ולבני משפחותיכם ימים של שקט, ביטחון ורוגע",
-      "לצד צמיחה, יציבות והגשמת מטרות.",
-      "",
-      "מי ייתן והחג הזה יביא עמו התחלה חדשה, תקווה גדולה והרבה אור.",
-      "",
-      "חג חירות שמח",
-      "יובל ויינזוף"
-    ];
+    const CARD_WIDTH = 1366;
+    const CARD_HEIGHT = 768;
 
     function loadImage(src) {
       return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = reject;
-        img.src = src;
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error(`image load failed: ${src}`));
+        image.src = src;
+      });
+    }
+
+    async function toDataUrl(src) {
+      const response = await fetch(src);
+      const blob = await response.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
       });
     }
 
     async function downloadFullCard() {
       const btn = document.getElementById("downloadFullCardBtn");
+      const sourceCard = document.querySelector(".card");
       btn.disabled = true;
       btn.textContent = "מכין קובץ JPG...";
 
       try {
+        const clone = sourceCard.cloneNode(true);
+        clone.style.width = `${CARD_WIDTH}px`;
+        clone.style.minHeight = `${CARD_HEIGHT}px`;
+        clone.style.margin = "0";
+
+        const cloneImages = [...clone.querySelectorAll("img")];
+        const sourceImages = [...sourceCard.querySelectorAll("img")];
+        for (let i = 0; i < cloneImages.length; i += 1) {
+          const src = sourceImages[i]?.currentSrc || sourceImages[i]?.src;
+          cloneImages[i].src = await toDataUrl(src);
+        }
+
+        const cssText = document.querySelector("style").textContent;
+        const html = `<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>${cssText}</style></head><body style="margin:0;background:#344955;">${clone.outerHTML}</body></html>`;
+
+        const escaped = html
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${CARD_WIDTH}" height="${CARD_HEIGHT}"><foreignObject width="100%" height="100%">${escaped}</foreignObject></svg>`;
+        const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+        const svgUrl = URL.createObjectURL(svgBlob);
+
+        const image = await loadImage(svgUrl);
+        URL.revokeObjectURL(svgUrl);
+
         const canvas = document.createElement("canvas");
-        canvas.width = 1366;
-        canvas.height = 768;
+        canvas.width = CARD_WIDTH;
+        canvas.height = CARD_HEIGHT;
         const ctx = canvas.getContext("2d");
-
-        const [photo, logo] = await Promise.all([
-          loadImage("assets/pesach.jpeg"),
-          loadImage("assets/logo.png")
-        ]);
-
-        // Backgrounds
         ctx.fillStyle = "#344955";
-        ctx.fillRect(0, 0, 1050, 768);
-        ctx.fillStyle = "#f6f8fa";
-        ctx.fillRect(1050, 0, 316, 768);
-
-        // Right photo panel with cover behavior
-        const targetX = 1050;
-        const targetY = 0;
-        const targetW = 316;
-        const targetH = 768;
-        const srcRatio = photo.width / photo.height;
-        const targetRatio = targetW / targetH;
-        let sx = 0;
-        let sy = 0;
-        let sw = photo.width;
-        let sh = photo.height;
-
-        if (srcRatio > targetRatio) {
-          sw = photo.height * targetRatio;
-          sx = (photo.width - sw) / 2;
-        } else {
-          sh = photo.width / targetRatio;
-          sy = (photo.height - sh) * 0.42;
-        }
-
-        ctx.drawImage(photo, sx, sy, sw, sh, targetX, targetY, targetW, targetH);
-
-        // Text
-        ctx.direction = "rtl";
-        ctx.textAlign = "right";
-        ctx.fillStyle = "#f4f7fa";
-        let y = 98;
-        const textRightX = 996;
-
-        for (const line of cardTextLines) {
-          if (!line) {
-            y += 18;
-            continue;
-          }
-
-          if (line === "לקוחות יקרים,") {
-            ctx.fillStyle = "#ffffff";
-            ctx.font = "400 52px Assistant, Heebo, Arial, sans-serif";
-            ctx.fillText(line, textRightX, y);
-            y += 68;
-            ctx.fillStyle = "#f4f7fa";
-            ctx.font = "400 40px Assistant, Heebo, Arial, sans-serif";
-            continue;
-          }
-
-          if (line.includes("מי ייתן")) {
-            ctx.fillStyle = "#ffd166";
-            ctx.font = "700 40px Assistant, Heebo, Arial, sans-serif";
-            ctx.fillText(line, textRightX, y);
-            y += 56;
-            ctx.fillStyle = "#f4f7fa";
-            ctx.font = "400 40px Assistant, Heebo, Arial, sans-serif";
-            continue;
-          }
-
-          if (line === "חג חירות שמח") {
-            ctx.fillStyle = "#dce7ee";
-            ctx.font = "400 46px Assistant, Heebo, Arial, sans-serif";
-            ctx.fillText(line, textRightX, y);
-            y += 54;
-            continue;
-          }
-
-          if (line === "יובל ויינזוף") {
-            ctx.fillStyle = "#ffd166";
-            ctx.font = "700 42px Assistant, Heebo, Arial, sans-serif";
-            ctx.fillText(line, textRightX, y);
-            continue;
-          }
-
-          ctx.fillStyle = "#f4f7fa";
-          ctx.font = "400 40px Assistant, Heebo, Arial, sans-serif";
-          ctx.fillText(line, textRightX, y);
-          y += 46;
-        }
-
-        // Logo chip
-        ctx.fillStyle = "rgba(255,255,255,0.18)";
-        ctx.strokeStyle = "rgba(255,255,255,0.28)";
-        ctx.lineWidth = 1;
-        const chipX = 1246;
-        const chipY = 684;
-        const chipW = 100;
-        const chipH = 60;
-        ctx.beginPath();
-        ctx.roundRect(chipX, chipY, chipW, chipH, 12);
-        ctx.fill();
-        ctx.stroke();
-        ctx.drawImage(logo, chipX + 16, chipY + 10, 68, 40);
+        ctx.fillRect(0, 0, CARD_WIDTH, CARD_HEIGHT);
+        ctx.drawImage(image, 0, 0, CARD_WIDTH, CARD_HEIGHT);
 
         const link = document.createElement("a");
         link.download = "yuval-holiday-card-full.jpg";
-        link.href = canvas.toDataURL("image/jpeg", 0.95);
+        link.href = canvas.toDataURL("image/jpeg", 0.96);
         link.click();
       } catch (error) {
-        alert("לא הצלחנו לייצר תמונת כרטיס מלאה. נסי לרענן את הדף וללחוץ שוב.");
+        alert("הייצוא לא הצליח. נסי בדפדפן Chrome מעודכן ולחצי שוב.");
       } finally {
         btn.disabled = false;
         btn.textContent = "הורדת כל הכרטיס כתמונה (JPG)";
