@@ -31,44 +31,6 @@
     .page-wrap {
       width: min(1366px, 100%);
       display: grid;
-      gap: 14px;
-    }
-
-    .download-btn {
-      border: 0;
-      justify-self: start;
-      background: #1d4ed8;
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .download-btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
-    }
-
-    .download-link {
-      justify-self: start;
-      text-decoration: none;
-      background: #334155;
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .download-btn:hover {
-      background: #1e40af;
-    }
-
-    .download-link:hover {
-      background: #1f2937;
     }
 
     .card {
@@ -137,11 +99,12 @@
       inset: 0;
       background-image: url("assets/logo.png");
       background-repeat: no-repeat;
-      background-position: center;
-      background-size: clamp(170px, 68%, 240px);
-      opacity: 0.14;
+      background-position: center 78%;
+      background-size: clamp(210px, 76%, 290px);
+      opacity: 0.34;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
     }
 
     .photo-wrap {
@@ -163,12 +126,6 @@
       .card {
         grid-template-columns: 1fr;
         min-height: auto;
-      }
-
-      .download-link,
-      .download-btn {
-        justify-self: stretch;
-        text-align: center;
       }
 
       .content {
@@ -195,15 +152,15 @@
       }
 
       .side::after {
-        background-size: min(52vw, 220px);
+        background-position: center 74%;
+        background-size: min(64vw, 280px);
+        opacity: 0.3;
       }
     }
   </style>
 </head>
 <body>
   <div class="page-wrap">
-    <button type="button" class="download-btn" id="downloadFullCardBtn">הורדת כל הכרטיס כתמונה (JPG)</button>
-    <a class="download-link" href="assets/pesach.jpeg" download>הורדת התמונה בלבד</a>
     <main class="card" aria-label="כרטיס ברכה ללקוחות">
       <section class="content">
         <p class="lead">לקוחות יקרים,</p>
@@ -244,142 +201,5 @@
       </aside>
     </main>
   </div>
-  <script>
-    const CARD_WIDTH = 1366;
-    const CARD_HEIGHT = 768;
-
-    function loadImage(src) {
-      return new Promise((resolve, reject) => {
-        const image = new Image();
-        image.onload = () => resolve(image);
-        image.onerror = () => reject(new Error(`image load failed: ${src}`));
-        image.src = src;
-      });
-    }
-
-    async function toDataUrl(src) {
-      const response = await fetch(src);
-      const blob = await response.blob();
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.readAsDataURL(blob);
-      });
-    }
-
-    function buildCardSvg(photoDataUrl, logoDataUrl) {
-      const lines = [
-        "לקוחות יקרים,",
-        "",
-        "בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.",
-        "תודה על האמון, תודה על הדרך המשותפת",
-        "ותודה על הזכות ללוות אתכם בהחלטות החשובות בחיים.",
-        "",
-        "התקופה האחרונה מזכירה לנו עד כמה יציבות וביטחון הם לא דבר מובן מאליו.",
-        "בתוך מציאות משתנה, היכולת לתכנן קדימה, לקבל החלטות מושכלות",
-        "ולשמור על עוגן פיננסי - הוא צורך וכוח אמיתי שמאפשר ביטחון גם בימים מאתגרים.",
-        "",
-        "אני כאן עבורכם - ממשיך ללוות, לדייק, לבנות ולחזק את הדרך הכלכלית שלכם,",
-        "כדי שתרגישו ביטחון בכל חוסר הוודאות.",
-        "אני מאחל לכם ולבני משפחותיכם ימים של שקט, ביטחון ורוגע",
-        "לצד צמיחה, יציבות והגשמת מטרות.",
-        "",
-        "מי ייתן והחג הזה יביא עמו התחלה חדשה, תקווה גדולה והרבה אור.",
-        "",
-        "חג חירות שמח",
-        "יובל ויינזוף"
-      ];
-
-      let y = 102;
-      const textNodes = lines.map((line) => {
-        if (!line) {
-          y += 18;
-          return "";
-        }
-
-        let fill = "#f4f7fa";
-        let size = 34;
-        let weight = 400;
-        let step = 48;
-
-        if (line === "לקוחות יקרים,") {
-          fill = "#ffffff";
-          size = 58;
-          step = 72;
-        } else if (line.includes("מי ייתן")) {
-          fill = "#ffd166";
-          size = 40;
-          weight = 700;
-          step = 54;
-        } else if (line === "חג חירות שמח") {
-          fill = "#dce7ee";
-          size = 52;
-          step = 62;
-        } else if (line === "יובל ויינזוף") {
-          fill = "#ffd166";
-          size = 44;
-          weight = 700;
-          step = 52;
-        }
-
-        const node = `<text x="995" y="${y}" text-anchor="end" direction="rtl" unicode-bidi="plaintext" fill="${fill}" font-family="Assistant, Heebo, Arial, sans-serif" font-size="${size}" font-weight="${weight}">${line}</text>`;
-        y += step;
-        return node;
-      }).join("");
-
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}">
-        <defs>
-          <clipPath id="photoClip"><rect x="1050" y="0" width="316" height="768"/></clipPath>
-        </defs>
-        <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" fill="#344955"/>
-        <rect x="1050" y="0" width="316" height="768" fill="#f6f8fa"/>
-        <image href="${photoDataUrl}" x="1050" y="0" width="316" height="768" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
-        ${textNodes}
-        <g opacity="0.14">
-          <image href="${logoDataUrl}" x="1088" y="262" width="240" height="240" preserveAspectRatio="xMidYMid meet"/>
-        </g>
-      </svg>`;
-    }
-
-    async function downloadFullCard() {
-      const btn = document.getElementById("downloadFullCardBtn");
-      btn.disabled = true;
-      btn.textContent = "מכין קובץ JPG...";
-
-      try {
-        const [photoData, logoData] = await Promise.all([
-          toDataUrl("assets/pesach.jpeg"),
-          toDataUrl("assets/logo.png")
-        ]);
-
-        const svg = buildCardSvg(photoData, logoData);
-        const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-        const svgUrl = URL.createObjectURL(svgBlob);
-
-        const image = await loadImage(svgUrl);
-        URL.revokeObjectURL(svgUrl);
-
-        const canvas = document.createElement("canvas");
-        canvas.width = CARD_WIDTH;
-        canvas.height = CARD_HEIGHT;
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#344955";
-        ctx.fillRect(0, 0, CARD_WIDTH, CARD_HEIGHT);
-        ctx.drawImage(image, 0, 0, CARD_WIDTH, CARD_HEIGHT);
-
-        const link = document.createElement("a");
-        link.download = "yuval-holiday-card-full.jpg";
-        link.href = canvas.toDataURL("image/jpeg", 0.96);
-        link.click();
-      } catch (error) {
-        alert("הייצוא לא הצליח. נסי בדפדפן Chrome מעודכן ולחצי שוב.");
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "הורדת כל הכרטיס כתמונה (JPG)";
-      }
-    }
-
-    document.getElementById("downloadFullCardBtn").addEventListener("click", downloadFullCard);
-  </script>
 </body>
 </html>
