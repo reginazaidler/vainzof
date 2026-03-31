@@ -34,10 +34,28 @@
       gap: 14px;
     }
 
+    .download-btn {
+      border: 0;
+      justify-self: start;
+      background: #1d4ed8;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .download-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
     .download-link {
       justify-self: start;
       text-decoration: none;
-      background: #1d4ed8;
+      background: #334155;
       color: #fff;
       padding: 10px 16px;
       border-radius: 999px;
@@ -45,8 +63,12 @@
       font-weight: 700;
     }
 
-    .download-link:hover {
+    .download-btn:hover {
       background: #1e40af;
+    }
+
+    .download-link:hover {
+      background: #1f2937;
     }
 
     .card {
@@ -148,7 +170,8 @@
         min-height: auto;
       }
 
-      .download-link {
+      .download-link,
+      .download-btn {
         justify-self: stretch;
         text-align: center;
       }
@@ -185,7 +208,8 @@
 </head>
 <body>
   <div class="page-wrap">
-    <a class="download-link" href="assets/pesach.jpeg" download>הורדה ישירה של JPG</a>
+    <button type="button" class="download-btn" id="downloadFullCardBtn">הורדת כל הכרטיס כתמונה (JPG)</button>
+    <a class="download-link" href="assets/pesach.jpeg" download>הורדת התמונה בלבד</a>
     <main class="card" aria-label="כרטיס ברכה ללקוחות">
       <section class="content">
         <p class="lead">לקוחות יקרים,</p>
@@ -230,5 +254,163 @@
       </aside>
     </main>
   </div>
+  <script>
+    const cardTextLines = [
+      "לקוחות יקרים,",
+      "",
+      "בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.",
+      "תודה על האמון, תודה על הדרך המשותפת",
+      "ותודה על הזכות ללוות אתכם בהחלטות החשובות בחיים.",
+      "",
+      "התקופה האחרונה מזכירה לנו עד כמה יציבות וביטחון הם לא דבר מובן מאליו.",
+      "בתוך מציאות משתנה, היכולת לתכנן קדימה, לקבל החלטות מושכלות",
+      "ולשמור על עוגן פיננסי - הוא צורך וכוח אמיתי שמאפשר ביטחון גם בימים מאתגרים.",
+      "",
+      "אני כאן עבורכם - ממשיך ללוות, לדייק, לבנות ולחזק את הדרך הכלכלית שלכם,",
+      "כדי שתרגישו ביטחון בכל חוסר הוודאות.",
+      "אני מאחל לכם ולבני משפחותיכם ימים של שקט, ביטחון ורוגע",
+      "לצד צמיחה, יציבות והגשמת מטרות.",
+      "",
+      "מי ייתן והחג הזה יביא עמו התחלה חדשה, תקווה גדולה והרבה אור.",
+      "",
+      "חג חירות שמח",
+      "יובל ויינזוף"
+    ];
+
+    function loadImage(src) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+      });
+    }
+
+    async function downloadFullCard() {
+      const btn = document.getElementById("downloadFullCardBtn");
+      btn.disabled = true;
+      btn.textContent = "מכין קובץ JPG...";
+
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = 1366;
+        canvas.height = 768;
+        const ctx = canvas.getContext("2d");
+
+        const [photo, logo] = await Promise.all([
+          loadImage("assets/pesach.jpeg"),
+          loadImage("assets/logo.png")
+        ]);
+
+        // Backgrounds
+        ctx.fillStyle = "#344955";
+        ctx.fillRect(0, 0, 1050, 768);
+        ctx.fillStyle = "#f6f8fa";
+        ctx.fillRect(1050, 0, 316, 768);
+
+        // Right photo panel with cover behavior
+        const targetX = 1050;
+        const targetY = 0;
+        const targetW = 316;
+        const targetH = 768;
+        const srcRatio = photo.width / photo.height;
+        const targetRatio = targetW / targetH;
+        let sx = 0;
+        let sy = 0;
+        let sw = photo.width;
+        let sh = photo.height;
+
+        if (srcRatio > targetRatio) {
+          sw = photo.height * targetRatio;
+          sx = (photo.width - sw) / 2;
+        } else {
+          sh = photo.width / targetRatio;
+          sy = (photo.height - sh) * 0.42;
+        }
+
+        ctx.drawImage(photo, sx, sy, sw, sh, targetX, targetY, targetW, targetH);
+
+        // Text
+        ctx.direction = "rtl";
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#f4f7fa";
+        let y = 98;
+        const textRightX = 996;
+
+        for (const line of cardTextLines) {
+          if (!line) {
+            y += 18;
+            continue;
+          }
+
+          if (line === "לקוחות יקרים,") {
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "400 52px Assistant, Heebo, Arial, sans-serif";
+            ctx.fillText(line, textRightX, y);
+            y += 68;
+            ctx.fillStyle = "#f4f7fa";
+            ctx.font = "400 40px Assistant, Heebo, Arial, sans-serif";
+            continue;
+          }
+
+          if (line.includes("מי ייתן")) {
+            ctx.fillStyle = "#ffd166";
+            ctx.font = "700 40px Assistant, Heebo, Arial, sans-serif";
+            ctx.fillText(line, textRightX, y);
+            y += 56;
+            ctx.fillStyle = "#f4f7fa";
+            ctx.font = "400 40px Assistant, Heebo, Arial, sans-serif";
+            continue;
+          }
+
+          if (line === "חג חירות שמח") {
+            ctx.fillStyle = "#dce7ee";
+            ctx.font = "400 46px Assistant, Heebo, Arial, sans-serif";
+            ctx.fillText(line, textRightX, y);
+            y += 54;
+            continue;
+          }
+
+          if (line === "יובל ויינזוף") {
+            ctx.fillStyle = "#ffd166";
+            ctx.font = "700 42px Assistant, Heebo, Arial, sans-serif";
+            ctx.fillText(line, textRightX, y);
+            continue;
+          }
+
+          ctx.fillStyle = "#f4f7fa";
+          ctx.font = "400 40px Assistant, Heebo, Arial, sans-serif";
+          ctx.fillText(line, textRightX, y);
+          y += 46;
+        }
+
+        // Logo chip
+        ctx.fillStyle = "rgba(255,255,255,0.18)";
+        ctx.strokeStyle = "rgba(255,255,255,0.28)";
+        ctx.lineWidth = 1;
+        const chipX = 1246;
+        const chipY = 684;
+        const chipW = 100;
+        const chipH = 60;
+        ctx.beginPath();
+        ctx.roundRect(chipX, chipY, chipW, chipH, 12);
+        ctx.fill();
+        ctx.stroke();
+        ctx.drawImage(logo, chipX + 16, chipY + 10, 68, 40);
+
+        const link = document.createElement("a");
+        link.download = "yuval-holiday-card-full.jpg";
+        link.href = canvas.toDataURL("image/jpeg", 0.95);
+        link.click();
+      } catch (error) {
+        alert("לא הצלחנו לייצר תמונת כרטיס מלאה. נסי לרענן את הדף וללחוץ שוב.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "הורדת כל הכרטיס כתמונה (JPG)";
+      }
+    }
+
+    document.getElementById("downloadFullCardBtn").addEventListener("click", downloadFullCard);
+  </script>
 </body>
 </html>
