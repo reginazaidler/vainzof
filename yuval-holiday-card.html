@@ -44,6 +44,7 @@
     }
 
     .content {
+      position: relative;
       padding: 46px 56px 34px;
       display: flex;
       flex-direction: column;
@@ -53,6 +54,26 @@
       line-height: 1.45;
       text-align: center;
       color: var(--text-main);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .content::after {
+      content: "";
+      position: absolute;
+      inset-inline-end: 12px;
+      bottom: 16px;
+      width: clamp(170px, 20vw, 250px);
+      aspect-ratio: 1 / 1;
+      background: url("assets/logo.png") no-repeat center / contain;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content > * {
+      position: relative;
+      z-index: 1;
     }
 
     .content p {
@@ -91,20 +112,6 @@
       background: #f6f8fa;
       min-height: 100%;
       overflow: hidden;
-    }
-
-    .side::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("assets/logo.png");
-      background-repeat: no-repeat;
-      background-position: center 78%;
-      background-size: clamp(210px, 76%, 290px);
-      opacity: 0.34;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
-      pointer-events: none;
-      z-index: 2;
     }
 
     .photo-wrap {
@@ -151,10 +158,11 @@
         transform: scale(1.2);
       }
 
-      .side::after {
-        background-position: center 74%;
-        background-size: min(64vw, 280px);
-        opacity: 0.3;
+      .content::after {
+        inset-inline-end: 8px;
+        bottom: 10px;
+        width: min(42vw, 210px);
+        opacity: 0.1;
       }
     }
   </style>
