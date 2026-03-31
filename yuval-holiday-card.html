@@ -28,6 +28,27 @@
       color: var(--text-main);
     }
 
+    .page-wrap {
+      width: min(1366px, 100%);
+      display: grid;
+      gap: 14px;
+    }
+
+    .download-link {
+      justify-self: start;
+      text-decoration: none;
+      background: #1d4ed8;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .download-link:hover {
+      background: #1e40af;
+    }
+
     .card {
       width: min(1366px, 100%);
       background: var(--card-bg);
@@ -127,6 +148,11 @@
         min-height: auto;
       }
 
+      .download-link {
+        justify-self: stretch;
+        text-align: center;
+      }
+
       .content {
         font-size: clamp(26px, 4.1vw, 34px);
         padding: 34px 22px 28px;
@@ -158,9 +184,11 @@
   </style>
 </head>
 <body>
-  <main class="card" aria-label="כרטיס ברכה ללקוחות">
-    <section class="content">
-      <p class="lead">לקוחות יקרים,</p>
+  <div class="page-wrap">
+    <a class="download-link" href="assets/pesach.jpeg" download>הורדה ישירה של JPG</a>
+    <main class="card" aria-label="כרטיס ברכה ללקוחות">
+      <section class="content">
+        <p class="lead">לקוחות יקרים,</p>
 
       <p>
         בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.<br>
@@ -189,17 +217,18 @@
         <span>חג חירות שמח</span>
         <span class="signature-name">יובל ויינזוף</span>
       </p>
-    </section>
+      </section>
 
-    <aside class="side" aria-label="תמונת יובל והלוגו">
-      <div class="photo-wrap">
-        <img src="assets/pesach.jpeg" alt="תמונת הברכה שנשלחה" />
-      </div>
+      <aside class="side" aria-label="תמונת יובל והלוגו">
+        <div class="photo-wrap">
+          <img src="assets/pesach.jpeg" alt="תמונת הברכה שנשלחה" />
+        </div>
 
-      <div class="logo-wrap">
-        <img src="assets/logo.png" alt="הלוגו של יובל" />
-      </div>
-    </aside>
-  </main>
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="הלוגו של יובל" />
+        </div>
+      </aside>
+    </main>
+  </div>
 </body>
 </html>
