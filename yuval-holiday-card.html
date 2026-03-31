@@ -88,15 +88,12 @@
       justify-content: center;
       padding: 26px 18px 0;
       min-height: 0;
-      overflow: hidden;
     }
 
     .photo-wrap img {
-      width: 100%;
-      height: 100%;
-      max-width: 405px;
-      object-fit: cover;
-      object-position: center 45%;
+      width: min(100%, 405px);
+      height: auto;
+      object-fit: contain;
     }
 
     .logo-wrap {
@@ -181,7 +178,7 @@
 
     <aside class="side" aria-label="תמונת יובל והלוגו">
       <div class="photo-wrap">
-        <img src="assets/image_d426fb.png" alt="יובל" />
+        <img src="assets/image_d426fb.png" alt="תמונת הברכה שנשלחה" />
       </div>
 
       <div class="logo-wrap">
