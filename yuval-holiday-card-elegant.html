@@ -38,7 +38,7 @@
       width: min(1366px, 100%);
       min-height: 768px;
       display: grid;
-      grid-template-columns: 2.1fr 1fr;
+      grid-template-columns: 1fr 2.1fr;
       background: var(--card);
       border-radius: 30px;
       overflow: hidden;
@@ -48,6 +48,7 @@
     }
 
     .content {
+      grid-column: 2;
       padding: 56px 56px 42px;
       display: flex;
       flex-direction: column;
@@ -133,6 +134,7 @@
     }
 
     .side {
+      grid-column: 1;
       position: relative;
       overflow: hidden;
       background: #d4defe;
@@ -166,6 +168,7 @@
       }
 
       .content {
+        grid-column: auto;
         padding: 38px 22px 28px;
         font-size: clamp(26px, 4.2vw, 34px);
       }
@@ -176,6 +179,10 @@
 
       .signature {
         font-size: clamp(31px, 4.7vw, 39px);
+      }
+
+      .side {
+        grid-column: auto;
       }
 
       .photo-wrap {
