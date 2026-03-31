@@ -29,37 +29,24 @@
     }
 
     .page-wrap {
-      width: min(1400px, 100%);
+      width: min(1366px, 100%);
       display: grid;
       gap: 14px;
-      justify-items: center;
     }
 
-    .actions {
-      width: min(1366px, 100%);
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .download-btn {
-      border: 0;
-      background: #1f2937;
+    .download-link {
+      justify-self: start;
+      text-decoration: none;
+      background: #1d4ed8;
       color: #fff;
-      font: inherit;
-      font-size: 18px;
-      padding: 12px 18px;
+      padding: 10px 16px;
       border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+      font-size: 18px;
+      font-weight: 700;
     }
 
-    .download-btn:hover {
-      background: #111827;
-    }
-
-    .download-btn:disabled {
-      cursor: wait;
-      opacity: 0.7;
+    .download-link:hover {
+      background: #1e40af;
     }
 
     .card {
@@ -161,12 +148,9 @@
         min-height: auto;
       }
 
-      .actions {
-        justify-content: center;
-      }
-
-      .download-btn {
-        width: 100%;
+      .download-link {
+        justify-self: stretch;
+        text-align: center;
       }
 
       .content {
@@ -201,40 +185,38 @@
 </head>
 <body>
   <div class="page-wrap">
-    <div class="actions">
-      <button type="button" class="download-btn" id="downloadCardBtn">הורדת הכרטיס כ־JPG</button>
-    </div>
-    <main class="card" aria-label="כרטיס ברכה ללקוחות" id="holidayCard">
+    <a class="download-link" href="assets/pesach.jpeg" download>הורדה ישירה של JPG</a>
+    <main class="card" aria-label="כרטיס ברכה ללקוחות">
       <section class="content">
         <p class="lead">לקוחות יקרים,</p>
 
-        <p>
-          בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.<br>
-          תודה על האמון, תודה על הדרך המשותפת<br>
-          ותודה על הזכות ללוות אתכם בהחלטות החשובות בחיים.
-        </p>
+      <p>
+        בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.<br>
+        תודה על האמון, תודה על הדרך המשותפת<br>
+        ותודה על הזכות ללוות אתכם בהחלטות החשובות בחיים.
+      </p>
 
-        <p>
-          התקופה האחרונה מזכירה לנו עד כמה יציבות וביטחון הם לא דבר מובן מאליו.<br>
-          בתוך מציאות משתנה, היכולת לתכנן קדימה, לקבל החלטות מושכלות
-          ולשמור על עוגן פיננסי - הוא צורך וכוח אמיתי שמאפשר ביטחון גם בימים מאתגרים.
-        </p>
+      <p>
+        התקופה האחרונה מזכירה לנו עד כמה יציבות וביטחון הם לא דבר מובן מאליו.<br>
+        בתוך מציאות משתנה, היכולת לתכנן קדימה, לקבל החלטות מושכלות
+        ולשמור על עוגן פיננסי - הוא צורך וכוח אמיתי שמאפשר ביטחון גם בימים מאתגרים.
+      </p>
 
-        <p>
-          אני כאן עבורכם - ממשיך ללוות, לדייק, לבנות ולחזק את הדרך הכלכלית שלכם,<br>
-          כדי שתרגישו ביטחון בכל חוסר הוודאות.<br>
-          אני מאחל לכם ולבני משפחותיכם ימים של שקט, ביטחון ורוגע
-          לצד צמיחה, יציבות והגשמת מטרות.
-        </p>
+      <p>
+        אני כאן עבורכם - ממשיך ללוות, לדייק, לבנות ולחזק את הדרך הכלכלית שלכם,<br>
+        כדי שתרגישו ביטחון בכל חוסר הוודאות.<br>
+        אני מאחל לכם ולבני משפחותיכם ימים של שקט, ביטחון ורוגע
+        לצד צמיחה, יציבות והגשמת מטרות.
+      </p>
 
-        <p class="highlight">
-          מי ייתן והחג הזה יביא עמו התחלה חדשה, תקווה גדולה והרבה אור.
-        </p>
+      <p class="highlight">
+        מי ייתן והחג הזה יביא עמו התחלה חדשה, תקווה גדולה והרבה אור.
+      </p>
 
-        <p class="signature">
-          <span>חג חירות שמח</span>
-          <span class="signature-name">יובל ויינזוף</span>
-        </p>
+      <p class="signature">
+        <span>חג חירות שמח</span>
+        <span class="signature-name">יובל ויינזוף</span>
+      </p>
       </section>
 
       <aside class="side" aria-label="תמונת יובל והלוגו">
@@ -248,76 +230,5 @@
       </aside>
     </main>
   </div>
-  <script>
-    async function toDataUrl(src) {
-      const res = await fetch(src);
-      const blob = await res.blob();
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.readAsDataURL(blob);
-      });
-    }
-
-    async function exportCardAsJpg() {
-      const button = document.getElementById("downloadCardBtn");
-      const card = document.getElementById("holidayCard");
-      button.disabled = true;
-      button.textContent = "מכין קובץ JPG...";
-
-      try {
-        const clone = card.cloneNode(true);
-        clone.style.margin = "0";
-        clone.style.width = "1366px";
-        clone.style.minHeight = "768px";
-
-        const images = [...clone.querySelectorAll("img")];
-        for (const image of images) {
-          const original = card.querySelector(`img[alt="${image.alt}"]`);
-          const source = original?.currentSrc || original?.src || image.src;
-          image.src = await toDataUrl(source);
-        }
-
-        const html = `<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>${document.querySelector("style").textContent}</style></head><body style="margin:0;padding:0;background:#344955;">${clone.outerHTML}</body></html>`;
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1366" height="768"><foreignObject width="100%" height="100%">${html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</foreignObject></svg>`;
-        const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-        const url = URL.createObjectURL(svgBlob);
-
-        const image = new Image();
-        image.onload = () => {
-          const canvas = document.createElement("canvas");
-          canvas.width = 1366;
-          canvas.height = 768;
-          const context = canvas.getContext("2d");
-          context.fillStyle = "#344955";
-          context.fillRect(0, 0, canvas.width, canvas.height);
-          context.drawImage(image, 0, 0);
-          URL.revokeObjectURL(url);
-
-          const link = document.createElement("a");
-          link.download = "yuval-holiday-card.jpg";
-          link.href = canvas.toDataURL("image/jpeg", 0.95);
-          link.click();
-
-          button.disabled = false;
-          button.textContent = "הורדת הכרטיס כ־JPG";
-        };
-
-        image.onerror = () => {
-          URL.revokeObjectURL(url);
-          throw new Error("SVG render failed");
-        };
-
-        image.src = url;
-      } catch (error) {
-        console.error(error);
-        alert("לא הצלחנו לייצא את הכרטיס כ־JPG בדפדפן הזה. נסו דרך Chrome מעודכן.");
-        button.disabled = false;
-        button.textContent = "הורדת הכרטיס כ־JPG";
-      }
-    }
-
-    document.getElementById("downloadCardBtn").addEventListener("click", exportCardAsJpg);
-  </script>
 </body>
 </html>
