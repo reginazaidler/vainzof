@@ -277,34 +277,93 @@
       });
     }
 
+    function buildCardSvg(photoDataUrl, logoDataUrl) {
+      const lines = [
+        "לקוחות יקרים,",
+        "",
+        "בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.",
+        "תודה על האמון, תודה על הדרך המשותפת",
+        "ותודה על הזכות ללוות אתכם בהחלטות החשובות בחיים.",
+        "",
+        "התקופה האחרונה מזכירה לנו עד כמה יציבות וביטחון הם לא דבר מובן מאליו.",
+        "בתוך מציאות משתנה, היכולת לתכנן קדימה, לקבל החלטות מושכלות",
+        "ולשמור על עוגן פיננסי - הוא צורך וכוח אמיתי שמאפשר ביטחון גם בימים מאתגרים.",
+        "",
+        "אני כאן עבורכם - ממשיך ללוות, לדייק, לבנות ולחזק את הדרך הכלכלית שלכם,",
+        "כדי שתרגישו ביטחון בכל חוסר הוודאות.",
+        "אני מאחל לכם ולבני משפחותיכם ימים של שקט, ביטחון ורוגע",
+        "לצד צמיחה, יציבות והגשמת מטרות.",
+        "",
+        "מי ייתן והחג הזה יביא עמו התחלה חדשה, תקווה גדולה והרבה אור.",
+        "",
+        "חג חירות שמח",
+        "יובל ויינזוף"
+      ];
+
+      let y = 102;
+      const textNodes = lines.map((line) => {
+        if (!line) {
+          y += 18;
+          return "";
+        }
+
+        let fill = "#f4f7fa";
+        let size = 34;
+        let weight = 400;
+        let step = 48;
+
+        if (line === "לקוחות יקרים,") {
+          fill = "#ffffff";
+          size = 58;
+          step = 72;
+        } else if (line.includes("מי ייתן")) {
+          fill = "#ffd166";
+          size = 40;
+          weight = 700;
+          step = 54;
+        } else if (line === "חג חירות שמח") {
+          fill = "#dce7ee";
+          size = 52;
+          step = 62;
+        } else if (line === "יובל ויינזוף") {
+          fill = "#ffd166";
+          size = 44;
+          weight = 700;
+          step = 52;
+        }
+
+        const node = `<text x="995" y="${y}" text-anchor="end" direction="rtl" unicode-bidi="plaintext" fill="${fill}" font-family="Assistant, Heebo, Arial, sans-serif" font-size="${size}" font-weight="${weight}">${line}</text>`;
+        y += step;
+        return node;
+      }).join("");
+
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="${CARD_WIDTH}" height="${CARD_HEIGHT}" viewBox="0 0 ${CARD_WIDTH} ${CARD_HEIGHT}">
+        <defs>
+          <clipPath id="photoClip"><rect x="1050" y="0" width="316" height="768"/></clipPath>
+        </defs>
+        <rect width="${CARD_WIDTH}" height="${CARD_HEIGHT}" fill="#344955"/>
+        <rect x="1050" y="0" width="316" height="768" fill="#f6f8fa"/>
+        <image href="${photoDataUrl}" x="1050" y="0" width="316" height="768" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+        ${textNodes}
+        <g transform="translate(1246 684)">
+          <rect width="100" height="60" rx="12" ry="12" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.28)"/>
+          <image href="${logoDataUrl}" x="16" y="10" width="68" height="40" preserveAspectRatio="xMidYMid meet"/>
+        </g>
+      </svg>`;
+    }
+
     async function downloadFullCard() {
       const btn = document.getElementById("downloadFullCardBtn");
-      const sourceCard = document.querySelector(".card");
       btn.disabled = true;
       btn.textContent = "מכין קובץ JPG...";
 
       try {
-        const clone = sourceCard.cloneNode(true);
-        clone.style.width = `${CARD_WIDTH}px`;
-        clone.style.minHeight = `${CARD_HEIGHT}px`;
-        clone.style.margin = "0";
+        const [photoData, logoData] = await Promise.all([
+          toDataUrl("assets/pesach.jpeg"),
+          toDataUrl("assets/logo.png")
+        ]);
 
-        const cloneImages = [...clone.querySelectorAll("img")];
-        const sourceImages = [...sourceCard.querySelectorAll("img")];
-        for (let i = 0; i < cloneImages.length; i += 1) {
-          const src = sourceImages[i]?.currentSrc || sourceImages[i]?.src;
-          cloneImages[i].src = await toDataUrl(src);
-        }
-
-        const cssText = document.querySelector("style").textContent;
-        const html = `<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><style>${cssText}</style></head><body style="margin:0;background:#344955;">${clone.outerHTML}</body></html>`;
-
-        const escaped = html
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
-
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${CARD_WIDTH}" height="${CARD_HEIGHT}"><foreignObject width="100%" height="100%">${escaped}</foreignObject></svg>`;
+        const svg = buildCardSvg(photoData, logoData);
         const svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
         const svgUrl = URL.createObjectURL(svgBlob);
 
