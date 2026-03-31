@@ -131,6 +131,19 @@
       overflow: hidden;
     }
 
+    .side::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("assets/logo.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: clamp(170px, 68%, 240px);
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .photo-wrap {
       position: absolute;
       inset: 0;
@@ -144,24 +157,6 @@
       object-position: center 42%;
       transform: scale(1.32);
       filter: saturate(1.06) contrast(1.03);
-    }
-
-    .logo-wrap {
-      position: absolute;
-      inset-inline-end: 18px;
-      inset-block-end: 16px;
-      padding: 8px 10px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 12px;
-      backdrop-filter: blur(2px);
-      opacity: 0.68;
-    }
-
-    .logo-wrap img {
-      width: clamp(58px, 7.2vw, 92px);
-      height: auto;
-      display: block;
     }
 
     @media (max-width: 980px) {
@@ -199,9 +194,8 @@
         transform: scale(1.2);
       }
 
-      .logo-wrap {
-        inset-inline-end: 12px;
-        inset-block-end: 12px;
+      .side::after {
+        background-size: min(52vw, 220px);
       }
     }
   </style>
@@ -246,10 +240,6 @@
       <aside class="side" aria-label="תמונת יובל והלוגו">
         <div class="photo-wrap">
           <img src="assets/pesach.jpeg" alt="תמונת הברכה שנשלחה" />
-        </div>
-
-        <div class="logo-wrap">
-          <img src="assets/logo.png" alt="הלוגו של יובל" />
         </div>
       </aside>
     </main>
@@ -345,9 +335,8 @@
         <rect x="1050" y="0" width="316" height="768" fill="#f6f8fa"/>
         <image href="${photoDataUrl}" x="1050" y="0" width="316" height="768" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
         ${textNodes}
-        <g transform="translate(1246 684)">
-          <rect width="100" height="60" rx="12" ry="12" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.28)"/>
-          <image href="${logoDataUrl}" x="16" y="10" width="68" height="40" preserveAspectRatio="xMidYMid meet"/>
+        <g opacity="0.14">
+          <image href="${logoDataUrl}" x="1088" y="262" width="240" height="240" preserveAspectRatio="xMidYMid meet"/>
         </g>
       </svg>`;
     }
