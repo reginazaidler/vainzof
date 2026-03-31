@@ -28,6 +28,49 @@
       color: var(--text-main);
     }
 
+    .page-wrap {
+      width: min(1366px, 100%);
+      display: grid;
+      gap: 14px;
+    }
+
+    .download-btn {
+      border: 0;
+      justify-self: start;
+      background: #1d4ed8;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .download-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    .download-link {
+      justify-self: start;
+      text-decoration: none;
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .download-btn:hover {
+      background: #1e40af;
+    }
+
+    .download-link:hover {
+      background: #1f2937;
+    }
+
     .card {
       width: min(1366px, 100%);
       background: var(--card-bg);
@@ -127,6 +170,12 @@
         min-height: auto;
       }
 
+      .download-link,
+      .download-btn {
+        justify-self: stretch;
+        text-align: center;
+      }
+
       .content {
         font-size: clamp(26px, 4.1vw, 34px);
         padding: 34px 22px 28px;
@@ -158,9 +207,12 @@
   </style>
 </head>
 <body>
-  <main class="card" aria-label="כרטיס ברכה ללקוחות">
-    <section class="content">
-      <p class="lead">לקוחות יקרים,</p>
+  <div class="page-wrap">
+    <button type="button" class="download-btn" id="downloadFullCardBtn">הורדת כל הכרטיס כתמונה (JPG)</button>
+    <a class="download-link" href="assets/pesach.jpeg" download>הורדת התמונה בלבד</a>
+    <main class="card" aria-label="כרטיס ברכה ללקוחות">
+      <section class="content">
+        <p class="lead">לקוחות יקרים,</p>
 
       <p>
         בפתחו של חג החירות, אני רוצה לעצור לרגע ולהגיד תודה.<br>
@@ -189,17 +241,51 @@
         <span>חג חירות שמח</span>
         <span class="signature-name">יובל ויינזוף</span>
       </p>
-    </section>
+      </section>
 
-    <aside class="side" aria-label="תמונת יובל והלוגו">
-      <div class="photo-wrap">
-        <img src="assets/pesach.jpeg" alt="תמונת הברכה שנשלחה" />
-      </div>
+      <aside class="side" aria-label="תמונת יובל והלוגו">
+        <div class="photo-wrap">
+          <img src="assets/pesach.jpeg" alt="תמונת הברכה שנשלחה" />
+        </div>
 
-      <div class="logo-wrap">
-        <img src="assets/logo.png" alt="הלוגו של יובל" />
-      </div>
-    </aside>
-  </main>
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="הלוגו של יובל" />
+        </div>
+      </aside>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    async function downloadFullCard() {
+      const btn = document.getElementById("downloadFullCardBtn");
+      const card = document.querySelector(".card");
+      btn.disabled = true;
+      btn.textContent = "מכין קובץ JPG...";
+
+      try {
+        const canvas = await window.html2canvas(card, {
+          backgroundColor: "#344955",
+          useCORS: true,
+          scale: 2,
+          width: card.offsetWidth,
+          height: card.offsetHeight,
+          scrollX: 0,
+          scrollY: 0
+        });
+
+        const link = document.createElement("a");
+        link.download = "yuval-holiday-card-full.jpg";
+        link.href = canvas.toDataURL("image/jpeg", 0.96);
+        link.click();
+      } catch (error) {
+        alert("הייצוא לא הצליח. נסי לרענן את הדף ואז ללחוץ שוב.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "הורדת כל הכרטיס כתמונה (JPG)";
+      }
+    }
+
+    document.getElementById("downloadFullCardBtn").addEventListener("click", downloadFullCard);
+  </script>
 </body>
 </html>
