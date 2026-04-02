@@ -262,7 +262,7 @@ gtag('config', 'G-EM8SYH542C');
             </div>
         </section>
 
-        <section class="py-20 reveal">
+        <section id="resultSectionWrapper" class="hidden py-20 reveal">
             <div class="container-clean">
                 <div id="resultSection" class="hidden result-box p-6 md:p-10">
                     <div class="grid lg:grid-cols-[1fr_340px] gap-8 items-start relative z-10">
@@ -502,6 +502,7 @@ gtag('config', 'G-EM8SYH542C');
             const form = document.getElementById('modal-contact-form');
             const calculatorForm = document.getElementById('calculatorForm');
             const resultSection = document.getElementById('resultSection');
+            const resultSectionWrapper = document.getElementById('resultSectionWrapper');
             const resetCalculator = document.getElementById('resetCalculator');
             const openContactResult = document.getElementById('openContactResult');
 
@@ -708,6 +709,7 @@ gtag('config', 'G-EM8SYH542C');
                     messageField.value = `הגעתי מהמחשבון באתר. פוטנציאל חיסכון משוער: ${formatNumber(result.total)} ש"ח בשנה. אשמח לבדיקה מקצועית.`;
                 }
 
+                resultSectionWrapper?.classList.remove('hidden');
                 resultSection.classList.remove('hidden');
                 resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
@@ -715,6 +717,7 @@ gtag('config', 'G-EM8SYH542C');
             resetCalculator?.addEventListener('click', function () {
                 calculatorForm?.reset();
                 resultSection?.classList.add('hidden');
+                resultSectionWrapper?.classList.add('hidden');
                 window.scrollTo({ top: document.getElementById('simulation').offsetTop - 120, behavior: 'smooth' });
             });
 
