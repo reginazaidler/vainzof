@@ -684,6 +684,11 @@ table {
     pointer-events: auto;
 }
 
+/* Fallback: ensure closed mobile menu never blocks taps on content/buttons */
+#mobileMenu.hidden {
+    pointer-events: none !important;
+}
+
 @media (max-width: 1023px) {
     .site-header {
         z-index: 1000;
