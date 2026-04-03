@@ -19,16 +19,23 @@ class GSCClient:
     timeout: int = 20
 
     def _get_access_token(self) -> str:
+        token_url = TOKEN_ENDPOINT
+        payload = {
+            "client_id": self.client_id,
+            "client_secret": self.client_secret,
+            "refresh_token": self.refresh_token,
+            "grant_type": "refresh_token",
+        }
         response = requests.post(
-            TOKEN_ENDPOINT,
-            data={
-                "client_id": self.client_id,
-                "client_secret": self.client_secret,
-                "refresh_token": self.refresh_token,
-                "grant_type": "refresh_token",
-            },
-            timeout=self.timeout,
+            token_url,
+            data=payload,
+            timeout=30,
         )
+
+        if not response.ok:
+            print("Token response status:", response.status_code)
+            print("Token response body:", response.text)
+
         response.raise_for_status()
         payload = response.json()
         token = payload.get("access_token")
