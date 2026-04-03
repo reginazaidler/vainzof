@@ -25,24 +25,25 @@ On each run the agent:
 
 ## Project structure
 
-```
-seo-gap-agent/
+```text
+repo-root/
 ├─ .github/workflows/run-agent.yml
-├─ app/
-│  ├─ main.py
-│  ├─ gsc_client.py
-│  ├─ fetch_gsc_data.py
-│  ├─ opportunity_scoring.py
-│  ├─ page_extractor.py
-│  ├─ analyzer.py
-│  ├─ prompts.py
-│  ├─ report_builder.py
-│  ├─ db.py
-│  └─ config.py
-├─ reports/
-├─ data/
-├─ requirements.txt
-└─ README.md
+└─ seo-gap-agent/
+   ├─ app/
+   │  ├─ main.py
+   │  ├─ gsc_client.py
+   │  ├─ fetch_gsc_data.py
+   │  ├─ opportunity_scoring.py
+   │  ├─ page_extractor.py
+   │  ├─ analyzer.py
+   │  ├─ prompts.py
+   │  ├─ report_builder.py
+   │  ├─ db.py
+   │  └─ config.py
+   ├─ reports/
+   ├─ data/
+   ├─ requirements.txt
+   └─ README.md
 ```
 
 ## Requirements
@@ -107,7 +108,7 @@ Outputs:
 
 ## GitHub Actions automation
 
-Workflow file: `.github/workflows/run-agent.yml`
+Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
 
 - Triggered weekly (Monday at 08:00 UTC).
 - Supports manual trigger (`workflow_dispatch`).
