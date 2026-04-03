@@ -26,7 +26,6 @@
           <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
           <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
         </div>
-        <a id="openContactFooter" href="index.html#contact">צור קשר</a>
       </nav>
 
       <div class="site-footer__social">
@@ -72,18 +71,6 @@
     }
   });
 
-  const contactLink = footer.querySelector('#openContactFooter');
-  if (contactLink) {
-    contactLink.addEventListener('click', (event) => {
-      const contactModal = document.getElementById('contactModal');
-      if (!contactModal) return;
-
-      event.preventDefault();
-      contactModal.classList.remove('hidden');
-      contactModal.classList.add('flex');
-      document.body.classList.add('overflow-hidden');
-    });
-  }
 
   currentScript.replaceWith(footer);
 })();
