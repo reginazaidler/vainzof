@@ -133,10 +133,37 @@
     desktopNav.appendChild(dropdown);
   }
 
+
+
+  function reduceContactCtaClutter() {
+    var ctaNodes = Array.prototype.slice.call(document.querySelectorAll('[id^="openContact"]'));
+    if (!ctaNodes.length) return;
+
+    var keepIds = {
+      openContactDesktop: true,
+      openContactMobile: true
+    };
+
+    var secondaryKept = false;
+
+    ctaNodes.forEach(function (node) {
+      if (!node || !node.id) return;
+      if (keepIds[node.id]) return;
+
+      if (!secondaryKept) {
+        secondaryKept = true;
+        return;
+      }
+
+      node.remove();
+    });
+  }
+
   function init() {
     removeFloatingContactButtons();
     enhanceLegacyMobileMenu();
     enhanceDesktopKnowledgeMenu();
+    reduceContactCtaClutter();
   }
 
   if (document.readyState === 'loading') {
