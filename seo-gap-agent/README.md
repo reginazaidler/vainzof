@@ -12,6 +12,7 @@ On each run the agent:
    - `position between 2 and 12`
    - excludes brand queries from a configurable list.
    - if strict filters return no rows, falls back to ranking raw GSC rows so reports are still generated.
+   - logs filter diagnostics (how many rows pass each condition) for easier debugging in Actions logs.
 3. Scores opportunities with:
 
    `opportunity_score = impressions * (expected_ctr - ctr) / position`

@@ -49,11 +49,29 @@ def run_pipeline() -> None:
         max_rows=settings.max_rows,
     )
     raw_df = fetch_gsc_data(gsc_client, fetch_params)
+    print(f"Fetched {len(raw_df)} query-page rows from GSC ({settings.start_date} to {settings.end_date}).")
 
     if raw_df.empty:
         build_reports(settings.reports_dir, _empty_opportunities_df(), [])
         print("No GSC rows returned. Generated empty reports.")
         return
+
+    impressions_mask = raw_df["impressions"] >= settings.min_impressions
+    position_mask = (raw_df["position"] >= settings.min_position) & (raw_df["position"] <= settings.max_position)
+    brand_mask = raw_df["query"].astype(str).str.lower()
+    brand_pattern = "|".join(settings.exclude_brand_queries) if settings.exclude_brand_queries else ""
+    brand_pass_mask = ~brand_mask.str.contains(brand_pattern, regex=True, na=False) if brand_pattern else None
+
+    print(
+        "Filter diagnostics:",
+        f"impressions>={settings.min_impressions}: {int(impressions_mask.sum())}/{len(raw_df)};",
+        f"position_between_{settings.min_position}_{settings.max_position}: {int(position_mask.sum())}/{len(raw_df)};",
+        (
+            f"brand_excluded_pass: {int(brand_pass_mask.sum())}/{len(raw_df)};"
+            if brand_pass_mask is not None
+            else "brand_excluded_pass: skipped;"
+        ),
+    )
 
     bulk_insert(
         conn,
