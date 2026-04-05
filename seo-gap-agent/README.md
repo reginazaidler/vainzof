@@ -74,7 +74,7 @@ Set these before running:
 Optional:
 
 - `EXCLUDE_BRAND_QUERIES` (comma-separated, example: `brand,brand.com,brand name`)
-- `OPENAI_MODEL` (default: `gpt-4.1-mini`)
+- `OPENAI_MODEL` (default: `gpt-4.1-mini`; empty value also falls back to this default)
 
 ## Getting Google Search Console credentials
 
