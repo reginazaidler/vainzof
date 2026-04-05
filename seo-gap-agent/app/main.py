@@ -13,6 +13,23 @@ from app.page_extractor import extract_page_snapshot
 from app.report_builder import build_reports
 
 
+def _empty_opportunities_df():
+    import pandas as pd
+
+    return pd.DataFrame(
+        columns=[
+            "query",
+            "page",
+            "clicks",
+            "impressions",
+            "ctr",
+            "position",
+            "expected_ctr",
+            "opportunity_score",
+        ]
+    )
+
+
 def run_pipeline() -> None:
     settings = load_settings()
     conn = get_connection(settings.db_path)
@@ -34,7 +51,8 @@ def run_pipeline() -> None:
     raw_df = fetch_gsc_data(gsc_client, fetch_params)
 
     if raw_df.empty:
-        print("No GSC rows returned. Exiting.")
+        build_reports(settings.reports_dir, _empty_opportunities_df(), [])
+        print("No GSC rows returned. Generated empty reports.")
         return
 
     bulk_insert(
@@ -72,8 +90,15 @@ def run_pipeline() -> None:
     top_df = scored_df.head(settings.top_n).copy()
 
     if top_df.empty:
-        print("No opportunities matched filters. Exiting.")
-        return
+        # Fallback: if strict filters return nothing, continue with the best rows
+        # from raw data so the run still returns actionable output files.
+        fallback_df = score_opportunities(raw_df).head(settings.top_n).copy()
+        if fallback_df.empty:
+            build_reports(settings.reports_dir, _empty_opportunities_df(), [])
+            print("No opportunities found after fallback. Generated empty reports.")
+            return
+        top_df = fallback_df
+        print("No opportunities matched strict filters; using fallback ranking from raw GSC data.")
 
     selected_at = datetime.now(timezone.utc).isoformat()
     bulk_insert(

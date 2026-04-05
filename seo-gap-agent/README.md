@@ -11,6 +11,7 @@ On each run the agent:
    - `impressions >= 80`
    - `position between 2 and 12`
    - excludes brand queries from a configurable list.
+   - if strict filters return no rows, falls back to ranking raw GSC rows so reports are still generated.
 3. Scores opportunities with:
 
    `opportunity_score = impressions * (expected_ctr - ctr) / position`
@@ -21,6 +22,7 @@ On each run the agent:
    - `reports/top_opportunities.csv`
    - `reports/fixes_report.md`
    - `reports/dev_tasks.json`
+   - if no rows are available at all, writes empty report files instead of exiting without outputs.
 7. Stores run data in SQLite (`data/seo_gap_agent.db`).
 
 ## Project structure
