@@ -96,6 +96,9 @@ def analyze_page_gap(
             time.sleep(sleep_seconds)
             continue
 
+        if response.status_code == 429 and attempt == max_attempts:
+            break
+
         response.raise_for_status()
 
     if last_response is not None and last_response.status_code == 429:
