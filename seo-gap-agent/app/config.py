@@ -68,7 +68,7 @@ def load_settings() -> Settings:
         gsc_client_secret=required["GSC_CLIENT_SECRET"],
         gsc_refresh_token=required["GSC_REFRESH_TOKEN"],
         gsc_site_url=required["GSC_SITE_URL"],
-        openai_model=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"),
+        openai_model=(os.getenv("OPENAI_MODEL") or "gpt-4.1-mini").strip(),
         exclude_brand_queries=_parse_brand_queries(os.getenv("EXCLUDE_BRAND_QUERIES")),
     )
 
