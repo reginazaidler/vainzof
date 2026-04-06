@@ -96,29 +96,6 @@ body {
     overflow-x: clip;
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    bottom: 18px;
-    right: 18px;
-    width: clamp(92px, 10vw, 150px);
-    aspect-ratio: 13 / 4;
-    background: url("assets/logo.png") no-repeat center / contain;
-    opacity: 0.11;
-    pointer-events: none;
-    z-index: 9;
-}
-
-@media (max-width: 767px) {
-    body::after {
-        width: 92px;
-        bottom: 84px;
-        right: 12px;
-        opacity: 0.09;
-    }
-}
-
-
 /* ברירת מחדל נוחה לכל האלמנטים כדי למנוע חריגות רוחב במובייל */
 *,
 *::before,
