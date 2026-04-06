@@ -9,6 +9,11 @@
       <div class="site-footer__meta">
         <p>יובל ויינזוף © 2026 | 052-4520222</p>
         <p class="site-footer__note">סוכן פנסיוני וניהול תיקי השקעות</p>
+        <div class="site-footer__authority" aria-label="סמכות מקצועית">
+          <p>יובל ויינזוף – סוכן ביטוח פנסיוני</p>
+          <p>18+ שנות ניסיון</p>
+          <p>ניסיון בחברות ביטוח</p>
+        </div>
       </div>
 
       <nav class="site-footer__nav" aria-label="ניווט תחתון">
