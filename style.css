@@ -1884,6 +1884,10 @@ main section.bg-slate-50 h3 {
     font-family: 'Assistant', sans-serif;
 }
 
+.articles-page .articles-guides-intro {
+    padding-top: 1.25rem;
+}
+
 /* עמוד מאמרים: שמירה על פלטת המותג בעמוד הכרטיסיות */
 .articles-page .articles-section {
     background: linear-gradient(180deg, #f8fafc 0%, #f3f6fb 100%);
