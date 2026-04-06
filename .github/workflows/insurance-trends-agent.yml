@@ -1,0 +1,51 @@
+name: Run Insurance Trends Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      geo:
+        description: 'Google Trends geo code (e.g. IL, US)'
+        required: false
+        default: 'IL'
+      lookback_hours:
+        description: 'Comparison window in hours'
+        required: false
+        default: '6'
+  schedule:
+    # Every 4 hours (UTC)
+    - cron: '0 */4 * * *'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  run-insurance-trends-agent:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run insurance trends agent
+        env:
+          GEO: ${{ inputs.geo || 'IL' }}
+          LOOKBACK_HOURS: ${{ inputs.lookback_hours || '6' }}
+        run: |
+          python3 scripts/insurance_trends_agent.py --geo "$GEO" --lookback-hours "$LOOKBACK_HOURS"
+
+      - name: Upload trends reports artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: insurance-trends-agent-reports
+          path: |
+            reports/insurance-trends-report.md
+            reports/insurance-trends-report.json
+            data/trends-agent/snapshot_*.json
+          if-no-files-found: warn

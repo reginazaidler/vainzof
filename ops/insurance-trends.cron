@@ -1,0 +1,3 @@
+# Run Insurance Trends agent every 4 hours (Israel time) using free Google Trends RSS.
+CRON_TZ=Asia/Jerusalem
+0 */4 * * * cd /workspace/reginazaidler.github.io && /usr/bin/python3 scripts/insurance_trends_agent.py --geo IL --lookback-hours 6 >> /workspace/reginazaidler.github.io/insurance-trends.log 2>&1
