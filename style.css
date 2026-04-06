@@ -1307,6 +1307,16 @@ table {
     margin-top: 4px;
 }
 
+.site-footer__note a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.site-footer__note a:hover {
+    opacity: 1;
+}
+
 .site-footer__authority {
     margin-top: 10px;
     display: grid;
