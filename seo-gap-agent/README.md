@@ -128,6 +128,7 @@ Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
 - Keep `EXCLUDE_BRAND_QUERIES` updated so branded terms are excluded from gap analysis.
 - The AI response is validated to ensure strict JSON keys before report generation.
 - OpenAI analysis retries on `429` rate limits (exponential backoff). If retries are exhausted, fallback placeholder recommendations are written and reused for the remaining rows in that run.
+- When a run is rate-limited by OpenAI, reports explicitly mark AI analysis as unavailable and avoid emitting fake per-row fix text.
 - SQLite tables created:
   - `query_page_metrics`
   - `opportunities`
