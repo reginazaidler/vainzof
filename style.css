@@ -1310,13 +1310,37 @@ table {
 .site-footer__authority {
     margin-top: 10px;
     display: grid;
-    gap: 2px;
+    gap: 8px;
     color: #e2e8f0;
-    font-weight: 600;
 }
 
 .site-footer__authority p {
     margin: 0;
+}
+
+.site-footer__authority-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #f8fafc;
+}
+
+.site-footer__credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.site-footer__credentials span {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(139, 106, 47, 0.48);
+    background: rgba(139, 106, 47, 0.14);
+    color: #f1f5f9;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.35;
 }
 
 .site-footer__nav {
@@ -6224,6 +6248,10 @@ main section.bg-slate-50 h3 {
         direction: rtl;
         font-size: 12px;
         line-height: 1.45;
+    }
+
+    .site-footer__credentials {
+        justify-content: flex-start;
     }
 
     .site-footer__note {
