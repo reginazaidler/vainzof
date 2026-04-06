@@ -143,6 +143,8 @@ def run_pipeline() -> None:
     )
 
     analysis_items: list[dict] = []
+    rate_limited_mode = False
+    cached_rate_limit_analysis: dict | None = None
 
     for row in top_df.itertuples(index=False):
         snapshot = extract_page_snapshot(row.page, timeout=settings.request_timeout_seconds)
@@ -167,22 +169,29 @@ def run_pipeline() -> None:
             ],
         )
 
-        analysis = analyze_page_gap(
-            api_key=settings.openai_api_key,
-            model=settings.openai_model,
-            payload={
-                "query": row.query,
-                "page": row.page,
-                "position": float(row.position),
-                "ctr": float(row.ctr),
-                "title": snapshot.title,
-                "meta_description": snapshot.meta_description,
-                "h1": snapshot.h1,
-                "h2s": snapshot.h2s,
-                "main_content": snapshot.main_content,
-            },
-            timeout=max(40, settings.request_timeout_seconds),
-        )
+        if rate_limited_mode and cached_rate_limit_analysis is not None:
+            analysis = cached_rate_limit_analysis
+        else:
+            analysis = analyze_page_gap(
+                api_key=settings.openai_api_key,
+                model=settings.openai_model,
+                payload={
+                    "query": row.query,
+                    "page": row.page,
+                    "position": float(row.position),
+                    "ctr": float(row.ctr),
+                    "title": snapshot.title,
+                    "meta_description": snapshot.meta_description,
+                    "h1": snapshot.h1,
+                    "h2s": snapshot.h2s,
+                    "main_content": snapshot.main_content,
+                },
+                timeout=max(40, settings.request_timeout_seconds),
+            )
+            if analysis.get("_meta", {}).get("fallback_reason") == "rate_limit":
+                rate_limited_mode = True
+                cached_rate_limit_analysis = analysis
+                print("OpenAI rate-limit fallback activated; reusing fallback analysis for remaining rows.")
 
         analysis_items.append(
             {

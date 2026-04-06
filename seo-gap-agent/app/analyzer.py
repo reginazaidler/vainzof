@@ -113,6 +113,7 @@ def analyze_page_gap(
             "trust_elements_to_add": ["N/A (rate-limited run)"],
             "cta_fix": "Retry this run later to generate CTA recommendations.",
             "priority": "low",
+            "_meta": {"fallback_reason": "rate_limit"},
         }
 
     raise RuntimeError("OpenAI analysis failed without a successful response")
