@@ -1830,6 +1830,15 @@ main section.bg-slate-50 h3 {
     color: var(--text-strong);
 }
 
+/* עמוד מאמרים: יישור טיפוגרפי מלא בכל הרכיבים */
+.articles-page,
+.articles-page button,
+.articles-page input,
+.articles-page select,
+.articles-page textarea {
+    font-family: 'Assistant', sans-serif;
+}
+
 /* עמוד מאמרים: שמירה על פלטת המותג בעמוד הכרטיסיות */
 .articles-page .articles-section {
     background: linear-gradient(180deg, #f8fafc 0%, #f3f6fb 100%);
