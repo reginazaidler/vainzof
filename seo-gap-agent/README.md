@@ -79,6 +79,9 @@ Optional:
 - `MIN_POSITION` (default: `1`)
 - `MAX_POSITION` (default: `12`)
 - `TOP_N` (default: `20`)
+- `OPENAI_MAX_RETRIES` (default: `6`)
+- `OPENAI_BASE_RETRY_DELAY_SECONDS` (default: `1.0`)
+- `OPENAI_MAX_RETRY_DELAY_SECONDS` (default: `45.0`)
 
 ## Getting Google Search Console credentials
 
@@ -127,7 +130,8 @@ Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
 
 - Keep `EXCLUDE_BRAND_QUERIES` updated so branded terms are excluded from gap analysis.
 - The AI response is validated to ensure strict JSON keys before report generation.
-- OpenAI analysis retries on `429` rate limits (exponential backoff). If retries are exhausted, fallback placeholder recommendations are written and reused for the remaining rows in that run.
+- OpenAI analysis retries on `429` and `5xx` statuses (exponential backoff + jitter, and honors `Retry-After` when sent).
+- If retries are exhausted for a row, fallback placeholder recommendations are written for that row only, and processing continues for other rows.
 - When a run is rate-limited by OpenAI, reports explicitly mark AI analysis as unavailable and avoid emitting fake per-row fix text.
 - SQLite tables created:
   - `query_page_metrics`

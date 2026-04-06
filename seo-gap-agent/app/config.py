@@ -20,6 +20,9 @@ class Settings:
     max_rows: int = 50_000
     top_n: int = 20
     request_timeout_seconds: int = 20
+    openai_max_retries: int = 6
+    openai_base_retry_delay_seconds: float = 1.0
+    openai_max_retry_delay_seconds: float = 45.0
     exclude_brand_queries: list[str] = field(default_factory=list)
     project_root: Path = field(default_factory=lambda: Path(__file__).resolve().parents[1])
 
@@ -87,6 +90,9 @@ def load_settings() -> Settings:
         min_position=_float_env("MIN_POSITION", 1.0),
         max_position=_float_env("MAX_POSITION", 12.0),
         top_n=_int_env("TOP_N", 20),
+        openai_max_retries=_int_env("OPENAI_MAX_RETRIES", 6),
+        openai_base_retry_delay_seconds=_float_env("OPENAI_BASE_RETRY_DELAY_SECONDS", 1.0),
+        openai_max_retry_delay_seconds=_float_env("OPENAI_MAX_RETRY_DELAY_SECONDS", 45.0),
         exclude_brand_queries=_parse_brand_queries(os.getenv("EXCLUDE_BRAND_QUERIES")),
     )
 
