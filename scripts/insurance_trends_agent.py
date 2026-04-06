@@ -178,6 +178,17 @@ def generate_article_idea(title: str) -> dict[str, str]:
     }
 
 
+def generate_fallback_idea_from_general_trend(item: TrendItem) -> dict[str, str]:
+    topic = item.title.strip(" -")
+    return {
+        "topic": topic,
+        "headline": f"{topic}: איך לבדוק שהביטוח שלכם מכסה את מה שצריך סביב הטרנד הזה",
+        "angle": "לקחת את הטרנד החם ולהסביר סיכונים, כיסוי רלוונטי, ומה לבדוק בפוליסה הקיימת",
+        "cta": "רוצים בדיקה מהירה אם יש לכם פערי כיסוי? שלחו פרטים ונחזור אליכם.",
+        "source": "fallback_general_trend",
+    }
+
+
 def build_report_markdown(payload: dict[str, Any]) -> str:
     lines = [
         "# דוח טרנדים לביטוח (Google Trends)",
@@ -215,6 +226,19 @@ def build_report_markdown(payload: dict[str, Any]) -> str:
             )
     else:
         lines.append("- אין כרגע רעיונות חדשים, מומלץ להרחיב רשימת מילות מפתח או להגדיל חלון זמן להשוואה.")
+
+    if payload["fallback_article_ideas"]:
+        lines.extend(["", "## רעיונות גיבוי (כאשר אין טרנדים ביטוחיים ישירים)"])
+        for idx, idea in enumerate(payload["fallback_article_ideas"], start=1):
+            lines.extend(
+                [
+                    f"### {idx}. {idea['headline']}",
+                    f"- טרנד מקור: {idea['topic']}",
+                    f"- זווית: {idea['angle']}",
+                    f"- CTA: {idea['cta']}",
+                    "",
+                ]
+            )
 
     lines.extend(
         [
@@ -258,6 +282,11 @@ def main() -> int:
     unchanged_titles = sorted(set(curr_map.keys()) & set(prev_map.keys()))
 
     article_ideas = [generate_article_idea(curr_map[title]["title"]) for title in new_titles[: args.max_ideas]]
+    fallback_article_ideas = []
+    if not article_ideas:
+        fallback_article_ideas = [
+            generate_fallback_idea_from_general_trend(item) for item in all_trends[: args.max_ideas]
+        ]
 
     payload = {
         "run_timestamp_utc": now.isoformat(),
@@ -272,6 +301,7 @@ def main() -> int:
             "unchanged": [curr_map[title] for title in unchanged_titles],
         },
         "article_ideas": article_ideas,
+        "fallback_article_ideas": fallback_article_ideas,
         "previous_snapshot": str(previous_snapshot_path) if previous_snapshot_path else None,
     }
 

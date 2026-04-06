@@ -56,6 +56,7 @@ CRON_TZ=Asia/Jerusalem
 
 - Workflow: `.github/workflows/insurance-trends-agent.yml`
 - הרצה ידנית: לשונית **Actions** → **Run Insurance Trends Agent** → **Run workflow**
+- אפשר לבחור שם `geo` ו-`lookback_hours` לפני ההרצה הידנית
 - הרצה אוטומטית: כל 4 שעות (לפי UTC)
 - תוצאות: קובץ Artifact בשם `insurance-trends-agent-reports` שמכיל:
   - `reports/insurance-trends-report.md`
@@ -63,3 +64,4 @@ CRON_TZ=Asia/Jerusalem
   - `data/trends-agent/snapshot_*.json`
 
 > שים לב: ב-GitHub Actions כל ריצה היא סביבה חדשה, לכן השוואה היסטורית מלאה תלויה בקבצי snapshot שמורידים מה-Artifacts של ריצות קודמות.
+> אם אין טרנדים ביטוחיים ישירים בריצה מסוימת, הדוח יכלול גם **רעיונות גיבוי** על בסיס הטרנדים הכלליים החמים בזווית ביטוחית.

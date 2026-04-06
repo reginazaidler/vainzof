@@ -40,3 +40,4 @@ Outputs are written to `reports/insurance-trends-report.md`, `reports/insurance-
 
 
 GitHub-only run: use **Actions → Run Insurance Trends Agent** (workflow file: `.github/workflows/insurance-trends-agent.yml`).
+In manual GitHub runs you can override `geo` and `lookback_hours`; if no direct insurance trends are found, the report includes fallback insurance-angle ideas based on general hot trends.
