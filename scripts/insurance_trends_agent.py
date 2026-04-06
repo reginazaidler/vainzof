@@ -4,14 +4,13 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from urllib import parse, request
 from xml.etree import ElementTree
 
-DEFAULT_KEYWORDS = {
 DEFAULT_KEYWORDS_SETS = {
     "insurance": [
         "ביטוח",
@@ -35,12 +34,18 @@ DEFAULT_KEYWORDS_SETS = {
     "finance": [
         "מדד תל אביב 35",
         "תל אביב 35",
+        "תא 35",
+        "תא 125",
+        "בורסה",
+        "שוק ההון",
+        "מניות",
+        "אג\"ח",
+        "השקעות",
+        "קרן השתלמות",
+        "קופת גמל",
+        "פנסיה",
         "ריבית",
         "אינפלציה",
-        "פנסיה",
-        "משכנתא",
-        "שוק ההון",
-        "בורסה",
         "ta35",
         "interest rate",
         "inflation",
@@ -58,12 +63,15 @@ DEFAULT_KEYWORDS_SETS = {
         "family",
     ],
     "risk": [
+        "רעידת אדמה",
         "מלחמה",
         "מבצע",
         "חירום",
         "ירי",
-        "רעידת אדמה",
+        "שריפה",
+        "הצפה",
         "שטפון",
+        "גניבה",
         "war",
         "emergency",
         "earthquake",
@@ -78,29 +86,6 @@ DEFAULT_KEYWORDS_SETS = {
         "cost of living",
         "price increase",
         "debt",
-        "תא 35",
-        "תא 125",
-        "בורסה",
-        "שוק ההון",
-        "מניות",
-        "אג\"ח",
-        "השקעות",
-        "קרן השתלמות",
-        "קופת גמל",
-        "פנסיה",
-        "ריבית",
-        "אינפלציה",
-    ],
-    "risk": [
-        "רעידת אדמה",
-        "מלחמה",
-        "ירי",
-        "שריפה",
-        "הצפה",
-        "גניבה",
-        "רכב חשמלי",
-        "דירה חדשה",
-        "משכנתא",
     ],
 }
 
@@ -144,8 +129,9 @@ def parse_args() -> argparse.Namespace:
         "--keywords-file",
         default="",
         help=(
-            "Optional keywords file. Supports JSON with {insurance,finance,risk} arrays "
-            "or plain text with one keyword per line (insurance layer only)."
+            "Optional keywords file. Supports JSON with category arrays "
+            "(insurance,finance,life,risk,pain) or plain text with one keyword per line "
+            "(insurance layer only)."
         ),
     )
     parser.add_argument(
@@ -157,10 +143,14 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def flatten_keywords(keywords: dict[str, list[str]]) -> list[str]:
+def tokenize(text: str) -> str:
+    return re.sub(r"\s+", " ", text.lower()).strip()
+
+
+def flatten_keywords(keywords_sets: dict[str, list[str]]) -> list[str]:
     seen: set[str] = set()
     flat: list[str] = []
-    for values in keywords.values():
+    for values in keywords_sets.values():
         for keyword in values:
             normalized = tokenize(keyword)
             if normalized and normalized not in seen:
@@ -169,48 +159,26 @@ def flatten_keywords(keywords: dict[str, list[str]]) -> list[str]:
     return flat
 
 
-def load_keywords(keywords_file: str) -> dict[str, list[str]]:
 def load_keywords_sets(keywords_file: str) -> dict[str, list[str]]:
     if not keywords_file:
-        return DEFAULT_KEYWORDS_SETS
+        return {k: list(v) for k, v in DEFAULT_KEYWORDS_SETS.items()}
 
     path = Path(keywords_file)
     if not path.exists():
         raise FileNotFoundError(f"keywords file not found: {keywords_file}")
 
-    lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    if not lines:
-        return DEFAULT_KEYWORDS
-
-    categorized = {category: [] for category in DEFAULT_KEYWORDS}
-    if any(":" in line for line in lines):
-        for line in lines:
-            if ":" not in line:
-                continue
-            category, keyword = line.split(":", maxsplit=1)
-            category = category.strip().lower()
-            keyword = keyword.strip()
-            if category in categorized and keyword:
-                categorized[category].append(keyword)
-    else:
-        categorized["insurance"] = lines
-
-    return categorized
     if path.suffix.lower() == ".json":
         data = json.loads(path.read_text(encoding="utf-8"))
-        return {
-            "insurance": [item.strip() for item in data.get("insurance", []) if item.strip()],
-            "finance": [item.strip() for item in data.get("finance", []) if item.strip()],
-            "risk": [item.strip() for item in data.get("risk", []) if item.strip()],
-        }
+        merged: dict[str, list[str]] = {}
+        for category, defaults in DEFAULT_KEYWORDS_SETS.items():
+            custom_values = data.get(category, defaults)
+            merged[category] = [item.strip() for item in custom_values if isinstance(item, str) and item.strip()]
+        return merged
 
-    # Backward-compatible format: plain text file with one keyword per line (insurance layer only)
     insurance_keywords = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    return {
-        "insurance": insurance_keywords or DEFAULT_KEYWORDS_SETS["insurance"],
-        "finance": DEFAULT_KEYWORDS_SETS["finance"],
-        "risk": DEFAULT_KEYWORDS_SETS["risk"],
-    }
+    merged = {k: list(v) for k, v in DEFAULT_KEYWORDS_SETS.items()}
+    merged["insurance"] = insurance_keywords or list(DEFAULT_KEYWORDS_SETS["insurance"])
+    return merged
 
 
 def fetch_trends_rss(geo: str) -> str:
@@ -259,10 +227,6 @@ def parse_rss(xml_text: str, geo: str) -> list[TrendItem]:
     return items
 
 
-def tokenize(text: str) -> str:
-    return re.sub(r"\s+", " ", text.lower()).strip()
-
-
 def classify_trend(item: TrendItem, keywords_sets: dict[str, list[str]]) -> str:
     haystack = tokenize(f"{item.title} {item.description}")
     if any(tokenize(kw) in haystack for kw in keywords_sets["insurance"]):
@@ -282,10 +246,10 @@ def is_relevant(item: TrendItem, keywords_sets: dict[str, list[str]]) -> bool:
     }
 
 
-def match_categories(item: TrendItem, keywords: dict[str, list[str]]) -> dict[str, list[str]]:
+def match_categories(item: TrendItem, keywords_sets: dict[str, list[str]]) -> dict[str, list[str]]:
     haystack = tokenize(f"{item.title} {item.description}")
     matched: dict[str, list[str]] = {}
-    for category, values in keywords.items():
+    for category, values in keywords_sets.items():
         found = [keyword for keyword in values if tokenize(keyword) in haystack]
         if found:
             matched[category] = found
@@ -443,29 +407,15 @@ def main() -> int:
     report_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.parent.mkdir(parents=True, exist_ok=True)
 
-    keywords = load_keywords(args.keywords_file)
-    insurance_keywords = keywords.get("insurance", [])
-    xml_text = load_rss(args)
-    all_trends = parse_rss(xml_text, args.geo)
-    insurance_items = [item for item in all_trends if is_insurance_related(item, insurance_keywords)]
     keywords_sets = load_keywords_sets(args.keywords_file)
     xml_text = load_rss(args)
     all_trends = parse_rss(xml_text, args.geo)
+
     relevant_items: list[TrendItem] = []
     for item in all_trends:
         if is_relevant(item, keywords_sets):
-            classification = classify_trend(item, keywords_sets)
-            relevant_items.append(
-                TrendItem(
-                    title=item.title,
-                    traffic=item.traffic,
-                    pub_date=item.pub_date,
-                    link=item.link,
-                    description=item.description,
-                    source_geo=item.source_geo,
-                    classification=classification,
-                )
-            )
+            item.classification = classify_trend(item, keywords_sets)
+            relevant_items.append(item)
 
     current_trends = [asdict(item) for item in relevant_items]
     previous_snapshot_path = choose_previous_snapshot(state_dir, now, args.lookback_hours)
@@ -483,11 +433,12 @@ def main() -> int:
     unchanged_titles = sorted(set(curr_map.keys()) & set(prev_map.keys()))
 
     article_ideas = [generate_article_idea(curr_map[title]["title"]) for title in new_titles[: args.max_ideas]]
-    fallback_article_ideas = []
+
+    fallback_article_ideas: list[dict[str, str]] = []
     if not article_ideas:
-        categorized_candidates = []
+        categorized_candidates: list[dict[str, str]] = []
         for item in all_trends:
-            matched = match_categories(item, keywords)
+            matched = match_categories(item, keywords_sets)
             if any(category in matched for category in ("finance", "life", "risk", "pain")):
                 categorized_candidates.append(generate_combo_idea_from_general_trend(item, matched))
             else:
@@ -499,9 +450,8 @@ def main() -> int:
     payload = {
         "run_timestamp_utc": now.isoformat(),
         "geo": args.geo,
-        "keywords": keywords,
-        "flat_keywords": flatten_keywords(keywords),
         "keywords_sets": keywords_sets,
+        "flat_keywords": flatten_keywords(keywords_sets),
         "keywords": [item for values in keywords_sets.values() for item in values],
         "total_trends": len(all_trends),
         "insurance_trends_count": len(current_trends),
