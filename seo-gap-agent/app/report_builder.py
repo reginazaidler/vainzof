@@ -18,7 +18,8 @@ def build_reports(
     md_path = reports_dir / "fixes_report.md"
     json_path = reports_dir / "dev_tasks.json"
 
-    opportunities_df.to_csv(csv_path, index=False)
+    # Use UTF-8 BOM so Excel detects Hebrew/non-Latin text correctly on open.
+    opportunities_df.to_csv(csv_path, index=False, encoding="utf-8-sig")
 
     markdown_lines: list[str] = [
         "# SEO Gap Agent Report",
