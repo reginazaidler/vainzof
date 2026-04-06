@@ -143,6 +143,7 @@ def run_pipeline() -> None:
     )
 
     analysis_items: list[dict] = []
+    openai_rate_limited = False
 
     for row in top_df.itertuples(index=False):
         snapshot = extract_page_snapshot(row.page, timeout=settings.request_timeout_seconds)
@@ -167,25 +168,51 @@ def run_pipeline() -> None:
             ],
         )
 
-        analysis = analyze_page_gap(
-            api_key=settings.openai_api_key,
-            model=settings.openai_model,
-            payload={
-                "query": row.query,
-                "page": row.page,
-                "position": float(row.position),
-                "ctr": float(row.ctr),
-                "title": snapshot.title,
-                "meta_description": snapshot.meta_description,
-                "h1": snapshot.h1,
-                "h2s": snapshot.h2s,
-                "main_content": snapshot.main_content,
-            },
-            timeout=max(40, settings.request_timeout_seconds),
-            max_attempts=settings.openai_max_retries,
-            base_retry_delay_seconds=settings.openai_base_retry_delay_seconds,
-            max_retry_delay_seconds=settings.openai_max_retry_delay_seconds,
-        )
+        if openai_rate_limited:
+            analysis = {
+                "query_intent": "unknown",
+                "why_not_rank_1": [
+                    "OpenAI analysis skipped because a previous request in this run hit persistent rate limits"
+                ],
+                "title_fix": "Retry this run later to generate title recommendations.",
+                "opening_paragraph_fix": "Retry this run later to generate opening paragraph recommendations.",
+                "sections_to_add": ["Retry analysis after rate limit window resets"],
+                "faq_to_add": ["What should we improve once analysis is available?"],
+                "trust_elements_to_add": ["N/A (rate-limited run)"],
+                "cta_fix": "Retry this run later to generate CTA recommendations.",
+                "priority": "low",
+                "_meta": {
+                    "fallback_reason": "openai_rate_limit_short_circuit",
+                    "status_code": 429,
+                },
+            }
+        else:
+            analysis = analyze_page_gap(
+                api_key=settings.openai_api_key,
+                model=settings.openai_model,
+                payload={
+                    "query": row.query,
+                    "page": row.page,
+                    "position": float(row.position),
+                    "ctr": float(row.ctr),
+                    "title": snapshot.title,
+                    "meta_description": snapshot.meta_description,
+                    "h1": snapshot.h1,
+                    "h2s": snapshot.h2s,
+                    "main_content": snapshot.main_content,
+                },
+                timeout=max(40, settings.request_timeout_seconds),
+                max_attempts=settings.openai_max_retries,
+                base_retry_delay_seconds=settings.openai_base_retry_delay_seconds,
+                max_retry_delay_seconds=settings.openai_max_retry_delay_seconds,
+            )
+
+            if analysis.get("_meta", {}).get("status_code") == 429:
+                openai_rate_limited = True
+                print(
+                    "OpenAI returned persistent 429 rate-limit responses. "
+                    "Skipping further OpenAI calls for this run and using fallback analysis."
+                )
 
         analysis_items.append(
             {
