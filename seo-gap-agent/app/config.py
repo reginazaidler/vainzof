@@ -14,8 +14,8 @@ class Settings:
     gsc_refresh_token: str
     gsc_site_url: str
     openai_model: str = "gpt-4.1-mini"
-    min_impressions: int = 80
-    min_position: float = 2.0
+    min_impressions: int = 1
+    min_position: float = 1.0
     max_position: float = 12.0
     max_rows: int = 50_000
     top_n: int = 20
@@ -50,6 +50,20 @@ def _parse_brand_queries(raw: str | None) -> list[str]:
     return [q.strip().lower() for q in raw.split(",") if q.strip()]
 
 
+def _int_env(name: str, default: int) -> int:
+    raw = os.getenv(name)
+    if raw is None or not raw.strip():
+        return default
+    return int(raw)
+
+
+def _float_env(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None or not raw.strip():
+        return default
+    return float(raw)
+
+
 def load_settings() -> Settings:
     required = {
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", ""),
@@ -68,7 +82,11 @@ def load_settings() -> Settings:
         gsc_client_secret=required["GSC_CLIENT_SECRET"],
         gsc_refresh_token=required["GSC_REFRESH_TOKEN"],
         gsc_site_url=required["GSC_SITE_URL"],
-        openai_model=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"),
+        openai_model=(os.getenv("OPENAI_MODEL") or "gpt-4.1-mini").strip(),
+        min_impressions=_int_env("MIN_IMPRESSIONS", 1),
+        min_position=_float_env("MIN_POSITION", 1.0),
+        max_position=_float_env("MAX_POSITION", 12.0),
+        top_n=_int_env("TOP_N", 20),
         exclude_brand_queries=_parse_brand_queries(os.getenv("EXCLUDE_BRAND_QUERIES")),
     )
 
