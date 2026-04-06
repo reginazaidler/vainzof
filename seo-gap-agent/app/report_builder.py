@@ -31,6 +31,8 @@ def build_reports(
 
     for idx, item in enumerate(analysis_items, start=1):
         analysis = item["analysis"]
+        rate_limited = analysis.get("_meta", {}).get("fallback_reason") == "rate_limit"
+        issues = ", ".join(analysis.get("why_not_rank_1", [])) if analysis.get("why_not_rank_1") else "N/A"
         markdown_lines.extend(
             [
                 f"### {idx}. Query: `{item['query']}`",
@@ -38,14 +40,22 @@ def build_reports(
                 f"- **Position:** {item['position']:.2f}",
                 f"- **Impressions:** {item['impressions']:.0f}",
                 f"- **Opportunity Score:** {item['opportunity_score']:.4f}",
-                f"- **Issues:** {', '.join(analysis['why_not_rank_1'])}",
-                "- **Exact Fixes:**",
-                f"  - Title: {analysis['title_fix']}",
-                f"  - Opening paragraph: {analysis['opening_paragraph_fix']}",
-                f"  - Sections to add: {', '.join(analysis['sections_to_add'])}",
-                f"  - FAQ to add: {', '.join(analysis['faq_to_add'])}",
-                f"  - Trust elements: {', '.join(analysis['trust_elements_to_add'])}",
-                f"  - CTA fix: {analysis['cta_fix']}",
+                f"- **Issues:** {issues}",
+                (
+                    "- **AI Analysis:** unavailable due to OpenAI rate limit in this run."
+                    if rate_limited
+                    else "- **Exact Fixes:**"
+                ),
+                (
+                    "- Re-run this workflow later (or with higher API limits) to get concrete AI fixes."
+                    if rate_limited
+                    else f"  - Title: {analysis['title_fix']}"
+                ),
+                ("" if rate_limited else f"  - Opening paragraph: {analysis['opening_paragraph_fix']}"),
+                ("" if rate_limited else f"  - Sections to add: {', '.join(analysis['sections_to_add'])}"),
+                ("" if rate_limited else f"  - FAQ to add: {', '.join(analysis['faq_to_add'])}"),
+                ("" if rate_limited else f"  - Trust elements: {', '.join(analysis['trust_elements_to_add'])}"),
+                ("" if rate_limited else f"  - CTA fix: {analysis['cta_fix']}"),
                 f"  - Priority: {analysis['priority']}",
                 "",
             ]
@@ -58,13 +68,14 @@ def build_reports(
                 "position": item["position"],
                 "opportunity_score": item["opportunity_score"],
                 "priority": analysis["priority"],
+                "analysis_status": "rate_limited" if rate_limited else "ok",
                 "tasks": {
-                    "title_fix": analysis["title_fix"],
-                    "opening_paragraph_fix": analysis["opening_paragraph_fix"],
-                    "sections_to_add": analysis["sections_to_add"],
-                    "faq_to_add": analysis["faq_to_add"],
-                    "trust_elements_to_add": analysis["trust_elements_to_add"],
-                    "cta_fix": analysis["cta_fix"],
+                    "title_fix": "" if rate_limited else analysis["title_fix"],
+                    "opening_paragraph_fix": "" if rate_limited else analysis["opening_paragraph_fix"],
+                    "sections_to_add": [] if rate_limited else analysis["sections_to_add"],
+                    "faq_to_add": [] if rate_limited else analysis["faq_to_add"],
+                    "trust_elements_to_add": [] if rate_limited else analysis["trust_elements_to_add"],
+                    "cta_fix": "" if rate_limited else analysis["cta_fix"],
                 },
             }
         )

@@ -8,9 +8,11 @@ On each run the agent:
 
 1. Pulls last 28 days of GSC performance data (`query + page`) with pagination up to 50,000 rows.
 2. Filters opportunities:
-   - `impressions >= 80`
-   - `position between 2 and 12`
+   - `impressions >= 1` (configurable)
+   - `position between 1 and 12` (configurable)
    - excludes brand queries from a configurable list.
+   - if strict filters return no rows, falls back to ranking raw GSC rows so reports are still generated.
+   - logs filter diagnostics (how many rows pass each condition) for easier debugging in Actions logs.
 3. Scores opportunities with:
 
    `opportunity_score = impressions * (expected_ctr - ctr) / position`
@@ -21,6 +23,7 @@ On each run the agent:
    - `reports/top_opportunities.csv`
    - `reports/fixes_report.md`
    - `reports/dev_tasks.json`
+   - if no rows are available at all, writes empty report files instead of exiting without outputs.
 7. Stores run data in SQLite (`data/seo_gap_agent.db`).
 
 ## Project structure
@@ -71,7 +74,11 @@ Set these before running:
 Optional:
 
 - `EXCLUDE_BRAND_QUERIES` (comma-separated, example: `brand,brand.com,brand name`)
-- `OPENAI_MODEL` (default: `gpt-4.1-mini`)
+- `OPENAI_MODEL` (default: `gpt-4.1-mini`; empty value also falls back to this default)
+- `MIN_IMPRESSIONS` (default: `1`)
+- `MIN_POSITION` (default: `1`)
+- `MAX_POSITION` (default: `12`)
+- `TOP_N` (default: `20`)
 
 ## Getting Google Search Console credentials
 
@@ -120,6 +127,8 @@ Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
 
 - Keep `EXCLUDE_BRAND_QUERIES` updated so branded terms are excluded from gap analysis.
 - The AI response is validated to ensure strict JSON keys before report generation.
+- OpenAI analysis retries on `429` rate limits (exponential backoff). If retries are exhausted, fallback placeholder recommendations are written and reused for the remaining rows in that run.
+- When a run is rate-limited by OpenAI, reports explicitly mark AI analysis as unavailable and avoid emitting fake per-row fix text.
 - SQLite tables created:
   - `query_page_metrics`
   - `opportunities`
