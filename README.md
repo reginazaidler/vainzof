@@ -9,6 +9,7 @@ Static website source for `vainzof.co.il`.
 - Shared JavaScript under `js/`.
 - Technical SEO audit utility: `scripts/seo_audit.py`.
 - Optional SEO audit docs: `SEO-AUTOMATION.md`.
+- Insurance trends automation docs: `TRENDS-AUTOMATION.md`.
 
 ## Removed automation
 
@@ -25,3 +26,17 @@ Run the local SEO audit script (optional):
 ```bash
 python scripts/seo_audit.py
 ```
+
+
+## Insurance Trends agent (free)
+
+Run:
+
+```bash
+python3 scripts/insurance_trends_agent.py --geo IL --lookback-hours 6
+```
+
+Outputs are written to `reports/insurance-trends-report.md`, `reports/insurance-trends-report.json`, and `data/trends-agent/snapshot_*.json`.
+
+
+GitHub-only run: use **Actions → Run Insurance Trends Agent** (workflow file: `.github/workflows/insurance-trends-agent.yml`).
