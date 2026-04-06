@@ -48,3 +48,18 @@ CRON_TZ=Asia/Jerusalem
 - ל-Google Trends אין API רשמי חינמי מלא, ולכן RSS הוא מקור "best effort".
 - מומלץ לעדכן את רשימת מילות המפתח בסקריפט בהתאם לתוכן האתר.
 - בריצה ראשונה אין השוואה מלאה כי אין snapshot קודם.
+
+
+## בלי מחשב מקומי (GitHub בלבד)
+
+אם הקוד יושב רק ב-GitHub, אפשר להריץ הכל דרך GitHub Actions:
+
+- Workflow: `.github/workflows/insurance-trends-agent.yml`
+- הרצה ידנית: לשונית **Actions** → **Run Insurance Trends Agent** → **Run workflow**
+- הרצה אוטומטית: כל 4 שעות (לפי UTC)
+- תוצאות: קובץ Artifact בשם `insurance-trends-agent-reports` שמכיל:
+  - `reports/insurance-trends-report.md`
+  - `reports/insurance-trends-report.json`
+  - `data/trends-agent/snapshot_*.json`
+
+> שים לב: ב-GitHub Actions כל ריצה היא סביבה חדשה, לכן השוואה היסטורית מלאה תלויה בקבצי snapshot שמורידים מה-Artifacts של ריצות קודמות.

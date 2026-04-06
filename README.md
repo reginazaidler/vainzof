@@ -37,3 +37,6 @@ python3 scripts/insurance_trends_agent.py --geo IL --lookback-hours 6
 ```
 
 Outputs are written to `reports/insurance-trends-report.md`, `reports/insurance-trends-report.json`, and `data/trends-agent/snapshot_*.json`.
+
+
+GitHub-only run: use **Actions → Run Insurance Trends Agent** (workflow file: `.github/workflows/insurance-trends-agent.yml`).
