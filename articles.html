@@ -231,178 +231,214 @@ gtag('config', 'G-EM8SYH542C');
 
 <section id="articles-grid" class="py-12 bg-slate-50 articles-section">
   <div class="container-clean max-w-5xl">
-    <h2 class="text-3xl font-black text-blue-950 mb-6 text-center">מאמרים לפי קטגוריות</h2>
-    <p class="text-center text-slate-700 mb-12">כדי לחסוך זמן ולהוריד עומס, חילקתי את התוכן לפנסיה, ביטוחים וכסף וניהול פיננסי.</p>
+    <h2 class="text-3xl font-black text-blue-950 mb-4 text-center">מאמרים לפי קטגוריות</h2>
+    <p class="text-center text-slate-700 mb-6">כל התוכן נשאר כאן — פשוט מסודר בצורה נקייה יותר כדי שתמצא מהר את מה שרלוונטי אליך.</p>
 
-    <section class="bg-white border border-slate-200 rounded-2xl p-6 mb-10 text-right">
-      <h3 class="text-2xl font-black text-blue-950 mb-2">שאלות עם כוונת פעולה (מאוד חזק)</h3>
-      <p class="text-slate-700 mb-5">שלוש שאלות שמופיעות בדרך כלל רגע לפני החלטה - ולכן דורשות תוכן חד וברור עם צעדים מעשיים.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <article class="bg-slate-50 border border-slate-200 rounded-2xl p-5 article-card">
-          <h4 class="text-xl font-extrabold text-blue-950 mb-2">איך לבחור סוכן ביטוח טוב?</h4>
-          <p class="text-slate-700 mb-3">איך לבדוק שקיפות, מקצועיות וליווי אמיתי לפני שמחליטים לעבוד עם סוכן ביטוח.</p>
-          <a href="/how-to-choose-insurance-agent" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-        </article>
-        <article class="bg-slate-50 border border-slate-200 rounded-2xl p-5 article-card">
-          <h4 class="text-xl font-extrabold text-blue-950 mb-2">מתי צריך לעדכן ביטוחים?</h4>
-          <p class="text-slate-700 mb-3">נקודות הזמן הקריטיות שבהן חייבים לבצע התאמה מחדש כדי למנוע חוסר כיסוי.</p>
-          <a href="/when-to-update-insurance" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-        </article>
-        <article class="bg-slate-50 border border-slate-200 rounded-2xl p-5 article-card">
-          <h4 class="text-xl font-extrabold text-blue-950 mb-2">האם כדאי לעבור חברת ביטוח?</h4>
-          <p class="text-slate-700 mb-3">מתי מעבר חברה משתלם באמת, ואילו בדיקות חובה לבצע לפני מעבר.</p>
-          <a href="/switch-insurance-company" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-        </article>
+    <nav class="articles-quick-nav" aria-label="קישורים מהירים לקטגוריות">
+      <a href="#cat-actions" class="articles-quick-nav__chip">שאלות עם כוונת פעולה</a>
+      <a href="#cat-pension" class="articles-quick-nav__chip">פנסיה</a>
+      <a href="#cat-insurance" class="articles-quick-nav__chip">ביטוחים</a>
+      <a href="#cat-finance" class="articles-quick-nav__chip">כסף וניהול פיננסי</a>
+    </nav>
+
+    <details id="cat-actions" class="articles-accordion" open>
+      <summary class="articles-accordion__summary">
+        <span class="articles-accordion__title">שאלות עם כוונת פעולה</span>
+        <span class="articles-accordion__hint">פתוח כברירת מחדל</span>
+      </summary>
+      <div class="articles-accordion__content">
+        <p class="text-slate-700 mb-5">שלוש שאלות שמופיעות בדרך כלל רגע לפני החלטה - ולכן דורשות תוכן חד וברור עם צעדים מעשיים.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <article class="bg-slate-50 border border-slate-200 rounded-2xl p-5 article-card">
+            <h4 class="text-xl font-extrabold text-blue-950 mb-2">איך לבחור סוכן ביטוח טוב?</h4>
+            <p class="text-slate-700 mb-3">איך לבדוק שקיפות, מקצועיות וליווי אמיתי לפני שמחליטים לעבוד עם סוכן ביטוח.</p>
+            <a href="/how-to-choose-insurance-agent" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-slate-50 border border-slate-200 rounded-2xl p-5 article-card">
+            <h4 class="text-xl font-extrabold text-blue-950 mb-2">מתי צריך לעדכן ביטוחים?</h4>
+            <p class="text-slate-700 mb-3">נקודות הזמן הקריטיות שבהן חייבים לבצע התאמה מחדש כדי למנוע חוסר כיסוי.</p>
+            <a href="/when-to-update-insurance" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-slate-50 border border-slate-200 rounded-2xl p-5 article-card">
+            <h4 class="text-xl font-extrabold text-blue-950 mb-2">האם כדאי לעבור חברת ביטוח?</h4>
+            <p class="text-slate-700 mb-3">מתי מעבר חברה משתלם באמת, ואילו בדיקות חובה לבצע לפני מעבר.</p>
+            <a href="/switch-insurance-company" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+        </div>
       </div>
-    </section>
+    </details>
 
-    <h3 class="text-2xl font-black text-blue-950 mb-6">פנסיה</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך לבדוק אם דמי הניהול שלכם גבוהים מדי</h2>
-        <p class="text-slate-700 mb-4">מה שנראה כמו "סטנדרט שוק" עלול לעלות לכם עשרות ואף מאות אלפי שקלים עד הפרישה.</p>
-        <a href="pension-fees-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך לבדוק את דוח הפנסיה השנתי</h2>
-        <p class="text-slate-700 mb-4">דוח אחד בשנה יכול לחשוף טעויות בהפקדות ובכיסויים לפני שהן הופכות לנזק ארוך טווח.</p>
-        <a href="pension-report-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">עצמאים: 5 טעויות נפוצות בפנסיה שאפשר למנוע</h2>
-        <p class="text-slate-700 mb-4">טעויות קטנות בהפקדה ובמסלול יכולות למחוק הטבות מס וכסף אמיתי שכבר הרווחתם.</p>
-        <a href="freelancers-pension-mistakes.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">קיבלתם העלאה בשכר? מה לבדוק בפנסיה ובביטוחים</h2>
-        <p class="text-slate-700 mb-4">אם לא בודקים אחרי העלאה, אתם עלולים להפסיד זכויות והפקדות שהיו אמורות לגדול אתכם.</p>
-        <a href="salary-rise-pension-check.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מתי באמת צריך לעדכן מוטבים בפנסיה ובביטוח</h2>
-        <p class="text-slate-700 mb-4">אי-התאמה קטנה במוטבים עלולה ליצור מאבק משפחתי ברגע הכי רגיש שיש.</p>
-        <a href="beneficiaries-update-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">טעויות נפוצות בפנסיה שכדאי להימנע מהן</h2>
-        <p class="text-slate-700 mb-4">השגיאות הקטנות שחוזרות בכל שנה ועולות הרבה כסף בפרישה.</p>
-        <a href="pension-mistakes.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-    </div>
+    <details id="cat-pension" class="articles-accordion">
+      <summary class="articles-accordion__summary">
+        <span class="articles-accordion__title">פנסיה</span>
+        <span class="articles-accordion__hint">6 מדריכים</span>
+      </summary>
+      <div class="articles-accordion__content">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך לבדוק אם דמי הניהול שלכם גבוהים מדי</h2>
+            <p class="text-slate-700 mb-4">מה שנראה כמו "סטנדרט שוק" עלול לעלות לכם עשרות ואף מאות אלפי שקלים עד הפרישה.</p>
+            <a href="pension-fees-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך לבדוק את דוח הפנסיה השנתי</h2>
+            <p class="text-slate-700 mb-4">דוח אחד בשנה יכול לחשוף טעויות בהפקדות ובכיסויים לפני שהן הופכות לנזק ארוך טווח.</p>
+            <a href="pension-report-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">עצמאים: 5 טעויות נפוצות בפנסיה שאפשר למנוע</h2>
+            <p class="text-slate-700 mb-4">טעויות קטנות בהפקדה ובמסלול יכולות למחוק הטבות מס וכסף אמיתי שכבר הרווחתם.</p>
+            <a href="freelancers-pension-mistakes.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">קיבלתם העלאה בשכר? מה לבדוק בפנסיה ובביטוחים</h2>
+            <p class="text-slate-700 mb-4">אם לא בודקים אחרי העלאה, אתם עלולים להפסיד זכויות והפקדות שהיו אמורות לגדול אתכם.</p>
+            <a href="salary-rise-pension-check.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מתי באמת צריך לעדכן מוטבים בפנסיה ובביטוח</h2>
+            <p class="text-slate-700 mb-4">אי-התאמה קטנה במוטבים עלולה ליצור מאבק משפחתי ברגע הכי רגיש שיש.</p>
+            <a href="beneficiaries-update-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">טעויות נפוצות בפנסיה שכדאי להימנע מהן</h2>
+            <p class="text-slate-700 mb-4">השגיאות הקטנות שחוזרות בכל שנה ועולות הרבה כסף בפרישה.</p>
+            <a href="pension-mistakes.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+        </div>
 
-    <section class="bg-white border border-slate-200 rounded-2xl p-5 mb-10 text-right">
-      <h3 class="text-2xl font-black text-blue-950 mb-3">אם מצאת משהו שמדבר אליך - כנראה שיש מה לשפר בתיק שלך</h3>
-      <p class="text-slate-700 mb-4">אפשר לבדוק את זה בצורה מסודרת וללא עלות, ולקבל תמונה ברורה מה לשמר, מה לשפר, ועל מה לא לשלם יותר.</p>
-      <button id="openContactInlineCta" class="site-cta" type="button">לתיאום בדיקה אישית ללא עלות</button>
-    </section>
+        <section class="bg-white border border-slate-200 rounded-2xl p-5 mb-10 text-right">
+          <h3 class="text-2xl font-black text-blue-950 mb-3">אם מצאת משהו שמדבר אליך - כנראה שיש מה לשפר בתיק שלך</h3>
+          <p class="text-slate-700 mb-4">אפשר לבדוק את זה בצורה מסודרת וללא עלות, ולקבל תמונה ברורה מה לשמר, מה לשפר, ועל מה לא לשלם יותר.</p>
+          <button id="openContactInlineCta" class="site-cta" type="button">לתיאום בדיקה אישית ללא עלות</button>
+        </section>
+      </div>
+    </details>
 
-    <h3 class="text-2xl font-black text-blue-950 mb-6">ביטוחים</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">כפל ביטוחים: איך לזהות תשלום מיותר</h2>
-        <p class="text-slate-700 mb-4">בדיקה פשוטה שמגלה אם אתה משלם פעמיים על אותו ביטוח - ולמה זה קורה כמעט לכל משפחה.</p>
-        <a href="insurance-double-coverage.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">כפל ביטוחים - איך לזהות ולעשות סדר</h2>
-        <p class="text-slate-700 mb-4">גם אם הכול נראה תקין, ייתכן שאתם מחזיקים פוליסות חופפות ששואבות כסף כל חודש.</p>
-        <a href="check-insurance-policies.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מה זה ביטוח אובדן כושר עבודה</h2>
-        <p class="text-slate-700 mb-4">אם ההכנסה נעצרת, המשכנתא וההוצאות לא נעצרות - ולכן חשוב להבין אם הכיסוי שלכם באמת מספיק.</p>
-        <a href="loss-of-income-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">ביטוח בריאות פרטי: 5 שאלות לפני שמחדשים</h2>
-        <p class="text-slate-700 mb-4">חידוש אוטומטי בלי בדיקה קצרה עלול להשאיר אתכם עם כיסוי לא מדויק ובעלות גבוהה מדי.</p>
-        <a href="health-insurance-questions-before-renewal.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">סל התרופות 2026: מי נכנס ומי נשאר בחוץ?</h2>
-        <p class="text-slate-700 mb-4">שינוי בסל יכול להפוך כיסוי שהיה נראה מיותר להכרחי - או להפך, ולשנות את העלות החודשית שלכם.</p>
-        <a href="health-basket-2026-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך לבחור סוכן ביטוח נכון</h2>
-        <p class="text-slate-700 mb-4">בחירה לא נכונה של איש המקצוע עלולה לעלות ביוקר במשך שנים בלי שתרגישו בזמן.</p>
-        <a href="choose-insurance-agent.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מה לבדוק בתיק הביטוח אחרי לידת ילד</h2>
-        <p class="text-slate-700 mb-4">אירוע משמח שלא מתעדכנים אחריו בזמן עלול להשאיר את המשפחה עם חורים בכיסוי ברגע האמת.</p>
-        <a href="insurance-checklist-after-birth.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך להתכונן לפגישה שנתית על הפנסיה והביטוחים</h2>
-        <p class="text-slate-700 mb-4">פגישה בלי הכנה גורמת לרוב האנשים לפספס את השאלות שבאמת משפיעות על הכסף שלהם.</p>
-        <a href="preparing-annual-insurance-review.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">לקחתם משכנתא? מה לבדוק בפוליסות ובפנסיה</h2>
-        <p class="text-slate-700 mb-4">אחרי אישור המשכנתא קל לשלם יותר מדי על כיסויים שלא באמת מותאמים למצב החדש.</p>
-        <a href="mortgage-life-checklist.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">טעויות בביטוח חיים שעולות כסף</h2>
-        <p class="text-slate-700 mb-4">כיסוי לא מדויק ומוטבים לא מעודכנים יכולים ליצור עלות מיותרת וסיכון אמיתי למשפחה.</p>
-        <a href="life-insurance-mistakes.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">ביטוחים חשובים למשפחה: מה חובה ומה מומלץ</h2>
-        <p class="text-slate-700 mb-4">מדריך מרוכז שיעזור לכם להבין מאיפה להתחיל כדי להגן על הבית בלי לשלם על כל פוליסה אפשרית.</p>
-        <a href="/essential-family-insurance" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">האם צריך ביטוח חיים כשיש ילדים?</h2>
-        <p class="text-slate-700 mb-4">איך לבדוק אם המשפחה חשופה כלכלית ומה הדרך לחשב כיסוי חיים בצורה נכונה.</p>
-        <a href="/life-insurance-with-kids" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">בריאות פרטי מול קופת חולים: מה ההבדל?</h2>
-        <p class="text-slate-700 mb-4">הסבר ברור על סל בריאות, שב"ן וביטוח פרטי - ואיך להימנע מכפל כיסויים יקר.</p>
-        <a href="/private-vs-hmo-insurance" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">האם ביטוח סיעודי עדיין קיים בישראל?</h2>
-        <p class="text-slate-700 mb-4">מה קיים כיום דרך הקופות ומה חייבים לקחת בחשבון בתכנון פיננסי ארוך טווח.</p>
-        <a href="/long-term-care-insurance-israel" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-    </div>
+    <details id="cat-insurance" class="articles-accordion">
+      <summary class="articles-accordion__summary">
+        <span class="articles-accordion__title">ביטוחים</span>
+        <span class="articles-accordion__hint">13 מדריכים</span>
+      </summary>
+      <div class="articles-accordion__content">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">כפל ביטוחים: איך לזהות תשלום מיותר</h2>
+            <p class="text-slate-700 mb-4">בדיקה פשוטה שמגלה אם אתה משלם פעמיים על אותו ביטוח - ולמה זה קורה כמעט לכל משפחה.</p>
+            <a href="insurance-double-coverage.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">כפל ביטוחים - איך לזהות ולעשות סדר</h2>
+            <p class="text-slate-700 mb-4">גם אם הכול נראה תקין, ייתכן שאתם מחזיקים פוליסות חופפות ששואבות כסף כל חודש.</p>
+            <a href="check-insurance-policies.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מה זה ביטוח אובדן כושר עבודה</h2>
+            <p class="text-slate-700 mb-4">אם ההכנסה נעצרת, המשכנתא וההוצאות לא נעצרות - ולכן חשוב להבין אם הכיסוי שלכם באמת מספיק.</p>
+            <a href="loss-of-income-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">ביטוח בריאות פרטי: 5 שאלות לפני שמחדשים</h2>
+            <p class="text-slate-700 mb-4">חידוש אוטומטי בלי בדיקה קצרה עלול להשאיר אתכם עם כיסוי לא מדויק ובעלות גבוהה מדי.</p>
+            <a href="health-insurance-questions-before-renewal.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">סל התרופות 2026: מי נכנס ומי נשאר בחוץ?</h2>
+            <p class="text-slate-700 mb-4">שינוי בסל יכול להפוך כיסוי שהיה נראה מיותר להכרחי - או להפך, ולשנות את העלות החודשית שלכם.</p>
+            <a href="health-basket-2026-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך לבחור סוכן ביטוח נכון</h2>
+            <p class="text-slate-700 mb-4">בחירה לא נכונה של איש המקצוע עלולה לעלות ביוקר במשך שנים בלי שתרגישו בזמן.</p>
+            <a href="choose-insurance-agent.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מה לבדוק בתיק הביטוח אחרי לידת ילד</h2>
+            <p class="text-slate-700 mb-4">אירוע משמח שלא מתעדכנים אחריו בזמן עלול להשאיר את המשפחה עם חורים בכיסוי ברגע האמת.</p>
+            <a href="insurance-checklist-after-birth.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">איך להתכונן לפגישה שנתית על הפנסיה והביטוחים</h2>
+            <p class="text-slate-700 mb-4">פגישה בלי הכנה גורמת לרוב האנשים לפספס את השאלות שבאמת משפיעות על הכסף שלהם.</p>
+            <a href="preparing-annual-insurance-review.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">לקחתם משכנתא? מה לבדוק בפוליסות ובפנסיה</h2>
+            <p class="text-slate-700 mb-4">אחרי אישור המשכנתא קל לשלם יותר מדי על כיסויים שלא באמת מותאמים למצב החדש.</p>
+            <a href="mortgage-life-checklist.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">טעויות בביטוח חיים שעולות כסף</h2>
+            <p class="text-slate-700 mb-4">כיסוי לא מדויק ומוטבים לא מעודכנים יכולים ליצור עלות מיותרת וסיכון אמיתי למשפחה.</p>
+            <a href="life-insurance-mistakes.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">ביטוחים חשובים למשפחה: מה חובה ומה מומלץ</h2>
+            <p class="text-slate-700 mb-4">מדריך מרוכז שיעזור לכם להבין מאיפה להתחיל כדי להגן על הבית בלי לשלם על כל פוליסה אפשרית.</p>
+            <a href="/essential-family-insurance" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">האם צריך ביטוח חיים כשיש ילדים?</h2>
+            <p class="text-slate-700 mb-4">איך לבדוק אם המשפחה חשופה כלכלית ומה הדרך לחשב כיסוי חיים בצורה נכונה.</p>
+            <a href="/life-insurance-with-kids" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">בריאות פרטי מול קופת חולים: מה ההבדל?</h2>
+            <p class="text-slate-700 mb-4">הסבר ברור על סל בריאות, שב"ן וביטוח פרטי - ואיך להימנע מכפל כיסויים יקר.</p>
+            <a href="/private-vs-hmo-insurance" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">האם ביטוח סיעודי עדיין קיים בישראל?</h2>
+            <p class="text-slate-700 mb-4">מה קיים כיום דרך הקופות ומה חייבים לקחת בחשבון בתכנון פיננסי ארוך טווח.</p>
+            <a href="/long-term-care-insurance-israel" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+        </div>
+      </div>
+    </details>
 
-    <h3 class="text-2xl font-black text-blue-950 mb-6">כסף וניהול פיננסי</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">צ'קליסט פיננסי למשפחה פעם בשנה</h2>
-        <p class="text-slate-700 mb-4">30 דקות בשנה יכולות לחשוף הוצאות מיותרות ודליפות כסף שנמשכות חודשים בלי תשומת לב.</p>
-        <a href="financial-checklist-family.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">קרן חירום משפחתית: כמה כסף באמת צריך בצד</h2>
-        <p class="text-slate-700 mb-4">בלי קרן חירום, כל הוצאה בלתי צפויה הופכת מהר לחוב יקר וללחץ בבית.</p>
-        <a href="family-emergency-fund.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">חוסכים בבנק? כך תבדקו אם אתם משלמים יותר מדי</h2>
-        <p class="text-slate-700 mb-4">כסף ששוכב במסלול לא מתאים נשחק בשקט - והעלות האלטרנטיבית גבוהה ממה שרוב האנשים חושבים.</p>
-        <a href="bank-savings-paying-too-much.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">ביטוח לאומי אזור אישי: מה כדאי לבדוק שם</h2>
-        <p class="text-slate-700 mb-4">כמה דקות באזור האישי יכולות לחשוף פערים שמשפיעים על זכויות ועל כסף שמגיע לכם.</p>
-        <a href="bituach-leumi-personal-area-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מה זה S&amp;P 500 (אס אנד פי 500) ואיך להבין אם זה מתאים לכם</h2>
-        <p class="text-slate-700 mb-4">המדד הכי מדובר בשוק ההון - מדריך פשוט שמסביר מה הוא נותן, מה הסיכונים, ומה לבדוק לפני החלטה.</p>
-        <a href="sp500-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-      <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
-        <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מדד תל אביב 35 (TA-35): מה חשוב לדעת לפני החלטה</h2>
-        <p class="text-slate-700 mb-4">המדריך שיעזור להבין למה המדד הזה בטרנד, מה הסיכונים, ואיך לא לקבל החלטות מתוך לחץ רגעי.</p>
-        <a href="ta35-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
-      </article>
-    </div>
+    <details id="cat-finance" class="articles-accordion">
+      <summary class="articles-accordion__summary">
+        <span class="articles-accordion__title">כסף וניהול פיננסי</span>
+        <span class="articles-accordion__hint">6 מדריכים</span>
+      </summary>
+      <div class="articles-accordion__content">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">צ'קליסט פיננסי למשפחה פעם בשנה</h2>
+            <p class="text-slate-700 mb-4">30 דקות בשנה יכולות לחשוף הוצאות מיותרות ודליפות כסף שנמשכות חודשים בלי תשומת לב.</p>
+            <a href="financial-checklist-family.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">קרן חירום משפחתית: כמה כסף באמת צריך בצד</h2>
+            <p class="text-slate-700 mb-4">בלי קרן חירום, כל הוצאה בלתי צפויה הופכת מהר לחוב יקר וללחץ בבית.</p>
+            <a href="family-emergency-fund.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">חוסכים בבנק? כך תבדקו אם אתם משלמים יותר מדי</h2>
+            <p class="text-slate-700 mb-4">כסף ששוכב במסלול לא מתאים נשחק בשקט - והעלות האלטרנטיבית גבוהה ממה שרוב האנשים חושבים.</p>
+            <a href="bank-savings-paying-too-much.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">ביטוח לאומי אזור אישי: מה כדאי לבדוק שם</h2>
+            <p class="text-slate-700 mb-4">כמה דקות באזור האישי יכולות לחשוף פערים שמשפיעים על זכויות ועל כסף שמגיע לכם.</p>
+            <a href="bituach-leumi-personal-area-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מה זה S&amp;P 500 (אס אנד פי 500) ואיך להבין אם זה מתאים לכם</h2>
+            <p class="text-slate-700 mb-4">המדד הכי מדובר בשוק ההון - מדריך פשוט שמסביר מה הוא נותן, מה הסיכונים, ומה לבדוק לפני החלטה.</p>
+            <a href="sp500-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h2 class="text-2xl font-extrabold text-blue-950 mb-3">מדד תל אביב 35 (TA-35): מה חשוב לדעת לפני החלטה</h2>
+            <p class="text-slate-700 mb-4">המדריך שיעזור להבין למה המדד הזה בטרנד, מה הסיכונים, ואיך לא לקבל החלטות מתוך לחץ רגעי.</p>
+            <a href="ta35-guide.html" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
+
 </main>
     <script src="js/site-header.js"></script>
     <script src="js/site-footer.js"></script>
