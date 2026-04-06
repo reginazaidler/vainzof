@@ -32,7 +32,8 @@ def build_reports(
 
     for idx, item in enumerate(analysis_items, start=1):
         analysis = item["analysis"]
-        rate_limited = analysis.get("_meta", {}).get("fallback_reason") == "rate_limit"
+        fallback_reason = analysis.get("_meta", {}).get("fallback_reason")
+        rate_limited = fallback_reason in {"rate_limit", "openai_retryable_error"}
         issues = ", ".join(analysis.get("why_not_rank_1", [])) if analysis.get("why_not_rank_1") else "N/A"
         markdown_lines.extend(
             [
