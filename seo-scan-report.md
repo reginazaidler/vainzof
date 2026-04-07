@@ -19,8 +19,8 @@
 - `title`: תקין ב-74 עמודים.
 - `meta description`: תקין ב-74 עמודים.
 - `canonical`: תקין ב-74 עמודים.
-- `og:image`: תקין ב-69 עמודים.
-- Schema (`ld+json`): תקין ב-68 עמודים.
+- `og:image`: תקין ב-74 עמודים.
+- Schema (`ld+json`): תקין ב-74 עמודים.
 - `h1`: תקין ב-74 עמודים.
 - `sitemap.xml`: כולל 72 כתובות URL.
 - `robots.txt`: קיים בריפו.
@@ -34,19 +34,10 @@
 אין ממצאים.
 
 ### עמודים ללא `og:image`
-1. `how-to-choose-insurance-agent/index.html`
-2. `life-insurance-with-kids/index.html`
-3. `long-term-care-insurance-israel/index.html`
-4. `switch-insurance-company/index.html`
-5. `when-to-update-insurance/index.html`
+אין ממצאים.
 
 ### עמודים ללא Schema (`ld+json`)
-1. `essential-family-insurance/index.html`
-2. `how-to-choose-insurance-agent/index.html`
-3. `life-insurance-with-kids/index.html`
-4. `long-term-care-insurance-israel/index.html`
-5. `switch-insurance-company/index.html`
-6. `when-to-update-insurance/index.html`
+אין ממצאים.
 
 ### עמודים עם חריגה בכמות `h1`
 אין ממצאים.
