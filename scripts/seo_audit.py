@@ -79,7 +79,7 @@ def audit_page(path: Path) -> PageAudit:
     parser = SEOParser()
     parser.feed(path.read_text(encoding="utf-8", errors="ignore"))
     return PageAudit(
-        page=path.name,
+        page=path.as_posix(),
         has_title=parser.has_title,
         has_description=parser.has_description,
         has_canonical=parser.has_canonical,
@@ -328,9 +328,19 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def collect_html_pages(root: Path) -> list[Path]:
+    return sorted(
+        page
+        for page in root.rglob("*.html")
+        if ".git" not in page.parts
+        and "node_modules" not in page.parts
+        and "__pycache__" not in page.parts
+    )
+
+
 def main() -> int:
     args = parse_args()
-    pages = sorted(Path(".").glob("*.html"))
+    pages = collect_html_pages(Path("."))
     audits = [audit_page(page) for page in pages]
     results = build_results(audits)
 

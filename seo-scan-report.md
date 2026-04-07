@@ -1,6 +1,6 @@
 # סריקת SEO – vainzof.co.il
 
-תאריך סריקה: 2026-04-06  
+תאריך סריקה: 2026-04-07  
 היקף: בדיקת SEO טכנית על קבצי HTML סטטיים בריפו (`*.html`) + בדיקת `robots.txt` ו-`sitemap.xml`.
 
 ## מתודולוגיה
@@ -15,14 +15,14 @@
 
 ## סיכום תוצאות
 
-- נסרקו **55 עמודי HTML**.
-- `title`: תקין ב-55 עמודים.
-- `meta description`: תקין ב-55 עמודים.
-- `canonical`: תקין ב-55 עמודים.
-- `og:image`: תקין ב-55 עמודים.
-- Schema (`ld+json`): תקין ב-55 עמודים.
-- `h1`: תקין ב-55 עמודים.
-- `sitemap.xml`: כולל 71 כתובות URL.
+- נסרקו **74 עמודי HTML**.
+- `title`: תקין ב-74 עמודים.
+- `meta description`: תקין ב-74 עמודים.
+- `canonical`: תקין ב-74 עמודים.
+- `og:image`: תקין ב-69 עמודים.
+- Schema (`ld+json`): תקין ב-68 עמודים.
+- `h1`: תקין ב-74 עמודים.
+- `sitemap.xml`: כולל 72 כתובות URL.
 - `robots.txt`: קיים בריפו.
 
 ## ממצאים
@@ -34,10 +34,19 @@
 אין ממצאים.
 
 ### עמודים ללא `og:image`
-אין ממצאים.
+1. `how-to-choose-insurance-agent/index.html`
+2. `life-insurance-with-kids/index.html`
+3. `long-term-care-insurance-israel/index.html`
+4. `switch-insurance-company/index.html`
+5. `when-to-update-insurance/index.html`
 
 ### עמודים ללא Schema (`ld+json`)
-אין ממצאים.
+1. `essential-family-insurance/index.html`
+2. `how-to-choose-insurance-agent/index.html`
+3. `life-insurance-with-kids/index.html`
+4. `long-term-care-insurance-israel/index.html`
+5. `switch-insurance-company/index.html`
+6. `when-to-update-insurance/index.html`
 
 ### עמודים עם חריגה בכמות `h1`
 אין ממצאים.
