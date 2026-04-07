@@ -1339,11 +1339,14 @@ table {
 .site-footer__nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    direction: ltr;
+    width: 100%;
     gap: 8px 14px;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.04em;
+    text-align: left;
 }
 
 .site-footer__nav a,
