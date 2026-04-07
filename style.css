@@ -71,6 +71,8 @@
 html {
     scroll-behavior: smooth;
     font-family: 'Assistant', sans-serif;
+    /* Prevent mobile browsers from forcing automatic dark mode that can turn pages black. */
+    color-scheme: light;
 }
 
 button,
