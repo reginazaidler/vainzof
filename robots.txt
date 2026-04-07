@@ -7,3 +7,12 @@ Sitemap: https://vainzof.co.il/sitemap.xml
 # AI discovery helpers
 # https://vainzof.co.il/llms.txt
 # https://vainzof.co.il/llms-full.txt
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
