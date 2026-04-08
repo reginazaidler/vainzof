@@ -75,8 +75,13 @@ def call_claude(prompt: str, system: str, max_tokens: int = 4096) -> str:
             "content-type": "application/json",
         },
     )
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        data = json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            data = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"[call_claude] HTTP {e.code} error: {body}", flush=True)
+        raise
 
     return "".join(block.get("text", "") for block in data.get("content", []))
 
