@@ -1,578 +1,441 @@
-#!/usr/bin/env python3
-"""
-generate_article.py
-───────────────────
-Reads the latest insurance-trends JSON report, asks Claude to pick the
-best opportunity and write a full SEO article, then outputs a styled
-HTML file that matches vainzof.co.il.
-
-Usage:
-    python3 scripts/generate_article.py \
-        --json-path reports/insurance-trends-report.json \
-        --output-dir .
-"""
-from __future__ import annotations
-
-import argparse
-import json
-import os
-import re
-import sys
-import textwrap
-import urllib.request
-from datetime import datetime, timezone
-from pathlib import Path
-
-ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
-MODEL = "claude-sonnet-4-6"
-
-GA_ID = "G-EM8SYH542C"
-FORMSPREE_ID = "mdawkwwn"
-WHATSAPP_NUMBER = "972524520222"
-
-SITE_CONTEXT = """
-האתר הוא vainzof.co.il של יובל ויינזוף — יועץ ביטוח ופנסיה עם 18 שנות ניסיון.
-שירות מרכזי: בדיקת תיק ביטוח ופנסיה — זיהוי כפל ביטוחים, עלויות מיותרות, חוסרים.
-קהל יעד: משפחות ישראליות בגיל 30–55 שמשלמות על ביטוחים ופנסיה אבל לא בדקו לאחרונה.
-טון: מקצועי אבל נגיש, ישיר, מעשי. לא מכירתי.
-כתבות קיימות: דמי ניהול פנסיה, כפל ביטוחים, ביטוח חיים למשכנתא, ביטוח סיעודי,
-               בדיקת תיק ביטוח, ביטוח בריאות פרטי, קרן השתלמות.
-""".strip()
-
-
-def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Generate SEO article from trends report")
-    p.add_argument("--json-path", default="reports/insurance-trends-report.json")
-    p.add_argument("--output-dir", default=".")
-    p.add_argument("--max-trends", type=int, default=15,
-                   help="How many trends to send Claude for evaluation")
-    p.add_argument("--dry-run", action="store_true",
-                   help="Print generated content without writing files")
-    return p.parse_args()
-
-
-def api_key() -> str:
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not key:
-        sys.exit("ERROR: ANTHROPIC_API_KEY environment variable is not set.")
-    return key
-
-
-def call_claude(prompt: str, system: str, max_tokens: int = 4096) -> str:
-    payload = json.dumps({
-        "model": MODEL,
-        "max_tokens": max_tokens,
-        "system": system,
-        "messages": [{"role": "user", "content": prompt}],
-    }).encode()
-
-    req = urllib.request.Request(
-        ANTHROPIC_API_URL,
-        data=payload,
-        headers={
-            "x-api-key": api_key(),
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            data = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"[call_claude] HTTP {e.code} error: {body}", flush=True)
-        raise
-
-    return "".join(block.get("text", "") for block in data.get("content", []))
-
-
-def load_report(json_path: str) -> dict:
-    path = Path(json_path)
-    if not path.exists():
-        sys.exit(f"ERROR: report not found at {json_path}")
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def pick_best_trend(report: dict, max_trends: int) -> dict:
-    """Ask Claude to evaluate all trends and pick + plan the best article."""
-
-    # Collect candidates: new direct + fallback ideas
-    candidates = []
-    for t in report.get("changes", {}).get("new", [])[:max_trends]:
-        candidates.append({"title": t["title"], "traffic": t.get("traffic", ""), "type": "direct"})
-    for idea in report.get("article_ideas", [])[:max_trends]:
-        candidates.append({"title": idea["topic"], "headline": idea.get("headline", ""), "type": "idea"})
-    for idea in report.get("fallback_article_ideas", [])[:max_trends]:
-        candidates.append({"title": idea["topic"], "headline": idea.get("headline", ""), "type": "fallback"})
-
-    if not candidates:
-        sys.exit("No trend candidates found in report.")
-
-    prompt = f"""להלן רשימת טרנדים חמים בגוגל ישראל כרגע:
-
-{json.dumps(candidates, ensure_ascii=False, indent=2)}
-
-הקשר האתר:
-{SITE_CONTEXT}
-
-המשימה שלך:
-1. בחר את הטרנד שיש לו הכי הרבה פוטנציאל לכתבה שתתפוס תנועה אורגנית לאתר.
-2. הסבר בקצרה למה בחרת אותו (2-3 משפטים).
-3. תכנן את הכתבה: כותרת H1, מילת מפתח ראשית, slug ב-URL (אנגלית), meta description.
-
-ענה ב-JSON בלבד (ללא backticks), בפורמט:
-{{
-  "chosen_trend": "...",
-  "reason": "...",
-  "h1": "...",
-  "keyword": "...",
-  "slug": "kebab-case-english-slug",
-  "meta_description": "עד 155 תווים",
-  "page_class": "kebab-case-page-class"
-}}"""
-
-    raw = call_claude(prompt, system="אתה מומחה SEO לאתרים בעברית. ענה אך ורק ב-JSON תקין.")
-    raw = raw.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
-    return json.loads(raw)
-
-
-def write_article(meta: dict) -> dict:
-    """Ask Claude to write the full article body (sections as JSON)."""
-
-    prompt = f"""אתה כותב כתבת SEO מלאה לאתר vainzof.co.il.
-
-נושא: {meta['chosen_trend']}
-כותרת H1: {meta['h1']}
-מילת מפתח: {meta['keyword']}
-הקשר האתר: {SITE_CONTEXT}
-
-כתוב כתבה מקצועית בעברית בסגנון האתר.
-הכתבה צריכה:
-- להיות ~800–1000 מילים
-- לפתוח עם פסקת intro חזקה
-- לכלול 4–6 סעיפי H2 עם תוכן מעשי
-- לסיים עם FAQ (3-4 שאלות עם תשובות)
-- לכלול לינקים פנימיים לעמודים קיימים באתר:
-  pension-fees-guide.html, insurance-double-coverage.html,
-  financial-checklist-family.html, insurance-types.html,
-  check-insurance-policies.html, calculator.html, articles.html
-
-ענה ב-JSON בלבד (ללא backticks):
-{{
-  "intro": "פסקת פתיחה ב-HTML (p tags)",
-  "sections": [
-    {{"id": "section-slug", "h2": "כותרת סעיף", "html": "תוכן HTML של הסעיף (p, ul, strong, a tags)"}}
-  ],
-  "faq": [
-    {{"q": "שאלה", "a": "תשובה"}}
-  ],
-  "faq_schema": [
-    {{"name": "שאלה", "text": "תשובה"}}
-  ],
-  "summary": "משפט סיכום קצר לסעיף הסיכום"
-}}"""
-
-    raw = call_claude(
-        prompt,
-        system="אתה עורך תוכן SEO מקצועי לאתרים בעברית. כתוב תוכן מעמיק ומועיל. ענה אך ורק ב-JSON תקין.",
-        max_tokens=4096,
-    )
-    raw = raw.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
-    return json.loads(raw)
-
-
-# ── HTML helpers ──────────────────────────────────────────────────────────────
-
-def toc_items(sections: list[dict]) -> str:
-    return "\n".join(
-        f'          <li><a href="#{s["id"]}">{s["h2"]}</a></li>'
-        for s in sections
-    ) + "\n          <li><a href=\"#faq\">שאלות נפוצות</a></li>"
-
-
-def sections_html(sections: list[dict]) -> str:
-    parts = []
-    for s in sections:
-        parts.append(textwrap.dedent(f"""
-      <section id="{s['id']}" class="pension-section">
-        <h2>{s['h2']}</h2>
-        {s['html']}
-      </section>"""))
-    return "\n".join(parts)
-
-
-def faq_html(faq: list[dict]) -> str:
-    items = []
-    for item in faq:
-        items.append(f"        <h3>{item['q']}</h3>\n        <p>{item['a']}</p>")
-    return "\n".join(items)
-
-
-def faq_schema(faq_schema_items: list[dict]) -> str:
-    entities = []
-    for item in faq_schema_items:
-        entities.append(
-            f"""    {{
-      "@type": "Question",
-      "name": {json.dumps(item['name'], ensure_ascii=False)},
-      "acceptedAnswer": {{
-        "@type": "Answer",
-        "text": {json.dumps(item['text'], ensure_ascii=False)}
-      }}
-    }}"""
-        )
-    return ",\n".join(entities)
-
-
-def build_html(meta: dict, article: dict, now_str: str) -> str:
-    slug = meta["slug"]
-    h1 = meta["h1"]
-    keyword = meta["keyword"]
-    meta_desc = meta["meta_description"]
-    page_class = meta.get("page_class", slug.replace("-", "_") + "_page")
-    canonical_url = f"https://vainzof.co.il/{slug}.html"
-    og_title = h1
-
-    sections = article["sections"]
-    intro = article["intro"]
-    summary = article.get("summary", "")
-
-    return f"""<!doctype html>
+<!doctype html>
 <html lang="he" dir="rtl">
+
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EM8SYH542C"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
-function gtag(){{dataLayer.push(arguments);}}
+function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '{GA_ID}');
+gtag('config', 'G-EM8SYH542C');
 </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{h1}</title>
-<meta name="description" content="{meta_desc}">
-<link rel="canonical" href="{canonical_url}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="{og_title}">
-<meta property="og:description" content="{meta_desc}">
-<meta property="og:url" content="{canonical_url}">
-<meta property="og:image" content="https://vainzof.co.il/assets/yuval.webp">
+<title>אודות יובל ויינזוף | ניסיון בגובה העיניים בביטוח ופנסיה</title>
+<meta name="description" content="אודות יובל ויינזוף: ניסיון של מעל 18 שנה בענף הביטוח, גישת עבודה מסודרת וליווי אישי בבדיקת תיק ביטוח ופנסיה.">
+
+<link rel="canonical" href="https://vainzof.co.il/about.html">
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="יובל ויינזוף | סוכן ביטוח ופיננסים - עושים סדר בכסף שלכם">
+<meta property="og:description" content="עושים סדר בפנסיה ובביטוחים בגובה העיניים." />
+<meta property="og:url" content="https://vainzof.co.il/about.html" />
+<meta property="og:image" content="https://vainzof.co.il/assets/yuval.webp" />
+
 <meta property="og:image:alt" content="יובל ויינזוף - סוכן ביטוח ופנסיה">
 <meta name="twitter:image" content="https://vainzof.co.il/assets/yuval.webp">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{og_title}">
-<meta name="twitter:description" content="{meta_desc}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap">
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="twitter:title" content="אודות יובל ויינזוף - סוכן ביטוח ופנסיוני">
+<meta name="twitter:description" content="הכירו את יובל ויינזוף - סוכן פנסיוני עם ניסיון בליווי משפחות בביטוחים, פנסיה וניהול סיכונים פיננסיים.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800&display=swap" />
+
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<link rel="preload" as="image" href="assets/yuval.webp">
+
+<meta name="google-site-verification" content="oprCzaewYYYCQapSZdDg7s64hh7T-4HreXvsvp6Xcgg">
+
 <script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": {json.dumps(h1, ensure_ascii=False)},
-  "description": {json.dumps(meta_desc, ensure_ascii=False)},
-  "author": {{
-    "@type": "Person",
-    "name": "יובל ויינזוף"
-  }},
-  "publisher": {{
-    "@type": "Organization",
-    "name": "יובל ויינזוף",
-    "logo": {{
-      "@type": "ImageObject",
-      "url": "https://vainzof.co.il/assets/logo.png"
-    }}
-  }},
-  "mainEntityOfPage": "{canonical_url}",
-  "datePublished": "{now_str}",
-  "inLanguage": "he-IL"
-}}
-</script>
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-{faq_schema(article.get('faq_schema', []))}
-  ]
-}}
+{
+"@context": "https://schema.org",
+"@type": "InsuranceAgency",
+"name": "יובל ויינזוף - סוכן ביטוח ופיננסים",
+"url": "https://vainzof.co.il/about.html",
+      "image": "https://vainzof.co.il/assets/yuval.webp",
+      "logo": "https://vainzof.co.il/assets/logo.png",
+"telephone": "052-4520222",
+"areaServed": "IL",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Herzliya",
+        "addressCountry": "IL"
+      },
+"sameAs": [
+"https://www.facebook.com/yuval.vainzof",
+"https://www.instagram.com/vainzof/",
+"https://www.tiktok.com/@vainzof"
+]
+}
 </script>
 <link rel="stylesheet" href="style.css">
-<style>
-body.{page_class} {{
-  background: linear-gradient(180deg, #f8fafc 0%, #edf4ff 100%);
-  font-family: "Assistant", sans-serif;
-}}
-body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
-.pension-guide-wrap {{ max-width: 76rem; margin: 0 auto; padding: 0 1rem; }}
-.pension-grid {{ display: grid; gap: 1.25rem; }}
-.pension-hero, .pension-section, .pension-cta-inline,
-.pension-lead-box, .pension-form-section, .pension-links-box, .pension-toc {{
-  background: #fff; border: 1px solid #dbe5f2;
-  border-radius: 1.5rem; box-shadow: 0 16px 40px rgba(15,23,42,0.06);
-}}
-.pension-hero {{
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
-  border-color: rgba(255,255,255,0.18);
-}}
-.pension-hero p, .pension-hero li {{ color: rgba(255,255,255,0.92); }}
-.pension-hero h1 {{ color: #fff !important; }}
-.pension-hero .bg-blue-50 {{ background: rgba(255,255,255,0.1); color: var(--gold-brand); }}
-.pension-rich-text p, .pension-rich-text ul, .pension-rich-text ol {{ margin-bottom: 1.15rem; }}
-.pension-rich-text p, .pension-rich-text li {{ color: #334155; line-height: 1.95; }}
-.pension-rich-text h2 {{ font-size: clamp(1.65rem,2vw,2.2rem); color: #061a40; font-weight: 800; margin-bottom: 1rem; }}
-.pension-rich-text h3 {{ font-size: clamp(1.2rem,1.4vw,1.45rem); color: #0f172a; font-weight: 800; margin: 1.4rem 0 0.7rem; }}
-.pension-section, .pension-form-section {{ padding: clamp(1.3rem,3vw,2.2rem); scroll-margin-top: 7rem; }}
-.pension-toc, .pension-lead-box, .pension-links-box {{ padding: 1.35rem; }}
-.pension-toc ul, .pension-rich-text ul {{ list-style: disc; padding-right: 1.25rem; }}
-.pension-cta-inline {{ padding: 1.35rem; background: linear-gradient(135deg,#0f172a 0%,#17356a 100%); color: #fff; }}
-.pension-cta-inline p, .pension-cta-inline h2 {{ color: #fff; }}
-.pension-btn-row {{ display: flex; flex-wrap: wrap; gap: 0.75rem; }}
-.pension-btn, .pension-btn-secondary {{
-  display: inline-flex; justify-content: center; align-items: center;
-  min-height: 50px; padding: 12px 24px; border-radius: 12px;
-  font-weight: 800; text-decoration: none; border: 1px solid transparent;
-  transition: transform .2s ease, box-shadow .2s ease;
-}}
-.pension-btn {{ background: var(--gold-brand); color: #ffffff; }}
-.pension-btn--whatsapp {{
-  background: linear-gradient(135deg,#19a866 0%,#128c7e 100%); color: #fff;
-  border-color: #16a34a; box-shadow: 0 10px 22px rgba(22,163,74,0.28);
-}}
-.pension-btn:hover, .pension-btn--whatsapp:hover {{ transform: translateY(-2px); }}
-.pension-links-box a, .pension-rich-text a:not(.pension-btn),
-.pension-toc a {{ color: #1d4ed8; font-weight: 700; text-decoration: underline; text-underline-offset:.2rem; }}
-.pension-form-grid {{ display: grid; gap: 0.9rem; }}
-.pension-form-grid .full-span {{ grid-column: 1/-1; }}
-.pension-form-section input, .pension-form-section textarea {{
-  width: 100%; padding: 0.95rem 1rem; background: #f8fafc;
-  border: 1px solid #cbd5e1; border-radius: 1rem; color: #0f172a;
-  font-weight: 700; text-align: right;
-}}
-.pension-form-section textarea {{ min-height: 130px; resize: vertical; }}
-.pension-success {{ display:none; color:#166534; font-weight:700; }}
-.pension-error {{ display:none; color:#b91c1c; font-weight:700; }}
-@media (min-width: 768px) {{
-  body.{page_class} main {{ padding-top: 3.5rem; padding-bottom: 3.5rem; }}
-  .pension-form-grid {{ grid-template-columns: repeat(2,minmax(0,1fr)); }}
-}}
-@media (max-width: 1023px) {{
-  #mobileMenu.lg\\:hidden {{ display: none; }}
-  #mobileMenu:not(.hidden) {{ display: block; }}
-}}
-@media (min-width: 1024px) {{
-  .pension-grid {{ grid-template-columns: minmax(0,2.1fr) minmax(280px,0.9fr); align-items: start; }}
-  .pension-sidebar {{ position: sticky; top: 7rem; }}
-}}
-@media (max-width: 767px) {{
-  .pension-btn, .pension-btn-secondary {{ width: 100%; }}
-}}
-</style>
+
 </head>
-<body class="{page_class}">
-<a href="#main" class="sr-focusable">דלג לתוכן המרכזי</a>
-<div id="top-anchor" class="site-topbar">
-  <div class="container-clean site-topbar__inner">{h1}</div>
-</div>
-<header class="site-header">
-  <div class="container-clean site-header__inner">
-    <a href="index.html" class="site-brand" aria-label="חזרה לדף הבית">
-      <img src="assets/logo.png" alt="יובל ויינזוף - לוגו" class="site-logo">
-    </a>
-    <nav class="site-nav" aria-label="ניווט ראשי">
-      <a href="index.html" class="nav-link">דף הבית</a>
-      <a href="about.html" class="nav-link">קצת עלי</a>
-      <a href="insurance-types.html" class="nav-link">סוגי ביטוחים</a>
-      <a href="faq.html" class="nav-link">שאלות ותשובות</a>
-      <a href="articles.html" class="nav-link nav-link-active">מאמרים</a>
-    </nav>
-    <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-      </svg>
-    </button>
+ 
+<body class="about-page">
+	<a href="#main" class="sr-focusable">דלג לתוכן המרכזי</a>
+	<div id="top-anchor" class="site-topbar">
+  <div class="container-clean site-topbar__inner">
+            בדיקה של ביטוחים, פנסיה והתחייבויות לפני קבלת החלטות
   </div>
+</div>
+		<header class="site-header">
+    <div class="container-clean site-header__inner">
+        
+        <a href="index.html" class="site-brand" aria-label="חזרה לדף הבית">
+            <img src="assets/logo.png" alt="יובל ויינזוף - לוגו" class="site-logo" width="520" height="160">
+        </a>
+
+     <nav class="site-nav" aria-label="ניווט ראשי">
+		<a href="index.html" class="nav-link">דף הבית</a>
+		<a href="about.html" class="nav-link nav-link-active">קצת עלי</a>
+<a href="insurance-types.html" class="nav-link">סוגי ביטוחים</a>
+		<div class="nav-dropdown">
+                    <button class="nav-dropdown__trigger" type="button">
+                        מרכז ידע
+                        <span aria-hidden="true">▾</span>
+                    </button>
+                    <div id="desktopKnowledgeMenu" class="nav-dropdown__menu" role="menu" aria-label="מרכז ידע">
+                        <a href="articles.html" class="nav-dropdown__item" role="menuitem">מאמרים מקצועיים על פנסיה וביטוחים</a>
+                        <a href="faq.html" class="nav-dropdown__item" role="menuitem">שאלות ותשובות</a>
+                        <a href="calculator.html" class="nav-dropdown__item" role="menuitem">מחשבון חיסכון</a>
+                        <a href="media.html" class="nav-dropdown__item" role="menuitem">וידאו ומדיה</a>
+                    </div>
+                </div>
+		<a href="tel:0524520222" class="header-phone">
+    <span>052-4520222</span>
+    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.1 15.1 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.7.59 1 1 0 011 1V20a1 1 0 01-1 1A18 18 0 013 4a1 1 0 011-1h3.43a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.27 1.1l-2.12 2.1z"/></svg>
+</a>
+		<button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
+	</nav>
+        
+        <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50" aria-label="תפריט מובייל">
+        <a href="index.html" class="block font-bold text-slate-600 border-b pb-2">דף הבית</a>
+        <a href="about.html" class="block font-bold text-blue-900 border-b pb-2">קצת עלי</a>
+<a href="insurance-types.html" class="block font-bold text-slate-600 border-b pb-2">סוגי ביטוחים</a>
+        <a href="articles.html" class="block font-bold text-slate-600 border-b pb-2">מאמרים מקצועיים על פנסיה וביטוחים</a>
+        <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
+        <a href="calculator.html" class="block font-bold text-slate-600 border-b pb-2">מחשבון חיסכון</a>
+        <a href="media.html" class="block font-bold text-slate-600 border-b pb-2">וידאו ומדיה</a>
+<button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
+    </div>
 </header>
-<div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50">
-  <a href="index.html" class="block font-bold text-slate-600 border-b pb-2">דף הבית</a>
-  <a href="about.html" class="block font-bold text-slate-600 border-b pb-2">קצת עלי</a>
-  <a href="insurance-types.html" class="block font-bold text-slate-600 border-b pb-2">סוגי ביטוחים</a>
-  <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
-  <a href="articles.html" class="block font-bold text-blue-900 border-b pb-2">מאמרים</a>
-</div>
 
-<main id="main" class="py-10 md:py-14">
-  <div class="pension-guide-wrap pension-grid">
-    <article class="space-y-6 pension-rich-text">
+    <main id="main">
 
-      <section class="pension-hero">
-        <a href="articles.html" class="font-bold" style="color:rgba(255,255,255,0.8)">← חזרה לכל המאמרים</a>
-        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני — {now_str[:7]}</p>
-        <h1 class="text-4xl font-black mt-5 mb-5" style="color:#fff">{h1}</h1>
-        {intro}
-        <div class="pension-cta-inline mt-8" style="border-radius:1rem">
-          <h2 class="text-2xl font-black mb-3">רוצים לבדוק אם הביטוחים והפנסיה שלכם בסדר?</h2>
-          <p>השאירו פרטים לבדיקה ראשונית חינם — נחזור תוך יום עסקים.</p>
-          <div class="pension-btn-row">
-            <a href="#lead-form" class="pension-btn">בדיקה חינם</a>
-            <a href="https://wa.me/{WHATSAPP_NUMBER}?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%91%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%99%D7%95%D7%AA%D7%A8" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">שליחת הודעה ב-WhatsApp</a>
-          </div>
-        </div>
-      </section>
+<section class="home-hero">
+  <div class="container-clean home-hero__inner">
+    <div class="home-hero__content">
+      <p class="home-hero__badge">
+        <span class="home-hero__dot"></span>
+        ניסיון של מעל 18 שנה בביטוח ובפיננסים
+      </p>
 
-{sections_html(sections)}
+      <h1 class="home-hero__title">
+        נעים להכיר - יובל ויינזוף
+      </h1>
 
-      <section class="pension-section">
-        <h2>סיכום</h2>
-        <p>{summary}</p>
-      </section>
+      <p class="home-hero__subtitle">
+        מעל 18 שנות ניסיון בביטוח ופיננסים, עם ליווי אישי שמתחיל בסדר ובהירות לפני כל החלטה.
+      </p>
 
-      <section id="faq" class="pension-section">
-        <h2>שאלות נפוצות</h2>
-{faq_html(article.get('faq', []))}
-      </section>
+      <p class="home-hero__highlight">
+        קודם מבינים את התמונה המלאה
+      </p>
 
-      <section class="pension-links-box">
-        <h2 class="text-2xl font-black text-blue-950 mb-4">קריאה נוספת</h2>
-        <ul>
-          <li><a href="insurance-types.html">סוגי ביטוחים בישראל</a></li>
-          <li><a href="pension-fees-guide.html">כמה דמי ניהול פנסיה זה גבוה</a></li>
-          <li><a href="insurance-double-coverage.html">כפל ביטוחים: זיהוי ובדיקה</a></li>
-          <li><a href="financial-checklist-family.html">צ׳קליסט פיננסי שנתי למשפחה</a></li>
-          <li><a href="articles.html">כל המאמרים</a></li>
-        </ul>
-      </section>
+      <ul class="hero-checklist">
+        <li><span class="hero-checklist__icon">✓</span><span>ניסיון מבפנים של חברות הביטוח לצד ראיית הלקוח.</span></li>
+        <li><span class="hero-checklist__icon">✓</span><span>בדיקה מסודרת של ביטוחים, פנסיה ועלויות לפני שינוי.</span></li>
+        <li><span class="hero-checklist__icon">✓</span><span>ליווי בגובה העיניים עם החלטות מדויקות ומבוססות.</span></li>
+      </ul>
 
-      <section id="lead-form" class="pension-form-section">
-        <h2 class="text-3xl font-black text-blue-950 mb-3">השאירו פרטים לבדיקה</h2>
-        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות — נבדוק מה קיים בתיק ומה אפשר לשפר.</p>
-        <form id="leadForm" class="space-y-4">
-          <div class="pension-form-grid">
-            <div>
-              <label for="full_name" class="block mb-2 font-bold text-slate-700">שם מלא</label>
-              <input id="full_name" name="user_name" type="text" required placeholder="איך קוראים לך?">
-            </div>
-            <div>
-              <label for="phone" class="block mb-2 font-bold text-slate-700">טלפון</label>
-              <input id="phone" name="user_phone" type="tel" inputmode="tel" required placeholder="מספר טלפון">
-            </div>
-            <div>
-              <label for="email" class="block mb-2 font-bold text-slate-700">אימייל</label>
-              <input id="email" name="user_email" type="email" placeholder="אימייל (לא חובה)">
-            </div>
-            <div>
-              <label for="topic" class="block mb-2 font-bold text-slate-700">נושא</label>
-              <input id="topic" name="topic" type="text" value="{keyword}" readonly>
-            </div>
-            <div class="full-span">
-              <label for="message" class="block mb-2 font-bold text-slate-700">מה תרצו לבדוק?</label>
-              <textarea id="message" name="message" placeholder="תאר בקצרה מה אתה מחפש לבדוק..."></textarea>
-            </div>
-          </div>
-          <div class="pension-btn-row">
-            <div id="formSuccess" class="pension-success">הפרטים נשלחו. נחזור אליכם בקרוב.</div>
-            <div id="formError" class="pension-error">שגיאה בשליחה. אפשר לנסות שוב או לפנות ב-WhatsApp.</div>
-          </div>
-          <div class="pension-btn-row">
-            <button type="submit" class="pension-btn">שליחת טופס</button>
-            <a href="https://wa.me/{WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">שליחת הודעה ב-WhatsApp</a>
-          </div>
-        </form>
-      </section>
+      <div class="hero-actions">
+        <button id="openContactHero" class="site-cta">בדיקה ראשונית - להבין מה יש בתיק</button>
+        <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline-light">דברו איתי בוואטסאפ</a>
+      </div>
+    </div>
 
-    </article>
-
-    <aside class="pension-sidebar space-y-6">
-      <section class="pension-toc">
-        <h2 class="text-2xl font-black text-blue-950 mb-4">תוכן עניינים</h2>
-        <ul>
-{toc_items(sections)}
-        </ul>
-      </section>
-      <section class="pension-lead-box">
-        <h2 class="text-2xl font-black text-blue-950 mb-3">בדיקה חינם</h2>
-        <p class="text-slate-700">יובל ויינזוף — 18 שנות ניסיון בביטוח ופנסיה. בדיקת תיק ראשונית ללא עלות.</p>
-        <div class="pension-btn-row" style="margin-top:1rem">
-          <a href="#lead-form" class="pension-btn">לבדיקה</a>
-          <a href="https://wa.me/{WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">WhatsApp</a>
-        </div>
-      </section>
-    </aside>
   </div>
+</section>
+
+<section class="py-10 md:py-12 bg-white">
+  <div class="container-clean">
+    <div class="max-w-4xl mx-auto text-right space-y-6">
+      <article class="card-clean about-proof-card">
+        <h2 class="about-proof-title mb-4">מי אני</h2>
+        <p class="about-proof-text">
+          אני יובל ויינזוף, סוכן ביטוח ופיננסים, ומעל הכול בן אדם שמאמין שלפני כל החלטה צריך להבין את התמונה המלאה.
+          בשנים האחרונות ליוויתי משפחות, שכירים ועצמאים ברגעים כלכליים חשובים: מעבר עבודה, הרחבת משפחה, משכנתא ושינויים בהכנסה.
+          בכל פגישה אני מתחיל מהבסיס - מה כבר קיים בתיק, מה באמת נחוץ, ומה יוצר הוצאה מיותרת או סיכון שלא זוהה בזמן.
+          המטרה שלי היא להפוך תחום מורכב וברוב המקרים גם מלחיץ, לתהליך ברור, רגוע ומסודר שאפשר לקבל בו החלטות בביטחון.
+        </p>
+      </article>
+
+      <article class="card-clean about-proof-card">
+        <h2 class="about-proof-title mb-4">
+          ניסיון מבפנים - מעל 18 שנה בחברות ביטוח
+        </h2>
+        <p class="about-proof-text mb-4">
+          לפני שהתחלתי ללוות לקוחות באופן אישי, עבדתי במשך מעל 18 שנה בתוך חברות ביטוח מובילות.
+          ראיתי איך מוצרים נבנים, איך תמחור עובד בפועל, ואיפה נוצרים פערים בין מה שהלקוח חושב שיש לו לבין המציאות.
+        </p>
+        <p class="about-proof-text">
+          הניסיון הזה מאפשר לי לזהות מהר מאוד כפילויות, עלויות מיותרות וכיסויים שלא באמת מתאימים –
+          ולהסתכל על התיק לא רק מנקודת מבט של סוכן, אלא גם מהצד של החברות עצמן.
+        </p>
+      </article>
+
+      <article class="card-clean about-proof-card">
+        <h2 class="about-proof-title mb-4">למה אני עובד ככה</h2>
+        <p class="about-proof-text mb-3">
+          ראיתי יותר מדי אנשים שמבצעים שינוי מהיר בלי להבין מה יש להם בפועל, ורק אחר כך מגלים כפל ביטוחים, כיסויים חסרים או עלויות גבוהות לאורך זמן.
+          לכן מבחינתי סדר ובהירות הם לא "שלב מקדים" - הם הבסיס להגנה כלכלית נכונה למשפחה.
+        </p>
+        <p class="about-proof-text mb-6">
+          הגישה שלי משלבת הקשבה אישית עם בדיקה מקצועית מדויקת: להבין קודם את המציאות שלכם, ורק אז להמליץ מה להשאיר, מה לשפר ומה לשנות.
+        </p>
+
+        <div class="card-clean why-choose-card about-fit-card">
+          <h3 class="text-xl font-black text-blue-950 mb-3">מה זה אומר בפועל עבורכם</h3>
+          <ul class="text-slate-700 font-bold text-sm md:text-base space-y-2 list-disc pr-5">
+            <li>זיהוי מהיר של כפילויות וכיסויים שלא משרתים אתכם בפועל.</li>
+            <li>בחינה מדויקת של עלויות ודמי ניהול לפי מה שקיים באמת בתיק.</li>
+            <li>קריאה ביקורתית של התיק גם מנקודת המבט של הלקוח וגם של החברה.</li>
+            <li>תהליך החלטה מסודר שמפחית טעויות יקרות לפני כל שינוי.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-8 md:py-10 bg-slate-50 about-section-tight">
+  <div class="container-clean">
+    <div class="text-center max-w-3xl mx-auto px-2">
+      <h2 class="text-3xl md:text-5xl font-black text-blue-950 mb-3 leading-tight">איך אני עובד</h2>
+      <div class="accent-line mb-8 md:mb-10"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <article class="bg-white rounded-3xl border border-slate-200 shadow-sm text-center hover:border-[var(--gold-brand)] transition-all services-process-card about-compact-card">
+        <span class="process-step-number">1</span>
+        <svg class="w-8 h-8 mb-3 mx-auto text-[var(--navy-main)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <h3 class="text-lg font-black text-blue-950 mb-2">מתחילים מהקיים</h3>
+        <p class="text-slate-600 font-bold text-xs">עוברים על כל מה שכבר יש בתיק - ביטוחים, פנסיה, קרנות והתחייבויות.</p>
+      </article>
+
+      <article class="bg-white rounded-3xl border border-slate-200 shadow-sm text-center hover:border-[var(--gold-brand)] transition-all services-process-card about-compact-card">
+        <span class="process-step-number">2</span>
+        <svg class="w-8 h-8 mb-3 mx-auto text-[var(--navy-main)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2z"></path>
+        </svg>
+        <h3 class="text-lg font-black text-blue-950 mb-2">מבינים את התמונה</h3>
+        <p class="text-slate-600 font-bold text-xs">מזהים כפילויות, חוסרים ועלויות שחשוב לבדוק כדי לקבל החלטה נכונה.</p>
+      </article>
+
+      <article class="bg-white rounded-3xl border border-slate-200 shadow-sm text-center hover:border-[var(--gold-brand)] transition-all services-process-card about-compact-card">
+        <span class="process-step-number">3</span>
+        <svg class="w-8 h-8 mb-3 mx-auto text-[var(--navy-main)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <h3 class="text-lg font-black text-blue-950 mb-2">מחליטים רק אחרי</h3>
+        <p class="text-slate-600 font-bold text-xs">אחרי שיש בהירות מלאה מחליטים מה להשאיר, מה לשנות ומה לשפר.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-8 md:py-10 bg-white about-section-tight">
+  <div class="container-clean">
+    <div class="text-center max-w-3xl mx-auto px-2">
+      <h2 class="text-3xl md:text-4xl font-black text-blue-950 mb-3 leading-tight">למי זה מתאים</h2>
+      <div class="accent-line mb-8 md:mb-10"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <article class="card-clean why-choose-card about-fit-card">
+        <h3 class="text-xl font-black text-blue-950 mb-2">מתאים במיוחד ל</h3>
+        <p class="text-slate-700 leading-relaxed font-bold text-sm">מי שרוצה להבין על מה הוא משלם, מה חסר בתיק, ומה נכון לבדוק לפני כל החלטה חדשה.</p>
+      </article>
+
+      <article class="card-clean why-choose-card about-fit-card">
+        <h3 class="text-xl font-black text-blue-950 mb-2">פחות מתאים ל</h3>
+        <p class="text-slate-700 leading-relaxed font-bold text-sm">מי שמחפש פתרון מהיר בלי בדיקה מסודרת ובלי להבין את המשמעויות לאורך זמן.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-8 bottom-cta bottom-cta--about-mini text-center">
+  <div class="container-clean">
+    <div class="bottom-cta__inner">
+      <h2 class="bottom-cta__title">רוצים לבדוק אם הביטוחים והפנסיה שלכם עושים את המקסימום עבורכם?</h2>
+      <p class="bottom-cta__text">
+        לפני שמבצעים שינוי בביטוחים או בפנסיה, מתחילים בתמונה מלאה ומדויקת של המצב הקיים.
+      </p>
+      <button id="openContactBottom" class="btn-primary">בדיקה ראשונית של התיק</button>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<script src="js/site-header.js"></script>
-<script src="js/site-footer.js"></script>
-<script>
-const leadForm = document.getElementById('leadForm');
-const formSuccess = document.getElementById('formSuccess');
-const formError = document.getElementById('formError');
-leadForm?.addEventListener('submit', async (e) => {{
-  e.preventDefault();
-  formSuccess.style.display = 'none';
-  formError.style.display = 'none';
-  try {{
-    const res = await fetch('https://formspree.io/f/{FORMSPREE_ID}', {{
-      method: 'POST',
-      body: new FormData(leadForm),
-      headers: {{ Accept: 'application/json' }}
-    }});
-    if (!res.ok) throw new Error();
-    leadForm.reset();
-    formSuccess.style.display = 'block';
-  }} catch {{
-    formError.style.display = 'block';
-  }}
-}});
+        <script src="js/site-header.js"></script>
+    <script src="js/site-footer.js"></script>
+
+<div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-[1.5rem] p-5 md:p-8 max-w-lg w-[92%] relative shadow-2xl border-t-4 border-blue-600">
+            <button id="closeContact" class="absolute top-3 left-3 text-slate-400 hover:text-blue-900 text-2xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all z-50">×</button>
+            <div class="mb-4 text-right">
+                <h2 class="text-2xl md:text-3xl font-black text-blue-950">השאירו פרטים</h2>
+                <p class="text-slate-600 text-sm font-bold">בדיקה מקצועית וליווי אישי - ללא עלות</p>
+            </div>
+            <form id="modal-contact-form" class="space-y-3">
+    <div>
+        <input type="text" id="user_name" name="user_name" required placeholder="שם מלא" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm text-right">
+        <p id="name-error" class="hidden text-[10px] text-red-600 font-bold mt-1 text-right"></p>
+    </div>
+
+    <div>
+        <input type="tel" id="user_phone" inputmode="tel" name="user_phone" required placeholder="מספר טלפון" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm text-right">
+        <p id="phone-error" class="hidden text-[10px] text-red-600 font-bold mt-1 text-right"></p>
+    </div>
+
+    <input type="email" id="user_email" name="user_email" placeholder="אימייל (לא חובה)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm text-right">
+
+    <textarea name="message" rows="2" placeholder="מה תרצו שנבדוק?" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm resize-none text-right"></textarea>
+
+    <div class="flex items-center justify-start gap-2 py-1">
+        <input type="checkbox" id="modal_marketing" name="marketing" checked class="w-4 h-4 rounded border-slate-300 text-blue-600 cursor-pointer">
+        <label for="modal_marketing" class="text-[11px] text-slate-500 font-medium cursor-pointer">מאשר קבלת עדכונים מקצועיים</label>
+    </div>
+    
+    <button type="submit" id="modal-submit-btn" class="w-full bg-blue-900 text-white py-3.5 rounded-xl font-bold text-md shadow-lg hover:bg-blue-800 transition-all">תיאום בדיקה אישית</button>
+</form>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('contactModal');
+    const form = document.getElementById('modal-contact-form');
+    const nameInput = document.getElementById('user_name');
+    const phoneInput = document.getElementById('user_phone');
+
+    // --- פונקציות עזר למודאל ---
+    const openModal = () => {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; // מונע גלילה של העמוד כשהמודאל פתוח
+    };
+    
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = ''; 
+        clearErrors();
+    };
+
+    // פתיחה מכל הכפתורים
+    document.querySelectorAll('[id^="openContact"], #openContactBio').forEach(btn => {
+        btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    });
+
+    // סגירה רק ב-X (ביטלתי את הסגירה בלחיצה על הרקע השחור)
+    document.getElementById('closeContact')?.addEventListener('click', closeModal);
+    
+    // סגירה ב-Escape (אופציונלי, נחשב חוויית משתמש טובה)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // --- לוגיקת וולידציה מדויקת כמו ב-INDEX ---
+    function showError(inputId, errorId, message) {
+        const input = document.getElementById(inputId);
+        const error = document.getElementById(errorId);
+        input.classList.add('border-red-500');
+        if (error) {
+            error.textContent = message;
+            error.classList.remove('hidden');
+        }
+    }
+
+    function clearErrors() {
+        [nameInput, phoneInput].forEach(input => input?.classList.remove('border-red-500'));
+        document.querySelectorAll('[id$="-error"]').forEach(err => err.classList.add('hidden'));
+    }
+
+    // הגבלה בזמן הקלדה (כמו ב-Index)
+    nameInput?.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[0-9]/g, ''); // מונע מספרים בשם
+    });
+
+    phoneInput?.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^\d\s\-()]/g, ''); // מאפשר רק תווים של טלפון
+    });
+
+    function validateForm() {
+        clearErrors();
+        let isValid = true;
+        
+        const name = nameInput.value.trim();
+        const phone = phoneInput.value.replace(/[\s\-()]/g, '');
+
+        if (name.length < 2) {
+            showError('user_name', 'name-error', 'נא להזין שם מלא תקין (לפחות 2 אותיות)');
+            isValid = false;
+        }
+
+        const phoneRegex = /^(05\d{8}|07\d{8}|0[23489]\d{7})$/;
+        if (!phoneRegex.test(phone)) {
+            showError('user_phone', 'phone-error', 'נא להזין מספר טלפון ישראלי תקין');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // --- שליחת הטופס ---
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            if (!validateForm()) return;
+
+            const btn = document.getElementById('modal-submit-btn');
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btn.innerText = 'שולח...';
+
+            fetch('https://formspree.io/f/mdawkwwn', {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            }).then(res => {
+                if (res.ok) window.location.href = 'thanks.html';
+                else throw new Error();
+            }).catch(() => {
+                alert('שגיאה בשליחה. נסו שוב או פנו בוואטסאפ.');
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btn.innerText = 'תיאום בדיקה אישית';
+            });
+        });
+    }
+
+    // Scroll Reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 150) el.classList.add('active');
+        });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+});
 </script>
-<script src="js/whatsapp-float.js"></script>
+    <script src="js/whatsapp-float.js"></script>
 </body>
-</html>"""
-
-
-def main() -> int:
-    args = parse_args()
-    report = load_report(args.json_path)
-    now = datetime.now(timezone.utc)
-    now_str = now.strftime("%Y-%m-%d")
-
-    print("[generate_article] Asking Claude to pick best trend & plan article...")
-    meta = pick_best_trend(report, args.max_trends)
-    print(f"[generate_article] Chosen: {meta['chosen_trend']}")
-    print(f"[generate_article] Reason: {meta['reason']}")
-    print(f"[generate_article] Slug: {meta['slug']}")
-
-    print("[generate_article] Writing full article...")
-    article = write_article(meta)
-
-    html = build_html(meta, article, now_str)
-    filename = f"{meta['slug']}.html"
-
-    if args.dry_run:
-        print(f"\n{'='*60}\nDRY RUN — would write: {filename}\n{'='*60}")
-        print(html[:2000], "... [truncated]")
-        return 0
-
-    output_path = Path(args.output_dir) / filename
-    output_path.write_text(html, encoding="utf-8")
-    print(f"[generate_article] Written: {output_path}")
-
-    # Save metadata for the workflow to use
-    meta_out = Path(args.output_dir) / "reports" / "last-generated-article.json"
-    meta_out.parent.mkdir(parents=True, exist_ok=True)
-    meta_out.write_text(
-        json.dumps({"filename": filename, "slug": meta["slug"], "h1": meta["h1"],
-                    "keyword": meta["keyword"], "generated_at": now.isoformat()},
-                   ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    print(f"[generate_article] Metadata saved: {meta_out}")
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+</html>
