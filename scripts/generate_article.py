@@ -705,14 +705,24 @@ def update_llms_txt(llms_path: Path, slug: str, h1: str) -> None:
     if url in content:
         print(f"[llms] Already present: {url}")
         return
-    # Add to high_value_guides list
-    insert_after = "high_value_guides:"
-    idx = content.find(insert_after)
-    if idx != -1:
-        line_end = content.find("\n", idx) + 1
-        content = content[:line_end] + f"- {url}\n" + content[line_end:]
-        llms_path.write_text(content, encoding="utf-8")
+    # Append the new article as a named link before the first blank line
+    # after the last "- " list item in the guides section
+    new_line = f"- {h1}: {url}\n"
+    # Find the last "- " line in the file and insert after it
+    lines = content.splitlines(keepends=True)
+    last_list_idx = -1
+    for i, line in enumerate(lines):
+        if line.startswith("- "):
+            last_list_idx = i
+    if last_list_idx != -1:
+        lines.insert(last_list_idx + 1, new_line)
+        llms_path.write_text("".join(lines), encoding="utf-8")
         print(f"[llms] Added: {url}")
+    else:
+        # Fallback: append at end
+        with llms_path.open("a", encoding="utf-8") as f:
+            f.write(new_line)
+        print(f"[llms] Appended: {url}")
 
 
 def update_all_indexes(slug: str, h1: str, meta_desc: str, today: str) -> None:
@@ -729,10 +739,9 @@ def update_all_indexes(slug: str, h1: str, meta_desc: str, today: str) -> None:
     else:
         print("[sitemap] sitemap.xml not found, skipping")
 
-    if articles.exists():
-        update_articles_html(articles, slug, h1, meta_desc, category)
-    else:
-        print("[articles] articles.html not found, skipping")
+    # articles.html intentionally skipped — agent articles are indexed via
+    # sitemap + llms.txt only, not linked from the site navigation.
+    print("[articles] Skipping articles.html (orphan-by-design)")
 
     if llms.exists():
         update_llms_txt(llms, slug, h1)
