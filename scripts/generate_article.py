@@ -108,6 +108,10 @@ def pick_best_trend(report: dict, max_trends: int) -> dict:
     if not candidates:
         sys.exit("No trend candidates found in report.")
 
+    print(f"[pick_best_trend] {len(candidates)} candidates:", flush=True)
+    for c in candidates:
+        print(f"  • [{c['type']}] {c['title']}", flush=True)
+
     prompt = f"""להלן רשימת טרנדים חמים בגוגל ישראל כרגע:
 
 {json.dumps(candidates, ensure_ascii=False, indent=2)}
@@ -148,10 +152,11 @@ def write_article(meta: dict) -> dict:
 
 כתוב כתבה מקצועית בעברית בסגנון האתר.
 הכתבה צריכה:
-- להיות ~800–1000 מילים
-- לפתוח עם פסקת intro חזקה
-- לכלול 4–6 סעיפי H2 עם תוכן מעשי
-- לסיים עם FAQ (3-4 שאלות עם תשובות)
+- להיות ~500 מילים בסך הכל (קצר וממוקד)
+- לפתוח עם פסקת intro קצרה (2-3 משפטים)
+- לכלול 3–4 סעיפי H2 בלבד, כל סעיף עד 3 פסקאות קצרות
+- לסיים עם FAQ (2-3 שאלות עם תשובות קצרות)
+- חשוב מאוד: כל פסקה עד 2 משפטים, כל bullet עד 10 מילים
 - לכלול לינקים פנימיים לעמודים קיימים באתר:
   pension-fees-guide.html, insurance-double-coverage.html,
   financial-checklist-family.html, insurance-types.html,
@@ -180,7 +185,7 @@ def write_article(meta: dict) -> dict:
     raw = call_claude(
         prompt,
         system="אתה עורך תוכן SEO מקצועי לאתרים בעברית. כתוב תוכן מעמיק ומועיל. ענה אך ורק ב-JSON תקין ללא HTML.",
-        max_tokens=4096,
+        max_tokens=8000,
     )
     raw = raw.strip()
     if raw.startswith("```"):
