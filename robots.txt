@@ -4,15 +4,47 @@ Disallow: /thanks.html
 
 Sitemap: https://vainzof.co.il/sitemap.xml
 
-# AI discovery helpers
-# https://vainzof.co.il/llms.txt
-# https://vainzof.co.il/llms-full.txt
+# AI Search & Discovery
+# Full text: https://vainzof.co.il/llms.txt
 
+# OpenAI
 User-agent: OAI-SearchBot
 Allow: /
-
 User-agent: GPTBot
 Allow: /
+User-agent: ChatGPT-User
+Allow: /
 
+# Google
 User-agent: Googlebot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Meta
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Microsoft / Bing
+User-agent: Bingbot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Common crawlers
+User-agent: CCBot
 Allow: /
