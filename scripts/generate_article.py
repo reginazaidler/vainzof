@@ -599,6 +599,147 @@ leadForm?.addEventListener('submit', async (e) => {{
 </html>"""
 
 
+
+# ── Category mapping ─────────────────────────────────────────────────────────
+
+# Map keywords in slug/title → articles.html category anchor
+CATEGORY_MAP = [
+    (["pension", "פנסיה", "dami", "fees", "retirement", "severance", "salary-rise",
+      "beneficiaries", "freelancer", "pension-report"], "cat-pension"),
+    (["insurance", "bituach", "health", "life", "travel", "mortgage", "loss-of-income",
+      "critical", "sickness", "measles", "birth", "double-coverage", "annual-review",
+      "choose-insurance", "update-insurance", "switch-insurance", "essential-family",
+      "long-term-care", "private-vs-hmo", "overpaying"], "cat-insurance"),
+    (["severance", "pitzuyim", "withdraw", "calculate-severance"], "cat-severance"),
+    (["investment-fund", "gml", "provident", "gemol"], "cat-investment-fund"),
+    (["checklist", "finance", "savings", "bank", "emergency-fund", "bituach-leumi",
+      "sp500", "ta35", "gas", "dollar", "neft", "market"], "cat-finance"),
+]
+
+
+def guess_category(slug: str, h1: str) -> str:
+    text = (slug + " " + h1).lower()
+    for keywords, cat in CATEGORY_MAP:
+        if any(kw in text for kw in keywords):
+            return cat
+    return "cat-insurance"  # default
+
+
+def update_sitemap(sitemap_path: Path, slug: str, today: str) -> None:
+    content = sitemap_path.read_text(encoding="utf-8")
+    url = f"https://vainzof.co.il/{slug}.html"
+    if url in content:
+        print(f"[sitemap] Already present: {url}")
+        return
+    new_entry = f"""
+  <url>
+    <loc>{url}</loc>
+    <lastmod>{today}</lastmod>
+  </url>"""
+    # Insert before closing </urlset>
+    content = content.replace("</urlset>", new_entry + "\n\n</urlset>")
+
+    sitemap_path.write_text(content, encoding="utf-8")
+    print(f"[sitemap] Added: {url}")
+
+
+def update_articles_html(articles_path: Path, slug: str, h1: str,
+                          meta_desc: str, category: str) -> None:
+    content = articles_path.read_text(encoding="utf-8")
+    href = f"{slug}.html"
+    if href in content:
+        print(f"[articles] Already present: {href}")
+        return
+
+    card = f"""          <article class="bg-white border border-slate-200 rounded-2xl p-5 article-card">
+            <h3 class="text-2xl font-extrabold text-blue-950 mb-3">{h1}</h3>
+            <p class="text-slate-700 mb-4">{meta_desc}</p>
+            <a href="{href}" class="font-extrabold text-[var(--navy-main)] article-card__link">לקריאה מלאה ←</a>
+          </article>"""
+
+    # Find the category accordion and insert the card inside its grid
+    anchor = f'id="{category}"'
+    cat_idx = content.find(anchor)
+    if cat_idx == -1:
+        # fallback: insert before </urlset> replacement won't work, use cat-insurance
+        anchor = 'id="cat-insurance"'
+        cat_idx = content.find(anchor)
+
+    if cat_idx == -1:
+        print(f"[articles] Category anchor not found, skipping")
+        return
+
+    # Find the first <div class="grid inside this category block
+    grid_start = content.find('<div class="grid grid-cols-1 md:grid-cols-3 gap-4', cat_idx)
+    if grid_start == -1:
+        print(f"[articles] Grid not found in category")
+        return
+
+    # Insert the new card right after the opening grid div tag
+    grid_tag_end = content.find('>', grid_start) + 1
+    content = content[:grid_tag_end] + "\n" + card + "\n" + content[grid_tag_end:]
+
+    # Also update the count in the summary hint
+    # Find hint span for this category
+    hint_search_start = cat_idx
+    hint_idx = content.find('articles-accordion__hint', hint_search_start)
+    if hint_idx != -1:
+        hint_end = content.find('</span>', hint_idx)
+        hint_content = content[hint_idx:hint_end]
+        import re
+        m = re.search(r'(\d+)', hint_content)
+        if m:
+            old_count = int(m.group(1))
+            content = content[:hint_idx] + hint_content.replace(
+                str(old_count), str(old_count + 1), 1) + content[hint_end:]
+
+    articles_path.write_text(content, encoding="utf-8")
+    print(f"[articles] Added card to {category}: {h1}")
+
+
+def update_llms_txt(llms_path: Path, slug: str, h1: str) -> None:
+    if not llms_path.exists():
+        return
+    content = llms_path.read_text(encoding="utf-8")
+    url = f"https://vainzof.co.il/{slug}.html"
+    if url in content:
+        print(f"[llms] Already present: {url}")
+        return
+    # Add to high_value_guides list
+    insert_after = "high_value_guides:"
+    idx = content.find(insert_after)
+    if idx != -1:
+        line_end = content.find("\n", idx) + 1
+        content = content[:line_end] + f"- {url}\n" + content[line_end:]
+        llms_path.write_text(content, encoding="utf-8")
+        print(f"[llms] Added: {url}")
+
+
+def update_all_indexes(slug: str, h1: str, meta_desc: str, today: str) -> None:
+    """Update sitemap, articles.html and llms.txt for the new article."""
+    category = guess_category(slug, h1)
+    print(f"[indexes] Category detected: {category}")
+
+    sitemap = Path("sitemap.xml")
+    articles = Path("articles.html")
+    llms = Path("llms.txt")
+
+    if sitemap.exists():
+        update_sitemap(sitemap, slug, today)
+    else:
+        print("[sitemap] sitemap.xml not found, skipping")
+
+    if articles.exists():
+        update_articles_html(articles, slug, h1, meta_desc, category)
+    else:
+        print("[articles] articles.html not found, skipping")
+
+    if llms.exists():
+        update_llms_txt(llms, slug, h1)
+    else:
+        print("[llms] llms.txt not found, skipping")
+
+
 def main() -> int:
     args = parse_args()
     report = load_report(args.json_path)
@@ -636,6 +777,15 @@ def main() -> int:
         encoding="utf-8",
     )
     print(f"[generate_article] Metadata saved: {meta_out}")
+
+    # Update sitemap, articles.html, llms.txt
+    update_all_indexes(
+        slug=meta["slug"],
+        h1=meta["h1"],
+        meta_desc=meta["meta_description"],
+        today=now_str,
+    )
+
     return 0
 
 
