@@ -65,6 +65,17 @@ jobs:
               f.write(f"new_count={new_count}\n")
           EOF
 
+      - name: Debug API key
+        run: |
+          echo "Key starts with: ${ANTHROPIC_API_KEY:0:10}..."
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ERROR: ANTHROPIC_API_KEY is empty!"
+          else
+            echo "Key length: ${#ANTHROPIC_API_KEY}"
+          fi
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Generate SEO article with Claude
         if: >
           steps.check_trends.outputs.has_content == 'true' &&
