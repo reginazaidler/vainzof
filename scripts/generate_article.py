@@ -140,27 +140,53 @@ def pick_best_trend(report: dict, max_trends: int) -> dict:
     return json.loads(raw)
 
 
+# Internal links map for articles
+INTERNAL_LINKS = {
+    "pension-fees-guide": ("pension-fees-guide.html", "כמה דמי ניהול פנסיה זה גבוה"),
+    "insurance-double-coverage": ("insurance-double-coverage.html", "כפל ביטוחים — זיהוי ובדיקה"),
+    "financial-checklist-family": ("financial-checklist-family.html", "צ׳קליסט פיננסי שנתי למשפחה"),
+    "insurance-types": ("insurance-types.html", "סוגי ביטוחים בישראל"),
+    "check-insurance-policies": ("check-insurance-policies.html", "איך בודקים תיק ביטוח"),
+    "calculator": ("calculator.html", "מחשבון חיסכון"),
+    "articles": ("articles.html", "כל המאמרים על ביטוח ופנסיה"),
+    "pension-guide": ("pension-guide.html", "מדריך פנסיה"),
+    "life-insurance": ("life-insurance.html", "ביטוח חיים"),
+    "health-insurance": ("health-insurance.html", "ביטוח בריאות"),
+    "travel-insurance": ("travel-insurance.html", "ביטוח נסיעות לחו׳׳ל"),
+    "mortgage-insurance": ("mortgage-insurance.html", "ביטוח משכנתא"),
+    "loss-of-income": ("loss-of-income.html", "ביטוח אובדן כושר עבודה"),
+}
+
+
 def write_article(meta: dict) -> dict:
     """Ask Claude to write the full article body (sections as JSON)."""
 
-    prompt = f"""אתה כותב כתבת SEO מלאה לאתר vainzof.co.il.
+    links_list = "\n".join(
+        f'  - "{slug}": href="{href}" טקסט="{label}"'
+        for slug, (href, label) in INTERNAL_LINKS.items()
+    )
+
+    prompt = f"""אתה כותב כתבת SEO מלאה לאתר vainzof.co.il של יובל ויינזוף, יועץ ביטוח ופנסיה.
 
 נושא: {meta['chosen_trend']}
 כותרת H1: {meta['h1']}
 מילת מפתח: {meta['keyword']}
-הקשר האתר: {SITE_CONTEXT}
 
-כתוב כתבה מקצועית בעברית בסגנון האתר.
+כתוב כתבה מקצועית ומועילה בעברית.
 הכתבה צריכה:
-- להיות ~500 מילים בסך הכל (קצר וממוקד)
+- להיות ~500 מילים (קצר וממוקד)
 - לפתוח עם פסקת intro קצרה (2-3 משפטים)
-- לכלול 3–4 סעיפי H2 בלבד, כל סעיף עד 3 פסקאות קצרות
-- לסיים עם FAQ (2-3 שאלות עם תשובות קצרות)
-- חשוב מאוד: כל פסקה עד 2 משפטים, כל bullet עד 10 מילים
-- לכלול לינקים פנימיים לעמודים קיימים באתר:
-  pension-fees-guide.html, insurance-double-coverage.html,
-  financial-checklist-family.html, insurance-types.html,
-  check-insurance-policies.html, calculator.html, articles.html
+- לכלול 3–4 סעיפי H2, כל סעיף עד 3 פסקאות קצרות
+- לסיים עם FAQ (2-3 שאלות ותשובות)
+- כל פסקה עד 2 משפטים, כל bullet עד 10 מילים
+
+חוקים חשובים:
+1. אל תזכיר שהנושא הוא "טרנד" או "חיפוש נפוץ היום" — כתוב כמאמר מידע רגיל.
+2. לינקים פנימיים: השתמש רק בלינקים מהרשימה הבאה, כתוב את ה-href המדויק:
+{links_list}
+3. הוסף לכל היותר 2 לינקים פנימיים רלוונטיים בגוף הכתבה — לא יותר.
+4. בסוף הכתבה (סעיף "קריאה נוספת") הוסף עד 3 לינקים רלוונטיים מהרשימה.
+5. אל תוסיף יותר מ-1 קריאה לפעולה (CTA) בכל הכתבה — בסוף בלבד, בסגנון עדין.
 
 חשוב: ב-JSON אסור HTML ואסור מרכאות כפולות בתוך ערכים.
 כתוב טקסט רגיל בלבד.
@@ -213,18 +239,36 @@ def toc_items(sections: list[dict]) -> str:
     ) + "\n          <li><a href=\"#faq\">שאלות נפוצות</a></li>"
 
 
+def linkify(text: str) -> str:
+    """Replace bare hrefs like pension-fees-guide.html with proper <a> tags."""
+    import re
+    for slug, (href, label) in INTERNAL_LINKS.items():
+        # Replace bare filename references
+        text = text.replace(href, f'<a href="{href}">{label}</a>')
+    return text
+
+
 def sections_html(sections: list[dict]) -> str:
     parts = []
     for s in sections:
-        paras = "".join(f"<p>{p}</p>\n        " for p in s.get("paragraphs", []))
+        paras = "".join(f"<p>{linkify(p)}</p>\n        " for p in s.get("paragraphs", []))
         bullets = ""
         if s.get("bullets"):
-            items = "".join(f"<li>{b}</li>" for b in s["bullets"])
+            items = "".join(f"<li>{linkify(b)}</li>" for b in s["bullets"])
             bullets = f"<ul>{items}</ul>"
+        # Handle "links" field if Claude returns it
+        links_html = ""
+        if s.get("links"):
+            link_items = ""
+            for lnk in s["links"]:
+                href = lnk.get("href", "#")
+                label = lnk.get("label", href)
+                link_items += f'<li><a href="{href}">{label}</a></li>'
+            links_html = f'<ul>{link_items}</ul>'
         parts.append(f"""
       <section id="{s['id']}" class="pension-section">
         <h2>{s['h2']}</h2>
-        {paras}{bullets}
+        {paras}{bullets}{links_html}
       </section>""")
     return "\n".join(parts)
 
@@ -444,14 +488,6 @@ body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
         <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני — {now_str[:7]}</p>
         <h1 class="text-4xl font-black mt-5 mb-5" style="color:#fff">{h1}</h1>
         {intro}
-        <div class="pension-cta-inline mt-8" style="border-radius:1rem">
-          <h2 class="text-2xl font-black mb-3">רוצים לבדוק אם הביטוחים והפנסיה שלכם בסדר?</h2>
-          <p>השאירו פרטים לבדיקה ראשונית חינם — נחזור תוך יום עסקים.</p>
-          <div class="pension-btn-row">
-            <a href="#lead-form" class="pension-btn">בדיקה חינם</a>
-            <a href="https://wa.me/{WHATSAPP_NUMBER}?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%91%D7%9C%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%99%D7%95%D7%AA%D7%A8" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">שליחת הודעה ב-WhatsApp</a>
-          </div>
-        </div>
       </section>
 
 {sections_html(sections)}
@@ -524,10 +560,9 @@ body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
         </ul>
       </section>
       <section class="pension-lead-box">
-        <h2 class="text-2xl font-black text-blue-950 mb-3">בדיקה חינם</h2>
-        <p class="text-slate-700">יובל ויינזוף — 18 שנות ניסיון בביטוח ופנסיה. בדיקת תיק ראשונית ללא עלות.</p>
+        <h2 class="text-2xl font-black text-blue-950 mb-3">יש שאלה?</h2>
+        <p class="text-slate-700">יובל ויינזוף — יועץ ביטוח ופנסיה. אפשר לפנות ישירות.</p>
         <div class="pension-btn-row" style="margin-top:1rem">
-          <a href="#lead-form" class="pension-btn">לבדיקה</a>
           <a href="https://wa.me/{WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">WhatsApp</a>
         </div>
       </section>
