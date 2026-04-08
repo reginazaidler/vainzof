@@ -11,9 +11,14 @@ on:
         description: 'Comparison window in hours'
         required: false
         default: '6'
+      skip_article:
+        description: 'Skip article generation (trends report only)'
+        required: false
+        default: 'false'
+
   schedule:
-    # Every 4 hours (UTC)
-    - cron: '0 */4 * * *'
+    # Every 30 minutes
+    - cron: '*/30 * * * *'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
@@ -22,24 +27,124 @@ jobs:
   run-insurance-trends-agent:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write   # needed for git push
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Fetch full history so git log works; token allows push
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      # ── Step 1: run the existing trends scanner ───────────────────────────
       - name: Run insurance trends agent
         env:
           GEO: ${{ inputs.geo || 'IL' }}
           LOOKBACK_HOURS: ${{ inputs.lookback_hours || '6' }}
         run: |
-          python3 scripts/insurance_trends_agent.py --geo "$GEO" --lookback-hours "$LOOKBACK_HOURS"
+          python3 scripts/insurance_trends_agent.py \
+            --geo "$GEO" \
+            --lookback-hours "$LOOKBACK_HOURS"
 
+      # ── Step 2: generate article with Claude (skip if no new trends or flag) ──
+      - name: Check for new trends
+        id: check_trends
+        run: |
+          python3 - <<'EOF'
+          import json, sys
+          from pathlib import Path
+          report = json.loads(Path("reports/insurance-trends-report.json").read_text())
+          new_count = len(report.get("changes", {}).get("new", []))
+          fallback_count = len(report.get("fallback_article_ideas", []))
+          ideas_count = len(report.get("article_ideas", []))
+          has_content = (new_count + ideas_count + fallback_count) > 0
+          print(f"new={new_count} ideas={ideas_count} fallback={fallback_count}")
+          # Write to GITHUB_OUTPUT
+          with open("$GITHUB_OUTPUT", "a") as f:
+              f.write(f"has_content={'true' if has_content else 'false'}\n")
+              f.write(f"new_count={new_count}\n")
+          EOF
+
+      - name: Generate SEO article with Claude
+        if: |
+          steps.check_trends.outputs.has_content == 'true' &&
+          inputs.skip_article != 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python3 scripts/generate_article.py \
+            --json-path reports/insurance-trends-report.json \
+            --output-dir .
+
+      # ── Step 3: commit & push everything that changed ────────────────────
+      - name: Commit and push new files
+        run: |
+          git config user.name  "Trends Agent"
+          git config user.email "trends-agent@vainzof.co.il"
+
+          # Stage reports + snapshots + any new HTML article
+          git add reports/ data/trends-agent/ || true
+
+          # Stage newly generated article HTML (if any)
+          if [ -f reports/last-generated-article.json ]; then
+            SLUG=$(python3 -c "
+          import json
+          d = json.load(open('reports/last-generated-article.json'))
+          print(d.get('slug',''))
+          ")
+            if [ -n "$SLUG" ] && [ -f "${SLUG}.html" ]; then
+              git add "${SLUG}.html"
+              echo "ARTICLE_SLUG=$SLUG" >> $GITHUB_ENV
+            fi
+            git add reports/last-generated-article.json
+          fi
+
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          else
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+            if [ -n "$ARTICLE_SLUG" ]; then
+              git commit -m "auto: trends + article ${ARTICLE_SLUG} [${TIMESTAMP}]"
+            else
+              git commit -m "auto: trends report update [${TIMESTAMP}]"
+            fi
+            git push
+          fi
+
+      # ── Step 4: send email summary (only when an article was created) ─────
+      - name: Send email summary
+        if: env.ARTICLE_SLUG != ''
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          to: ${{ secrets.MAIL_TO }}
+          from: "Trends Agent <${{ secrets.MAIL_USERNAME }}>"
+          subject: "✅ כתבה חדשה נוצרה: ${{ env.ARTICLE_SLUG }}"
+          body: |
+            נוצרה כתבה חדשה אוטומטית לאתר vainzof.co.il
+
+            כתובת: https://vainzof.co.il/${{ env.ARTICLE_SLUG }}.html
+
+            לצפייה בקובץ ב-GitHub:
+            https://github.com/${{ github.repository }}/blob/main/${{ env.ARTICLE_SLUG }}.html
+
+            דוח הטרנדים המלא:
+            https://github.com/${{ github.repository }}/blob/main/reports/insurance-trends-report.md
+
+            ---
+            נשלח אוטומטית על ידי Trends Agent
+
+      # ── Step 5: upload artifacts (always) ────────────────────────────────
       - name: Upload trends reports artifact
         uses: actions/upload-artifact@v4
         with:
@@ -47,5 +152,6 @@ jobs:
           path: |
             reports/insurance-trends-report.md
             reports/insurance-trends-report.json
+            reports/last-generated-article.json
             data/trends-agent/snapshot_*.json
           if-no-files-found: warn
