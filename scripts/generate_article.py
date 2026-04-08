@@ -24,7 +24,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
-MODEL = "claude-opus-4-5"
+MODEL = "claude-sonnet-4-6"
 
 GA_ID = "G-EM8SYH542C"
 FORMSPREE_ID = "mdawkwwn"
