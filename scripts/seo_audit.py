@@ -89,6 +89,77 @@ def audit_page(path: Path) -> PageAudit:
     )
 
 
+SKIP_PAGES = {"choose-insurance-agent.html", "thanks.html"}
+
+
+def page_has_noindex(path: Path) -> bool:
+    content = path.read_text(encoding="utf-8", errors="ignore")
+    return bool(re.search(r'noindex', content[:2000], re.IGNORECASE)
+                and re.search(r'name=["\']robots["\']', content[:2000], re.IGNORECASE))
+
+
+def extract_page_title(path: Path) -> str:
+    content = path.read_text(encoding="utf-8", errors="ignore")
+    m = re.search(r"<title>(.*?)</title>", content, re.DOTALL)
+    return m.group(1).strip() if m else ""
+
+
+def page_to_url(path: Path, root: Path) -> str:
+    rel = path.relative_to(root)
+    parts = rel.parts
+    if len(parts) == 1:
+        return f"https://vainzof.co.il/{parts[0]}"
+    elif len(parts) == 2 and parts[1] == "index.html":
+        return f"https://vainzof.co.il/{parts[0]}"
+    return f"https://vainzof.co.il/{'/'.join(parts)}"
+
+
+def sync_sitemap(sitemap_path: Path, pages: list[Path], root: Path, today: str) -> list[str]:
+    """Add HTML pages missing from sitemap.xml. Returns list of added URLs."""
+    if not sitemap_path.exists():
+        return []
+    content = sitemap_path.read_text(encoding="utf-8")
+    added: list[str] = []
+    for page in pages:
+        if page.name in SKIP_PAGES:
+            continue
+        if page_has_noindex(page):
+            continue
+        url = page_to_url(page, root)
+        if url in content:
+            continue
+        entry = f"\n  <url>\n    <loc>{url}</loc>\n    <lastmod>{today}</lastmod>\n  </url>"
+        content = content.replace("</urlset>", entry + "\n\n</urlset>")
+        added.append(url)
+        print(f"[sync-sitemap] Added: {url}")
+    if added:
+        sitemap_path.write_text(content, encoding="utf-8")
+    return added
+
+
+def sync_llms_txt(llms_path: Path, added_urls: list[str], root: Path) -> None:
+    """Append newly added pages to llms.txt."""
+    if not llms_path.exists() or not added_urls:
+        return
+    content = llms_path.read_text(encoding="utf-8")
+    lines = content.splitlines(keepends=True)
+    last_list_idx = max((i for i, l in enumerate(lines) if l.startswith("- ")), default=-1)
+    new_lines: list[str] = []
+    for url in added_urls:
+        if url in content:
+            continue
+        slug = url.replace("https://vainzof.co.il/", "")
+        page_path = root / (slug if slug.endswith(".html") else f"{slug}/index.html")
+        title = extract_page_title(page_path) if page_path.exists() else slug
+        new_lines.append(f"- {title}: {url}\n")
+        print(f"[sync-llms] Added: {url}")
+    if new_lines:
+        insert_at = last_list_idx + 1 if last_list_idx != -1 else len(lines)
+        for i, line in enumerate(new_lines):
+            lines.insert(insert_at + i, line)
+        llms_path.write_text("".join(lines), encoding="utf-8")
+
+
 def count_sitemap_urls(path: Path) -> int:
     xml = path.read_text(encoding="utf-8", errors="ignore")
     return len(re.findall(r"<loc>", xml))
@@ -340,7 +411,14 @@ def collect_html_pages(root: Path) -> list[Path]:
 
 def main() -> int:
     args = parse_args()
-    pages = collect_html_pages(Path("."))
+    root = Path(".")
+    pages = collect_html_pages(root)
+
+    # Sync sitemap.xml and llms.txt with any new pages
+    today = date.today().isoformat()
+    added_urls = sync_sitemap(Path("sitemap.xml"), pages, root, today)
+    sync_llms_txt(Path("llms.txt"), added_urls, root)
+
     audits = [audit_page(page) for page in pages]
     results = build_results(audits)
 
