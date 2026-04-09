@@ -731,6 +731,25 @@ def update_llms_txt(llms_path: Path, slug: str, h1: str) -> None:
         print(f"[llms] Appended: {url}")
 
 
+CSV_HEADERS = ["date", "slug", "title", "keyword", "url", "status", "notes"]
+
+
+def log_article(csv_path: Path, slug: str, title: str, keyword: str, generated_at: str) -> None:
+    """Append a row to the generated-articles CSV tracking log."""
+    import csv as _csv
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    write_header = not csv_path.exists()
+    url = f"https://vainzof.co.il/{slug}.html"
+    date_str = generated_at[:10]
+    with csv_path.open("a", encoding="utf-8", newline="") as f:
+        writer = _csv.DictWriter(f, fieldnames=CSV_HEADERS)
+        if write_header:
+            writer.writeheader()
+        writer.writerow({"date": date_str, "slug": slug, "title": title,
+                         "keyword": keyword, "url": url, "status": "", "notes": ""})
+    print(f"[tracking] Logged to {csv_path}")
+
+
 def update_all_indexes(slug: str, h1: str, meta_desc: str, today: str) -> None:
     """Update sitemap, articles.html and llms.txt for the new article."""
     category = guess_category(slug, h1)
@@ -792,6 +811,15 @@ def main() -> int:
         encoding="utf-8",
     )
     print(f"[generate_article] Metadata saved: {meta_out}")
+
+    # Append to generated-articles tracking log
+    log_article(
+        csv_path=Path(args.output_dir) / "reports" / "generated-articles.csv",
+        slug=meta["slug"],
+        title=meta["h1"],
+        keyword=meta["keyword"],
+        generated_at=now.isoformat(),
+    )
 
     # Update sitemap, articles.html, llms.txt
     update_all_indexes(
