@@ -1,0 +1,4 @@
+# Sync sitemap.xml and llms.txt with any new HTML pages every 30 minutes.
+# Automatically commits and pushes to GitHub if new pages are found.
+CRON_TZ=Asia/Jerusalem
+*/30 * * * * cd /workspace/reginazaidler.github.io && /usr/bin/python3 scripts/sync_indexes.py >> /workspace/reginazaidler.github.io/sync-indexes.log 2>&1
