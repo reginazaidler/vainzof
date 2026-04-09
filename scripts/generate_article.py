@@ -19,6 +19,7 @@ import os
 import re
 import sys
 import textwrap
+import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -58,7 +59,7 @@ def api_key() -> str:
     return key
 
 
-def call_claude(prompt: str, system: str, max_tokens: int = 4096) -> str:
+def call_claude(prompt: str, system: str, max_tokens: int = 4096, retries: int = 5) -> str:
     payload = json.dumps({
         "model": MODEL,
         "max_tokens": max_tokens,
@@ -66,24 +67,29 @@ def call_claude(prompt: str, system: str, max_tokens: int = 4096) -> str:
         "messages": [{"role": "user", "content": prompt}],
     }).encode()
 
-    req = urllib.request.Request(
-        ANTHROPIC_API_URL,
-        data=payload,
-        headers={
-            "x-api-key": api_key(),
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            data = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"[call_claude] HTTP {e.code} error: {body}", flush=True)
-        raise
-
-    return "".join(block.get("text", "") for block in data.get("content", []))
+    for attempt in range(retries):
+        req = urllib.request.Request(
+            ANTHROPIC_API_URL,
+            data=payload,
+            headers={
+                "x-api-key": api_key(),
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                data = json.loads(resp.read())
+            return "".join(block.get("text", "") for block in data.get("content", []))
+        except urllib.error.HTTPError as e:
+            body = e.read().decode("utf-8", errors="replace")
+            print(f"[call_claude] HTTP {e.code} error (attempt {attempt + 1}/{retries}): {body}", flush=True)
+            if e.code in (529, 503, 500) and attempt < retries - 1:
+                wait = 30 * (2 ** attempt)
+                print(f"[call_claude] Retrying in {wait}s...", flush=True)
+                time.sleep(wait)
+            else:
+                raise
 
 
 def load_report(json_path: str) -> dict:
