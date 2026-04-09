@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(perl -i -0pe 's{<script>tailwind\\\\.config=\\\\{corePlugins:\\\\{preflight:false\\\\}\\\\}</script>\\\\s*\\\\n?\\\\s*<script src=\"https://cdn\\\\.tailwindcss\\\\.com\">\\\\s*\\\\n?</script>}{}g' how-to-choose-insurance-agent/index.html)"
+    ]
+  }
+}
