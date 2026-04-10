@@ -17,7 +17,8 @@ on:
         default: 'false'
 
   schedule:
-    - cron: '*/30 * * * *'
+    # 3 times per week: Sun/Tue/Thu at 08:00 UTC (11:00 Israel time)
+    - cron: '0 8 * * 0,2,4'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"

@@ -125,14 +125,29 @@ def pick_best_trend(report: dict, max_trends: int) -> dict:
 הקשר האתר:
 {SITE_CONTEXT}
 
+## כללי בחירה — חשוב מאוד
+
+בחר **רק** טרנד שעומד בכל התנאים הבאים:
+1. **אירוע ספציפי ואמיתי** — שם מקום, אירוע, חברה, אדם, תאריך — לא נושא גנרי.
+2. **קשר ישיר לביטוח או פנסיה** — הקורא צריך להבין מיד למה זה רלוונטי אליו.
+3. **כותרת שמחברת בין האירוע לביטוח** — לפי הדוגמה: "האש ביוון 2026 — למה ביטוח דירה חשוב יותר מאי פעם".
+
+## כותרות לדחות
+- "מה זה ביטוח — כל מה שצריך לדעת"
+- "מדריך לביטוח בריאות"
+- כל כותרת גנרית שיכולה להתאים לכל שנה
+
+## אם אין טרנד מתאים
+החזר `"chosen_trend": null` — עדיף לא לכתוב כלום מאשר לכתוב כתבה חלשה.
+
 המשימה שלך:
-1. בחר את הטרנד שיש לו הכי הרבה פוטנציאל לכתבה שתתפוס תנועה אורגנית לאתר.
+1. בחר את הטרנד הכי ספציפי ורלוונטי לביטוח/פנסיה. אם אין כזה — החזר null.
 2. הסבר בקצרה למה בחרת אותו (2-3 משפטים).
 3. תכנן את הכתבה: כותרת H1, מילת מפתח ראשית, slug ב-URL (אנגלית), meta description.
 
 ענה ב-JSON בלבד (ללא backticks), בפורמט:
 {{
-  "chosen_trend": "...",
+  "chosen_trend": "..." או null,
   "reason": "...",
   "h1": "...",
   "keyword": "...",
@@ -143,7 +158,10 @@ def pick_best_trend(report: dict, max_trends: int) -> dict:
 
     raw = call_claude(prompt, system="אתה מומחה SEO לאתרים בעברית. ענה אך ורק ב-JSON תקין.")
     raw = raw.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
-    return json.loads(raw)
+    result = json.loads(raw)
+    if not result.get("chosen_trend"):
+        sys.exit("[pick_best_trend] No suitable trend found — skipping article generation.")
+    return result
 
 
 # Internal links map for articles
