@@ -8501,14 +8501,14 @@ body.pension-fees-page main {
 @media (min-width: 1024px) {
   #main > section.md\:py-20,
   #main > section.py-20 {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   #main > section.md\:py-16,
   #main > section.py-16 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   #main > section.md\:py-24,
