@@ -417,13 +417,16 @@ body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
   background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
   border-color: rgba(255,255,255,0.18);
 }}
-.pension-hero p, .pension-hero li {{ color: rgba(255,255,255,0.92); }}
+.pension-hero {{ color: rgba(255,255,255,0.92); }}
 .pension-hero h1 {{ color: #fff !important; }}
 .pension-hero .bg-blue-50 {{ background: rgba(255,255,255,0.1); color: var(--gold-brand); }}
 .pension-rich-text p, .pension-rich-text ul, .pension-rich-text ol {{ margin-bottom: 1.15rem; }}
 .pension-rich-text p, .pension-rich-text li {{ color: #334155; line-height: 1.95; }}
 .pension-rich-text h2 {{ font-size: clamp(1.65rem,2vw,2.2rem); color: #061a40; font-weight: 800; margin-bottom: 1rem; }}
 .pension-rich-text h3 {{ font-size: clamp(1.2rem,1.4vw,1.45rem); color: #0f172a; font-weight: 800; margin: 1.4rem 0 0.7rem; }}
+/* Override dark text from pension-rich-text inside dark hero/cta sections */
+.pension-hero p, .pension-hero li {{ color: rgba(255,255,255,0.92) !important; }}
+.pension-hero a:not([class*="btn"]) {{ color: rgba(255,255,255,0.8) !important; }}
 .pension-section, .pension-form-section {{ padding: clamp(1.3rem,3vw,2.2rem); scroll-margin-top: 7rem; }}
 .pension-toc, .pension-lead-box, .pension-links-box {{ padding: 1.35rem; }}
 .pension-toc ul, .pension-rich-text ul {{ list-style: disc; padding-right: 1.25rem; }}
