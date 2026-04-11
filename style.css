@@ -8493,3 +8493,33 @@ body.pension-fees-page main {
   .lg\:text-5xl     { font-size: 3rem; }
   .lg\:hidden       { display: none; }
 }
+
+/* =====================================================
+   צמצום ריווח אנכי בדסקטופ — כל הדפים שאינם דף הבית
+   (דף הבית מנוהל בנפרד על ידי .home-page selectors)
+   ===================================================== */
+@media (min-width: 1024px) {
+  #main > section.md\:py-20,
+  #main > section.py-20 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  #main > section.md\:py-16,
+  #main > section.py-16 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  #main > section.md\:py-24,
+  #main > section.py-24 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  #main > section.py-14,
+  #main > section.md\:py-14 {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+}
