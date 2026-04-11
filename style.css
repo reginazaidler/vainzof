@@ -8,7 +8,7 @@
    4. להוסיף הערות ברורות כדי שיהיה קל לתחזק
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700;800;900&family=Noto+Serif+Hebrew:wght@700;800;900&display=swap');
 
 
 /* =========================================================
@@ -18,15 +18,15 @@
     /* צבעי המותג הראשיים */
     --navy-main: #0B1B3B;
     --navy-deep: #07152E;
-    --gold-brand: #8B6A2F;
-    --gold-hover: #A07C3A;
-    --gold-soft: #F4EBDD;
-    --gold-glow: rgba(198, 161, 91, 0.22);
+    --gold-brand: #B8913F;
+    --gold-hover: #C9A24E;
+    --gold-soft: #F8F2E6;
+    --gold-glow: rgba(184, 145, 63, 0.22);
     --navy-tint: #0F2B59;
     --navy-accent: #153A7A;
 
     /* צבעי רקע וטקסט */
-    --bg-light: #F6F8FB;
+    --bg-light: #F9F8F5;
     --surface: #FFFFFF;
     --text-body: #475569;
     --text-strong: #0F172A;
@@ -55,10 +55,10 @@
     --radius-pill: 999px;
 
     /* צללים */
-    --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 14px 30px rgba(15, 23, 42, 0.08);
-    --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
-    --shadow-xl: 0 30px 80px rgba(7, 21, 46, 0.14);
+    --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.09);
+    --shadow-md: 0 14px 36px rgba(15, 23, 42, 0.12);
+    --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.16);
+    --shadow-xl: 0 30px 80px rgba(7, 21, 46, 0.18);
 
     /* אנימציות */
     --ease-default: 0.25s ease;
@@ -205,7 +205,7 @@ a {
         padding: 14px 30px;
         font-size: 1.3rem;
         font-weight: 800;
-        box-shadow: 0 12px 30px rgba(198, 161, 91, 0.25);
+        box-shadow: 0 12px 30px rgba(184, 145, 63, 0.25);
     }
 
     .site-footer {
@@ -312,6 +312,15 @@ li,
 a,
 span {
     overflow-wrap: anywhere;
+}
+
+h1 {
+    font-family: 'Noto Serif Hebrew', 'Assistant', sans-serif;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    letter-spacing: -0.025em;
 }
 
 input,
@@ -880,7 +889,7 @@ table {
     background: var(--gold-brand);
     color: #ffffff;
     border: 0;
-    border-radius: 12px;
+    border-radius: 999px;
     padding: 12px 18px;
     font-family: inherit;
     font-weight: 800;
@@ -890,7 +899,7 @@ table {
 }
 
 .site-cta:hover {
-    background: #b08d4a;
+    background: #C9A24E;
     transform: translateY(-1px);
 }
 
@@ -927,7 +936,7 @@ table {
     justify-content: center;
     min-width: min(100%, 18rem);
     text-decoration: none;
-    box-shadow: 0 12px 30px rgba(198, 161, 91, 0.22);
+    box-shadow: 0 12px 30px rgba(184, 145, 63, 0.22);
 }
 
 .mobile-menu-toggle {
@@ -1037,7 +1046,7 @@ table {
 
 .mobile-nav-link-active {
     color: var(--gold-brand);
-    border-color: rgba(198, 161, 91, 0.38);
+    border-color: rgba(184, 145, 63, 0.38);
     background: #fffaf0;
 }
 
@@ -1077,7 +1086,7 @@ table {
 
 .mobile-nav-accordion-toggle[aria-expanded="true"] {
     color: var(--gold-brand);
-    border-color: rgba(198, 161, 91, 0.38);
+    border-color: rgba(184, 145, 63, 0.38);
     background: #fffaf0;
 }
 
@@ -1138,7 +1147,7 @@ table {
 
 .mobile-nav .mobile-cta {
     margin-top: 8px;
-    border-radius: 12px;
+    border-radius: 999px;
     justify-content: center;
 }
 
@@ -1177,7 +1186,7 @@ table {
 }
 
 .mobile-contact-cta:focus-visible {
-    outline: 3px solid rgba(198, 161, 91, 0.45);
+    outline: 3px solid rgba(184, 145, 63, 0.45);
     outline-offset: 2px;
 }
 
@@ -1510,8 +1519,8 @@ footer:not(.site-footer) nav a:hover,
 footer:not(.site-footer) nav button:hover,
 footer:not(.site-footer) nav .text-\[var\(--gold-brand\)\] {
     color: var(--gold-brand) !important;
-    border-color: rgba(198, 161, 91, 0.5);
-    background: rgba(198, 161, 91, 0.1);
+    border-color: rgba(184, 145, 63, 0.5);
+    background: rgba(184, 145, 63, 0.1);
 }
 
 footer:not(.site-footer) .flex.justify-center.gap-4 a {
@@ -1725,7 +1734,7 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 .home-hero .site-cta:hover,
 .hero-actions .site-cta:hover,
 .media-hero__actions .btn-primary:hover {
-    background: #b08d4a;
+    background: #C9A24E;
 }
 
 .section-summary {
@@ -2631,7 +2640,7 @@ main section.bg-slate-50 h3 {
 
 .desktop-sticky-cta:hover {
     transform: translateY(-50%) scale(1.03);
-    background: #b08d4a;
+    background: #C9A24E;
     box-shadow: 0 18px 32px rgba(15, 23, 42, 0.24);
 }
 
@@ -2722,7 +2731,7 @@ main section.bg-slate-50 h3 {
     padding: 12px 20px;
     border: 2px solid rgba(255, 255, 255, 0.24);
     color: #ffffff;
-    border-radius: 12px;
+    border-radius: 999px;
     font-weight: 800;
     text-decoration: none;
     transition: background-color 0.2s ease, border-color 0.2s ease;
@@ -2852,7 +2861,7 @@ main section.bg-slate-50 h3 {
 }
 
 .why-choose-card--highlight {
-    border: 2px solid rgba(198, 161, 91, 0.7);
+    border: 2px solid rgba(184, 145, 63, 0.7);
     transform: scale(1.04);
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
 }
@@ -3820,18 +3829,18 @@ main section.bg-slate-50 h3 {
 }
 
 .bottom-cta .btn-primary {
-    background: #c6a15b;
+    background: #B8913F;
     color: #ffffff;
-    border-radius: 24px;
+    border-radius: 999px;
     min-width: 306px;
     min-height: 70px;
     font-size: clamp(1.3rem, 1.35vw, 1.9rem);
     padding: 15px 42px;
-    box-shadow: 0 14px 32px rgba(198, 161, 91, 0.24);
+    box-shadow: 0 14px 32px rgba(184, 145, 63, 0.24);
 }
 
 .bottom-cta .btn-primary:hover {
-    background: #b8914e;
+    background: #C9A24E;
 }
 
 @media (max-width: 768px) {
@@ -4505,13 +4514,13 @@ main section.bg-slate-50 h3 {
 .media-page .media-hero__actions .btn-primary {
     background: var(--gold-brand);
     color: #ffffff;
-    border-radius: 12px;
+    border-radius: 999px;
     font-weight: 800;
     text-decoration: none;
 }
 
 .media-page .media-hero__actions .btn-primary:hover {
-    background: #b08d4a;
+    background: #C9A24E;
 }
 
 .media-page .media-hero__panel {
@@ -5867,7 +5876,7 @@ main section.bg-slate-50 h3 {
     padding-top: 2.5rem;
     padding-bottom: 4rem;
     background:
-        radial-gradient(circle at top right, rgba(198, 161, 91, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(184, 145, 63, 0.12), transparent 24%),
         linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
 }
 
@@ -6338,17 +6347,17 @@ main section.bg-slate-50 h3 {
         padding: 14px 28px;
         border: 0;
         border-radius: 14px;
-        background: #c6a15b;
+        background: #B8913F;
         color: #ffffff;
         font-size: 1.05rem;
         font-weight: 800;
-        box-shadow: 0 10px 25px rgba(198, 161, 91, 0.22);
+        box-shadow: 0 10px 25px rgba(184, 145, 63, 0.22);
         cursor: pointer;
     }
 
     .about-bottom-cta .btn-primary:hover,
     .bottom-cta .btn-primary:hover {
-        background: #b8914e;
+        background: #C9A24E;
     }
 
     .site-footer {
@@ -7204,7 +7213,7 @@ body.pension-fees-page main {
 }
 
 .why-choose-card--highlight {
-  border: 2px solid rgba(198, 161, 91, 0.55);
+  border: 2px solid rgba(184, 145, 63, 0.55);
   transform: scale(1.03);
   box-shadow: 0 22px 40px rgba(15, 23, 42, 0.12);
   background: linear-gradient(180deg, #ffffff 0%, #fffaf0 100%);
