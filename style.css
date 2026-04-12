@@ -839,6 +839,33 @@ table {
     padding-bottom: 0;
 }
 
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 34px;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--navy-main);
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1;
+    background: #fff;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.language-switch:hover {
+    border-color: rgba(160, 124, 58, 0.45);
+    color: var(--gold-brand);
+    background: #fffaf0;
+}
+
+.mobile-language-switch {
+    letter-spacing: 0.01em;
+}
+
 .fill-current {
     fill: currentColor;
 }
