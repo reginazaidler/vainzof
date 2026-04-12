@@ -1,4 +1,8 @@
 (function () {
+  function isRuPage() {
+    return window.location.pathname.indexOf('/ru/') === 0;
+  }
+
   function isKnowledgeHref(href) {
     if (!href) return false;
     return (
@@ -21,6 +25,8 @@
   }
 
   function enhanceLegacyMobileMenu() {
+    if (isRuPage()) return;
+
     var mobileMenu = document.getElementById('mobileMenu');
     var menuBtn = document.getElementById('menuBtn');
 
@@ -109,6 +115,8 @@
   }
 
   function enhanceDesktopKnowledgeMenu() {
+    if (isRuPage()) return;
+
     var desktopNav = document.querySelector('.site-nav, .site-header nav.hidden[class~="lg:flex"]');
 
     if (!desktopNav) return;
