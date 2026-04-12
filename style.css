@@ -8339,16 +8339,29 @@ body.pension-fees-page main {
 
 /* Colors */
 .bg-blue-50  { background-color: #eff6ff; }
+.bg-blue-800 { background-color: #1e40af; }
 .bg-slate-100 { background-color: #f1f5f9; }
 .bg-blue-900 { background-color: #1e3a5f; }
 .bg-green-50  { background-color: #f0fdf4; }
 .text-blue-50  { color: #eff6ff; }
+.text-blue-100 { color: #dbeafe; }
 .text-blue-600 { color: #2563eb; }
 .text-blue-700 { color: #1d4ed8; }
 .text-red-600  { color: #dc2626; }
 .text-slate-100 { color: #f1f5f9; }
+.text-slate-800 { color: #1e293b; }
 .text-green-700 { color: #15803d; }
 .text-green-800 { color: #166534; }
+
+/* Gradients */
+.bg-gradient-to-l  { background-image: linear-gradient(to left,  var(--tw-gradient-from, transparent), var(--tw-gradient-to, transparent)); }
+.bg-gradient-to-r  { background-image: linear-gradient(to right, var(--tw-gradient-from, transparent), var(--tw-gradient-to, transparent)); }
+.bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-from, transparent), var(--tw-gradient-to, transparent)); }
+.bg-gradient-to-bl { background-image: linear-gradient(to bottom left,  var(--tw-gradient-from, transparent), var(--tw-gradient-to, transparent)); }
+.from-blue-50  { --tw-gradient-from: #eff6ff; }
+.from-blue-950 { --tw-gradient-from: var(--navy-deep); }
+.to-white      { --tw-gradient-to: #ffffff; }
+.to-blue-800   { --tw-gradient-to: #1e40af; }
 
 /* Borders */
 .border-blue-100 { border-color: #dbeafe; }
@@ -8428,6 +8441,7 @@ body.pension-fees-page main {
 .underline          { text-decoration-line: underline; }
 .underline-offset-4 { text-underline-offset: 4px; }
 .line-through       { text-decoration-line: line-through; }
+.leading-tight      { line-height: 1.25; }
 .leading-9          { line-height: 2.25rem; }
 .leading-8          { line-height: 2rem; }
 .tracking-tight     { letter-spacing: -0.025em; }
