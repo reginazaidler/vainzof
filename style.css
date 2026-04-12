@@ -1869,10 +1869,10 @@ main section.bg-slate-50 {
     color: var(--text-body);
 }
 
-main section.bg-white h2,
-main section.bg-white h3,
-main section.bg-slate-50 h2,
-main section.bg-slate-50 h3 {
+main section.bg-white h2:not(.text-white),
+main section.bg-white h3:not(.text-white),
+main section.bg-slate-50 h2:not(.text-white),
+main section.bg-slate-50 h3:not(.text-white) {
     color: var(--text-strong);
 }
 
