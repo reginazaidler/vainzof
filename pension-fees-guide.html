@@ -301,6 +301,32 @@ body.pension-fees-page main {
 }
 </style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "דף הבית",
+      "item": "https://vainzof.co.il/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "מאמרים מקצועיים על פנסיה וביטוחים",
+      "item": "https://vainzof.co.il/articles.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "כמה דמי ניהול פנסיה זה נחשב גבוה ואיך להוריד",
+      "item": "https://vainzof.co.il/pension-fees-guide.html"
+    }
+  ]
+}
+</script>
 </head>
 <body class="pension-fees-page">
     <a href="#main" class="sr-focusable">דלג לתוכן המרכזי</a>
@@ -362,7 +388,14 @@ body.pension-fees-page main {
   <div class="pension-guide-wrap pension-grid">
     <article class="space-y-6 pension-rich-text">
       <section class="pension-hero">
-        <a href="articles.html" class="font-bold text-[var(--navy-main)]">← חזרה לכל המאמרים</a>
+        <nav class="text-sm text-slate-500 mb-4" aria-label="breadcrumb">
+      <a href="index.html" class="hover:text-blue-900">דף הבית</a>
+      <span class="mx-2">/</span>
+      <a href="articles.html" class="hover:text-blue-900">מאמרים מקצועיים על פנסיה וביטוחים</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-700">כמה דמי ניהול פנסיה זה נחשב גבוה ואיך להוריד</span>
+    </nav>
+    <a href="articles.html" class="font-bold text-[var(--navy-main)]">← חזרה לכל המאמרים</a>
         <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך 2026 לבדיקת דמי ניהול פנסיה</p>
         <h1 class="text-4xl md:text-5xl font-black text-blue-950 mt-5 mb-5">כמה דמי ניהול פנסיה זה נחשב גבוה ואיך להוריד</h1>
         <p><strong>לא מעט אנשים משלמים דמי ניהול גבוהים בפנסיה בלי לדעת - וזה אחד הדברים הכי יקרים שלא בודקים בזמן.</strong></p>
