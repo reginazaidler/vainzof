@@ -39,7 +39,7 @@
   .emergency-shell {
     max-width: 74rem;
     margin: 0 auto;
-    padding: 2.5rem 1rem 4rem;
+    padding: 0 1rem;
   }
   .emergency-grid {
     display: grid;
@@ -221,7 +221,7 @@
   .emergency-back-link {
     display: inline-flex;
     margin-bottom: 1rem;
-    color: var(--gold-brand);
+    color: var(--navy-main);
     font-weight: 700;
     text-decoration: none;
   }
@@ -245,7 +245,7 @@
   }
   @media (max-width: 767px) {
     .emergency-shell {
-      padding: 1.75rem 0.75rem 3rem;
+      padding: 0 0.75rem;
     }
     .emergency-inline-cta .btn-primary,
     .emergency-bottom-cta .btn-primary,
@@ -337,15 +337,17 @@
         </div>
     </header>
 
-    <main id="main" class="emergency-shell">
-  <div class="emergency-grid">
+    <main id="main">
+  <section class="py-16 bg-slate-50">
+    <div class="container-clean emergency-shell">
+      <div class="emergency-grid">
     <div class="emergency-rich-text">
-      <nav style="font-size:0.875rem; color:#64748b; margin-bottom:1rem;" aria-label="breadcrumb">
-        <a href="index.html" style="color:#64748b;">דף הבית</a>
-        <span style="margin: 0 0.5rem;">/</span>
-        <a href="articles.html" style="color:#64748b;">מאמרים מקצועיים על פנסיה וביטוחים</a>
-        <span style="margin: 0 0.5rem;">/</span>
-        <span style="color:#334155;">קרן חירום משפחתית: כמה כסף באמת צריך בצד</span>
+      <nav class="text-sm text-slate-500 mb-4" aria-label="breadcrumb">
+        <a href="index.html" class="hover:text-blue-900">דף הבית</a>
+        <span class="mx-2">/</span>
+        <a href="articles.html" class="hover:text-blue-900">מאמרים מקצועיים על פנסיה וביטוחים</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-700">קרן חירום משפחתית: כמה כסף באמת צריך בצד</span>
       </nav>
       <section class="emergency-hero">
         <a href="articles.html" class="emergency-back-link">← חזרה לכל המאמרים</a>
@@ -473,7 +475,9 @@
         <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="btn-outline">בדיקה חינם בוואטסאפ</a>
       </div>
     </aside>
-  </div>
+      </div>
+    </div>
+  </section>
 </main>
         <script src="js/site-header.js"></script>
     <script src="js/site-footer.js"></script>
