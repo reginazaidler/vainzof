@@ -3033,7 +3033,8 @@ main section.bg-white .text-white h3 {
 .home-faq-list .faq-item summary::before {
     content: "+";
     position: absolute;
-    left: 1rem;
+    right: 1rem;
+    left: auto;
     top: 50%;
     transform: translateY(-50%);
     width: 1.4rem;
@@ -5399,7 +5400,7 @@ main section.bg-white .text-white h3 {
     }
 
     .home-faq-section .faq-item summary {
-        padding: 14px 1.65rem;
+        padding: 14px 3.2rem 14px 1.65rem;
         font-size: clamp(1.08rem, 1.25vw, 1.25rem);
         line-height: 1.45;
     }
@@ -5425,7 +5426,7 @@ main section.bg-white .text-white h3 {
     }
 
     .home-faq-section .faq-item summary {
-        padding: 14px;
+        padding: 14px 3rem 14px 14px;
         gap: 0.75rem;
         font-size: 1rem;
         line-height: 1.45;
@@ -6174,7 +6175,8 @@ main section.bg-white .text-white h3 {
 .faq-page .faq-card summary::before {
     content: '+';
     position: absolute;
-    left: 1rem;
+    right: 1rem;
+    left: auto;
     top: 50%;
     transform: translateY(-50%);
     width: 1.6rem;
@@ -6515,7 +6517,8 @@ main section.bg-white .text-white h3 {
     details.faq-item summary::before,
     details.faq-card summary::before {
         display: grid !important;
-        left: 1.25rem;
+        right: 1.25rem;
+        left: auto;
         width: 1.75rem;
         height: 1.75rem;
         font-size: 1.15rem;
