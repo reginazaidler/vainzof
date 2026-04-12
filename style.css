@@ -1876,6 +1876,15 @@ main section.bg-slate-50 h3:not(.text-white) {
     color: var(--text-strong);
 }
 
+/* Restore white for headings inside dark boxes nested within light sections.
+   Same specificity, declared later → wins via cascade. */
+main section.bg-slate-50 .text-white h2,
+main section.bg-slate-50 .text-white h3,
+main section.bg-white .text-white h2,
+main section.bg-white .text-white h3 {
+    color: inherit;
+}
+
 /* עמוד מאמרים: יישור טיפוגרפי מלא בכל הרכיבים */
 .articles-page,
 .articles-page button,
