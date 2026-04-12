@@ -1588,6 +1588,14 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
     text-align: right;
 }
 
+html[lang="ru"] .home-hero__content {
+    text-align: left;
+}
+
+html[lang="ru"] .home-hero__badge {
+    justify-content: flex-start;
+}
+
 .home-hero__badge,
 .page-hero__badge {
     display: inline-flex;
@@ -8221,6 +8229,12 @@ body.pension-fees-page main {
         max-width: none;
         white-space: nowrap;
         text-wrap: nowrap;
+    }
+
+    html[lang="ru"] .home-page .home-hero__subtitle {
+        max-width: 560px;
+        white-space: normal;
+        text-wrap: pretty;
     }
 }
 
