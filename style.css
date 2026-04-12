@@ -561,6 +561,11 @@ table {
 .shadow-xl { box-shadow: var(--shadow-xl); }
 .shadow-2xl { box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16); }
 
+/* Russian pages should keep LTR reading/alignment even when shared utility classes request RTL alignment. */
+html[lang="ru"] .text-right {
+    text-align: left;
+}
+
 @media (min-width: 768px) {
     .md\:flex-row { flex-direction: row; }
     .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -615,6 +620,12 @@ table {
     .md\:pb-20 { padding-bottom: 5rem; }
     .md\:pb-24 { padding-bottom: 6rem; }
     .md\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+}
+
+@media (min-width: 768px) {
+    html[lang="ru"] .md\:text-right {
+        text-align: left;
+    }
 }
 
 /* desktop */
@@ -6465,6 +6476,14 @@ main section.bg-white .text-white h3 {
 @media (min-width: 1024px) and (max-width: 1280px) {
     .site-footer__nav {
         grid-template-columns: repeat(4, minmax(110px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    html[lang="ru"] .site-footer__meta {
+        justify-self: start;
+        text-align: left;
+        direction: ltr;
     }
 }
 
