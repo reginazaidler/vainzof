@@ -109,9 +109,48 @@
     });
   }
 
+
+  function initLanguageSwitcher() {
+    var desktopNav = document.querySelector('.site-nav');
+    if (desktopNav && !desktopNav.querySelector('.language-switch')) {
+      var desktopSwitch = document.createElement('a');
+      desktopSwitch.href = '/ru/index.html';
+      desktopSwitch.className = 'language-switch';
+      desktopSwitch.setAttribute('lang', 'ru');
+      desktopSwitch.setAttribute('hreflang', 'ru');
+      desktopSwitch.textContent = 'RU';
+      desktopSwitch.setAttribute('aria-label', 'Переключиться на русский');
+      var desktopCta = desktopNav.querySelector('.site-cta');
+      if (desktopCta) {
+        desktopNav.insertBefore(desktopSwitch, desktopCta);
+      } else {
+        desktopNav.appendChild(desktopSwitch);
+      }
+    }
+
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu && !mobileMenu.querySelector('.mobile-language-switch')) {
+      var mobileSwitch = document.createElement('a');
+      mobileSwitch.href = '/ru/index.html';
+      mobileSwitch.className = 'block font-bold text-slate-600 border-b pb-2 mobile-language-switch';
+      mobileSwitch.setAttribute('lang', 'ru');
+      mobileSwitch.setAttribute('hreflang', 'ru');
+      mobileSwitch.textContent = 'Русский';
+      mobileSwitch.setAttribute('aria-label', 'Перейти на русскую версию');
+
+      var callLink = mobileMenu.querySelector('a[href^="tel:"]');
+      if (callLink) {
+        mobileMenu.insertBefore(mobileSwitch, callLink);
+      } else {
+        mobileMenu.appendChild(mobileSwitch);
+      }
+    }
+  }
+
   function init() {
     initMobileMenu();
     initDesktopKnowledgeMenu();
+    initLanguageSwitcher();
   }
 
   if (document.readyState === 'loading') {
