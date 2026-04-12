@@ -111,15 +111,16 @@
 
 
   function initLanguageSwitcher() {
+    var isRuPage = window.location.pathname.indexOf('/ru/') === 0;
     var desktopNav = document.querySelector('.site-nav');
     if (desktopNav && !desktopNav.querySelector('.language-switch')) {
       var desktopSwitch = document.createElement('a');
-      desktopSwitch.href = '/ru/index.html';
+      desktopSwitch.href = isRuPage ? '/index.html' : '/ru/index.html';
       desktopSwitch.className = 'language-switch';
-      desktopSwitch.setAttribute('lang', 'ru');
-      desktopSwitch.setAttribute('hreflang', 'ru');
-      desktopSwitch.textContent = 'RU';
-      desktopSwitch.setAttribute('aria-label', 'Переключиться на русский');
+      desktopSwitch.setAttribute('lang', isRuPage ? 'he' : 'ru');
+      desktopSwitch.setAttribute('hreflang', isRuPage ? 'he' : 'ru');
+      desktopSwitch.textContent = isRuPage ? 'HE' : 'RU';
+      desktopSwitch.setAttribute('aria-label', isRuPage ? 'Переключиться на иврит' : 'Переключиться на русский');
       var desktopCta = desktopNav.querySelector('.site-cta');
       if (desktopCta) {
         desktopNav.insertBefore(desktopSwitch, desktopCta);
@@ -131,12 +132,12 @@
     var mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenu && !mobileMenu.querySelector('.mobile-language-switch')) {
       var mobileSwitch = document.createElement('a');
-      mobileSwitch.href = '/ru/index.html';
+      mobileSwitch.href = isRuPage ? '/index.html' : '/ru/index.html';
       mobileSwitch.className = 'block font-bold text-slate-600 border-b pb-2 mobile-language-switch';
-      mobileSwitch.setAttribute('lang', 'ru');
-      mobileSwitch.setAttribute('hreflang', 'ru');
-      mobileSwitch.textContent = 'Русский';
-      mobileSwitch.setAttribute('aria-label', 'Перейти на русскую версию');
+      mobileSwitch.setAttribute('lang', isRuPage ? 'he' : 'ru');
+      mobileSwitch.setAttribute('hreflang', isRuPage ? 'he' : 'ru');
+      mobileSwitch.textContent = isRuPage ? 'עברית' : 'Русский';
+      mobileSwitch.setAttribute('aria-label', isRuPage ? 'Перейти на версию на иврите' : 'Перейти на русскую версию');
 
       var callLink = mobileMenu.querySelector('a[href^="tel:"]');
       if (callLink) {
