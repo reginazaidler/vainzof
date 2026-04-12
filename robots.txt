@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Allow: /ru/
+Allow: /ru/index.html
+Allow: /ru/about.html
 Disallow: /thanks.html
 
 Sitemap: https://vainzof.co.il/sitemap.xml
