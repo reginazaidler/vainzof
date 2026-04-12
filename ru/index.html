@@ -313,6 +313,7 @@ gtag('config', 'G-EM8SYH542C');
                     <span>052-4520222</span>
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.1 15.1 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.7.59 1 1 0 011 1V20a1 1 0 01-1 1A18 18 0 013 4a1 1 0 011-1h3.43a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.27 1.1l-2.12 2.1z"/></svg>
                 </a>
+                <button id="openContactDesktop" class="site-cta">Записаться на персональную проверку</button>
             </nav>
 
             <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
@@ -325,6 +326,7 @@ gtag('config', 'G-EM8SYH542C');
             <a href="ru/about.html" class="block font-bold text-slate-600 border-b pb-2">Обо мне</a>
             <a href="tel:0524520222" class="block font-bold text-slate-600 border-b pb-2">Позвонить: 052-4520222</a>
             <a href="/index.html" class="block font-bold text-slate-600 border-b pb-2 mobile-language-switch" lang="he" hreflang="he" aria-label="Перейти на версию на иврите">עברית</a>
+            <button id="openContactMobile" class="mobile-contact-cta">Записаться на персональную проверку</button>
         </div>
     </header>
 
@@ -682,7 +684,7 @@ gtag('config', 'G-EM8SYH542C');
                 <input type="checkbox" id="modal_marketing" name="marketing" checked class="w-4 h-4 rounded border-slate-300 text-blue-600 cursor-pointer">
                 <label for="modal_marketing" class="text-[11px] text-slate-500 font-medium cursor-pointer">Согласен(на) получать профессиональные обновления</label>
             </div>
-            <button type="submit" id="modal-submit-btn" class="w-full bg-blue-900 text-white py-3.5 rounded-xl font-bold text-md shadow-lg hover:bg-blue-800 transition-all">Записаться на личную проверку</button>
+            <button type="submit" id="modal-submit-btn" class="w-full bg-blue-900 text-white py-3.5 rounded-xl font-bold text-md shadow-lg hover:bg-blue-800 transition-all">Записаться на персональную проверку</button>
         </form>
         <div class="mt-4 flex items-center justify-center gap-2">
             <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
@@ -768,7 +770,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Ошибка отправки. Попробуйте снова или напишите в WhatsApp.');
                 btn.disabled = false;
                 btn.classList.remove('opacity-70', 'cursor-not-allowed');
-                btn.innerText = 'Записаться на личную проверку';
+                btn.innerText = 'Записаться на персональную проверку';
             });
         });
     }
