@@ -156,11 +156,7 @@ body.pension-fees-page main {
 .pension-fees-page .top-full { top: 100%; }
 .pension-fees-page .z-50 { z-index: 50; }
 .pension-fees-page .shadow-xl { box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18); }
-.pension-guide-wrap {
-  max-width: 76rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
+.pension-guide-wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
 .pension-grid { display: grid; gap: 1.25rem; }
 .pension-hero,
 .pension-section,
@@ -289,8 +285,8 @@ body.pension-fees-page main {
   #mobileMenu:not(.hidden) { display: block; }
 }
 @media (min-width: 1024px) {
-  .pension-grid { grid-template-columns: minmax(0, 2.1fr) minmax(280px, 0.9fr); align-items: start; }
-  .pension-sidebar { position: sticky; top: 7rem; }
+  .pension-grid { grid-template-columns: 1fr; }
+  .pension-sidebar { display: none; }
   .pension-fees-page .lg\:hidden { display: none; }
 }
 @media (max-width: 767px) {
