@@ -13,19 +13,19 @@
       </div>
 
       <nav class="site-footer__nav" aria-label="ניווט תחתון">
-        <a href="index.html">דף הבית</a>
-        <a href="about.html">קצת עלי</a>
-        <a href="insurance-types.html">סוגי ביטוחים</a>
-        <a href="pension-guide.html">איך עושים סדר בפנסיה ובביטוחים</a>
-        <a href="faq.html">FAQ</a>
-        <a href="articles.html">מאמרים מקצועיים על פנסיה וביטוחים</a>
-        <a href="calculator.html">מחשבון חיסכון</a>
-        <a href="media.html">וידאו</a>
-        <a href="reviews.html">לקוחות ממליצים</a>
+        <a href="/index.html">דף הבית</a>
+        <a href="/about.html">קצת עלי</a>
+        <a href="/insurance-types.html">סוגי ביטוחים</a>
+        <a href="/pension-guide.html">איך עושים סדר בפנסיה ובביטוחים</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/articles.html">מאמרים מקצועיים על פנסיה וביטוחים</a>
+        <a href="/calculator.html">מחשבון חיסכון</a>
+        <a href="/media.html">וידאו</a>
+        <a href="/reviews.html">לקוחות ממליצים</a>
         <div class="site-footer__city-links" data-city-links>
-          <a href="sochen-bituach-herzliya.html">סוכן ביטוח בהרצליה</a>
-          <a href="sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
-          <a href="sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
+          <a href="/sochen-bituach-herzliya.html">סוכן ביטוח בהרצליה</a>
+          <a href="/sochen-bituach-petah-tikva.html">סוכן ביטוח בפתח תקווה</a>
+          <a href="/sochen-bituach-ashdod.html">סוכן ביטוח באשדוד</a>
         </div>
       </nav>
 
@@ -56,7 +56,8 @@
   if (cityLinksGroup) {
     cityLinksGroup.querySelectorAll('a').forEach((link) => {
       const href = (link.getAttribute('href') || '').toLowerCase();
-      if (cityPages.includes(currentPage) && href !== currentPage) {
+      const hrefPage = (href.split('/').pop() || '').toLowerCase();
+      if (cityPages.includes(currentPage) && hrefPage !== currentPage) {
         link.remove();
       }
     });
@@ -67,7 +68,8 @@
   }
   footer.querySelectorAll('.site-footer__nav a').forEach((link) => {
     const href = (link.getAttribute('href') || '').toLowerCase();
-    if (href === currentPage) {
+    const hrefPage = (href.split('/').pop() || '').toLowerCase();
+    if (hrefPage === currentPage) {
       link.classList.add('is-active');
     }
   });
