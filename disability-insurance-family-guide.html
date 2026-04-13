@@ -64,7 +64,7 @@ gtag('config', 'G-EM8SYH542C');
 <link rel="stylesheet" href="style.css">
 <style>
 body.disability-insurance-family {
-  background: linear-gradient(180deg, #f8fafc 0%, #edf4ff 100%);
+  background: #f8fafc;
   font-family: "Assistant", sans-serif;
 }
 body.disability-insurance-family main { padding-top: 2.5rem; padding-bottom: 2.5rem; }
@@ -76,13 +76,19 @@ body.disability-insurance-family main { padding-top: 2.5rem; padding-bottom: 2.5
   border-radius: 1.5rem; box-shadow: 0 16px 40px rgba(15,23,42,0.06);
 }
 .pension-hero {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
-  border-color: rgba(255,255,255,0.18);
+  padding: clamp(1.75rem, 3.2vw, 2.2rem);
+  background: linear-gradient(to left, #172554, #1e3a8a);
+  border: none;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
 }
 .pension-hero p, .pension-hero li { color: rgba(255,255,255,0.92); }
 .pension-hero h1 { color: #fff !important; }
 .pension-hero .bg-blue-50 { background: rgba(255,255,255,0.1); color: var(--gold-brand); }
+.pension-hero nav,
+.pension-hero nav a,
+.pension-hero nav span { color: rgba(255,255,255,0.82) !important; }
+.pension-hero .hero-back-link { color: rgba(255,255,255,0.9) !important; }
+.pension-hero .hero-long-desc { max-width: 48rem; line-height: 1.9; }
 .pension-rich-text p, .pension-rich-text ul, .pension-rich-text ol { margin-bottom: 1.15rem; }
 .pension-rich-text p, .pension-rich-text li { color: #334155; line-height: 1.95; }
 .pension-rich-text h2 { font-size: clamp(1.65rem,2vw,2.2rem); color: #061a40; font-weight: 800; margin-bottom: 1rem; }
@@ -204,9 +210,9 @@ body.disability-insurance-family main { padding-top: 2.5rem; padding-bottom: 2.5
       <span class="mx-2">/</span>
       <span class="text-slate-700">מה קורה לביטוח ולפנסיה שלכם כשהמפרנס לא יכול לעבוד - המדריך המלא למשפחה הישראלית</span>
     </nav>
-    <a href="articles.html" class="font-bold" style="color:rgba(255,255,255,0.8)">← חזרה לכל המאמרים</a>
+    <a href="articles.html" class="font-bold hero-back-link">← חזרה לכל המאמרים</a>
         <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני - 2026-04</p>
-        <h1 class="text-4xl font-black mt-5 mb-5" style="color:#fff">מה קורה לביטוח ולפנסיה שלכם כשהמפרנס לא יכול לעבוד - המדריך המלא למשפחה הישראלית</h1>
+        <h1 class="text-4xl font-black mt-5 mb-5 leading-tight" style="color:#fff">מה קורה לביטוח ולפנסיה שלכם כשהמפרנס לא יכול לעבוד - המדריך המלא למשפחה הישראלית</h1>
         כשהמפרנס העיקרי במשפחה נפגע, חולה או נפצע ואינו יכול לעבוד - ההשלכות הכלכליות מגיעות מהר מאוד. ביטוח אובדן כושר עבודה למשפחה הוא אחד הכלים החשובים ביותר שיכולים לשמור על יציבות ההכנסה בדיוק ברגעים האלה. המדריך הבא מסביר מה קורה בפועל, מה הכיסויים הקיימים ואיך מתכוננים נכון.
       </section>
 
