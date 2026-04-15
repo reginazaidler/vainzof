@@ -110,6 +110,36 @@
   }
 
 
+
+  function ensureMobileContactActions() {
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (!mobileMenu) return;
+
+    var isRuPage = window.location.pathname.indexOf('/ru/') === 0;
+    var phoneNumber = '0524520222';
+    var phoneLabel = isRuPage ? 'Позвонить: 052-4520222' : 'התקשר עכשיו';
+    var ctaLabel = isRuPage ? 'Записаться на персональную проверку' : 'לתיאום בדיקה אישית';
+
+    var callLink = mobileMenu.querySelector('a[href^="tel:"]');
+    if (!callLink) {
+      callLink = document.createElement('a');
+      callLink.href = 'tel:' + phoneNumber;
+      callLink.className = 'block font-bold text-slate-600 border-b pb-2';
+      callLink.textContent = phoneLabel;
+      mobileMenu.appendChild(callLink);
+    }
+
+    var contactBtn = mobileMenu.querySelector('.mobile-contact-cta');
+    if (!contactBtn) {
+      contactBtn = document.createElement('button');
+      contactBtn.type = 'button';
+      contactBtn.id = 'openContactMobile';
+      contactBtn.className = 'mobile-contact-cta';
+      contactBtn.textContent = ctaLabel;
+      mobileMenu.appendChild(contactBtn);
+    }
+  }
+
   function initLanguageSwitcher() {
     var isRuPage = window.location.pathname.indexOf('/ru/') === 0;
     var desktopNav = document.querySelector('.site-nav');
@@ -151,6 +181,7 @@
   function init() {
     initMobileMenu();
     initDesktopKnowledgeMenu();
+    ensureMobileContactActions();
     initLanguageSwitcher();
   }
 
