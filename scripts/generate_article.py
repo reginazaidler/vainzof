@@ -32,8 +32,8 @@ FORMSPREE_ID = "mdawkwwn"
 WHATSAPP_NUMBER = "972524520222"
 
 SITE_CONTEXT = """
-האתר הוא vainzof.co.il של יובל ויינזוף — יועץ ביטוח ופנסיה עם 18 שנות ניסיון.
-שירות מרכזי: בדיקת תיק ביטוח ופנסיה — זיהוי כפל ביטוחים, עלויות מיותרות, חוסרים.
+האתר הוא vainzof.co.il של יובל ויינזוף - יועץ ביטוח ופנסיה עם 18 שנות ניסיון.
+שירות מרכזי: בדיקת תיק ביטוח ופנסיה - זיהוי כפל ביטוחים, עלויות מיותרות, חוסרים.
 קהל יעד: משפחות ישראליות בגיל 30–55 שמשלמות על ביטוחים ופנסיה אבל לא בדקו לאחרונה.
 טון: מקצועי אבל נגיש, ישיר, מעשי. לא מכירתי.
 כתבות קיימות: דמי ניהול פנסיה, כפל ביטוחים, ביטוח חיים למשכנתא, ביטוח סיעודי,
@@ -125,23 +125,23 @@ def pick_best_trend(report: dict, max_trends: int) -> dict:
 הקשר האתר:
 {SITE_CONTEXT}
 
-## כללי בחירה — חשוב מאוד
+## כללי בחירה - חשוב מאוד
 
 בחר **רק** טרנד שעומד בכל התנאים הבאים:
-1. **אירוע ספציפי ואמיתי** — שם מקום, אירוע, חברה, אדם, תאריך — לא נושא גנרי.
-2. **קשר ישיר לביטוח או פנסיה** — הקורא צריך להבין מיד למה זה רלוונטי אליו.
-3. **כותרת שמחברת בין האירוע לביטוח** — לפי הדוגמה: "האש ביוון 2026 — למה ביטוח דירה חשוב יותר מאי פעם".
+1. **אירוע ספציפי ואמיתי** - שם מקום, אירוע, חברה, אדם, תאריך - לא נושא גנרי.
+2. **קשר ישיר לביטוח או פנסיה** - הקורא צריך להבין מיד למה זה רלוונטי אליו.
+3. **כותרת שמחברת בין האירוע לביטוח** - לפי הדוגמה: "האש ביוון 2026 - למה ביטוח דירה חשוב יותר מאי פעם".
 
 ## כותרות לדחות
-- "מה זה ביטוח — כל מה שצריך לדעת"
+- "מה זה ביטוח - כל מה שצריך לדעת"
 - "מדריך לביטוח בריאות"
 - כל כותרת גנרית שיכולה להתאים לכל שנה
 
 ## אם אין טרנד מתאים
-החזר `"chosen_trend": null` — עדיף לא לכתוב כלום מאשר לכתוב כתבה חלשה.
+החזר `"chosen_trend": null` - עדיף לא לכתוב כלום מאשר לכתוב כתבה חלשה.
 
 המשימה שלך:
-1. בחר את הטרנד הכי ספציפי ורלוונטי לביטוח/פנסיה. אם אין כזה — החזר null.
+1. בחר את הטרנד הכי ספציפי ורלוונטי לביטוח/פנסיה. אם אין כזה - החזר null.
 2. הסבר בקצרה למה בחרת אותו (2-3 משפטים).
 3. תכנן את הכתבה: כותרת H1, מילת מפתח ראשית, slug ב-URL (אנגלית), meta description.
 
@@ -160,14 +160,14 @@ def pick_best_trend(report: dict, max_trends: int) -> dict:
     raw = raw.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
     result = json.loads(raw)
     if not result.get("chosen_trend"):
-        sys.exit("[pick_best_trend] No suitable trend found — skipping article generation.")
+        sys.exit("[pick_best_trend] No suitable trend found - skipping article generation.")
     return result
 
 
 # Internal links map for articles
 INTERNAL_LINKS = {
     "pension-fees-guide": ("pension-fees-guide.html", "כמה דמי ניהול פנסיה זה גבוה"),
-    "insurance-double-coverage": ("insurance-double-coverage.html", "כפל ביטוחים — זיהוי ובדיקה"),
+    "insurance-double-coverage": ("insurance-double-coverage.html", "כפל ביטוחים - זיהוי ובדיקה"),
     "financial-checklist-family": ("financial-checklist-family.html", "צ׳קליסט פיננסי שנתי למשפחה"),
     "insurance-types": ("insurance-types.html", "סוגי ביטוחים בישראל"),
     "check-insurance-policies": ("check-insurance-policies.html", "איך בודקים תיק ביטוח"),
@@ -205,19 +205,19 @@ def write_article(meta: dict) -> dict:
 - כל פסקה עד 2 משפטים, כל bullet עד 10 מילים
 
 חוקים חשובים:
-1. אל תזכיר שהנושא הוא "טרנד" או "חיפוש נפוץ היום" — כתוב כמאמר מידע רגיל.
+1. אל תזכיר שהנושא הוא "טרנד" או "חיפוש נפוץ היום" - כתוב כמאמר מידע רגיל.
 2. לינקים פנימיים: השתמש רק בלינקים מהרשימה הבאה, כתוב את ה-href המדויק:
 {links_list}
-3. הוסף לכל היותר 2 לינקים פנימיים רלוונטיים בגוף הכתבה — לא יותר.
+3. הוסף לכל היותר 2 לינקים פנימיים רלוונטיים בגוף הכתבה - לא יותר.
 4. בסוף הכתבה (סעיף "קריאה נוספת") הוסף עד 3 לינקים רלוונטיים מהרשימה.
-5. אל תוסיף יותר מ-1 קריאה לפעולה (CTA) בכל הכתבה — בסוף בלבד, בסגנון עדין.
+5. אל תוסיף יותר מ-1 קריאה לפעולה (CTA) בכל הכתבה - בסוף בלבד, בסגנון עדין.
 
 חשוב: ב-JSON אסור HTML ואסור מרכאות כפולות בתוך ערכים.
 כתוב טקסט רגיל בלבד.
 
 ענה ב-JSON בלבד (ללא backticks):
 {{
-  "intro": "פסקת פתיחה — טקסט רגיל",
+  "intro": "פסקת פתיחה - טקסט רגיל",
   "sections": [
     {{
       "id": "section-slug-english",
@@ -512,7 +512,7 @@ body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
 
       <section class="pension-hero">
         <a href="articles.html" class="font-bold" style="color:rgba(255,255,255,0.8)">← חזרה לכל המאמרים</a>
-        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני — {now_str[:7]}</p>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני - {now_str[:7]}</p>
         <h1 class="text-4xl font-black mt-5 mb-5" style="color:#fff">{h1}</h1>
         {intro}
       </section>
@@ -542,7 +542,7 @@ body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
 
       <section id="lead-form" class="pension-form-section">
         <h2 class="text-3xl font-black text-blue-950 mb-3">השאירו פרטים לבדיקה</h2>
-        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות — נבדוק מה קיים בתיק ומה אפשר לשפר.</p>
+        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות - נבדוק מה קיים בתיק ומה אפשר לשפר.</p>
         <form id="leadForm" class="space-y-4">
           <div class="pension-form-grid">
             <div>
@@ -588,7 +588,7 @@ body.{page_class} main {{ padding-top: 2.5rem; padding-bottom: 2.5rem; }}
       </section>
       <section class="pension-lead-box">
         <h2 class="text-2xl font-black text-blue-950 mb-3">יש שאלה?</h2>
-        <p class="text-slate-700">יובל ויינזוף — יועץ ביטוח ופנסיה. אפשר לפנות ישירות.</p>
+        <p class="text-slate-700">יובל ויינזוף - יועץ ביטוח ופנסיה. אפשר לפנות ישירות.</p>
         <div class="pension-btn-row" style="margin-top:1rem">
           <a href="https://wa.me/{WHATSAPP_NUMBER}" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">WhatsApp</a>
         </div>
@@ -785,7 +785,7 @@ def update_all_indexes(slug: str, h1: str, meta_desc: str, today: str) -> None:
     else:
         print("[sitemap] sitemap.xml not found, skipping")
 
-    # articles.html intentionally skipped — agent articles are indexed via
+    # articles.html intentionally skipped - agent articles are indexed via
     # sitemap + llms.txt only, not linked from the site navigation.
     print("[articles] Skipping articles.html (orphan-by-design)")
 
@@ -814,7 +814,7 @@ def main() -> int:
     filename = f"{meta['slug']}.html"
 
     if args.dry_run:
-        print(f"\n{'='*60}\nDRY RUN — would write: {filename}\n{'='*60}")
+        print(f"\n{'='*60}\nDRY RUN - would write: {filename}\n{'='*60}")
         print(html[:2000], "... [truncated]")
         return 0
 

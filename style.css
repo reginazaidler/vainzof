@@ -8418,7 +8418,7 @@ body.pension-fees-page main {
 }
 
 /* ============================================================
-   UTILITY CLASSES — supplement for pages using Tailwind content
+   UTILITY CLASSES - supplement for pages using Tailwind content
    ============================================================ */
 
 /* Colors */
@@ -8570,7 +8570,7 @@ body.pension-fees-page main {
 .focus\:border-blue-600:focus { border-color: #2563eb; }
 .focus\:outline-none:focus    { outline: none; }
 
-/* Responsive — sm (640px) */
+/* Responsive - sm (640px) */
 @media (min-width: 640px) {
   .sm\:flex-row     { flex-direction: row; }
   .sm\:items-center { align-items: center; }
@@ -8578,7 +8578,7 @@ body.pension-fees-page main {
   .sm\:w-auto       { width: auto; }
 }
 
-/* Responsive — md (768px) */
+/* Responsive - md (768px) */
 @media (min-width: 768px) {
   .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -8599,7 +8599,7 @@ body.pension-fees-page main {
   .md\:w-auto      { width: auto; }
 }
 
-/* Responsive — lg (1024px) */
+/* Responsive - lg (1024px) */
 @media (min-width: 1024px) {
   .lg\:grid-cols-3  { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lg\:grid-cols-4  { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -8612,7 +8612,7 @@ body.pension-fees-page main {
 }
 
 /* =====================================================
-   צמצום ריווח אנכי בדסקטופ — כל הדפים שאינם דף הבית
+   צמצום ריווח אנכי בדסקטופ - כל הדפים שאינם דף הבית
    ===================================================== */
 @media (min-width: 1024px) {
   body:not(.home-page) #main > section {
@@ -8621,7 +8621,7 @@ body.pension-fees-page main {
   }
 }
 
-/* Hero long description — hide on mobile so hero fits viewport */
+/* Hero long description - hide on mobile so hero fits viewport */
 @media (max-width: 767px) {
     .hero-long-desc {
         display: none !important;
