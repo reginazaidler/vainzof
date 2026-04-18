@@ -41,3 +41,19 @@ Outputs are written to `reports/insurance-trends-report.md`, `reports/insurance-
 
 GitHub-only run: use **Actions → Run Insurance Trends Agent** (workflow file: `.github/workflows/insurance-trends-agent.yml`).
 In manual GitHub runs you can override `geo` and `lookback_hours`; if no direct insurance trends are found, the report includes fallback insurance-angle ideas based on general hot trends.
+
+## Bitbucket daily dash-normalizer agent
+
+This repo includes a Bitbucket Pipeline agent that replaces **em dashes (`U+2014`)** with a normal hyphen (`-`).
+
+### Files
+- Pipeline config: `bitbucket-pipelines.yml` (custom pipeline: `daily-normalize-dashes`)
+- Replacement script: `scripts/normalize_dashes.py`
+
+### How to run daily
+1. In Bitbucket, open **Pipelines → Schedules → New schedule**.
+2. Select pipeline: **`daily-normalize-dashes`**.
+3. Select branch: your main branch.
+4. Set frequency: **Daily** and pick the preferred time.
+
+When there are replacements, the pipeline commits and pushes automatically.

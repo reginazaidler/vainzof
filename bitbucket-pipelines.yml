@@ -1,0 +1,19 @@
+image: python:3.12
+
+pipelines:
+  custom:
+    daily-normalize-dashes:
+      - step:
+          name: Replace em dashes and auto-commit
+          script:
+            - python scripts/normalize_dashes.py
+            - |
+              if git diff --quiet; then
+                echo "No changes to commit."
+                exit 0
+              fi
+            - git config user.name "bitbucket-pipelines[bot]"
+            - git config user.email "pipelines@bitbucket.org"
+            - git add -A
+            - git commit -m "chore: normalize em dashes"
+            - git push "${BITBUCKET_GIT_HTTP_ORIGIN}" "HEAD:${BITBUCKET_BRANCH}"
