@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Normalize em dashes (-) to simple hyphens (-) in tracked text files."""
+"""Normalize em dashes to simple hyphens (-) in tracked text files."""
 
 from __future__ import annotations
 
