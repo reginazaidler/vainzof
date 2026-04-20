@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /ru/
+Allow: /ru/*.html
 Allow: /ru/index.html
 Allow: /ru/about.html
 Disallow: /thanks.html
