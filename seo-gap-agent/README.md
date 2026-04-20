@@ -95,6 +95,10 @@ This project uses an OAuth refresh token flow (suitable for GitHub Actions):
 
    `https://www.googleapis.com/auth/webmasters.readonly`
 
+   > Important: if your OAuth app stays in **Testing** status, Google may expire refresh tokens after ~7 days.
+   > To avoid recurring `invalid_grant` failures in GitHub Actions, publish the consent screen to
+   > **Production** and then generate a fresh refresh token.
+
 6. Save values into GitHub Secrets:
    - `GSC_CLIENT_ID`
    - `GSC_CLIENT_SECRET`
@@ -137,3 +141,21 @@ Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
   - `query_page_metrics`
   - `opportunities`
   - `page_snapshots`
+
+## Troubleshooting
+
+### `invalid_grant` / `Token has been expired or revoked`
+
+If the run fails while calling `https://oauth2.googleapis.com/token` with:
+
+```text
+error: invalid_grant
+error_description: Token has been expired or revoked.
+```
+
+Do the following:
+
+1. In Google Cloud Console, ensure the OAuth consent screen is **Production** (not Testing).
+2. Generate a new refresh token with the same OAuth client and the `webmasters.readonly` scope.
+3. Update GitHub secret `GSC_REFRESH_TOKEN` (and `GSC_CLIENT_ID` / `GSC_CLIENT_SECRET` if rotated).
+4. Re-run the workflow manually from Actions.

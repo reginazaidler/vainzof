@@ -35,13 +35,34 @@ class GSCClient:
         if not response.ok:
             print("Token response status:", response.status_code)
             print("Token response body:", response.text)
+            self._raise_token_error(response)
 
-        response.raise_for_status()
         payload = response.json()
         token = payload.get("access_token")
         if not token:
             raise RuntimeError("Failed to obtain Google OAuth access token")
         return token
+
+    @staticmethod
+    def _raise_token_error(response: requests.Response) -> None:
+        try:
+            payload = response.json()
+        except ValueError:
+            response.raise_for_status()
+            return
+
+        error = payload.get("error")
+        description = payload.get("error_description", "")
+        if response.status_code == 400 and error == "invalid_grant":
+            guidance = (
+                "Google OAuth refresh token is invalid (expired, revoked, or issued in Testing mode). "
+                "Generate a new refresh token and update GSC_REFRESH_TOKEN. "
+                "If this token keeps expiring after 7 days, publish the OAuth consent screen to Production "
+                "before generating a new token."
+            )
+            raise RuntimeError(f"{guidance} Google said: {description or 'invalid_grant'}") from None
+
+        response.raise_for_status()
 
     def query_search_analytics(
         self,
