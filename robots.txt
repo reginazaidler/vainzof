@@ -3,6 +3,9 @@ Allow: /
 Allow: /ru/
 Allow: /ru/index.html
 Allow: /ru/about.html
+Allow: /ru/medstrahovanie-v-izraile-dlya-russkoyazychnyh.html
+Allow: /ru/pensionnye-prava-rabotnikov-v-izraile.html
+Allow: /ru/ipoteka-strahovanie-dlya-semey-v-izraile.html
 Disallow: /thanks.html
 
 Sitemap: https://vainzof.co.il/sitemap.xml
