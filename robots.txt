@@ -3,6 +3,7 @@ Allow: /
 Allow: /ru/
 Allow: /ru/index.html
 Allow: /ru/about.html
+Allow: /ru/*.html
 Disallow: /thanks.html
 
 Sitemap: https://vainzof.co.il/sitemap.xml
