@@ -1,0 +1,33 @@
+name: Normalize Dashes Agent
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 17 * * *'
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  normalize-dashes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Normalize em dashes in content
+        run: python scripts/normalize_dashes.py
+
+      - name: Commit updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: normalize em dashes in site content'
+          file_pattern: '*.html *.htm *.md *.txt *.xml *.csv *.json *.js *.css *.py *.yml *.yaml'
