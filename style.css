@@ -1371,6 +1371,13 @@ html[lang="ru"] .text-right {
     opacity: 0.85;
 }
 
+.site-footer__tlh {
+    margin-top: 4px;
+    font-size: 11px;
+    opacity: 0.72;
+    letter-spacing: 0.02em;
+}
+
 .site-footer__authority {
     margin-top: 10px;
     display: grid;

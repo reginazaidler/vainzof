@@ -10,6 +10,7 @@
         <p>יובל ויינזוף © 2026</p>
         <p class="site-footer__note">סוכן ביטוח פנסיוני מורשה · <a href="tel:0524520222">052-4520222</a></p>
         <p class="site-footer__experience">מעל 18 שנות נסיון מעשי בחברות ביטוח מובילות</p>
+        <p class="site-footer__tlh">ט,ל,ח</p>
       </div>
 
       <nav class="site-footer__nav" aria-label="ניווט תחתון">
