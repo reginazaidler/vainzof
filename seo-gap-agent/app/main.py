@@ -230,4 +230,14 @@ def run_pipeline() -> None:
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    try:
+        run_pipeline()
+    except RuntimeError as exc:
+        message = str(exc)
+        if "invalid_grant" in message.lower() or "refresh token is invalid" in message.lower():
+            print("::error::Google OAuth refresh token failed. Check GSC_REFRESH_TOKEN and OAuth consent screen status.")
+            print(
+                "Troubleshooting: publish OAuth consent screen to Production, generate a fresh refresh token, "
+                "update GitHub Secret GSC_REFRESH_TOKEN, then re-run this workflow."
+            )
+        raise
