@@ -20,6 +20,8 @@ REQUIRED_KEYS = {
     "trust_elements_to_add",
     "cta_fix",
     "priority",
+    "recommended_action",
+    "new_page_slug",
 }
 
 
@@ -58,6 +60,7 @@ def analyze_page_gap(
         page=payload["page"],
         position=payload["position"],
         ctr=payload["ctr"],
+        is_new_query=bool(payload.get("is_new_query", False)),
         title=payload.get("title", ""),
         meta_description=payload.get("meta_description", ""),
         h1=payload.get("h1", ""),
@@ -135,6 +138,8 @@ def analyze_page_gap(
             "trust_elements_to_add": ["N/A (rate-limited run)"],
             "cta_fix": "Retry this run later to generate CTA recommendations.",
             "priority": "low",
+            "recommended_action": "improve_existing_page",
+            "new_page_slug": "",
             "_meta": {
                 "fallback_reason": "openai_retryable_error",
                 "status_code": last_response.status_code,
