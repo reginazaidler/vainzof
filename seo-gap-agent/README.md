@@ -158,4 +158,5 @@ Do the following:
 1. In Google Cloud Console, ensure the OAuth consent screen is **Production** (not Testing).
 2. Generate a new refresh token with the same OAuth client and the `webmasters.readonly` scope.
 3. Update GitHub secret `GSC_REFRESH_TOKEN` (and `GSC_CLIENT_ID` / `GSC_CLIENT_SECRET` if rotated).
+   - If you recently regenerated the OAuth client secret, generate a **new refresh token** too.
 4. Re-run the workflow manually from Actions.
