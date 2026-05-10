@@ -561,6 +561,23 @@ table {
 .shadow-xl { box-shadow: var(--shadow-xl); }
 .shadow-2xl { box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16); }
 
+/* Russian pages should keep LTR reading/alignment even when shared utility classes request RTL alignment. */
+html[lang="ru"] body {
+    direction: ltr;
+}
+
+html[lang="ru"] :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, dt, dd, blockquote, figcaption,
+    label, legend, td, th
+) {
+    text-align: left;
+}
+
+html[lang="ru"] .text-right {
+    text-align: left;
+}
+
 @media (min-width: 768px) {
     .md\:flex-row { flex-direction: row; }
     .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -615,6 +632,12 @@ table {
     .md\:pb-20 { padding-bottom: 5rem; }
     .md\:pb-24 { padding-bottom: 6rem; }
     .md\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+}
+
+@media (min-width: 768px) {
+    html[lang="ru"] .md\:text-right {
+        text-align: left;
+    }
 }
 
 /* desktop */
@@ -1348,6 +1371,13 @@ table {
     opacity: 0.85;
 }
 
+.site-footer__tlh {
+    margin-top: 4px;
+    font-size: 11px;
+    opacity: 0.72;
+    letter-spacing: 0.02em;
+}
+
 .site-footer__authority {
     margin-top: 10px;
     display: grid;
@@ -1586,6 +1616,14 @@ footer:not(.site-footer) .flex.justify-center.gap-4 a:hover {
 
 .home-hero__content {
     text-align: right;
+}
+
+html[lang="ru"] .home-hero__content {
+    text-align: left;
+}
+
+html[lang="ru"] .home-hero__badge {
+    justify-content: flex-start;
 }
 
 .home-hero__badge,
@@ -3014,7 +3052,8 @@ main section.bg-white .text-white h3 {
 .home-faq-list .faq-item summary::before {
     content: "+";
     position: absolute;
-    left: 1rem;
+    right: 1rem;
+    left: auto;
     top: 50%;
     transform: translateY(-50%);
     width: 1.4rem;
@@ -5380,7 +5419,7 @@ main section.bg-white .text-white h3 {
     }
 
     .home-faq-section .faq-item summary {
-        padding: 14px 1.65rem;
+        padding: 14px 3.2rem 14px 1.65rem;
         font-size: clamp(1.08rem, 1.25vw, 1.25rem);
         line-height: 1.45;
     }
@@ -5406,7 +5445,7 @@ main section.bg-white .text-white h3 {
     }
 
     .home-faq-section .faq-item summary {
-        padding: 14px;
+        padding: 14px 3rem 14px 14px;
         gap: 0.75rem;
         font-size: 1rem;
         line-height: 1.45;
@@ -6155,7 +6194,8 @@ main section.bg-white .text-white h3 {
 .faq-page .faq-card summary::before {
     content: '+';
     position: absolute;
-    left: 1rem;
+    right: 1rem;
+    left: auto;
     top: 50%;
     transform: translateY(-50%);
     width: 1.6rem;
@@ -6460,6 +6500,14 @@ main section.bg-white .text-white h3 {
     }
 }
 
+@media (min-width: 1024px) {
+    html[lang="ru"] .site-footer__meta {
+        justify-self: start;
+        text-align: left;
+        direction: ltr;
+    }
+}
+
 /* Desktop FAQ unification (based on service-pages Q&A look) */
 @media (min-width: 1024px) {
     details.faq-item,
@@ -6488,7 +6536,8 @@ main section.bg-white .text-white h3 {
     details.faq-item summary::before,
     details.faq-card summary::before {
         display: grid !important;
-        left: 1.25rem;
+        right: 1.25rem;
+        left: auto;
         width: 1.75rem;
         height: 1.75rem;
         font-size: 1.15rem;
@@ -8222,6 +8271,12 @@ body.pension-fees-page main {
         white-space: nowrap;
         text-wrap: nowrap;
     }
+
+    html[lang="ru"] .home-page .home-hero__subtitle {
+        max-width: 560px;
+        white-space: normal;
+        text-wrap: pretty;
+    }
 }
 
 /* Homepage bottom CTA compact sizing */
@@ -8370,7 +8425,7 @@ body.pension-fees-page main {
 }
 
 /* ============================================================
-   UTILITY CLASSES — supplement for pages using Tailwind content
+   UTILITY CLASSES - supplement for pages using Tailwind content
    ============================================================ */
 
 /* Colors */
@@ -8522,7 +8577,7 @@ body.pension-fees-page main {
 .focus\:border-blue-600:focus { border-color: #2563eb; }
 .focus\:outline-none:focus    { outline: none; }
 
-/* Responsive — sm (640px) */
+/* Responsive - sm (640px) */
 @media (min-width: 640px) {
   .sm\:flex-row     { flex-direction: row; }
   .sm\:items-center { align-items: center; }
@@ -8530,7 +8585,7 @@ body.pension-fees-page main {
   .sm\:w-auto       { width: auto; }
 }
 
-/* Responsive — md (768px) */
+/* Responsive - md (768px) */
 @media (min-width: 768px) {
   .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -8551,7 +8606,7 @@ body.pension-fees-page main {
   .md\:w-auto      { width: auto; }
 }
 
-/* Responsive — lg (1024px) */
+/* Responsive - lg (1024px) */
 @media (min-width: 1024px) {
   .lg\:grid-cols-3  { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lg\:grid-cols-4  { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -8564,7 +8619,7 @@ body.pension-fees-page main {
 }
 
 /* =====================================================
-   צמצום ריווח אנכי בדסקטופ — כל הדפים שאינם דף הבית
+   צמצום ריווח אנכי בדסקטופ - כל הדפים שאינם דף הבית
    ===================================================== */
 @media (min-width: 1024px) {
   body:not(.home-page) #main > section {
@@ -8573,7 +8628,7 @@ body.pension-fees-page main {
   }
 }
 
-/* Hero long description — hide on mobile so hero fits viewport */
+/* Hero long description - hide on mobile so hero fits viewport */
 @media (max-width: 767px) {
     .hero-long-desc {
         display: none !important;
@@ -8603,4 +8658,39 @@ body.pension-fees-page main {
 .pension-hero h2,
 .pension-hero h3 {
     color: #ffffff !important;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.lang-switch__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.lang-switch__link--active {
+  border-color: var(--navy-main);
+  color: #fff;
+  background: var(--navy-main);
+}
+
+.lang-switch__label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #334155;
 }

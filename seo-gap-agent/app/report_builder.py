@@ -42,6 +42,7 @@ def build_reports(
                 f"- **Position:** {item['position']:.2f}",
                 f"- **Impressions:** {item['impressions']:.0f}",
                 f"- **Opportunity Score:** {item['opportunity_score']:.4f}",
+                f"- **New Query:** {'yes' if item.get('is_new_query') else 'no'}",
                 f"- **Issues:** {issues}",
                 (
                     "- **AI Analysis:** unavailable due to OpenAI rate limit in this run."
@@ -58,6 +59,16 @@ def build_reports(
                 ("" if rate_limited else f"  - FAQ to add: {', '.join(analysis['faq_to_add'])}"),
                 ("" if rate_limited else f"  - Trust elements: {', '.join(analysis['trust_elements_to_add'])}"),
                 ("" if rate_limited else f"  - CTA fix: {analysis['cta_fix']}"),
+                (
+                    ""
+                    if rate_limited
+                    else f"  - Recommended action: {analysis['recommended_action']}"
+                ),
+                (
+                    ""
+                    if rate_limited or not analysis.get("new_page_slug")
+                    else f"  - New page slug: {analysis['new_page_slug']}"
+                ),
                 f"  - Priority: {analysis['priority']}",
                 "",
             ]
@@ -70,6 +81,9 @@ def build_reports(
                 "position": item["position"],
                 "opportunity_score": item["opportunity_score"],
                 "priority": analysis["priority"],
+                "is_new_query": bool(item.get("is_new_query", False)),
+                "recommended_action": analysis.get("recommended_action", "improve_existing_page"),
+                "new_page_slug": analysis.get("new_page_slug", ""),
                 "analysis_status": "rate_limited" if rate_limited else "ok",
                 "tasks": {
                     "title_fix": "" if rate_limited else analysis["title_fix"],

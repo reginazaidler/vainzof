@@ -8,6 +8,7 @@ from app.config import load_settings
 from app.db import bulk_insert, get_connection, init_db
 from app.fetch_gsc_data import GSCFetchParams, fetch_gsc_data
 from app.gsc_client import GSCClient
+from app.new_queries import mark_new_queries
 from app.opportunity_scoring import filter_opportunities, score_opportunities
 from app.page_extractor import extract_page_snapshot
 from app.report_builder import build_reports
@@ -49,6 +50,7 @@ def run_pipeline() -> None:
         max_rows=settings.max_rows,
     )
     raw_df = fetch_gsc_data(gsc_client, fetch_params)
+    fetched_at = str(raw_df["fetched_at"].iloc[0]) if not raw_df.empty else ""
     print(f"Fetched {len(raw_df)} query-page rows from GSC ({settings.start_date} to {settings.end_date}).")
 
     if raw_df.empty:
@@ -95,6 +97,10 @@ def run_pipeline() -> None:
             for row in raw_df.itertuples(index=False)
         ],
     )
+
+    raw_df = mark_new_queries(conn, raw_df, fetched_at=fetched_at)
+    new_queries_count = int(raw_df["is_new_query"].sum())
+    print(f"Detected {new_queries_count} new queries in this run.")
 
     filtered_df = filter_opportunities(
         df=raw_df,
@@ -195,6 +201,7 @@ def run_pipeline() -> None:
                     "page": row.page,
                     "position": float(row.position),
                     "ctr": float(row.ctr),
+                    "is_new_query": bool(getattr(row, "is_new_query", False)),
                     "title": snapshot.title,
                     "meta_description": snapshot.meta_description,
                     "h1": snapshot.h1,
@@ -221,6 +228,7 @@ def run_pipeline() -> None:
                 "position": float(row.position),
                 "impressions": float(row.impressions),
                 "opportunity_score": float(row.opportunity_score),
+                "is_new_query": bool(getattr(row, "is_new_query", False)),
                 "analysis": analysis,
             }
         )
@@ -230,4 +238,14 @@ def run_pipeline() -> None:
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    try:
+        run_pipeline()
+    except RuntimeError as exc:
+        message = str(exc)
+        if "invalid_grant" in message.lower() or "refresh token is invalid" in message.lower():
+            print("::error::Google OAuth refresh token failed. Check GSC_REFRESH_TOKEN and OAuth consent screen status.")
+            print(
+                "Troubleshooting: publish OAuth consent screen to Production, generate a fresh refresh token, "
+                "update GitHub Secret GSC_REFRESH_TOKEN, then re-run this workflow."
+            )
+        raise

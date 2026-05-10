@@ -138,7 +138,7 @@ def main() -> None:
     sync_llms(Path("llms.txt"), added_urls, root, args.dry_run)
 
     if added_urls and not args.dry_run:
-        print(f"[sync] Added {len(added_urls)} new page(s) — committing...")
+        print(f"[sync] Added {len(added_urls)} new page(s) - committing...")
         git_commit_and_push(root)
     elif not added_urls:
         print("[sync] All pages already in sitemap, nothing to do")

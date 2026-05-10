@@ -64,7 +64,7 @@ gtag('config', 'G-EM8SYH542C');
 <link rel="stylesheet" href="style.css">
 <style>
 body.school-insurance-landing {
-  background: linear-gradient(180deg, #f8fafc 0%, #edf4ff 100%);
+  background: #f8fafc;
   font-family: "Assistant", sans-serif;
 }
 body.school-insurance-landing main { padding-top: 2.5rem; padding-bottom: 2.5rem; }
@@ -76,13 +76,19 @@ body.school-insurance-landing main { padding-top: 2.5rem; padding-bottom: 2.5rem
   border-radius: 1.5rem; box-shadow: 0 16px 40px rgba(15,23,42,0.06);
 }
 .pension-hero {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
-  border-color: rgba(255,255,255,0.18);
+  padding: clamp(1.75rem, 3.2vw, 2.2rem);
+  background: linear-gradient(to left, #172554, #1e3a8a);
+  border: none;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
 }
 .pension-hero p, .pension-hero li { color: rgba(255,255,255,0.92); }
 .pension-hero h1 { color: #fff !important; }
 .pension-hero .bg-blue-50 { background: rgba(255,255,255,0.1); color: var(--gold-brand); }
+.pension-hero nav,
+.pension-hero nav a,
+.pension-hero nav span { color: rgba(255,255,255,0.82) !important; }
+.pension-hero .hero-back-link { color: rgba(255,255,255,0.9) !important; }
+.pension-hero .hero-long-desc { max-width: 48rem; line-height: 1.9; }
 .pension-rich-text p, .pension-rich-text ul, .pension-rich-text ol { margin-bottom: 1.15rem; }
 .pension-rich-text p, .pension-rich-text li { color: #334155; line-height: 1.95; }
 .pension-rich-text h2 { font-size: clamp(1.65rem,2vw,2.2rem); color: #061a40; font-weight: 800; margin-bottom: 1rem; }
@@ -204,31 +210,31 @@ body.school-insurance-landing main { padding-top: 2.5rem; padding-bottom: 2.5rem
       <span class="mx-2">/</span>
       <span class="text-slate-700">בית ספר וביטוח ילדים: מה ההורים צריכים לבדוק לפני תחילת שנת הלימודים</span>
     </nav>
-    <a href="articles.html" class="font-bold" style="color:rgba(255,255,255,0.8)">← חזרה לכל המאמרים</a>
-        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני — 2026-04</p>
-        <h1 class="text-4xl font-black mt-5 mb-5" style="color:#fff">בית ספר וביטוח ילדים: מה ההורים צריכים לבדוק לפני תחילת שנת הלימודים</h1>
-        עם תחילת שנת הלימודים, רוב ההורים עסוקים ברכישת ציוד, בגדים ותיקים — אך ביטוח ילדים בית ספר נדחק לרוב לסוף הרשימה. בדיקה קצרה של הכיסויים הקיימים יכולה לחסוך כסף רב ולמנוע תאונות שיישארו ללא פיצוי.
+    <a href="articles.html" class="font-bold hero-back-link">← חזרה לכל המאמרים</a>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני - 2026-04</p>
+        <h1 class="text-4xl font-black mt-5 mb-5 leading-tight" style="color:#fff">בית ספר וביטוח ילדים: מה ההורים צריכים לבדוק לפני תחילת שנת הלימודים</h1>
+        עם תחילת שנת הלימודים, רוב ההורים עסוקים ברכישת ציוד, בגדים ותיקים - אך ביטוח ילדים בית ספר נדחק לרוב לסוף הרשימה. בדיקה קצרה של הכיסויים הקיימים יכולה לחסוך כסף רב ולמנוע תאונות שיישארו ללא פיצוי.
       </section>
 
 
       <section id="school-group-insurance" class="pension-section">
-        <h2>ביטוח קבוצתי של בית הספר — מה הוא מכסה ומה לא</h2>
+        <h2>ביטוח קבוצתי של בית הספר - מה הוא מכסה ומה לא</h2>
         <p>רוב בתי הספר בישראל רוכשים עבור התלמידים ביטוח תאונות אישיות קבוצתי, הכולל כיסוי בסיסי לתאונות במהלך שעות הלימודים ובדרך אליהם. חשוב לקרוא את דף הביטוח שמגיע מבית הספר ולהבין מה בדיוק נכלל בו.</p>
         <p>הביטוח הקבוצתי מוגבל בדרך כלל בסכומי הפיצוי ואינו מכסה מחלות, פגיעות בשיניים מורכבות או נזקים שאירעו מחוץ לשעות הפעילות הרשמית.</p>
         <ul><li>בדקו את תקרת הפיצוי לתאונה בודדת</li><li>ודאו אם הכיסוי תקף בפעילות חוגים</li><li>בררו האם שיניים כלולות בפוליסה</li><li>הכיסוי לרוב לא כולל מחלות ילדים</li></ul>
       </section>
 
       <section id="personal-insurance-for-children" class="pension-section">
-        <h2>ביטוח ילדים אישי — מתי הוא נחוץ</h2>
+        <h2>ביטוח ילדים אישי - מתי הוא נחוץ</h2>
         <p>ביטוח תאונות אישיות פרטי לילד מוסיף שכבת הגנה על הכיסוי הקבוצתי ומאפשר פיצוי גבוה יותר במקרה של נכות תאונתית או אשפוז ממושך. הוא רלוונטי במיוחד לילדים הפעילים בספורט, חוגים אינטנסיביים או מחנות קיץ.</p>
         <p>מומלץ לבחון גם הרחבות לכיסוי שיניים בביטוח הבריאות של הילד, שכן שבר שן בגלל נפילה הוא אחד האירועים השכיחים ביותר בגיל בית הספר. לקריאה על כיסויי בריאות לכל המשפחה ראו את המאמר ביטוח בריאות.</p>
-        <ul><li>ביטוח אישי מתאים לילדים פעילים בספורט</li><li>כיסוי שיניים — פגיעה נפוצה בגיל בית ספר</li><li>ודאו שאין כפל כיסוי מיותר</li></ul>
+        <ul><li>ביטוח אישי מתאים לילדים פעילים בספורט</li><li>כיסוי שיניים - פגיעה נפוצה בגיל בית ספר</li><li>ודאו שאין כפל כיסוי מיותר</li></ul>
       </section>
 
       <section id="double-coverage-check" class="pension-section">
-        <h2>כפל ביטוחים — בדיקה חיונית לפני תחילת השנה</h2>
+        <h2>כפל ביטוחים - בדיקה חיונית לפני תחילת השנה</h2>
         <p>לא פעם הורים רוכשים ביטוח ילדים בית ספר נפרד מבלי לשים לב שהכיסוי כבר קיים בפוליסת הבריאות המשפחתית או בביטוח הקבוצתי. כפל ביטוחים גורם לתשלום פרמיה כפולה מבלי שתוכלו לגבות פיצוי כפול.</p>
-        <p>כדאי לבצע בדיקת תיק ביטוח לפני תחילת השנה ולוודא שכל כיסוי שאתם רוכשים מוסיף ערך אמיתי. לפרטים נוספים על איך לזהות חפיפות קראו את המאמר כפל ביטוחים — זיהוי ובדיקה.</p>
+        <p>כדאי לבצע בדיקת תיק ביטוח לפני תחילת השנה ולוודא שכל כיסוי שאתם רוכשים מוסיף ערך אמיתי. לפרטים נוספים על איך לזהות חפיפות קראו את המאמר כפל ביטוחים - זיהוי ובדיקה.</p>
         <ul><li>בדקו אם הביטוח הקבוצתי כבר מספק כיסוי</li><li>ודאו שפוליסת הבריאות לא חופפת</li><li>אל תשלמו פעמיים על אותו כיסוי</li></ul>
       </section>
 
@@ -240,13 +246,13 @@ body.school-insurance-landing main { padding-top: 2.5rem; padding-bottom: 2.5rem
 
       <section class="pension-section">
         <h2>סיכום</h2>
-        <p>בדיקת ביטוח ילדים בית ספר לפני תחילת שנת הלימודים היא צעד פשוט שיכול לחסוך כסף ולהבטיח שהילד שלכם מכוסה כראוי — צרו קשר עם יועץ ביטוח לבדיקה אישית ומותאמת.</p>
+        <p>בדיקת ביטוח ילדים בית ספר לפני תחילת שנת הלימודים היא צעד פשוט שיכול לחסוך כסף ולהבטיח שהילד שלכם מכוסה כראוי - צרו קשר עם יועץ ביטוח לבדיקה אישית ומותאמת.</p>
       </section>
 
       <section id="faq" class="pension-section">
         <h2>שאלות נפוצות</h2>
         <h3>האם ביטוח בית הספר מספיק לכיסוי ילדי?</h3>
-        <p>ביטוח בית הספר הוא כיסוי בסיסי בלבד. הוא לרוב לא מכסה פגיעות מחוץ לשעות הלימודים, מחלות, או נזקי שיניים מורכבים — ולכן כדאי לבחון השלמה עם ביטוח פרטי.</p>
+        <p>ביטוח בית הספר הוא כיסוי בסיסי בלבד. הוא לרוב לא מכסה פגיעות מחוץ לשעות הלימודים, מחלות, או נזקי שיניים מורכבים - ולכן כדאי לבחון השלמה עם ביטוח פרטי.</p>
         <h3>האם ניתן לתבוע מביטוח בית הספר וגם מביטוח הבריאות?</h3>
         <p>בביטוחי בריאות ותאונות, ככלל לא ניתן לגבות פיצוי העולה על הנזק האמיתי. לכן כפל ביטוחים פעמים רבות אינו מוסיף תשלום נוסף, אך כן מוסיף עלות פרמיה מיותרת.</p>
         <h3>מה לעשות אם הילד נפגע בדרך לבית הספר?</h3>
@@ -266,7 +272,7 @@ body.school-insurance-landing main { padding-top: 2.5rem; padding-bottom: 2.5rem
 
       <section id="lead-form" class="pension-form-section">
         <h2 class="text-3xl font-black text-blue-950 mb-3">השאירו פרטים לבדיקה</h2>
-        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות — נבדוק מה קיים בתיק ומה אפשר לשפר.</p>
+        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות - נבדוק מה קיים בתיק ומה אפשר לשפר.</p>
         <form id="leadForm" class="space-y-4">
           <div class="pension-form-grid">
             <div>
@@ -307,16 +313,16 @@ body.school-insurance-landing main { padding-top: 2.5rem; padding-bottom: 2.5rem
       <section class="pension-toc">
         <h2 class="text-2xl font-black text-blue-950 mb-4">תוכן עניינים</h2>
         <ul>
-          <li><a href="#school-group-insurance">ביטוח קבוצתי של בית הספר — מה הוא מכסה ומה לא</a></li>
-          <li><a href="#personal-insurance-for-children">ביטוח ילדים אישי — מתי הוא נחוץ</a></li>
-          <li><a href="#double-coverage-check">כפל ביטוחים — בדיקה חיונית לפני תחילת השנה</a></li>
+          <li><a href="#school-group-insurance">ביטוח קבוצתי של בית הספר - מה הוא מכסה ומה לא</a></li>
+          <li><a href="#personal-insurance-for-children">ביטוח ילדים אישי - מתי הוא נחוץ</a></li>
+          <li><a href="#double-coverage-check">כפל ביטוחים - בדיקה חיונית לפני תחילת השנה</a></li>
           <li><a href="#checklist-before-school-year">צ׳קליסט ביטוחי לפני תחילת שנת הלימודים</a></li>
           <li><a href="#faq">שאלות נפוצות</a></li>
         </ul>
       </section>
       <section class="pension-lead-box">
         <h2 class="text-2xl font-black text-blue-950 mb-3">יש שאלה?</h2>
-        <p class="text-slate-700">יובל ויינזוף — יועץ ביטוח ופנסיה. אפשר לפנות ישירות.</p>
+        <p class="text-slate-700">יובל ויינזוף - יועץ ביטוח ופנסיה. אפשר לפנות ישירות.</p>
         <div class="pension-btn-row" style="margin-top:1rem">
           <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">WhatsApp</a>
         </div>

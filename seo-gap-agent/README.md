@@ -7,24 +7,27 @@ Automated SEO optimization agent that pulls Google Search Console query/page dat
 On each run the agent:
 
 1. Pulls last 28 days of GSC performance data (`query + page`) with pagination up to 50,000 rows.
-2. Filters opportunities:
+2. Detects which queries are **new** versus prior runs (based on SQLite history in `query_page_metrics`).
+3. Filters opportunities:
    - `impressions >= 1` (configurable)
    - `position between 1 and 12` (configurable)
    - excludes brand queries from a configurable list.
    - if strict filters return no rows, falls back to ranking raw GSC rows so reports are still generated.
    - logs filter diagnostics (how many rows pass each condition) for easier debugging in Actions logs.
-3. Scores opportunities with:
+4. Scores opportunities with:
 
    `opportunity_score = impressions * (expected_ctr - ctr) / position`
 
-4. Extracts page signals (`title`, `meta description`, `H1`, `H2s`, `main content`).
-5. Calls OpenAI to return strict JSON recommendations.
-6. Writes reports:
+5. Extracts page signals (`title`, `meta description`, `H1`, `H2s`, `main content`).
+6. Calls OpenAI to return strict JSON recommendations, including:
+   - whether to improve an existing page or create a new page.
+   - suggested slug when creating a new page is recommended.
+7. Writes reports:
    - `reports/top_opportunities.csv`
    - `reports/fixes_report.md`
    - `reports/dev_tasks.json`
    - if no rows are available at all, writes empty report files instead of exiting without outputs.
-7. Stores run data in SQLite (`data/seo_gap_agent.db`).
+8. Stores run data in SQLite (`data/seo_gap_agent.db`).
 
 ## Project structure
 
@@ -95,6 +98,10 @@ This project uses an OAuth refresh token flow (suitable for GitHub Actions):
 
    `https://www.googleapis.com/auth/webmasters.readonly`
 
+   > Important: if your OAuth app stays in **Testing** status, Google may expire refresh tokens after ~7 days.
+   > To avoid recurring `invalid_grant` failures in GitHub Actions, publish the consent screen to
+   > **Production** and then generate a fresh refresh token.
+
 6. Save values into GitHub Secrets:
    - `GSC_CLIENT_ID`
    - `GSC_CLIENT_SECRET`
@@ -120,7 +127,7 @@ Outputs:
 
 Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
 
-- Triggered weekly (Monday at 08:00 UTC).
+- Triggered daily (08:00 UTC).
 - Supports manual trigger (`workflow_dispatch`).
 - Installs Python 3.11 + dependencies.
 - Runs `python app/main.py`.
@@ -137,3 +144,22 @@ Workflow file: `../.github/workflows/run-agent.yml` (at repository root)
   - `query_page_metrics`
   - `opportunities`
   - `page_snapshots`
+
+## Troubleshooting
+
+### `invalid_grant` / `Token has been expired or revoked`
+
+If the run fails while calling `https://oauth2.googleapis.com/token` with:
+
+```text
+error: invalid_grant
+error_description: Token has been expired or revoked.
+```
+
+Do the following:
+
+1. In Google Cloud Console, ensure the OAuth consent screen is **Production** (not Testing).
+2. Generate a new refresh token with the same OAuth client and the `webmasters.readonly` scope.
+3. Update GitHub secret `GSC_REFRESH_TOKEN` (and `GSC_CLIENT_ID` / `GSC_CLIENT_SECRET` if rotated).
+   - If you recently regenerated the OAuth client secret, generate a **new refresh token** too.
+4. Re-run the workflow manually from Actions.

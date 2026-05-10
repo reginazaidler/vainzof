@@ -11,7 +11,7 @@ gtag('config', 'G-EM8SYH542C');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>למה כדאי שיהיה לך סוכן ביטוח כשמגיעה תביעה | יובל ויינזוף</title>
-<meta name="description" content="כשמגיעה תביעת ביטוח, מי שמלווה אותך יכול לשנות הכל. הנה למה סוכן ביטוח הוא הנכס החשוב ביותר שלך ברגע הקריטי — ומה קורה כשמנסים לבד.">
+<meta name="description" content="כשמגיעה תביעת ביטוח, מי שמלווה אותך יכול לשנות הכל. הנה למה סוכן ביטוח הוא הנכס החשוב ביותר שלך ברגע הקריטי - ומה קורה כשמנסים לבד.">
 <link rel="canonical" href="https://vainzof.co.il/insurance-agent-claims-help.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="למה כדאי שיהיה לך סוכן ביטוח כשמגיעה תביעה">
@@ -57,7 +57,7 @@ gtag('config', 'G-EM8SYH542C');
       "name": "האם סוכן ביטוח גובה תשלום על ליווי בתביעה?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "לא. הסוכן מקבל עמלה מחברת הביטוח על הפוליסות שמנוהלות דרכו — הליווי בתביעה הוא חלק מהשירות ואינו כרוך בתשלום נוסף מהלקוח."
+        "text": "לא. הסוכן מקבל עמלה מחברת הביטוח על הפוליסות שמנוהלות דרכו - הליווי בתביעה הוא חלק מהשירות ואינו כרוך בתשלום נוסף מהלקוח."
       }
     },
     {
@@ -73,7 +73,7 @@ gtag('config', 'G-EM8SYH542C');
       "name": "האם אפשר לפנות לסוכן גם אם לא הוא מכר לי את הפוליסה?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "כן, אפשר לעבור לייצוג של סוכן חדש גם אחרי שנחתמה הפוליסה. הסוכן החדש יכול לקחת ייצוג ולסייע בתביעה — כדאי לעשות זאת לפני הגשת התביעה ולא תוך כדי."
+        "text": "כן, אפשר לעבור לייצוג של סוכן חדש גם אחרי שנחתמה הפוליסה. הסוכן החדש יכול לקחת ייצוג ולסייע בתביעה - כדאי לעשות זאת לפני הגשת התביעה ולא תוך כדי."
       }
     }
   ]
@@ -88,7 +88,7 @@ gtag('config', 'G-EM8SYH542C');
 <link rel="stylesheet" href="style.css">
 <style>
 body.insurance-agent-claims-page {
-  background: linear-gradient(180deg, #f8fafc 0%, #edf4ff 100%);
+  background: #f8fafc;
   font-family: "Assistant", sans-serif;
 }
 body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5rem; }
@@ -100,13 +100,19 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
   border-radius: 1.5rem; box-shadow: 0 16px 40px rgba(15,23,42,0.06);
 }
 .pension-hero {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-main) 100%);
-  border-color: rgba(255,255,255,0.18);
+  padding: clamp(1.75rem, 3.2vw, 2.2rem);
+  background: linear-gradient(to left, #172554, #1e3a8a);
+  border: none;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
 }
 .pension-hero { color: rgba(255,255,255,0.92); }
 .pension-hero h1 { color: #fff !important; }
 .pension-hero .bg-blue-50 { background: rgba(255,255,255,0.1); color: var(--gold-brand); }
+.pension-hero nav,
+.pension-hero nav a,
+.pension-hero nav span { color: rgba(255,255,255,0.82) !important; }
+.pension-hero .hero-back-link { color: rgba(255,255,255,0.9) !important; }
+.pension-hero .hero-long-desc { max-width: 48rem; line-height: 1.9; }
 .pension-rich-text p, .pension-rich-text ul, .pension-rich-text ol { margin-bottom: 1.15rem; }
 .pension-rich-text p, .pension-rich-text li { color: #334155; line-height: 1.95; }
 .pension-rich-text h2 { font-size: clamp(1.65rem,2vw,2.2rem); color: #061a40; font-weight: 800; margin-bottom: 1rem; }
@@ -201,8 +207,23 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
       <a href="index.html" class="nav-link">דף הבית</a>
       <a href="about.html" class="nav-link">קצת עלי</a>
       <a href="insurance-types.html" class="nav-link">סוגי ביטוחים</a>
-      <a href="faq.html" class="nav-link">שאלות ותשובות</a>
-      <a href="articles.html" class="nav-link nav-link-active">מאמרים</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown__trigger" type="button">
+          מרכז ידע
+          <span aria-hidden="true">▾</span>
+        </button>
+        <div id="desktopKnowledgeMenu" class="nav-dropdown__menu" role="menu" aria-label="מרכז ידע">
+          <a href="articles.html" class="nav-dropdown__item" role="menuitem">מאמרים מקצועיים על פנסיה וביטוחים</a>
+          <a href="faq.html" class="nav-dropdown__item" role="menuitem">שאלות ותשובות</a>
+          <a href="calculator.html" class="nav-dropdown__item" role="menuitem">מחשבון חיסכון</a>
+          <a href="media.html" class="nav-dropdown__item" role="menuitem">וידאו ומדיה</a>
+        </div>
+      </div>
+      <a href="tel:0524520222" class="header-phone">
+        <span>052-4520222</span>
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.1 15.1 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.7.59 1 1 0 011 1V20a1 1 0 01-1 1A18 18 0 013 4a1 1 0 011-1h3.43a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.27 1.1l-2.12 2.1z"/></svg>
+      </a>
+      <button id="openContactDesktop" class="site-cta">לתיאום בדיקה אישית</button>
     </nav>
     <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="פתח תפריט" aria-expanded="false" aria-controls="mobileMenu">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -211,12 +232,16 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
     </button>
   </div>
 </header>
-<div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50">
+<div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50" aria-label="תפריט מובייל">
   <a href="index.html" class="block font-bold text-slate-600 border-b pb-2">דף הבית</a>
   <a href="about.html" class="block font-bold text-slate-600 border-b pb-2">קצת עלי</a>
   <a href="insurance-types.html" class="block font-bold text-slate-600 border-b pb-2">סוגי ביטוחים</a>
+  <a href="articles.html" class="block font-bold text-blue-900 border-b pb-2">מאמרים מקצועיים על פנסיה וביטוחים</a>
   <a href="faq.html" class="block font-bold text-slate-600 border-b pb-2">שאלות ותשובות</a>
-  <a href="articles.html" class="block font-bold text-blue-900 border-b pb-2">מאמרים</a>
+  <a href="calculator.html" class="block font-bold text-slate-600 border-b pb-2">מחשבון חיסכון</a>
+  <a href="media.html" class="block font-bold text-slate-600 border-b pb-2">וידאו ומדיה</a>
+  <a href="tel:0524520222" class="block font-bold text-slate-600 border-b pb-2">התקשר עכשיו</a>
+  <button id="openContactMobile" class="mobile-contact-cta">לתיאום בדיקה אישית</button>
 </div>
 
 <main id="main" class="py-10 md:py-14">
@@ -231,16 +256,16 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
       <span class="mx-2">/</span>
       <span class="text-slate-700">למה כדאי שיהיה לך סוכן ביטוח כשמגיעה תביעה</span>
     </nav>
-    <a href="articles.html" class="font-bold" style="color:rgba(255,255,255,0.8)">← חזרה לכל המאמרים</a>
-        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני — אפריל 2026</p>
-        <h1 class="text-4xl font-black mt-5 mb-5" style="color:#fff">למה כדאי שיהיה לך סוכן ביטוח כשמגיעה תביעה</h1>
-        <p class="hero-long-desc">רוב האנשים קונים ביטוח ושוכחים ממנו — עד שמגיע הרגע שבו צריך להפעיל אותו. ברגע הזה, ההבדל בין מי שמנהל לבד ומי שיש לו סוכן לצידו יכול להיות עשרות אלפי שקלים, חודשים של המתנה, ולפעמים — הכול.</p>
+    <a href="articles.html" class="font-bold hero-back-link">← חזרה לכל המאמרים</a>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-900">מדריך עדכני - אפריל 2026</p>
+        <h1 class="text-4xl font-black mt-5 mb-5 leading-tight" style="color:#fff">למה כדאי שיהיה לך סוכן ביטוח כשמגיעה תביעה</h1>
+        <p class="hero-long-desc">רוב האנשים קונים ביטוח ושוכחים ממנו - עד שמגיע הרגע שבו צריך להפעיל אותו. ברגע הזה, ההבדל בין מי שמנהל לבד ומי שיש לו סוכן לצידו יכול להיות עשרות אלפי שקלים, חודשים של המתנה, ולפעמים - הכול.</p>
       </section>
 
       <section id="claim-alone" class="pension-section">
         <h2>מה קורה כשמנסים לנהל תביעה לבד</h2>
         <p>כשמגישים תביעה ישירות לחברת הביטוח, הלקוח מוצא את עצמו מול מנגנון גדול עם נהלים, טפסים ודרישות מסמכים שלא תמיד ברורות.</p>
-        <p>חברת הביטוח מחויבת לשלם תביעות תקינות — אבל גם לאמת שכל תנאי הפוליסה מתקיימים. מי שלא מכיר את הניסוחים עלול להגיש תביעה חלקית, לפספס כיסויים שמגיעים לו, או לקבל דחייה שאפשר היה לערער עליה.</p>
+        <p>חברת הביטוח מחויבת לשלם תביעות תקינות - אבל גם לאמת שכל תנאי הפוליסה מתקיימים. מי שלא מכיר את הניסוחים עלול להגיש תביעה חלקית, לפספס כיסויים שמגיעים לו, או לקבל דחייה שאפשר היה לערער עליה.</p>
         <ul>
           <li>טפסים לא שלמים שמחזירים את התהליך לנקודת ההתחלה</li>
           <li>מסמכים רפואיים שמנוסחים בצורה שפוגעת בזכאות</li>
@@ -251,60 +276,60 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
 
       <section id="agent-role" class="pension-section">
         <h2>מה עושה סוכן ביטוח בפועל בזמן תביעה</h2>
-        <p>סוכן שמכיר את הפוליסה מהתחלה יכול לזהות מיד אילו כיסויים רלוונטיים — כולל כיסויים שהלקוח שכח שיש לו, כמו <a href="loss-of-income.html">אובדן כושר עבודה</a> שמגיע ממספר פוליסות במקביל.</p>
-        <p>הסוכן יודע איך לנסח את הדיווח הראשוני בצורה שלא תפגע בתביעה, אילו מסמכים לאסוף קודם ואיך להגיש אותם נכון. מדובר בניסיון שנצבר מעשרות תביעות — לא בניחוש.</p>
+        <p>סוכן שמכיר את הפוליסה מהתחלה יכול לזהות מיד אילו כיסויים רלוונטיים - כולל כיסויים שהלקוח שכח שיש לו, כמו <a href="loss-of-income.html">אובדן כושר עבודה</a> שמגיע ממספר פוליסות במקביל.</p>
+        <p>הסוכן יודע איך לנסח את הדיווח הראשוני בצורה שלא תפגע בתביעה, אילו מסמכים לאסוף קודם ואיך להגיש אותם נכון. מדובר בניסיון שנצבר מעשרות תביעות - לא בניחוש.</p>
         <ul>
           <li>בדיקת כל הפוליסות הרלוונטיות לאירוע</li>
           <li>ניסוח נכון של הדיווח הראשוני לחברת הביטוח</li>
           <li>ליווי מול שמאים ורופאים מטעם החברה</li>
           <li>מעקב אחר לוחות זמנים ומניעת עיכובים</li>
-          <li>ערעור על דחיות — ידיעת הדרך הנכונה</li>
+          <li>ערעור על דחיות - ידיעת הדרך הנכונה</li>
         </ul>
       </section>
 
       <section id="agent-vs-direct" class="pension-section">
-        <h2>ביטוח ישיר לעומת ביטוח דרך סוכן — ההבדל בתביעה</h2>
-        <p>חברות ביטוח ישיר מציגות את עצמן כזולות יותר — ולעיתים הן כן זולות יותר בפרמיה. אבל בפרמיה הנמוכה לא נכלל סוכן שמייצג אותך.</p>
-        <p>כשמגישים תביעה לחברת ביטוח ישירה, הלקוח מדבר מול נציג שירות שמייצג את החברה — לא אותו. מי שרכש דרך סוכן מקבל גורם ביניים שתפקידו הוא לדאוג שהלקוח יקבל את מה שמגיע לו. זה לא אותו דבר.</p>
-        <p>ל<a href="check-insurance-policies.html">בדיקת תיק הביטוח</a> הכוללת השוואה בין מסלולים — כולל השאלה אם הביטוח הישיר שלך מכסה מה שאתה חושב — כדאי לפנות לייעוץ לפני שמגיעה תביעה, לא אחריה.</p>
+        <h2>ביטוח ישיר לעומת ביטוח דרך סוכן - ההבדל בתביעה</h2>
+        <p>חברות ביטוח ישיר מציגות את עצמן כזולות יותר - ולעיתים הן כן זולות יותר בפרמיה. אבל בפרמיה הנמוכה לא נכלל סוכן שמייצג אותך.</p>
+        <p>כשמגישים תביעה לחברת ביטוח ישירה, הלקוח מדבר מול נציג שירות שמייצג את החברה - לא אותו. מי שרכש דרך סוכן מקבל גורם ביניים שתפקידו הוא לדאוג שהלקוח יקבל את מה שמגיע לו. זה לא אותו דבר.</p>
+        <p>ל<a href="check-insurance-policies.html">בדיקת תיק הביטוח</a> הכוללת השוואה בין מסלולים - כולל השאלה אם הביטוח הישיר שלך מכסה מה שאתה חושב - כדאי לפנות לייעוץ לפני שמגיעה תביעה, לא אחריה.</p>
       </section>
 
       <section id="when-critical" class="pension-section">
         <h2>מתי הסוכן חיוני במיוחד</h2>
         <p>יש אירועים שבהם הפרש הסיוע בין תביעה עצמאית לתביעה מלווה הוא הגדול ביותר:</p>
         <ul>
-          <li><strong>אובדן כושר עבודה</strong> — תביעה מורכבת עם הגדרות רפואיות קריטיות</li>
-          <li><strong>מחלה קשה</strong> — כמה פוליסות עשויות לכסות את אותו אירוע</li>
-          <li><strong>תאונה</strong> — כיסויים מביטוח חיים, בריאות ותאונות אישיות במקביל</li>
-          <li><strong>נזק לדירה</strong> — חילוקי דעות עם שמאי חברת הביטוח</li>
-          <li><strong>פטירה</strong> — בן משפחה שמגיש תביעה ראשונה בחייו, ללא ידע</li>
+          <li><strong>אובדן כושר עבודה</strong> - תביעה מורכבת עם הגדרות רפואיות קריטיות</li>
+          <li><strong>מחלה קשה</strong> - כמה פוליסות עשויות לכסות את אותו אירוע</li>
+          <li><strong>תאונה</strong> - כיסויים מביטוח חיים, בריאות ותאונות אישיות במקביל</li>
+          <li><strong>נזק לדירה</strong> - חילוקי דעות עם שמאי חברת הביטוח</li>
+          <li><strong>פטירה</strong> - בן משפחה שמגיש תביעה ראשונה בחייו, ללא ידע</li>
         </ul>
         <p>ככל שהתביעה גדולה יותר, כך ערך הליווי של סוכן מקצועי גבוה יותר. זה לא מקרה.</p>
       </section>
 
       <section class="pension-section">
         <h2>סיכום</h2>
-        <p>סוכן ביטוח לא שווה רק בזמן רכישת הפוליסה — הוא שווה בעיקר ברגע שהפוליסה צריכה לעבוד. מי שיש לו סוכן שמכיר את התיק שלו מגיע לתביעה עם יתרון משמעותי: מישהו שיודע בדיוק מה כתוב בפוליסה, מה מגיע לו, ואיך להביא את זה.</p>
+        <p>סוכן ביטוח לא שווה רק בזמן רכישת הפוליסה - הוא שווה בעיקר ברגע שהפוליסה צריכה לעבוד. מי שיש לו סוכן שמכיר את התיק שלו מגיע לתביעה עם יתרון משמעותי: מישהו שיודע בדיוק מה כתוב בפוליסה, מה מגיע לו, ואיך להביא את זה.</p>
       </section>
 
       <section id="faq" class="pension-section">
         <h2>שאלות נפוצות</h2>
 
         <h3>האם סוכן ביטוח גובה תשלום על ליווי בתביעה?</h3>
-        <p>לא. הסוכן מקבל עמלה מחברת הביטוח על הפוליסות שמנוהלות דרכו — הליווי בתביעה הוא חלק מהשירות ואינו כרוך בתשלום נוסף מהלקוח.</p>
+        <p>לא. הסוכן מקבל עמלה מחברת הביטוח על הפוליסות שמנוהלות דרכו - הליווי בתביעה הוא חלק מהשירות ואינו כרוך בתשלום נוסף מהלקוח.</p>
 
         <h3>מה קורה אם חברת הביטוח דוחה את התביעה?</h3>
         <p>סוכן מנוסה יכול לערער על ההחלטה, לדרוש נימוק בכתב ולהפנות לממונה על שוק ההון. לעיתים דחייה ראשונית מתהפכת לאחר מעורבות סוכן שמכיר את הפוליסה לעומק.</p>
 
         <h3>האם אפשר לפנות לסוכן גם אם לא הוא מכר לי את הפוליסה?</h3>
-        <p>כן, אפשר לעבור לייצוג של סוכן חדש גם אחרי שנחתמה הפוליסה. הסוכן החדש יכול לקחת ייצוג ולסייע בתביעה — כדאי לעשות זאת לפני הגשת התביעה ולא תוך כדי.</p>
+        <p>כן, אפשר לעבור לייצוג של סוכן חדש גם אחרי שנחתמה הפוליסה. הסוכן החדש יכול לקחת ייצוג ולסייע בתביעה - כדאי לעשות זאת לפני הגשת התביעה ולא תוך כדי.</p>
       </section>
 
       <section class="pension-links-box">
         <h2 class="text-2xl font-black text-blue-950 mb-4">קריאה נוספת</h2>
         <ul>
           <li><a href="check-insurance-policies.html">איך בודקים תיק ביטוח</a></li>
-          <li><a href="insurance-double-coverage.html">כפל ביטוחים — זיהוי ובדיקה</a></li>
+          <li><a href="insurance-double-coverage.html">כפל ביטוחים - זיהוי ובדיקה</a></li>
           <li><a href="loss-of-income.html">ביטוח אובדן כושר עבודה</a></li>
           <li><a href="financial-checklist-family.html">צ׳קליסט פיננסי שנתי למשפחה</a></li>
           <li><a href="articles.html">כל המאמרים</a></li>
@@ -313,7 +338,7 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
 
       <section id="lead-form" class="pension-form-section">
         <h2 class="text-3xl font-black text-blue-950 mb-3">יש לך תביעה? נבדוק את הפוליסה יחד</h2>
-        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות — נבדוק מה מגיע לך לפי הפוליסה שלך.</p>
+        <p class="text-slate-700 mb-6">בדיקה ראשונית ללא עלות - נבדוק מה מגיע לך לפי הפוליסה שלך.</p>
         <form id="leadForm" class="space-y-4">
           <div class="pension-form-grid">
             <div>
@@ -334,7 +359,7 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
             </div>
             <div class="full-span">
               <label for="message" class="block mb-2 font-bold text-slate-700">מה תרצו לבדוק?</label>
-              <textarea id="message" name="message" placeholder="תאר בקצרה את המצב — סוג הביטוח, האירוע, מה קרה..."></textarea>
+              <textarea id="message" name="message" placeholder="תאר בקצרה את המצב - סוג הביטוח, האירוע, מה קרה..."></textarea>
             </div>
           </div>
           <div class="pension-btn-row">
@@ -363,7 +388,7 @@ body.insurance-agent-claims-page main { padding-top: 2.5rem; padding-bottom: 2.5
       </section>
       <section class="pension-lead-box">
         <h2 class="text-2xl font-black text-blue-950 mb-3">יש תביעה פתוחה?</h2>
-        <p class="text-slate-700">יובל ויינזוף — יועץ ביטוח ופנסיה עם 18 שנות ניסיון. אפשר לפנות ישירות.</p>
+        <p class="text-slate-700">יובל ויינזוף - יועץ ביטוח ופנסיה עם 18 שנות ניסיון. אפשר לפנות ישירות.</p>
         <div class="pension-btn-row" style="margin-top:1rem">
           <a href="https://wa.me/972524520222" target="_blank" rel="noopener noreferrer" class="pension-btn pension-btn--whatsapp">WhatsApp</a>
         </div>

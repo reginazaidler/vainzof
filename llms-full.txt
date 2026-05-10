@@ -1,4 +1,4 @@
-# vainzof.co.il — LLM full context
+# vainzof.co.il - LLM full context
 
 ## Site identity
 - Brand: יובל ויינזוף
