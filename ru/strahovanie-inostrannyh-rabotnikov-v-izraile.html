@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru" dir="ltr">
 <head>
+<base href="/">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EM8SYH542C"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -371,8 +372,35 @@ gtag('config', 'G-EM8SYH542C');
   }
 </style>
 </head>
-<body>
-<main>
+<body class="about-page">
+<a class="sr-focusable" href="#main">Перейти к основному содержанию</a>
+<div class="site-topbar" id="top-anchor">
+  <div class="container-clean site-topbar__inner">Страхование иностранных рабочих в Израиле: руководство для работодателя</div>
+</div>
+<header class="site-header">
+  <div class="container-clean site-header__inner">
+    <a aria-label="Вернуться на главную" class="site-brand" href="ru/index.html">
+      <img alt="Юваль Вайнзоф - логотип" class="site-logo" height="160" src="assets/logo.png" width="520"/>
+    </a>
+    <nav aria-label="Основная навигация" class="site-nav">
+      <a class="nav-link" href="ru/index.html">Главная</a>
+      <a class="nav-link" href="ru/about.html">Обо мне</a>
+      <a class="nav-link nav-link-active" href="ru/strahovanie-inostrannyh-rabotnikov-v-izraile.html">Статья</a>
+      <a aria-label="Позвонить по номеру 052-4520222" class="header-phone" href="tel:0524520222"><span>052-4520222</span></a>
+    </nav>
+    <button id="menuBtn" class="lg:hidden p-2 text-blue-900" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+      </svg>
+    </button>
+  </div>
+</header>
+<div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 py-4 px-6 space-y-4 shadow-xl absolute w-full top-full right-0 z-50">
+  <a href="ru/index.html" class="block font-bold text-slate-600 border-b pb-2">Главная</a>
+  <a href="ru/about.html" class="block font-bold text-slate-600 border-b pb-2">Обо мне</a>
+  <a href="ru/strahovanie-inostrannyh-rabotnikov-v-izraile.html" class="block font-bold text-blue-900 border-b pb-2">Статья</a>
+</div>
+<main id="main">
   <div class="art-wrap">
 
     <a href="/ru/index.html" class="art-back">&#8592; На главную</a>
@@ -527,5 +555,8 @@ gtag('config', 'G-EM8SYH542C');
 
   </div>
 </main>
+<script src="js/site-header.js"></script>
+<script src="js/site-footer.js"></script>
+<script src="js/whatsapp-float.js"></script>
 </body>
 </html>
