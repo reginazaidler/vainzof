@@ -18,6 +18,7 @@
       <nav class="site-footer__nav" aria-label="Нижняя навигация">
         <a href="/ru/index.html">Главная</a>
         <a href="/ru/about.html">Обо мне</a>
+        <a href="/ru/articles.html">Статьи</a>
         <a href="/ru/navesti-poryadok-v-strahovkah.html">Как навести порядок в страховках и пенсии</a>
         <a href="/ru/proverka-strahovogo-portfelya.html">Проверка страхового портфеля</a>
         <a href="/ru/proverka-pensionnyh-nakopleniy-v-izraile.html">Проверка пенсионных накоплений</a>
