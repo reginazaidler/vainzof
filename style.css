@@ -63,7 +63,7 @@
     /* אנימציות */
     --ease-default: 0.25s ease;
 
-    /* פונט בסיסי — מוחלף ב-Inter לדפים רוסיים */
+    /* פונט בסיסי - מוחלף ב-Inter לדפים רוסיים */
     --site-font: 'Assistant', sans-serif;
 }
 
@@ -9013,7 +9013,7 @@ html[lang="ru"] textarea {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* text-right was copied from Hebrew RTL templates — wrong for LTR Russian */
+/* text-right was copied from Hebrew RTL templates - wrong for LTR Russian */
 html[lang="ru"] .text-right {
   text-align: left;
 }
@@ -9042,7 +9042,7 @@ html[lang="ru"] .art-card {
   overflow: visible;
 }
 
-/* Full-width dark hero — side padding centers content at ~980px */
+/* Full-width dark hero - side padding centers content at ~980px */
 html[lang="ru"] .art-hero {
   border-radius: 0;
   padding-top: clamp(52px, 8vw, 88px);
