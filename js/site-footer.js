@@ -122,6 +122,102 @@
     </div>
   `;
 
+  // Inject contact modal for Russian pages that don't already have one
+  if (isRuPage && !document.getElementById('contactModal')) {
+    const modal = document.createElement('div');
+    modal.id = 'contactModal';
+    modal.className = 'fixed inset-0 z-[1300] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm hidden';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'contactModalTitle');
+    modal.innerHTML = `
+      <div class="bg-white rounded-[1.5rem] p-5 pt-12 md:p-8 md:pt-12 max-w-lg w-[92%] max-h-[90vh] overflow-y-auto relative shadow-2xl border-t-4 border-blue-600">
+        <button id="closeContact" class="absolute top-3 right-3 text-slate-500 hover:text-blue-900 text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-white/95 border border-slate-200 hover:bg-slate-100 transition-all z-50" aria-label="Закрыть форму контакта">×</button>
+        <div class="mb-4 text-right">
+          <h2 id="contactModalTitle" class="text-2xl md:text-3xl font-black text-blue-950">Оставьте данные</h2>
+          <p class="text-slate-600 text-sm font-bold">Профессиональная проверка и персональное сопровождение - бесплатно</p>
+        </div>
+        <form id="modal-contact-form" class="space-y-3">
+          <div>
+            <input type="text" id="user_name" name="user_name" required placeholder="Полное имя" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
+            <p id="name-error" class="hidden text-[10px] text-red-600 font-bold mt-1"></p>
+          </div>
+          <div>
+            <input type="tel" id="user_phone" inputmode="tel" name="user_phone" required placeholder="Номер телефона" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
+            <p id="phone-error" class="hidden text-[10px] text-red-600 font-bold mt-1"></p>
+          </div>
+          <input type="email" id="user_email" name="user_email" placeholder="Email (необязательно)" class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm">
+          <p id="email-error" class="hidden text-[10px] text-red-600 font-bold mt-1"></p>
+          <textarea name="message" rows="2" placeholder="Что вы хотите проверить?" class="mobile-optional-field w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-600 font-bold text-sm resize-none"></textarea>
+          <p class="mobile-form-note">Для мобильной версии достаточно имени и телефона - остальное уточним в разговоре.</p>
+          <div class="flex items-center gap-2 py-1">
+            <input type="checkbox" id="modal_marketing" name="marketing" checked class="w-4 h-4 rounded border-slate-300 text-blue-600 cursor-pointer">
+            <label for="modal_marketing" class="text-[11px] text-slate-500 font-medium cursor-pointer">Согласен(на) получать профессиональные обновления</label>
+          </div>
+          <button type="submit" id="modal-submit-btn" class="w-full bg-blue-900 text-white py-3.5 rounded-xl font-bold text-md shadow-lg hover:bg-blue-800 transition-all">Записаться на персональную проверку</button>
+        </form>
+        <div class="mt-4 flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+          <span class="text-[10px] text-slate-400 font-bold italic">Быстрый ответ от человека</span>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    function ruCloseModal() {
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      setTimeout(() => { modal.classList.add('hidden'); modal.style.display = 'none'; }, 300);
+    }
+
+    document.getElementById('closeContact').addEventListener('click', ruCloseModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) ruCloseModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') ruCloseModal(); });
+
+    document.getElementById('user_phone')?.addEventListener('input', (e) => { e.target.value = e.target.value.replace(/[^\d\s\-()]/g, ''); });
+    document.getElementById('user_name')?.addEventListener('input', (e) => { e.target.value = e.target.value.replace(/[0-9]/g, ''); });
+
+    const form = document.getElementById('modal-contact-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let isValid = true;
+        const clearErrors = () => {
+          ['user_name', 'user_phone', 'user_email'].forEach(id => document.getElementById(id)?.classList.remove('border-red-500'));
+          ['name-error', 'phone-error', 'email-error'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
+        };
+        const showError = (inputId, errorId, msg) => {
+          document.getElementById(inputId)?.classList.add('border-red-500');
+          const err = document.getElementById(errorId);
+          if (err) { err.textContent = msg; err.classList.remove('hidden'); }
+        };
+        clearErrors();
+        const name = document.getElementById('user_name').value.trim();
+        const phone = document.getElementById('user_phone').value.replace(/[\s\-()]/g, '');
+        const email = document.getElementById('user_email').value.trim();
+        if (name.length < 2) { showError('user_name', 'name-error', 'Введите минимум 2 символа'); isValid = false; }
+        if (!/^(05\d{8}|07\d{8}|0[23489]\d{7})$/.test(phone)) { showError('user_phone', 'phone-error', 'Введите корректный израильский номер телефона'); isValid = false; }
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('user_email', 'email-error', 'Некорректный адрес email'); isValid = false; }
+        if (!isValid) return;
+        const btn = document.getElementById('modal-submit-btn');
+        btn.disabled = true;
+        btn.classList.add('opacity-70', 'cursor-not-allowed');
+        btn.innerText = 'Отправка...';
+        fetch('https://formspree.io/f/mdawkwwn', {
+          method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+        }).then(res => {
+          if (res.ok) window.location.href = '/thanks.html';
+          else throw new Error();
+        }).catch(() => {
+          alert('Ошибка отправки. Попробуйте снова или напишите в WhatsApp.');
+          btn.disabled = false;
+          btn.classList.remove('opacity-70', 'cursor-not-allowed');
+          btn.innerText = 'Записаться на персональную проверку';
+        });
+      });
+    }
+  }
+
   const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const cityPages = [
     'sochen-bituach-herzliya.html',
