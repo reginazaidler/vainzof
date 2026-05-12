@@ -3907,7 +3907,7 @@ main section.bg-white .text-white h3 {
 
 @media (min-width: 1024px) {
     .bottom-cta__title {
-        text-wrap: balance;
+        text-wrap: pretty;
     }
 }
 
