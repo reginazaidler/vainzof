@@ -9178,3 +9178,13 @@ html[lang="ru"] .art-cta {
   color: #B8913F;
   flex-shrink: 0;
 }
+
+/* FAQ gold accent: in RTL Hebrew border-right is the visual LEFT start.
+   In LTR Russian we need to flip it so the accent is on the visual LEFT. */
+@media (min-width: 1024px) {
+  html[lang="ru"] details.faq-item,
+  html[lang="ru"] details.faq-card {
+    border-right: 1px solid #dbe4f0;
+    border-left: 4px solid var(--gold-brand);
+  }
+}
