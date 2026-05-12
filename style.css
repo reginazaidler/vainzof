@@ -8989,3 +8989,128 @@ body.pension-fees-page main {
   .art-cta-btns { flex-direction: column; align-items: stretch; }
   .btn-wa, .btn-call { justify-content: center; }
 }
+
+/* =========================================================
+   RUSSIAN / CYRILLIC OVERRIDES
+   Applied to all pages with lang="ru".
+   Inter (already loaded) has full Cyrillic coverage and
+   looks far more natural than Assistant for Russian text.
+   ========================================================= */
+
+html[lang="ru"],
+html[lang="ru"] body,
+html[lang="ru"] button,
+html[lang="ru"] input,
+html[lang="ru"] select,
+html[lang="ru"] textarea {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* text-right was copied from Hebrew RTL templates — wrong for LTR Russian */
+html[lang="ru"] .text-right {
+  text-align: left;
+}
+
+/* Slightly wider card for Russian article pages */
+html[lang="ru"] .art-wrap {
+  max-width: 860px;
+}
+
+/* Larger, tighter headline — Inter handles Cyrillic kerning better */
+html[lang="ru"] .art-h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Lead text slightly lighter for contrast on dark hero */
+html[lang="ru"] .art-lead {
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: #dce6f7;
+  margin-top: 10px;
+}
+
+/* Cyrillic body text benefits from slightly more line-height */
+html[lang="ru"] .art-body,
+html[lang="ru"] .art-body p {
+  font-size: 1.05rem;
+  line-height: 1.95;
+}
+
+html[lang="ru"] .art-body h2 {
+  font-size: clamp(1.22rem, 3vw, 1.55rem);
+  letter-spacing: -0.01em;
+}
+
+html[lang="ru"] .art-body li {
+  line-height: 1.85;
+  margin-bottom: 10px;
+}
+
+/* ── Hero action buttons injected by site-footer.js ── */
+.art-hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.art-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.art-hero-btn--wa {
+  background: #25D366;
+  color: #fff;
+  border: 2px solid #25D366;
+}
+.art-hero-btn--wa:hover { background: #1EBE5D; border-color: #1EBE5D; }
+
+.art-hero-btn--call {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+}
+.art-hero-btn--call:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 520px) {
+  .art-hero-actions { flex-direction: column; gap: 10px; }
+  .art-hero-btn { justify-content: center; }
+}
+
+/* ── Trust badge strip inside art-hero ── */
+.art-hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.art-hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.art-hero-trust-item svg {
+  color: #B8913F;
+  flex-shrink: 0;
+}
